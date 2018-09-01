@@ -1,0 +1,165 @@
+<extend name="Base/base_user" />
+<block name="css">
+    <!-- Bootstrap Core CSS -->
+    <link href="__USER__/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS /bootstrap/css/bootstrap.min.cs-->
+    <link href="__USER__/vendors/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="__USER__/vendors/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="__USER__/vendors/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="__USER__/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="__USER__/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</block>
+<block name="title">
+    <title>{$Think.lang.MyAddress}</title>
+</block>
+<block name="page-wrapper">
+    <div id="page-wrapper" style="min-height: 920px">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{$Think.lang.MyAddress}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        {$Think.lang.EditAddress}
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <form class="form-horizontal" role="form" id="form-data">
+                                    <div class="form-group">
+                                        <label for="Country" class="col-sm-2 control-label">{$Think.lang.CountryZone}</label>
+                                        <div class="col-sm-3">
+                                            <select name="country_id" id="Country" class="form-control">
+                                                <option value="0">{$Think.lang.PleaseSelect}</option>
+                                                <volist name="country" id="vo">
+                                                    <option value="{$vo.country_id}">{$vo.name}</option>
+                                                </volist>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 select_zone"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DetailedAddress" class="col-sm-2 control-label">{$Think.lang.DetailedAddress}</label>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="DetailedAddress" name="address" class="update" value="{$result.firstname}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Recipient" class="col-sm-2 control-label">{$Think.lang.Recipient}</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="Recipient" name="recipient" class="update" value="{$result.lastname}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Phone" class="col-sm-2 control-label">{$Think.lang.Phone}</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="phone" id="Phone" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Postcode" class="col-sm-2 control-label">{$Think.lang.Postcode}</label>
+                                        <div class=" col-sm-3">
+                                            <input type="text" class="form-control" name="postcode" id="Postcode">
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="user_id" value="{$_SESSION.user_auth.vistor_id}">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-sm-offset-2">
+                                            <button type="button" class="btn btn-info pull-right form-control" id="button_update">{$Think.lang.Update}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        {$Think.lang.AddressList}
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
+                            <thead>
+                            <tr>
+                                <th style="width: 5%;">{$Think.lang.ID}</th>
+                                <th>{$Think.lang.Zone}</th>
+                                <th>{$Think.lang.Address}</th>
+                                <th>{$Think.lang.Recipient}</th>
+                                <th>{$Think.lang.Postcode}</th>
+                                <th style="width:10%;">{$Think.lang.Phone}</th>
+                                <th style="width: 10%;">{$Think.lang.Action}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="address" id="vo">
+                                <tr class="">
+                                    <td>{$vo.address_id}</td>
+                                    <td>{$vo.country_id|getCountryName}|{$vo.zone_id|getZoneName}</td>
+                                    <td>{$vo.address}</td>
+                                    <td>{$vo.recipient}</td>
+                                    <td class="center">{$vo.postcode}</td>
+                                    <td class="center">{$vo.phone}</td>
+                                    <td class="center">删除|修改</td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+</block>
+<block name="script">
+    <!--commons by rootkit-->
+    <script src="__USER__/vendors/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="__USER__/vendors/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="__USER__/vendors/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="__JS__/commons.js"></script>
+    <script src="__USER__/layer/layer.js"></script>
+    <script src="__USER__/dist/js/dialog.js"></script>
+    <script type="application/javascript">
+        var SCOPE={
+            'update_url':'/{$Think.lang.Langfolder}/User/AddressUpdate',
+            'getZone':'/{$Think.lang.Langfolder}/User/getZone'
+        };
+        <!--日期格式选择-->
+        $(document).ready(function() {
+            $('#dataTables').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+</block>

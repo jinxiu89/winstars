@@ -1,0 +1,147 @@
+<extend name="Base/base_user" />
+<block name="page-wrapper">
+    <div id="page-wrapper" style="min-height: 920px">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{:L('Dashboard')}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span>{:L('Welcome_to_use_wavlink_product')}</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3><p>{:L('start')}</p><small>{:L('more services')}</small></h3>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="">
+                                            <h4 class="btn btn-warning">{:L('first')}</h4><hr>
+                                            <div class="col-sm-6">
+                                                <div class="thumbnail"><i>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #ececec;"></span>&nbsp;&nbsp;</i><a href="/{$Think.lang.Langfolder}/user/myinfo/id/{$_SESSION.user_auth.vistor_id}.html" >{:L('Add your personal data')}</a></div>
+                                                <div class="thumbnail"><i>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #ececec;"></span>&nbsp;&nbsp;</i><a href="/{$Think.lang.Langfolder}/user/address/id/{$_SESSION.user_auth.vistor_id}.html" >{:L('Add a new address!')}</a></div>
+                                                <div class="thumbnail"><i>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #ececec;"></span>&nbsp;&nbsp;</i><a href="/{$Think.lang.Langfolder}/user/editPassword.html">{:L('Modify password')}</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="">
+                                            <h4 class="btn btn-warning">{:L('second')}</h4><hr>
+                                            <div class="col-sm-5">
+                                                <div class="thumbnail"><i>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #ececec;"></span>&nbsp;&nbsp;</i><a href="/{$Think.lang.Langfolder}/user/myorder/id/{$_SESSION.user_auth.vistor_id}.html"> {:L('uploaded')}</a></div>
+                                                <div class="thumbnail"><i>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #ececec;"></span>&nbsp;&nbsp;</i><a href="/{$Think.lang.Langfolder}/user/mywarranty.html">{:L('Warranty')}</a></div>
+                                                <p><a href="#"></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary" style="min-height: 320px">
+                    <div class="panel-heading">{:L('Overview')}</div>
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div class="panel panel-green">
+                                <div class="panel-heading"><span>{:L('added_product')}</span>
+                                    <small class="text-right"><a href="/{$Think.lang.Langfolder}/user/myorder/id/{$_SESSION.user_auth.vistor_id}.html">{$Think.lang.more}>></a></small>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>{$Think.lang.platform}</th>
+                                                        <th>{$Think.lang.country}</th>
+                                                        <th>{$Think.lang.DetailedAddress}</th>
+                                                        <th>{$Think.lang.order_num}</th>
+                                                        <th>{$Think.lang.SN}</th>
+                                                        <th>{$Think.lang.model}</th>
+                                                        <th>{$Think.lang.create_time}</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <volist name="products" id="vo" empty="">
+                                                        <tr>
+                                                            <td>{$vo.platform_id|getPlatformId}</td>
+                                                            <td>{$vo.country_id|getCountryName}</td>
+                                                            <td>{$vo.address|getAddressName}</td>
+                                                            <td>{$vo.order_num}</td>
+                                                            <td>{$vo.sn}</td>
+                                                            <td>{$vo.model}</td>
+                                                            <td>{$vo.create_time}</td>
+                                                        </tr>
+                                                    </volist>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--./panel1-->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span>{$Think.lang.AddressList}</span>
+                                    <small class="text-right"><a href="/{$Think.lang.Langfolder}/user/address/id/{$_SESSION.user_auth.vistor_id}.html">{$Think.lang.more}>></a></small>
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <table width="100%" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>{$Think.lang.Zone}</th>
+                                            <th>{$Think.lang.Address}</th>
+                                            <th>{$Think.lang.Recipient}</th>
+                                            <th>{$Think.lang.Postcode}</th>
+                                            <th style="width:10%;">{$Think.lang.Phone}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <volist name="address" id="vo">
+                                            <tr class="">
+                                                <td>{$vo.country_id|getCountryName}|{$vo.zone_id|getZoneName}</td>
+                                                <td>{$vo.address}</td>
+                                                <td>{$vo.recipient}</td>
+                                                <td class="center">{$vo.postcode}</td>
+                                                <td class="center">{$vo.phone}</td>
+                                            </tr>
+                                        </volist>
+                                        </tbody>
+                                    </table>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</block>
+<block name="script">
+    <!--commons by rootkit-->
+    <script src="__JS__/commons.js"></script>
+</block>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lte IE8]>
+<script>
+    window.location.href='Browser-upgrade-page.html';
+</script>
+<![endif]-->
+<html>
+<head>
+    <!--头部公共空间开始-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <link rel="stylesheet" href="__EN__/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="__EN__/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="__EN__/css/public-css.css" type="text/css">
+    <link rel="stylesheet" href="__EN__/css/Content-public-style.css" type="text/css">
+    <meta name="author" content="wavlink">
+    <!--头部公共空间结束-->
+    <!--私有页面属性-->
+    <title>{$title}</title>
+    {block name="menu"}菜单{/block}
+    {block name="seo"}
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    {/block}
+    <link rel="stylesheet" href="__EN__/css/{$nameCss}.css" type="text/css">
+    <!--私有首页面属性结束-->
+    <!--[if lte IE9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- wavlink睿因 产品页眉部分 -->
+<header>
+    <div class="w_top_nav bg-black col-xs-12" style="padding:0">
+        <div class="logo_cont relative col-lg-4 col-md-2 col-xs-12">
+            <img src="__EN__/img/wavlink-logo.svg" alt="" class="img-responsive center-block col-lg-5 col-md-12 col-xs-5">
+            <i class="absolute color-white icon-reorder icon-2x"></i>
+        </div>
+        <div class="nav_cont col-lg-8 col-md-10 col-xs-12" style="padding:0">
+            <ul class="pull-right text-center nav_top_list col-xs-12" style="padding:0">
+                <li class="col-md-2 col-xs-12"><a href="{:url('Index/index')}">Home</a></li>
+                <li class="sel col-md-2 col-xs-12">
+                    <a href="javascript:;">Product</a>
+                    <ol class="sel_nei bg-threen text-center col-xs-12">
+                        <i class="absolute"></i>
+                        {volist name="category" id="vo"}
+                        <li><a href="{:url('Category/index',['id'=>$vo.id])}">{$vo.name}</a></li>
+                        {/volist}
+                    </ol>
+                </li>
+                <li class="sel col-md-2 col-xs-12">
+                    <a href="javascript:;">Support</a>
+                    <ol class="sel_nei bg-threen text-center col-xs-12">
+                        <i class="absolute"></i>
+                        <li><a href="Video-list.html">视频教程</a></li>
+                    </ol>
+                </li>
+                <li class="col-md-2 col-xs-12"><a href="javascript:;">Sign in</a></li>
+                <li class="sel col-md-2 col-xs-12">
+                    <a href="javascript:;">Language</a>
+                    <ol class="sel_nei bg-threen text-center col-xs-12">
+                        <i class="absolute"></i>
+                        {volist name="language" id="vo"}
+                        <li><a href="javascript:;">{$vo.name}</a></li>
+                        {/volist}
+                    </ol>
+                </li>
+                <li class="b_search col-md-2 col-xs-12"><a href="javascript:;">Search</a></li>
+            </ul>
+            <div class="absolute bg-threen ol-md-8 col-xs-12" style="padding:0">
+                <form action="" method="post">
+                    <input type="text" placeholder="Please enter the product name" class="col-xs-10">
+                    <input type="submit" value="GO!"  class="col-xs-2">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

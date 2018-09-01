@@ -1,0 +1,8 @@
+application/config.php
+application/database.php
+.idea/
+.travis.yml
+public/ueditor
+runtime/
+/log/
+test/

@@ -1,0 +1,96 @@
+<extend name="Base/base_user" />
+<block name="css">
+    <!-- Bootstrap Core CSS -->
+    <link href="__USER__/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS /bootstrap/css/bootstrap.min.cs-->
+    <link href="__USER__/vendors/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="__USER__/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="__USER__/vendors/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="__USER__/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="__USER__/datetime/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</block>
+<block name="page-wrapper">
+    <div id="page-wrapper" style="min-height: 920px">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{$Think.lang.IPurchasedOrders}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        {$Think.lang.IPurchasedOrders}
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <volist name="product" id="vo">
+                                        <div class="col-sm-6 col-md-4">
+                                            <div class="thumbnail">
+                                                <div class="caption text-center">
+                                                    <div class="img-thumbnail"><div style="height: 10%;padding: 50px 0 0 15px"><span style="margin-top: 80px">{$vo.model}</span></div></div>
+                                                    <hr>
+                                                    <ul class="list-unstyled text-left">
+                                                        <li class="dl-horizontal text-overflow"><span>您的SN:</span> <span>{$vo.sn}</span></li>
+                                                        <li class="dl-horizontal text-overflow"><span>  VER:</span> <span>{$vo.ver}</span></li>
+                                                        <li class="dl-horizontal text-overflow"><span>  规格:</span> <span>{$vo.spec}</span></li>
+                                                    </ul>
+                                                    <hr>
+                                                    <a  href="#">申请保修</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+</block>
+<block name="script">
+    <!--commons by rootkit-->
+    <script src="__JS__/commons.js"></script>
+    <script src="__USER__/layer/layer.js"></script>
+    <script src="__USER__/dist/js/dialog.js"></script>
+    <script src="__USER__/datetime/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="application/javascript">
+        var SCOPE={
+            'update_url':'../../update'
+        }
+        <!--日期格式选择-->
+        $('.form_date').datetimepicker({
+            format:'yyyy-mm-dd',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+    </script>
+</block>

@@ -1,0 +1,28 @@
+{extend name="public/base" /}
+{block name="title"}
+<title>内容管理首页-WINSTARS WEBSITE MANAGER CENTER</title>
+{/block}
+{block name="menu"}{include file="public:content_navbar" /}{/block}
+{block name="nav"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span>
+    内容管理
+    <span class="c-gray en">&gt;</span>
+    仪表盘
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+{/block}
+{block name="main"}
+<article class="cl pd-20" style="min-height: 51em;">
+    <p class="f-20 text-success">欢迎登入Wavlink网站后台系统</p>
+</article>
+{include file="public/explain" /}
+{/block}
+{block name="js"}
+<script>
+    $(document).ready(function () {
+        $("#content").addClass("current");
+    });
+</script>
+{/block}
