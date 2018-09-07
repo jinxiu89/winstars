@@ -3,19 +3,11 @@ namespace app\en_us\controller;
 use app\common\model\Images as ImagesModel;
 class Index extends Base
 {
-    public function index($type = " ")
+    public function index()
     {
-        $imagesSlide = (new ImagesModel())->getImagesByFeatured($this->code,1);//幻灯片，首页第一屏
-        $imagesMain = (new ImagesModel())->getImagesByFeatured($this->code,3);//主流产品推荐，首页第三屏
-        $imagesNew = (new ImagesModel())->getImagesByFeatured($this->code, 4);//新品推荐位获取图片
-        $imagesBest = (new ImagesModel())->getImagesByFeatured($this->code, 2);//热卖推荐，首页第二屏
-        $imagesNotice =(new ImagesModel())->getImagesByFeatured($this->code, 6);//公告栏推荐位，导航上面的
-        $this->assign('imagesSlide',$imagesSlide['data']);
-        $this->assign('imagesMain',$imagesMain['data']);
-        $this->assign("imagesNew", $imagesNew['data']);
-        $this->assign("imagesBest", $imagesBest['data']);
-        $this->assign('imagesNotice' ,$imagesNotice['data']);
-        return $this->fetch();
+        $file=fopen(ADMIN_VIEWS.'/cover/cover.html','r') or die("不能打开此文件");
+        $content=file_get_contents(ADMIN_VIEWS.'/cover/cover.html');
+        return $this->fetch('',['content'=>$content]);
     }
     public function build_html(){
         $this->index('index');

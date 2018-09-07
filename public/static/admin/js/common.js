@@ -101,7 +101,6 @@ function save(url) {
             success: function (result) {
                 if (result.status == 1) {
                     layer.msg(result.data, {icon: 1, time: 2000});
-                    window.parent.location.reload();
                     parent.layer.time(2000).closeAll('iframe');
                 } else {
                     layer.msg(result.data, {icon: 5, time: 1500});

@@ -22,29 +22,14 @@
                     <li id="images_featured"><a href="{:url('featured/index')}" title="添加推荐位">推荐位管理</a></li>
                 </ul>
             </dd>
-            <!--下面的是三级菜单展开-->
-            <!--<dl id="menu_featured1">-->
-            <!--<dt><i class="Hui-iconfont">&#xe63a;</i> 推荐位管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
-            <!--<dd>-->
-            <!--<ul>-->
-            <!--<li><a data-href="" data-title="采购管理" href="javascript:void(0)">采购管理</a></li>-->
-            <!--<li><a data-href="" data-title="采购管理" href="javascript:void(0)">采购管理</a></li>-->
-            <!--<li id="images_featured"><a href="{:url('featured/index')}" title="添加推荐位">推荐位管理</a></li>-->
-            <!--</ul>-->
-            <!--</dd>-->
-            <!--</dl>-->
         </dl>
         {/if}
         {if condition="in_array('images/index',$access)"}
         <dl id="menu-images">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 首页产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe613;</i> 首页管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    {volist name="languages" id="vo"}
-                    <li id="images_list_{$vo.id}"><a href="{:url('images/index',['language_id'=>$vo.id])}"
-                                                     title="{$vo.name}推荐位产品管理">首页元素管理({$vo.id|getLanguage})</a></li>
-                    {/volist}
-                    <li id="images_recycle"><a href="{:url('images/images_recycle')}" title="回收站">停用的首页元素</a></li>
+                    <li id="cover"><a href="{:url('cover/edit')}">首页封面</a></li>
                 </ul>
             </dd>
         </dl>

@@ -1,0 +1,335 @@
+/* w-Home-pvw 首页预览 */
+div.w-home-pvw-box {
+    background: #EA881B
+}
+div.w-home-pvw-box > div.w-home-pvw-cont {
+    padding: 25px 0
+}
+div.w-home-pvw-box > div.w-home-pvw-cont > ul > li {
+    width: 33%;
+    float: left
+}
+div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > p > img {
+    width: 60px;
+    height: 60px
+}
+div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > p,
+div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > div {
+    display: inline-block;
+    vertical-align: middle
+}
+div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > div > p {
+    margin-top: 5px
+}
+
+/* w-home-article-title 首页内容文章标题 */
+div.w-home-article-title-box > div.w-home-article-title-cont > div.w-home-article-title > h2 {
+    font-size: 24px
+}
+div.w-home-article-title-box > div.w-home-article-title-cont > div.w-home-article-title > p {
+    font-size: 16px;
+    margin-top: 20px
+}
+
+/* w-home-article-cont 首页内容文章 内容 */
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one:first-of-type {
+    border-bottom: 1px solid #bbb
+}
+
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li {
+    padding: 20px 0
+}
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li > img {
+    width: 60px;
+    height: 60px;
+    margin: 0 15px 0 0
+}
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li > img,
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li > div {
+    display: inline-block;
+    vertical-align: middle
+}
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li > div {
+    width: 70%;
+    text-align: left
+}
+div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol > li > div > p {
+    margin-top: 8px
+}
+
+/* w-home-our-products 首页 我们的产品 */
+div.w-home-our-products-box > div.w-home-our-products-cont {
+    padding: 80px 0
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > h2 {
+    font-size: 24px;
+    padding: 15px 0;
+    color: #FFB600
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div {
+    float: left
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > img {
+    width: 100%;
+    height: 380px
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box {
+    width: 100%;
+    padding: 20px 4%;
+    background: #fff;
+    position: relative
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box > i {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    padding: 15px 4%;
+    display: none;
+    background: #FFB600
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div:hover > a > div.product-box > i {
+    display: block
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box > p {
+    margin-bottom: 50px
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box > span {
+    display: inline-block;
+    padding: 6px 4%
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box > span:first-of-type {
+    color: #FFB600;
+    padding: 6px 0
+}
+div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div > a > div.product-box > span:last-of-type {
+    float: right;
+    border: 1px solid #FFB600
+}
+
+/* w-home-new-product-issue 新产品发布 */
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > h2 {
+    padding: 15px 0;
+    color: #FFB600
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li {
+    background: #fff;
+    padding: 25px 8%;
+    margin-bottom: 10px
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li:last-of-type {
+    margin-bottom: 0
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li > strong {
+    font-size: 16px;
+    color: #FFB600
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li > p {
+    padding: 15px 0
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li > span {
+    margin-right: 15px;
+    font-weight: bold
+}
+div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul > li > a {
+    float: right
+}
+
+/* w-home-cooperation 首页 合作 */
+div.w-home-cooperation-box > div.w-home-cooperation-cont {
+    padding: 100px 10%;
+    margin: 20px 0 0
+}
+div.w-home-cooperation-box > div.w-home-cooperation-cont > h2 {
+    font-size: 24px;
+    margin-bottom: 20px
+}
+div.w-home-cooperation-box > div.w-home-cooperation-cont > h2,
+div.w-home-cooperation-box > div.w-home-cooperation-cont > p {
+    color: #fff
+}
+
+/* w-home-partner 首页 合作伙伴 */
+div.w-home-partner-box > div.w-home-partner-cont > a {
+    float: left
+}
+div.w-home-partner-box > div.w-home-partner-cont > a > img {
+    width: 100%
+}
+
+/* ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE. 根据您的兴趣，我们提供特殊服务。 */
+div.serve-box {
+    margin: 150px 0 50px
+}
+div.serve-box > div.serve-cont > div.serve-title {
+    padding: 50px 10%
+}
+div.serve-box > div.serve-cont > div.serve-title > h2 {
+    font-size: 24px;
+    color: #FFB600;
+    margin-bottom: 20px
+}
+
+/* ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE 兴趣 */
+div.serve-interest-box > div.serve-interest-cont > form > input {
+    border: 1px solid #bbb;
+    height: 40px;
+    margin-bottom: 30px;
+    padding: 0 15px
+}
+div.serve-interest-box > div.serve-interest-cont > form > textarea {
+    height: 150px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #bbb
+}
+div.serve-interest-box > div.serve-interest-cont > form > p > input {
+    width: 114px;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    margin: 50px 0;
+    border: 1px solid #bbb
+}
+div.serve-interest-box > div.serve-interest-cont > form > p > input:first-of-type {
+    border-color: #FFB600
+}
+
+@media screen and (max-width: 767px){
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > p {
+        margin-right: 15px
+    }
+
+    /* w-home-article-title 首页内容文章标题 */
+    div.w-home-article-title-box > div.w-home-article-title-cont {
+        padding: 80px 14%
+    }
+    div.w-home-article-title-box > div.w-home-article-title-cont > div.w-home-article-title {
+        padding: 0 15px
+    }
+    div.w-home-article-title-box > div.w-home-article-title-cont > div.w-home-article-title > p {
+        width: 100%;
+        margin-left: 0
+    }
+
+    /* w-home-article-cont 首页内容文章 内容 */
+    div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text > ol {
+        margin: 50px 0
+    }
+
+    /* w-home-our-products 首页 我们的产品 */
+    div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div {
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: 20px
+    }
+
+    /* w-home-new-product-issue 新产品发布 */
+    div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont > ul {
+        padding: 0 15px
+    }
+
+    /* w-home-partner 首页 合作伙伴 */
+    div.w-home-partner-box > div.w-home-partner-cont > a {
+        width: 50%
+    }
+
+    /* ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE 兴趣 */
+    div.serve-interest-box > div.serve-interest-cont {
+        padding: 0 15px
+    }
+    div.serve-interest-box > div.serve-interest-cont > form > input {
+        width: 100%
+    }
+}
+@media screen and (max-width: 768px){
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul {
+        padding: 0 15px
+    }
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li {
+        width: 100%;
+        margin-bottom: 20px
+    }
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li:last-of-type {
+        margin-bottom: 0
+    }
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > div {
+        width: 70%
+    }
+}
+@media screen and (min-width: 768px){
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > p {
+        margin: 0 15px
+    }
+
+    /* w-home-article-title 首页内容文章标题 */
+    div.w-home-article-title-box > div.w-home-article-title-cont {
+        padding: 80px 14% 0;
+        margin-top: 20px
+    }
+
+    /* w-home-article-cont 首页内容文章 内容 */
+    div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one {
+        padding: 50px 0
+    }
+    div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.img,
+    div.w-home-article-content-box > div.w-home-article-content-cont > div.w-home-article-cont > div.w-home-article-cont-one > div.text {
+        width: 50%;
+        float: left
+    }
+
+    /* w-home-our-products 首页 我们的产品 */
+    div.w-home-our-products-box > div.w-home-our-products-cont > div.w-home-our-products-list > div {
+        width: 24%;
+        margin: 0 0.5%;
+    }
+
+    /* w-home-partner 首页 合作伙伴 */
+    div.w-home-partner-box > div.w-home-partner-cont > a {
+        width: 20%
+    }
+
+    /* ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE 兴趣 */
+    div.serve-interest-box > div.serve-interest-cont {
+        width: 50%;
+        margin-left: 25%
+    }
+    div.serve-interest-box > div.serve-interest-cont > form > input {
+        width: 50%
+    }
+}
+@media screen and (min-width: 992px){
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > div {
+        width: 70%
+    }
+}
+@media screen and (min-width: 1200px){
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont,
+    /* w-home-article 首页内容文章 */
+    div.w-home-article-box > div.w-home-article-cont,
+    /* w-home-article-cont 首页内容文章 内容 */
+    div.w-home-article-content-box > div.w-home-article-content-cont,
+    /* w-home-our-products 首页 我们的产品 */
+    div.w-home-our-products-box > div.w-home-our-products-cont,
+    /* w-home-new-product-issue 新产品发布 */
+    div.w-home-new-product-issue-box > div.w-home-new-product-issue-cont,
+    /* w-home-cooperation 首页 合作 */
+    div.w-home-cooperation-box > div.w-home-cooperation-cont,
+    /* w-home-partner 首页 合作伙伴 */
+    div.w-home-partner-box > div.w-home-partner-cont,
+    /* ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE. 根据您的兴趣，我们提供特殊服务。 */
+    div.serve-box > div.serve-cont {
+        width: 80%;
+        margin-left: 10%
+    }
+
+    /* w-Home-pvw 首页预览 */
+    div.w-home-pvw-box > div.w-home-pvw-cont > ul > li > a > p {
+        margin-right: 15px
+    }
+}

@@ -19,6 +19,8 @@ define('EN_HTML_PATH',__DIR__.'/../public/build_html/en_us/view/');
 define('LOG_PATH', __DIR__ . '/../log/');
 //定义extra 配置目录
 define('EXTRA_PATH',__DIR__.'/../application/extra');
+//views目录
+define('ADMIN_VIEWS',__DIR__.'/../application/wavlink/view');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
 
