@@ -26,7 +26,7 @@
             <th width="25">ID</th>
             <th width="120">姓名</th>
             <th >兴趣产品</th>
-            <th width="90">邮箱</th>
+            <th width="120">邮箱</th>
         </tr>
         </thead>
         <tbody>
@@ -34,8 +34,8 @@
         <tr class="text-c">
             <td><input type="checkbox" value="{$vo.id}" name="id"></td>
             <td>{$vo.id}</td>
-            <td>{$vo.first_name}·{$vo.last_name}</td>
-            <td>{$vo.interested}</td>
+            <td>{$vo.name}</td>
+            <td class="text-l">{$vo.content}</td>
             <td>{$vo.email}</td>
         </tr>
         {/volist}

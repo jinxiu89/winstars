@@ -7,4 +7,77 @@
 {/block}
 {block name="main"}
 {$content}
+<!-- w-home-cooperation 首页 合作 -->
+<section>
+    <div class="w-home-cooperation-box">
+        <div class="w-home-cooperation-cont orange center">
+            <h2>COOPERATION</h2>
+            <p>Cooperation means the superposition of the wealth of geometry</p>
+        </div>
+    </div>
+</section>
+
+<!-- w-home-partner 首页 合作伙伴 -->
+<section>
+    <div class="w-home-partner-box">
+        <div class="w-home-partner-cont clear">
+            {volist name="partner" id="vo"}
+            <a href="{$vo.href}">
+                <img src="{$vo.logo}" alt="">
+            </a>
+            {/volist}
+        </div>
+    </div>
+</section>
+<!-- ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE 根据您的兴趣，我们提供特殊服务 -->
+<section>
+    <div class="serve-box white">
+        <div class="serve-cont">
+            <div class="serve-title center">
+                <h2>ACCORDING TO YOUR INTEREST, WE PROVIDE SPECIAL SERVICE.</h2>
+                <p>We will not bother you with your contact information. We will protect your privacy from infringement.</p>
+            </div>
+            <div class="serve-interest-box">
+                <div class="serve-interest-cont">
+                    <form action="" method="post">
+                        <input type="text" placeholder="Input Your Name" name="name" value="">
+                        <input type="text" placeholder="Input Your Email" name="email" value="">
+                        <textarea placeholder="Things of interes" name="content" value=""></textarea>
+                        <p class="clear">
+                            <input  class="orange fl" type="button" onclick="save('{:url('index/add')}')" value="SUBMIT">
+                            <input type="reset" value="RETRY" class="fr white">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+{block name="js"}
+<!--私有业务js区域-->
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/dialog.js"></script>
+<script>
+    //保存添加相关....
+    function save(url) {
+        $.ajax({
+            url: url,
+            type: "post",
+            dataType: "json",
+            data: $("form").serialize(),//提交表单数据
+            success: function (result) {
+                if (result.status === 1) {
+                    layer.msg(result.data, {icon: 1, time: 2000});
+                    setTimeout(function () {
+                        window.parent.location.reload();
+                    },1000);
+                } else {
+                    layer.msg(result.data, {icon: 5, time: 1500});
+                }
+            }
+        })
+    }
+</script>
 {/block}

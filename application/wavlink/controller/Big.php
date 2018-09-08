@@ -14,7 +14,7 @@ class Big extends BaseAdmin
     public function index()
     {
 
-        $data = Search::search('BigData','','');
+        $data = Search::search('Strange','','');
         return $this->fetch('', [
             'result' => $data['data'],
             'count' => $data['count']
@@ -25,10 +25,10 @@ class Big extends BaseAdmin
     {
 
         $excel = new Excel();
-        $table_name = "winstars";
-        $field = ['id' => '序号', 'first_name' => '名','last_name'=>'姓','email' => '客户邮箱', 'country' => '所在国家','interested'=>"感兴趣的产品类别" ];
-        $excel->setExcelName('展会数据')
-            ->createSheet('展会数据', $table_name, $field)
+        $table_name = "tb_strange";
+        $field = ['id' => '序号', 'name' => '名','email' => '客户邮箱', 'content'=>"感兴趣的产品类别" ];
+        $excel->setExcelName('data')
+            ->createSheet('数据', $table_name, $field)
             ->downloadExcel();
     }
 }

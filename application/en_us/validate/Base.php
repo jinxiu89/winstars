@@ -15,7 +15,7 @@ class Base extends Validate
 {
 
     protected $rule =[
-        ['email','require|email','必须填写|邮箱格式错误']
+        ['email','require|email','Email is require|Email format error']
     ];
 
 }

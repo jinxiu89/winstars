@@ -13,8 +13,6 @@ use think\Cookie;
 use think\Model;
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Search as SearchHelp;
-use app\common\model\ServiceCategory as ServiceCategoryModel;
-use app\common\helper\Category as CategoryHelp;
 
 Class BaseModel extends Model
 {
@@ -35,7 +33,24 @@ Class BaseModel extends Model
             );
     }
 
-
+    /**
+     * @param $data
+     *
+     * @return false|true
+     * @throws \Exception
+     */
+    public function saveData($data){
+        if(!is_array($data)){
+            exception('不是个数组');
+        }
+        if (!empty($data['id'])){
+            //存在就是在更新
+            return $this->allowField(true)->isUpdate(true)->save($data);
+        }else{
+            //不存在id字段的话就是新增
+            return $this->save($data);
+        }
+    }
     /**
      * 根据状态值获取数据，
      * 后台首页正常数据，status=1
@@ -121,6 +136,9 @@ Class BaseModel extends Model
      * @param $urlTitle
      * @param $code
      * @return array|false|\PDOStatement|string|Model
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public static function getDetailsByUrlTitle($urlTitle, $code) {
         $model = request()->controller();
@@ -142,6 +160,7 @@ Class BaseModel extends Model
      * @return int * 上移下移
      * 上移下移
      * 上移 把大于它（要上移的数据的排序序号）的排序序号的最小值和它的排序序号更换
+     * @throws \think\exception\DbException
      * @internal param array $_map
      * @internal param $id
      * type == 1 时 置底

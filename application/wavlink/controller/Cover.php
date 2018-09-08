@@ -11,6 +11,11 @@ namespace app\wavlink\controller;
 
 class Cover extends BaseAdmin
 {
+    /***
+     * $file  fopen打开顶部静态文件，
+     * 注意htmlspecialchars 这个问题  解决 codemirror文本域问题的
+     * @return mixed
+     */
     public function edit(){
         $file=fopen(ADMIN_VIEWS.'/cover/cover.html','r') or die("不能打开此文件");
         $content=file_get_contents(ADMIN_VIEWS.'/cover/cover.html');
