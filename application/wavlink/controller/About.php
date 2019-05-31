@@ -56,7 +56,6 @@ Class About extends BaseAdmin
     public function edit($id) {
         $id = $this->MustBePositiveInteger($id);
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-
         $about = AboutModel::get($id);
         return $this->fetch('', [
             'about' => $about,

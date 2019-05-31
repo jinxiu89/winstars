@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <!--头部公共空间开始-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="author" content="wavlink">
+    {block name="title"}
+    <title>Base - by winstars</title>
+    {/block}
+    {block name="seo"}
+    <meta name="description" content="描述">
+    <meta name="keywords" content="keywords">
+    {/block}
+    <!--<link rel="stylesheet" href="__STATIC__/lib/bootstrap/bootstrap.min.css">-->
+    <script>
+        var Hyphenopoly = {
+            require: {
+                // "la": "honorificabilitudinitas",
+                // "de": "Silbentrennungsalgorithmus",
+                "en-us": "Silbentrennungsalgorithmus"
+            },
+            paths: {
+                patterndir: "__STATIC__/lib/Hyphenopoly/patterns/",
+                maindir: "__STATIC__/lib/Hyphenopoly/"
+            },
+            setup: {
+                selectors: {
+                    ".Hyphenopoly": {}
+                }
+            }
+        };
+    </script>
+    <script src="__STATIC__/lib/Hyphenopoly/Hyphenopoly_Loader.js"></script>
+    <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/Common-style/Common-style.css">
+    <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
+    {block name="style"}
+
+    {/block}
+</head>
+<body>
+{block name="navbar"}
+<!-- Home 页眉 -->
+<section class="header">
+    <div class="w-home-box bgWhite h50">
+        <div class="w-home-cont clear">
+            <!-- Home 网站LOGO -->
+            <div class="w-home-nav-logo tc fl w20 h50">
+                <a href="#" class="pt15">
+                    <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=5754ljwY-Ya8RCOCQLGFIz_jG64TU_f3nqWGRY7YZWvX62_VEQd5n8Nj0jzzbrWxi7hNNEot4bdqJnAYErgsLbGDFoGlc2VE2L88h13DOf7vnfxkif2RfQXHGGiyBuLEf7sG3C5AT9860232bLsInA&file_name=/w-head-logo.png"
+                         alt="">
+                </a>
+            </div>
+            <!-- Home 产品列表 -->
+            <div class="w-home-nav-list clear tc fl h50">
+                <a class="h50 lh50 home" href="/en_us/">HOME</a>
+                <a class="h50 lh50 about" href="/en_us/about.html">ABOUT</a>
+                <a class="h50 lh50 product" href="/en_us/category.html">PRODUCT</a>
+                <a class="h50 lh50" href="#">BLOG</a>
+                <a class="h50 lh50" href="#">F.A.Q</a>
+                <a class="h50 lh50" href="#">SUPPORT</a>
+            </div>
+            <!-- Home 图标按钮 -->
+            <div class="w-home-nav-search fr h5">
+                <a href="#" class="search dInlineBlack">
+                    <i class="iconfont" style="font-size: 24px"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Home 搜索框 -->
+        <div class="w-home-form-search-box absolute w100 dNone bgTrans" style="top: 100%; left: 0">
+            <div class="w-home-form-search-cont clear w50 oh">
+                <form action="" method="post" class="clear mt5 mb5">
+                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" value="" placeholder="Please enter your product name">
+                    <input class="fl cursorP w20 bgOrange fWhite b bcWhite" type="submit" value="search">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+{block name="body"}
+
+{/block}
+<!-- Home 页脚 -->
+<section>
+    <div class="w-home-footer-box bgBlack">
+        <div class="pt50 pb50">
+            <div class="w-home-footer-cont tc mb50">
+                <dl>
+                    <dt class="f14 fWhite mb15 pb2">WHO WE ARE?</dt>
+                    <dd><a href="/en_us/about/Company_Overview.html">Company</a></dd>
+                    <dd><a href="/en_us/about/content_us.html">Contact Us</a></dd>
+                    <dd><a href="/en_us/about/milestone.html">Milestone</a></dd>
+                    <dd><a href="/en_us/about/Privacy.html">Privacy</a></dd>
+                    <dd><a href="/en_us/about/join_us.html">Join Us</a></dd>
+                </dl>
+                <dl>
+                    <dt class="f14 fWhite mb15 pb2">WHAT DO WE OFFER?</dt>
+                    <dd><a href="#">Thunderbolt 3 product</a></dd>
+                    <dd><a href="#">Mesh WiFi Router</a></dd>
+                    <dd><a href="#"></a></dd>
+                </dl>
+                <dl>
+                    <dt class="f14 fWhite mb15 pb2">NEED HELP?</dt>
+                    <dd><a href="#">Driver List</a></dd>
+                    <dd><a href="#">Frequently Asked Questions</a></dd>
+                    <dd><a href="#"></a></dd>
+                </dl>
+                <dl class="footer_icon_link">
+                    <dt class="f14 fWhite mb15 pb2">Community</dt>
+                    <dd>
+                        <a href="#">
+                            <i class="iconfont"></i>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="#">
+                            <i class="iconfont"></i>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="#">
+                            <i class="iconfont"></i>
+                        </a>
+                    </dd>
+                    <dd><a href="#"></a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="put-on-records tc bgOrange" style="padding: 8px 0">
+            <p>©1997 - <script>var nowYear = new Date().getFullYear();document.write(nowYear)</script>2019 Winstars Technology Ltd. All Rights Reserved.</p>
+            <a href="#" class="fWhite cursorP">
+                <span>Powered by Winstars</span>
+            </a>
+        </div>
+    </div>
+</section>
+<script src="__STATIC__/lib/jquery/jquery-3.2.1.min.js"></script>
+<script src="__STATIC__/frontend/en-us/js/Common-style/Common-style.js"></script>
+{block name="script"}
+
+{/block}
+</body>
+</html>

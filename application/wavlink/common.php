@@ -11,6 +11,26 @@ function getCategory($id){
     return '<span style="color: blue">'.$category['name'].'</span>';
 }
 
+/***
+ * 添加日期：2019-04-02
+ * 添加人：邱锦
+ * 用途：给定一个分类ID 获取他所有的父分类 并合并成str到前端展现
+ * @param $id
+ * @return string
+ * @throws \think\exception\DbException
+ */
+function getParent($id){
+    // 根据parent_id来获取新增的这个分类是属于哪个分类的
+    $cate=collection(\app\common\model\Category::all())->toArray();
+    $id=intval($id);
+    $parents=\app\common\helper\Category::getParents($cate,$id);
+    foreach ($parents as $v){
+        $name[]=$v['name'];
+    }
+    $parent=implode("->",$name);
+    return $parent;
+}
+
 //产品管理类获取所属分类
 function getChild($id){
     $id = intval($id);
@@ -19,7 +39,7 @@ function getChild($id){
     foreach ($data as $v){
         $name[]=$v['name'];
     }
-    $nameStr = implode("|",$name);
+    $nameStr = implode("->",$name);
     return $nameStr;
 }
 
@@ -89,67 +109,18 @@ function ticket_status($status){
 }
 
 /**
- * @param $toMail
- * @param $toName
- * @param $subject
- * @param $content
- * @param null $attachment
- * @return bool 阿里云的smtp邮件发送
- * 阿里云的smtp邮件发送
- * @internal param $to
- */
-function sendMail($toMail, $toName, $subject, $content, $attachment = null){
-    vendor( 'phpmailer.PHPMailerAutoload' );
-    vendor('phpmailer.class#phpmailer');
-    $mail=new PHPMailer();
-    $mail->CharSet = 'utf-8';
-    $mail->IsSMTP();
-    $mail->SMTPDebug = 0;
-    $mail->Debugoutput = 'html';
-//    $mail->Host = 'smtpdm.aliyun.com';                         // SMTP服务器地址
-    $mail->Host = 'smtpdm-ap-southeast-1.aliyun.com';                         // SMTP服务器地址
-    $mail->Port = 465;                         // 端口号
-    $mail->SMTPAuth = true;                // SMTP登录认证
-    $mail->SMTPSecure = 'ssl';            // SMTP安全协议
-//    $mail->Username = 'ghfhzj@www.guohongfu.top';                 // SMTP登录邮箱
-//    $mail->Password = 'GuoHuang19941993';                 // SMTP登录密码
-//    $mail->setFrom('ghfhzj@www.guohongfu.top','Guo');            // 发件人邮箱和名称
-//    $mail->addReplyTo('1215798914@qq.com', 'Guo'); // 回复邮箱和名称
-    $mail->Username = 'system@service.wavlink.us';                 // SMTP登录邮箱
-    $mail->Password = 'Wh32Ym69B10c';                 // SMTP登录密码
-    $mail->setFrom('system@service.wavlink.us', 'system');            // 发件人邮箱和名称
-    $mail->addReplyTo('content@wavlink.com', 'Wavlink.com'); // 回复邮箱和名称
-    $mail->AddAddress($toMail,$toName);
-    $mail->Subject = $subject;
-    $mail->Body=$content;
-    if ($attachment) { // 添加附件
-        if (is_string($attachment)) {
-            is_file($attachment) && $mail->AddAttachment($attachment);
-        } else if (is_array($attachment)) {
-            foreach ($attachment as $file) {
-                is_file($file) && $mail->AddAttachment($file);
-            }
-        }
-    }
-    $result = $mail->send();
-    return $result ? true : $mail->ErrorInfo;
-//    if($result){
-//        return true;
-//    }else{
-//        return false;
-//    }
-}
-
-/**
  * 记录数查询
  * 用于排序操作
  * @param $table
  * @param $map
  * @param $order
  * @param $limit
- * @param $map2
  * @param $field
+ * @param $map2
  * @return array|false|PDOStatement|string|\think\Model
+ * @throws \think\db\exception\DataNotFoundException
+ * @throws \think\db\exception\ModelNotFoundException
+ * @throws \think\exception\DbException
  */
 function limit($table,$map,$order,$limit,$field,$map2){
     $_listorder = model($table)->where($map)

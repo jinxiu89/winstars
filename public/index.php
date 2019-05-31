@@ -21,6 +21,7 @@ define('LOG_PATH', __DIR__ . '/../log/');
 define('EXTRA_PATH',__DIR__.'/../application/extra');
 //views目录
 define('ADMIN_VIEWS',__DIR__.'/../application/wavlink/view');
+define('STATIC_PATH',__DIR__.'/../public/static');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
 

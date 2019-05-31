@@ -86,7 +86,16 @@ class Category {
         }
         return $arr;
     }
-
+    static public function countParent($cate,$id){
+        $arr = array();
+        foreach ($cate as $v) {
+            if ($v['id'] == $id) {
+                $arr[] = $v;
+                $arr = array_merge(self::getParents($cate, $v['parent_id']), $arr);
+            }
+        }
+        return count($arr);
+    }
     //传递一个子分类ID返回他的同级分类
     static public function getSameCate($cate, $id) {
         $arr = array();

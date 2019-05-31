@@ -1,0 +1,317 @@
+/* w-About-box 关于我们 */
+body {
+    background: #F2F2F2
+}
+div#w-about-box > img {
+    height: 300px
+}
+
+/* w-about-path 路径 */
+div.w-about-path-box {
+    height: 50px;
+    line-height: 50px
+}
+div.w-about-path-box > div.w-about-path-cont {
+    padding: 0 6%
+}
+div.w-about-path-box > div.w-about-path-cont > a {
+    display: inline-block;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear
+}
+div.w-about-path-box > div.w-about-path-cont > a:hover{
+    color:#FF9800
+}
+
+/* w-about-article 关于我们文章 */
+div.w-about-article-box > div.w-about-article-cont {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 60px 6%
+}
+div.w-about-article-box > div.w-about-article-cont > div {
+    padding: 64px 0
+}
+div.w-about-article-box > div.w-about-article-cont > div:last-child {
+    padding-bottom: 0
+}
+div.w-about-article-box > div.w-about-article-cont > div > ul {
+    margin: 65px 0
+}
+div.w-about-article-box > div.w-about-article-cont > div > ul > li {
+    float: left;
+    padding: 20px 2.2%;
+    text-align: center
+}
+div.w-about-article-box > div.w-about-article-cont > div > ul > li > div {
+    margin: 20px 0;
+    font-size: 18px
+}
+div.w-about-article-box > div.w-about-article-cont > div > ul > li > div > p {
+    font-size: 14px
+}
+div.w-about-article-box > div.w-about-article-cont > div > ul > li > ol > li {
+    text-align: left;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #666
+}
+div.w-about-article-box > div.w-about-article-cont > div > h3 {
+    font-size: 21px;
+    margin-bottom: 20px
+}
+div.w-about-article-box > div.w-about-article-cont > div > p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #666
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.w-about-article-img {
+    overflow: hidden
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.w-about-article-img > img {
+    transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    -o-transition: all .4s linear
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.w-about-article-img > img:hover {
+    transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01)
+}
+div.w-about-article-box > div.w-about-article-cont > div.Achievements > div > div.Achievements_box > dl {
+    margin-bottom: 25px
+}
+div.w-about-article-box > div.w-about-article-cont > div.Achievements > div > div.Achievements_box > dl > dt {
+    margin-bottom: 15px
+}
+div.w-about-article-box > div.w-about-article-cont > div.Achievements > div > div.Achievements_box > dl > dt > h4 {
+    font-size: 16px
+}
+div.w-about-article-box > div.w-about-article-cont > div.Achievements > div > div.Achievements_box > dl > dd {
+    line-height: 1.7;
+    font-size: 14px;
+    color: #666
+}
+div.w-about-article-box > div.w-about-article-cont > div.Achievements > div > div > img {
+    width: 50%;
+    margin-left: 25%
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.partner_box {
+    margin-bottom: 20px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.partner_box > dl {
+    margin-bottom: 25px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.partner_box > dl > dt > h4 {
+    margin-bottom: 15px;
+    font-size: 16px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.partner_box > dl > dd {
+    line-height: 1.7;
+    font-size: 14px;
+    color: #666
+}
+/* w-about-OUR ADVANTAGES 我们的优势 */
+div.w-about-advantage-box > div.w-about-advantage-cont {
+    padding: 60px 4%;
+    margin-bottom: 20px
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-title {
+    margin-bottom: 40px
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child {
+    height: 310px;
+    float: left;
+    padding: 20px;
+    background: #FF9800;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > p {
+    color: #fff
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child:hover {
+    box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -ms-box-shadow: 0 0 10px #888;
+    -o-box-shadow: 0 0 10px #888
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > div.w-about-advantage-child-title > i {
+    color: #fff
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > div.w-about-advantage-child-title > h3 {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    color: #fff
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer {
+    margin-top: 50px
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p {
+    padding: 15px 0
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p:first-child {
+    border-bottom: 1px solid #bbb
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p > a {
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p > a:hover {
+    color: #FF9800
+}
+div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p > i {
+    color: #FF9800
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Capability_box {
+    margin-bottom: 20px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Capability_box > dl {
+    margin-bottom: 25px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Capability_box > dl > dt > h4 {
+    margin-bottom: 15px;
+    font-size: 16px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Capability_box > dl > dd {
+    line-height: 1.7;
+    font-size:14px;
+    color: #666
+}
+
+/* 生产 */
+div.w-about-article-box > div.w-about-article-cont > div > div.Production_box > dl {
+    margin-bottom: 25px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Production_box > dl > dt > h4 {
+    font-size: 16px;
+    margin-bottom: 15px
+}
+div.w-about-article-box > div.w-about-article-cont > div > div.Production_box > dl > dd {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666
+}
+
+@media screen and (max-width: 767px){
+    /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont > h2,
+        /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-title > h2 {
+        font-size: 24px;
+        text-align: center
+    }
+    /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont > p {
+        font-size: 14px
+    }
+
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > div.w-about-advantage-child-title > h3 {
+        font-size: 18px;
+        font-weight: normal
+    }
+    /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child {
+        margin-bottom: 15px
+    }
+}
+@media screen and (min-width: 768px){
+    /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont > h2,
+        /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-title > h2 {
+        font-size: 30px;
+        text-align: center
+    }
+    /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child {
+        width: 48%;
+        margin: 1%
+    }
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > div.w-about-advantage-child-title > h3 {
+        font-size: 18px;
+        font-weight: normal
+    }
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > p {
+        font-size: 14px;
+        color: #fff
+    }
+    /* R&D Team 研发团队 */
+    div.w-about-article-box > div.w-about-article-cont > div > ul > li {
+        width: 33.333%
+    }
+}
+@media screen and (min-width: 1100px){
+    /* w-about-path 路径 */
+    div.w-about-path-box > div.w-about-path-cont {
+        padding: 0 6%
+    }
+
+    /* w-about-path 路径 */
+    div.w-about-path-box > div.w-about-path-cont,
+        /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont,
+        /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont
+    {
+        width: 100%;
+        margin-left: 0
+    }
+
+}
+@media screen and (min-width: 1200px){
+    /* w-about-path 路径 */
+    div.w-about-path-box > div.w-about-path-cont {
+        padding: 0
+    }
+
+    /* w-about-path 路径 */
+    div.w-about-path-box > div.w-about-path-cont,
+        /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont,
+        /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont
+    {
+        width: 80%;
+        margin-left: 10%
+    }
+
+    /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child {
+        width: 30%;
+        margin: 1.6%
+    }
+}
+@media screen and (min-width: 1400px){
+    /* w-about-path 路径 */
+    div.w-about-path-box > div.w-about-path-cont,
+        /* w-about-article 关于我们文章 */
+    div.w-about-article-box > div.w-about-article-cont,
+        /* w-about-OUR ADVANTAGES 我们的优势 */
+    div.w-about-advantage-box > div.w-about-advantage-cont
+    {
+        width: 60%;
+        margin-left: 20%
+    }
+}
+@media screen and (min-width: 1900px){
+    div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-list > div.w-about-advantage-child > p {
+        font-size: 16px
+    }
+}

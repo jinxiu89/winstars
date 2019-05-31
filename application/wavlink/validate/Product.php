@@ -13,9 +13,10 @@ class Product extends BaseValidate
     /**验证规则**/
     protected $rule = [
         ['id','number','id不合法'],
-        ['name','require|max:128','产品名称不能为空|产品名称太长'],
-        ['model','require|max:64','产品型号不能为空|产品型号不能太长'],
+        ['name','require|min:32|max:64','产品名称不能为空|产品名称不能低于50个字符长度|产品名称太长(小于50)'],
+        ['model','require|min:10max:64','产品型号不能为空|型号名不能低于10个字符|产品型号不能太长'],
         ['seo_title','require|max:128','SEO标题不能为空|SEO标题不能太长'],
+        ['url_title','require|unique:Product','url标题必须填|不能重复'],
         ['keywords','require|max:128','关键词不能为空|关键词不能太长'],
         ['description','require|max:255','描述不能为空|描述太长了'],
         ['image_litpic_url' ,'max:500','缩略图外链地址太长'],
@@ -27,5 +28,6 @@ class Product extends BaseValidate
     ];
     /**场景设置**/
     protected $scene = [
+        "add"=>['name','model']
     ];
 }

@@ -5,11 +5,13 @@
  * Date: 2017/9/8
  * Time: 15:00
  */
+
 namespace app\common\model;
 
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Category as CategoryHelp;
 use app\common\model\Product as ProductModel;
+
 Class Category extends BaseModel
 {
     protected $hidden = ['create_time', 'update_time'];
@@ -17,36 +19,69 @@ Class Category extends BaseModel
     protected $model = 'category';
 
     //与产品多对多关联
-    public function products() {
+    public function products()
+    {
         return $this->belongsToMany('Product', 'product_category', 'product_id', 'category_id');
     }
 
     //获取中间表数据,得到分类下的产品id
-    public static function getProductCategory($id){
+    public static function getProductCategory($id)
+    {
         $product = self::get($id);
         $cates = $product->products;
-
-        $ids=[];
-        foreach ($cates as $v){
-            $ids[]=$v['id'];
+        $ids = [];
+        foreach ($cates as $v) {
+            $ids[] = $v['id'];
         }
         return $ids;
     }
-    public static function getCategoryWithProduct($id) {
+
+    /***
+     * @param $category
+     * @param $language_id
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getCategoryByName($category, $language_id)
+    {
+        $map = array(
+            "url_title" => $category,
+            "language_id" => $language_id
+        );
+        $category = $this->where($map)->find()->toArray();
+        return $category;
+    }
+
+    public function getDataByCode($code)
+    {
+        $language_id = LanguageModel::getLanguageCodeOrID($code);
+        $map = [
+            'language_id' => $language_id,
+            'status' => 1
+        ];
+        return $this->where($map)->order(['listorder'=>'desc','id'=>'asc'])->select();
+
+    }
+
+    public static function getCategoryWithProduct($id)
+    {
         $ids = static::getProductCategory($id);
         $order = [
             'listorder' => 'desc',
-            'id'      => 'desc'
+            'id' => 'desc'
         ];
-        $product = (new ProductModel())->where('id','in',$ids)
-            ->where('status','=',1)
+        $product = (new ProductModel())->where('id', 'in', $ids)
+            ->where('status', '=', 1)
             ->order($order)
             ->paginate();
         return $product;
     }
 
     //获取分类id 或者 子分类id
-    public function getChildsIDByID($id, $code) {
+    public function getChildsIDByID($id, $code)
+    {
         //传入一个分类id,还有语言id
         //判断该分类是否有子分类
         //如果没有 就返回这个id
@@ -65,7 +100,8 @@ Class Category extends BaseModel
 
 
     //后台获取栏目列表
-    public function getCategory($parentId = 0, $language_id) {
+    public function getCategory($parentId = 0, $language_id)
+    {
         $data = [
             'parent_id' => $parentId,
             'language_id' => $language_id
@@ -81,7 +117,8 @@ Class Category extends BaseModel
     }
 
     //根据产品的 category_id，语言 获取分类数据
-    public function getCategoryById($code, $id) {
+    public function getCategoryById($code, $id)
+    {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
         $data = [
             'status' => 1,
@@ -94,7 +131,8 @@ Class Category extends BaseModel
 
 
     //根据parent_id 获取分类数据
-    public function getNormalCategory($code, $parent_id = 0) {
+    public function getNormalCategory($code, $parent_id = 0)
+    {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
         $map = [
             'status' => 1,
@@ -112,7 +150,8 @@ Class Category extends BaseModel
     }
 
     //获取所有的分类，并且递归
-    public function getAllCategory($value) {
+    public function getAllCategory($value)
+    {
         $language_id = LanguageModel::getLanguageCodeOrID($value);
         $data_language = [
             'status' => 1,
@@ -131,7 +170,8 @@ Class Category extends BaseModel
     }
 
     //导航 直接循环出二级分类,对于二级分类
-    public function getChildsCategory($code) {
+    public function getChildsCategory($code)
+    {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
         $map = [
             'status' => 1,

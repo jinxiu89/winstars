@@ -96,10 +96,9 @@ function save(url) {
             url: url,
             type: "post",
             dataType: "json",
-            // data:postData,
             data: $("form").serialize(),//提交表单数据
             success: function (result) {
-                if (result.status == 1) {
+                if (result.status === 1) {
                     layer.msg(result.data, {icon: 1, time: 2000});
                     setTimeout(function () {
                         window.parent.location.reload();

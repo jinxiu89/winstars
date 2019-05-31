@@ -1,0 +1,110 @@
+<!--包含头部文件-->
+{extend name="pc/base/base" /}
+{block name="title"}
+<title> {$result.name}- By-winstars</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Side-navigation/css/Side-navigation.css">
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+<style>
+    div.w-about-article-box > .list ul li a {
+        color: #666
+    }
+    div.w-about-article-box > .list ul li a:hover {
+        background-color:#e6e6e6
+    }
+    div.w-about-article-box {
+        margin: 15px 0 40px 0
+    }
+    div.w-about-article-box > div.w-about-article-cont {
+        padding: 60px 4%
+    }
+    @media screen and (min-width: 1300px){
+        div.w-about-article-box {
+            width: 70%;
+            margin-left: 15%
+        }
+    }
+    .w-about-article-cont #content a{
+        display: inline-block;
+    }
+</style>
+{/block}
+{block name="body"}
+<!-- w-About 关于我们 -->
+<section>
+    <div id="w-about-box">
+        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg" width="100%" alt="">
+    </div>
+</section>
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" style="display: inline-block">
+                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            </a>
+            <i class="iconfont">&#xeb9a;</i>
+            <a href="/en_us/about.html" style="display: inline-block">About</a>
+            <i class="iconfont">&#xeb9a;</i>
+            <a href="/en_us/category/{$result.url_title}.html" style="display: inline-block" class="current">{$result->name}</a>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="w-about-article-box clear">
+        <div class="list fl" style="width: 20%; padding-right: 10px">
+            <ul class="yiji">
+                {notempty name="list"}
+                {volist name="list" id="vo"}
+                <li class="{$vo.url_title}">
+                    <a href="/en_us/about/{$vo.url_title}.html">{$vo.name}</a>
+                </li>
+                {/volist}
+                {else /}
+                {/notempty}
+            </ul>
+        </div>
+        <div class="w-about-article-cont fl w80 bgWhite">
+            <div id="content">
+                <textarea style="display:none;" name="features">{$result.content}</textarea>
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+{block name="script"}
+<script src="__STATIC__/frontend/lib/Side-navigation/js/Side-navigation.js"></script>
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        })
+    });
+    $(document).ready(function () {
+        $(".about").addClass("bgOrangeWhite");
+        var current;
+        current = "." + "{$result.url_title}" + " a";
+        $(current).addClass("bgGray");
+    });
+</script>
+{/block}

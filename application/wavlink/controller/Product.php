@@ -19,7 +19,6 @@ Class Product extends BaseAdmin
     //产品列表，status=1
     public function index() {
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-
         $product = ProductModel::getDataByStatus(1, $language_id);
         $category = (new CategoryModel())->getAllCategory($language_id);
         if (!empty(input('get.category_id') || !empty(input('get.name')))) {
@@ -65,9 +64,11 @@ Class Product extends BaseAdmin
     public function save() {
         //严格判断校验
         if (request()->isAjax()) {
-            (new ProductValidate())->goCheck();
-            (new UrlTitleMustBeOnly())->goCheck();
-            $data = input('post.');
+            $data=$data = input('post.');
+            $validate=new ProductValidate();
+            if(!$validate->scene("add")->check($data)){
+                return show(0, '', '', '', '', $validate->getError());
+            }
             $res = (new ProductModel())->productSave($data);
             if ($res) {
                 return show(1,'','','','', '添加成功');

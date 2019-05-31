@@ -5,9 +5,9 @@
  * Date: 2017/8/23
  * Time: 10:37
  */
+
 namespace app\wavlink\controller;
 
-use app\wavlink\validate\UrlTitleMustBeOnly;
 use think\Request;
 use app\common\model\Category as CategoryModel;
 use app\wavlink\validate\Category as CategoryValidate;
@@ -15,7 +15,8 @@ use app\wavlink\validate\Category as CategoryValidate;
 Class Category extends BaseAdmin
 {
 
-    public function index() {
+    public function index()
+    {
         $parentId = input('get.parent_id', '0', 'intval');
         $language_id = input('get.language_id', '', 'intval');
         $result = (new CategoryModel())->getCategory($parentId, $language_id);
@@ -26,14 +27,19 @@ Class Category extends BaseAdmin
         ]);
     }
 
-    public function add() {
+    public function add()
+    {
+
         //获取语言
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
         if (input('get.parent_id')) {
             //如有存在parent_id ,就是添加子分类
             $category_id = input('get.parent_id');
-//            $category = CategoryModel::get(['status' => 1, 'id' => $category_id, 'language_id' => $language_id]);
-           
+            $cate = CategoryModel::all();
+            $level = \app\common\helper\Category::countParent($cate, $category_id);
+            if ($level > 2) {
+                return "分类级别不能大于等于三级";
+            }
             $this->assign('parent_id', $category_id);
         } else {
             //添加一级分类
@@ -44,11 +50,14 @@ Class Category extends BaseAdmin
         ]);
     }
 
-    public function save() {
+    public function save()
+    {
         if (request()->isAjax()) {
-            (new CategoryValidate())->goCheck();
-            (new UrlTitleMustBeOnly())->goCheck();
             $data = input('post.');
+            $validate=new CategoryValidate();
+            if(!$validate->check($data)) {
+                return show(0, '', '', '', '', $validate->getError());
+            }
             if (!empty($data['id'])) {
                 if ($data['id'] == $data['parent_id']) {
                     return show(0, '', '不能编辑在自己名下');
@@ -70,16 +79,16 @@ Class Category extends BaseAdmin
      * @param int $id
      * @param $language_id
      * @return array|mixed
+     * @throws \think\exception\DbException
      */
-    public function edit($id = 0, &$language_id) {
+    public function edit($id, $language_id)
+    {
         $id = $this->MustBePositiveInteger($id);
         $language_id = $this->MustBePositiveInteger($language_id);
-
         $category = CategoryModel::get($id);
         if ($category['parent_id'] > 0) {
             $cate = CategoryModel::all([
                 'status' => 1,
-                'parent_id' => 0,
                 'language_id' => $language_id
             ]);
             $this->assign('cate', $cate);
@@ -95,7 +104,8 @@ Class Category extends BaseAdmin
     /**
      * 排序功能开发
      */
-    public function listorder() {
+    public function listorder()
+    {
         if (request()->isAjax()) {
             $data = input('post.'); //id ,type ,language_id，map
             //得到它的parent_id
@@ -134,7 +144,8 @@ Class Category extends BaseAdmin
 //        }
 //    }
 //批量放回回收站
-    public function allRecycle(Request $request) {
+    public function allRecycle(Request $request)
+    {
         try {
             $ids = $request::instance()->post();
             foreach ($ids as $k => $v) {

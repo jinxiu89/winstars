@@ -1,0 +1,357 @@
+/* Home 抽象图 */
+div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text > a {
+    display: inline-block;
+    width: 100px;
+    line-height: 32px;
+}
+div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text > a:hover {
+    background: #EA881B
+}
+div.w-home-slide-box > .w-home-slide-cont > div > img {
+    animation: scale 1.5s;
+    -webkit-animation: scale 1.5s;
+    -moz-animation: scale 1.5s;
+    -ms-animation: scale 1.5s;
+    -o-animation: scale 1.5s
+}
+@keyframes scale {
+    0% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        opacity: 0.5
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity: 1
+    }
+}
+@-webkit-keyframes scale {
+    0% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        opacity: 0.5
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity: 1
+    }
+}
+@-moz-keyframes scale {
+    0% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        opacity: 0.5
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity: 1
+    }
+}
+@-ms-keyframes scale {
+    0% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        opacity: 0.5
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity: 1
+    }
+}
+@-o-keyframes scale {
+    0% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        opacity: 0.5
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity: 1
+    }
+}
+
+/* Home 战略，工厂，方针 */
+div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > i {
+    font-size: 50px;
+    color: #fff
+}
+div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > i,
+div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > div {
+    vertical-align: middle
+}
+div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > div:hover > a > p {
+    text-decoration: underline
+}
+
+/* Home 简介标题，内容 */
+div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one > .img:hover > img {
+    transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01)
+}
+div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one > .text > ol > li > div > div > p {
+    font-size: 12px;
+    line-height: 20px
+}
+
+/* Home 畅销产品 */
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .product-box > span:last-of-type:hover > a {
+    background: #EA881B;
+    color: #fff
+}
+
+/* Home 概念产品 */
+div.w-home-new-product-box:hover > .w-home-new-product-cont > a > img:hover {
+    transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01)
+}
+
+/* Home 合作伙伴 */
+div.w-home-cooperation-box > .w-home-cooperation-cont {
+    padding: 50px 10%
+}
+div.w-home-partner-box > .w-home-partner-cont > a {
+    float: left;
+    width: 20%
+}
+
+/* Home 兴趣爱好 */
+div.serve-box {
+    margin: 150px 0 50px
+}
+div.serve-box > .serve-cont > .serve-title {
+    padding: 50px 10%
+}
+div.serve-interest-box > .serve-interest-cont > form > input,
+div.serve-interest-box > .serve-interest-cont > form > p > input,
+div.serve-interest-box > .serve-interest-cont > form > textarea {
+    font-family: Helvetica,Arial,sans-serif
+}
+div.serve-interest-box > .serve-interest-cont > form > input {
+    border: 1px solid #bbb;
+    height: 40px;
+    margin-bottom: 30px;
+    padding: 0 15px
+}
+div.serve-interest-box > .serve-interest-cont > form > input:focus,
+div.serve-interest-box > .serve-interest-cont > form > textarea:focus {
+    border-color: #EA881B
+}
+div.serve-interest-box > .serve-interest-cont > form > textarea {
+    height: 150px;
+    border: 1px solid #bbb
+}
+div.serve-interest-box > .serve-interest-cont > form > p > input {
+    width: 114px;
+    line-height: 50px;
+    height: 50px;
+    margin: 50px 0;
+    border: 1px solid #bbb
+}
+div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
+    background: #EA881B;
+    color: #fff;
+    border-color: #EA881B
+}
+
+/* 媒体查询 */
+@media screen and (max-width: 992px){
+    /*!* Home 方针，工厂，战略 *!*/
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li:last-child {
+        margin-bottom: 0
+    }
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div {
+        display: table
+    }
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > i,
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > div {
+        display: table-cell
+    }
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one:first-child > .img {
+        margin-bottom: 20px
+    }
+}
+@media screen and (min-width: 768px){
+    .pc{ display: none }
+    /* Home 抽象图 */
+    div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text {
+        width: 36%;
+        left: 8%;
+        top: 20%
+    }
+    /* Home 方针，工厂，战略 */
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li {
+        margin-bottom: 20px
+    }
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li:last-child {
+        margin-bottom: 0
+    }
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box {
+        padding:0 2%
+    }
+    div.w-home-article-title-box > .w-home-article-title-cont {
+        padding: 80px 8% 0;
+        margin-top: 20px
+    }
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one {
+        padding: 50px 0
+    }
+    /* Home 畅销产品 */
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
+        width: 49%;
+        margin: 0.5%;
+        overflow: hidden
+    }
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .img > h3 {
+        position: absolute;
+        left: 0;
+        bottom: -100%;
+        width: 100%
+    }
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .img:hover > h3 {
+        bottom: 0
+    }
+    /* Home 兴趣爱好 */
+    div.serve-interest-box > .serve-interest-cont {
+        width: 50%;
+        margin-left: 25%
+    }
+    div.serve-interest-box > .serve-interest-cont > form > input {
+        width: 50%
+    }
+}
+@media screen and (min-width: 992px){
+    /* Home 畅销产品 */
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
+        width: 32%;
+        margin: 0.666%
+    }
+}
+@media screen and (min-width: 1100px){
+    /* Home 方针，工厂，战略 */
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li {
+        width: 33%;
+        float: left;
+        text-align: center;
+        margin-bottom: 0
+    }
+    div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > div{
+        width: 82%;
+        text-align: left
+    }
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one > .img,
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one > .text {
+        width: 50%;
+        float: left
+    }
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one:first-child > .text {
+        padding-left: 3%;
+        padding-right: 0
+    }
+    div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one:last-child > .text {
+        padding-right: 3%
+    }
+}
+@media screen and (min-width: 1200px) {
+    .flat{ display: none }
+    .pc{ display: block }
+    /* Home 抽象图 */
+    div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text {
+        width: 31%;
+        left: 15%
+    }
+    /* Home 畅销产品 */
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
+        width: 24%;
+        margin: 0.5%;
+    }
+    /* Home 合作伙伴 */
+    div.w-home-partner-box > .w-home-partner-cont > a > img:hover {
+        transform: scale(0.98);
+        -webkit-transform: scale(0.98);
+        -moz-transform: scale(0.98);
+        -ms-transform: scale(0.98);
+        -o-transform: scale(0.98);
+        box-shadow: 0 12px #CCC;
+        -webkit-box-shadow: 0 0 12px #CCC;
+        -moz-box-shadow: 0 0 12px #CCC;
+        -ms-box-shadow: 0 0 12px #CCC;
+        -o-box-shadow: 0 0 12px #CCC
+    }
+}
+@media screen and (min-width: 1400px){
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box > .w-home-article-content-cont,
+        /* Home 畅销产品 */
+    div.w-home-our-products-box > .w-home-our-products-cont,
+        /* Home 概念产品 */
+    div.w-home-new-product-box,
+        /* Home 合作伙伴 */
+    div.w-home-cooperation-box,
+    div.w-home-partner-box {
+        width: 90%;
+        margin-left: 5%
+    }
+
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box {
+        padding: 0
+    }
+}
+@media screen and (min-width: 1600px){
+    /* Home 简介标题，内容 */
+    div.w-home-article-content-box > .w-home-article-content-cont,
+        /* Home 畅销产品 */
+    div.w-home-our-products-box > .w-home-our-products-cont,
+        /* Home 概念产品 */
+    div.w-home-new-product-box,
+        /* Home 合作伙伴 */
+    div.w-home-cooperation-box,
+    div.w-home-partner-box  {
+        width: 80%;
+        margin-left: 10%
+    }
+}

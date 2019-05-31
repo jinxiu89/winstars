@@ -11,31 +11,42 @@ class Index extends Base
     /***
      * 首页头部使用文件存储静态文件，后台提供一个管理接口
      * @return mixed
+     * @throws \Exception
      */
     public function index()
     {
-        $partner = ((new Partner())->getDateByStatus());
-        $file = fopen(ADMIN_VIEWS . '/cover/cover.html', 'r') or die("不能打开此文件");
-        $content = file_get_contents(ADMIN_VIEWS . '/cover/cover.html');
-        return $this->fetch('', ['content' => $content, 'partner' => $partner['data']]);
-    }
-
-    public function add()
-    {
-        if (request()->isAjax()) {
+        if (request()->isPost()) {
             $data = input('post.');
             $validate = new IndexValidate();
             if (!$validate->check($data)) {
-                return show(1, '', '', '', '', $validate->getError());
+                return show(0, '', '', '', '', $validate->getError());
             } else {
                 if ((new Strange())->saveData($data)) {
-                    return show(1, '', '', '', '', 'success');
+                    $data = array(
+                        'toMail' => 'john@win-star.com',
+                        'toName' => 'John',
+                        'subject' => 'This is win-star.com Enquiry mail',
+                        'content' => $data['content'],
+                        'replyTo' => $data['email'],
+                        'relyName' => $data['name']
+                    );
+                    try {
+                        $result = sendMail($data);
+                        return $result ? show(1, '', '', '', '', 'success') : show(0, '', '', '', '', '失败');//邮件也发送成功了
+                    } catch (\Exception $exception) {
+                        return show(0, '', '', '', '', $exception->getMessage());
+                    }
                 } else {
                     return show(0, '', '', '', '', 'failed');
                 }
             }
         }
+        $partner = ((new Partner())->getDateByStatus());
+        $file = fopen(ADMIN_VIEWS . '/cover/cover.html', 'r') or die("不能打开此文件");
+        $content = file_get_contents(ADMIN_VIEWS . '/cover/cover.html');
+        return $this->fetch($this->template . '/index/index.html', ['content' => $content, 'partner' => $partner['data']]);
     }
+
 
     public function build_html()
     {

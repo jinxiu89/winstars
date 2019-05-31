@@ -1,0 +1,180 @@
+{extend name="pc/base/base"}
+{block name="title"}
+<title>Winstars is a OEM/ODM provider --By win-star</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="描述">
+<meta name="keywords" content="keywords">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Home.css">
+
+{/block}
+{block name="body"}
+{$content}
+{notempty name="partner"}
+<!-- Home 合作伙伴 -->
+<section style="padding-top: 66px">
+    <div class="w-home-cooperation-box">
+        <div class="w-home-cooperation-cont tc bgOrange mt20">
+            <h2 class="mb20 f24 fWhite">COOPERATION</h2>
+            <p class="fWhite f16">Cooperation means the geometric superposition of wealth.</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="w-home-partner-box">
+        <div class="w-home-partner-cont clear">
+            {volist name="partner" id="vo"}
+            <a href="{$vo.href}">
+                <img src="{$vo.logo}" class="w100"
+                     alt="{$vo.name}">
+            </a>
+            {/volist}
+        </div>
+    </div>
+</section>
+{/notempty}
+<!--&lt;!&ndash; w-home-new-product-issue S首页新闻调用 &ndash;&gt;-->
+<!--<section>-->
+<!--<div class="w-home-new-product-issue-box">-->
+<!--<div class="w-home-new-product-issue-cont">-->
+<!--<h2 class="center">NEW POSTS FROM WINSTARS</h2>-->
+<!--<ul>-->
+<!--<li>-->
+<!--<div>-->
+<!--<h2>-->
+<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
+<!--hall of the two floor of the company.</a>-->
+<!--</h2>-->
+<!--<p>-->
+<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
+<!--and many departments participated in the conference. General manager John delivered a speech-->
+<!--to encourage the development of new products-->
+<!--</p>-->
+<!--</div>-->
+<!--<span>Webmaster</span>-->
+<!--<span>3/7/2018</span>-->
+<!--<a href="#">Read More</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div>-->
+<!--<h2>-->
+<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
+<!--hall of the two floor of the company.</a>-->
+<!--</h2>-->
+<!--<p>-->
+<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
+<!--and many departments participated in the conference. General manager John delivered a speech-->
+<!--to encourage the development of new products-->
+<!--</p>-->
+<!--</div>-->
+<!--<span>Webmaster</span>-->
+<!--<span>3/7/2018</span>-->
+<!--<a href="#">Read More</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div>-->
+<!--<h2>-->
+<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
+<!--hall of the two floor of the company.</a>-->
+<!--</h2>-->
+<!--<p>-->
+<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
+<!--and many departments participated in the conference. General manager John delivered a speech-->
+<!--to encourage the development of new products-->
+<!--</p>-->
+<!--</div>-->
+<!--<span>Webmaster</span>-->
+<!--<span>3/7/2018</span>-->
+<!--<a href="#">Read More</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div>-->
+<!--<h2>-->
+<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
+<!--hall of the two floor of the company.</a>-->
+<!--</h2>-->
+<!--<p>-->
+<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
+<!--and many departments participated in the conference. General manager John delivered a speech-->
+<!--to encourage the development of new products-->
+<!--</p>-->
+<!--</div>-->
+<!--<span>Webmaster</span>-->
+<!--<span>3/7/2018</span>-->
+<!--<a href="#">Read More</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<div>-->
+<!--<h2>-->
+<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
+<!--hall of the two floor of the company.</a>-->
+<!--</h2>-->
+<!--<p>-->
+<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
+<!--and many departments participated in the conference. General manager John delivered a speech-->
+<!--to encourage the development of new products-->
+<!--</p>-->
+<!--</div>-->
+<!--<span>Webmaster</span>-->
+<!--<span>3/7/2018</span>-->
+<!--<a href="#">Read More</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+<!-- Home 兴趣爱好 -->
+<section>
+    <div class="serve-box bgWhite">
+        <div class="serve-cont">
+            <div class="serve-title tc">
+                <h2 class="f24 fOrange mb20">LEAVE A MESSAGE</h2>
+                <p class="fGrayBlack">Please leave us a message if you have any questions regarding product, technical support or suggestions on our products or website.</p>
+            </div>
+            <div class="serve-interest-box">
+                <div class="serve-interest-cont">
+                    <form action="" method="post">
+                        <input type="text" placeholder="Name" name="name">
+                        <input type="text" placeholder="E-mail" name="email">
+                        <input type="text" placeholder="Country/Region" name="regions">
+                        <textarea class="pd15 w100" placeholder="" name="content"></textarea>
+                        <p style="margin-top: 5px;color: #949494;font-size: 12px">* I understand by pressing <strong>SUBMIT</strong> my information will be used as described here and in the Privacy Policy and I agree to the Terms.</p>
+                        <p class="clear">
+                            <input type="button" value="SUBMIT" class="tc cursorP bgOrange fWhite fl button" style="border-color: #FFB600">
+                            <input type="reset" value="RETRY" class="tc fr cursorP bgWhite">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".home").addClass("bgOrangeWhite");
+        $(".button").click(function () {
+            $.ajax({
+                url: "/en_us/index.html",
+                type: "post",
+                dataType: "json",
+                data: $("form").serialize(),//提交表单数据
+                success: function (result) {
+                    if (result.status === 1) {
+                        layer.msg(result.data, {icon: 1, time: 2000});
+                        setTimeout(function () {
+                            window.parent.location.reload();
+                        }, 1000);
+                    } else {
+                        layer.msg(result.data, {icon: 5, time: 1500});
+                    }
+                }
+            })
+        });
+    });
+</script>
+{/block}

@@ -21,4 +21,12 @@ class About extends BaseModel
         return $this->where($data)->field('id,url_title,name')->select();
 
     }
+    public function getListByCode($code){
+        $language_id = LanguageModel::getLanguageCodeOrID($code);
+        $data=[
+            'status'=>1,
+            'language_id'=>$language_id
+        ];
+        return collection($this->where($data)->field('id,name,url_title')->select())->toArray();
+    }
 }

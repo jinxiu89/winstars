@@ -1,0 +1,93 @@
+{extend name="public/base" /}
+{block name="menu"}{include file="public:content_navbar" /}{/block}
+{block name="title"}
+<title>首页封面管理-WINSTARS WEBSITE MANAGER CENTER</title>
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/lib/markdown/lib/codemirror/lib/codemirror.css"/>
+<!--<link rel="stylesheet" href="codemirror/theme/monokai.css">-->
+<link rel="stylesheet" href="__STATIC__/lib/markdown/lib/codemirror/addon/fold/foldgutter.css"/>
+<link rel="stylesheet" href="__STATIC__/lib/markdown/lib/codemirror/theme/monokai.css"/>
+<style>
+    .CodeMirror div.CodeMirror-cursor {
+        border-left: 1px solid #ffffff;
+    }
+    .CodeMirror {
+        border: 1px solid #eee;
+        height: auto;
+    }
+
+    .CodeMirror-scroll {
+        height: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+</style>
+{/block}
+{block name="nav"}
+<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a> <span
+        class="c-999 en">&gt;</span><span
+        class="c-666">封面管理</span></nav>
+{/block}
+{block name="main"}
+<article class="cl pd-20">
+    <div>首页封面css</div>
+    <form class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <div class="formControls col-xs-8 col-sm-12">
+                <textarea type="text" class="input-text" value="" placeholder="第一行文字" id="code" name="code">{$content}</textarea>
+            </div>
+
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onclick="save('{:url(\'cover/cover_css_save\')}')" class="btn btn-primary radius" type="button" id="btn"><i class="Hui-iconfont">&#xe632;</i> 保存
+                </button>
+            </div>
+        </div>
+    </form>
+    <br>
+    {include file="public/explain" /}
+</article>
+{/block}
+{block name="js"}
+<script src="__STATIC__/lib/markdown/lib/codemirror/lib/codemirror.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/edit/closetag.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/fold/foldcode.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/fold/foldgutter.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/fold/brace-fold.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/fold/xml-fold.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/addon/fold/comment-fold.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/mode/xml/xml.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/mode/javascript/javascript.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/mode/css/css.js"></script>
+<script src="__STATIC__/lib/markdown/lib/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script id="script">
+window.onload = function () {
+    var code = document.getElementById("code");
+    window.editor=CodeMirror.fromTextArea(code,{
+        mode:"text/css",
+        lineNumbers:true,
+        lineWrapping:true,
+        extraKeys:{"Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }},
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+        theme: "monokai",
+    });
+
+    editor.foldCode(CodeMirror.Pos(13, 0));
+    editor.foldCode(CodeMirror.Pos(1, 0));
+};
+$(".btn").click(function () {
+    editor.save();
+});
+</script>
+<script>
+    $(document).ready(function () {
+        $("#menu-images dt").addClass("selected");
+        $("#menu-images dd").css("display","block");
+        $("#cover_css").addClass("current");
+        $("#content").addClass("current");
+    });
+</script>
+{/block}

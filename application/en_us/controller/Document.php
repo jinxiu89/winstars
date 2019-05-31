@@ -24,6 +24,7 @@ class Document extends Base
 //        $docCount= $document['count'];
 //        $this->assign('docCount',$docCount);
 //    }
+
     public function index($url_title=''){
 
         if (empty($url_title) || !isset($url_title)){

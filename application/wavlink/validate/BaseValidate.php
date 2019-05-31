@@ -6,12 +6,18 @@ namespace app\wavlink\validate;
  * Date: 2018/1/9
  * Time: 13:36
  */
+
 use app\lib\exception\ParameterException;
 use think\Request;
 use think\Validate;
 
 class BaseValidate extends Validate
 {
+    /***
+     * @param string $scene
+     * @return bool
+     * @throws ParameterException
+     */
     public function goCheck($scene=''){
         // 获取http传入的参数
         // 对这些参数做检验
@@ -60,6 +66,9 @@ class BaseValidate extends Validate
      * @param string $data
      * @param string $field
      * @return bool
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     protected function urlTitleIsOnly($value,$rule = '', $data = '', $field = ''){
         $con = request()->controller();

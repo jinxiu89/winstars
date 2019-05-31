@@ -5,9 +5,9 @@
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属分类</label>
         <div class="formControls col-xs-8 col-sm-9">
             {if condition="$parent_id eq 0"}
-            <input type="text" class="input-text" value="添加的这是一级分类" placeholder="" disabled>
+            <input type="text" class="input-text" value="一级分类" placeholder="" disabled>
             {else /}
-            <input type="text" class="input-text" value="{$parent_id|getChild}" placeholder="" disabled>
+            <input type="text" class="input-text" value="{$parent_id|getParent}" placeholder="" disabled>
             {/if}
         </div>
     </div>
@@ -23,7 +23,13 @@
             <input type="text" class="input-text" value="" placeholder="" id="url_title" name="url_title">
         </div>
     </div>
-
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">分类banner：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <textarea name="banner" cols="" rows="" class="textarea"  placeholder="" dragonfly="true" ></textarea>
+            <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+        </div>
+    </div>
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2">缩略图地址：</label>
         <div class="formControls col-xs-8 col-sm-9">
@@ -61,7 +67,7 @@
     </div>
     <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-            <button  type="button" onclick="save('{:url('category/save')}')" class="btn btn-primary radius" ><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button  type="button" onclick="save('{:url(\'category/save\')}')" class="btn btn-primary radius" ><i class="Hui-iconfont">&#xe632;</i> 保存</button>
 
             <button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
         </div>

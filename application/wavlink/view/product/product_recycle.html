@@ -29,16 +29,14 @@
             <th scope="col" colspan="12">回收站的产品</th>
         </tr>
         <tr class="text-c">
-            <th width="25"><input type="checkbox" name="" value=""></th>
-            <th width="40">ID</th>
-            <th width="150">缩略图</th>
-            <th width="150">产品名称</th>
-            <th width="150">URL标题</th>
-            <th width="150">所属分类</th>
-            <th width="90">语言</th>
-            <th width="100">创建时间</th>
-            <th width="100">是否已启用</th>
-            <th width="100">操作</th>
+            <th width="20"><input type="checkbox" name="" value=""></th>
+            <th width="50">ID</th>
+            <th width="40">缩略图</th>
+            <th width="">产品名称</th>
+            <th width="100">产品型号</th>
+            <th width="350">所属分类</th>
+            <th width="120">加入时间</th>
+            <th width="50">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -46,16 +44,13 @@
         <tr class="text-c">
             <td><input type="checkbox" value="{$vo.id}" name="id"></td>
             <td>{$vo.id}</td>
-            <td> <img src="{$vo.image_litpic_url}" width="30" height="30"></td>
-            <td>{$vo.name}</td>
-            <td>{$vo.url_title}</td>
+            <td> {empty name="$vo.thumbnail"}{else/}<img class="avatar size-M radius" src="{$vo.thumbnail}">{/empty}</td>
+            <td class="text-l">{$vo.name}</td>
+            <td>{$vo.model}</td>
             <td>{$vo.id|getChild}</td>
-            <td>{$vo.language_id|getLanguage}</td>
             <td>{$vo.create_time}</td>
-            <td class="td-status"><span class="label label-error radius">已回收</span></td>
             <td class="td-manage">
-                <a style="text-decoration:none" onClick="start('{:url('product/byStatus',['id'=>$vo.id,'status'=>1])}')" href="javascript:;" title="恢复"><i class="Hui-iconfont">&#xe601;</i></a>
-                <!--<a title="删除" href="javascript:;" onclick="del('{:url('product/productDel',['id'=>$vo.id])}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+                <a style="text-decoration:none" onClick="start('{:url(\'product/byStatus\',[\'id\'=>$vo.id,\'status\'=>1])}')" title="恢复"><i class="Hui-iconfont">&#xe601;</i></a>
         </tr>
         {/volist}
         </tbody>

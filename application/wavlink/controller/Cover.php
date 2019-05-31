@@ -30,9 +30,29 @@ class Cover extends BaseAdmin
             $data=input('post.');
             $data=$data['code'];
             if(fwrite($file,$data)){
-                return show(1,'','','','', '添加成功');
+                return show(1,'','','','', '保存成功');
             }else{
-                return show(0,'','','','', '添加失败');
+                return show(0,'','','','', '保存失败');
+            }
+        }
+    }
+    public function cover_css(){
+        $file=fopen(STATIC_PATH.'/frontend/en-us/css/style/Home.css','r') or die("文件打不开");
+        $content=file_get_contents(STATIC_PATH.'/frontend/en-us/css/style/Home.css');
+        $content=htmlspecialchars($content);
+        fclose($file);
+        return $this->fetch('',['content'=>$content]
+        );
+    }
+    public function cover_css_save(){
+        $file=fopen(STATIC_PATH.'/frontend/en-us/css/style/Home.css','w') or die("文件打不开");
+        if(request()->isAjax()){
+            $data=input('post.');
+            $data=$data['code'];
+            if(fwrite($file,$data)){
+                return show(1,'','','','', '保存成功');
+            }else{
+                return show(0,'','','','', '保存失败');
             }
         }
     }

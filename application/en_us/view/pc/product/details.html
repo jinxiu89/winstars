@@ -1,0 +1,276 @@
+{extend name="pc/base/base" /}
+{block name="title"}
+<title>{$result.seo_title} - by winstars</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_Details.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Side-navigation/css/Side-navigation.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Magnifier/css/Magnifier.css">
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+{/block}
+{block name="body"}
+<style>
+    span.on {
+        background-color: #EA881B !important
+    }
+    .spec-items li.on {
+        border-color: #EA881B !important
+    }
+</style>
+<hr style="border: 1px solid #f2f2f2">
+<!-- w-product-path 产品路径 -->
+<section>
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" style="display: inline-block">
+                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            </a>
+            <i class="iconfont">&#xeb9a;</i>
+            <a href="/en_us/category.html" style="display: inline-block">PRODUCTS</a>
+            <i class="iconfont">&#xeb9a;</i>
+            <a href="/en_us/product/{$result.url_title}.html" style="display: inline-block" class="current">{$result.model}</a>
+
+        </div>
+    </div>
+</section>
+    <div class="Details clear pd20 bgWhite" style="margin: 15px auto">
+        <div class="Product_title fn w100">
+            <h2>{$result.name}</h2>
+        </div>
+        <div class="magnifier">
+            <div id="MagnifierWrap2">
+                <div class="MagnifierMain">
+                    <img class="MagTargetImg" src="{$album}" data-src="{$album}">
+                </div>
+                <span class="spe_leftBtn">&lt;</span>
+                <span class="spe_rightBtn on">&gt;</span>
+                <div class="spec-items">
+                    <ul>
+                        {volist name="result.albums" id="vo"}
+                        <li class=""><img src="{$vo}" data-lsrc="{$vo}" data-maxsrc="{$vo}"></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Characteristic pl20">
+            <ul>
+                <!-- markdown-body editormd-html-preview -->
+                <li class="mb50">
+                    <h3 class="mb15 fOrange f14">DESCRIPTION</h3>
+                    <p class="lh14 f14 fGrayBlack mb20">
+                        {$result.description}
+                    </p>
+                </li>
+                <li id="features mb50">
+                    <h3 class="mb15 fOrange f14">FEATURES</h3>
+                    <textarea style="display:none;" name="features">{$result.features}</textarea>
+                </li>
+                <li class="mb15">
+                    <h3 class="mb15 fOrange f14">MODEL</h3>
+                    <p>{$result.model}</p>
+                </li>
+                <li class="tag mb15">
+                    <h3 class="mb15 fOrange f14">TAGS</h3>
+                    <p class="lh14 f14 fGrayBlack mb20"><i class="icon-tags" style="font-size: 12px"></i> {$result.keywords|getTags}</p>
+                </li>
+            </ul>
+            <!--<p class="add clear">-->
+                <!--<a href="#">ADD TO LIST</a>-->
+            <!--</p>-->
+        </div>
+    </div>
+</section>
+<!-- Product_list_Details end 产品详情 结尾 -->
+<section>
+    <div class="Scrolling-navigation clear pt50 bgWhite" style="margin:0 auto">
+        <!-- 左右滚动导航按钮 -->
+        <ol class="nav clear">
+            <li class="fl cursorP tc">CONTENTS</li>
+            <li class="fl cursorP tc">SPECIFICATION</li>
+        </ol>
+        <!-- 左右滚动导航内容列表 -->
+        <div class="content clear fl oh">
+            <div>
+                <ul class="clear">
+                    <li id="content fl">
+                        <textarea style="display:none;" name="content_html">{$result.content}</textarea>
+                    </li>
+                    <li id="specifications fl">
+                        <textarea style="display:none;" name="content_html">{$result.specifications}</textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right_list fl pd20">
+            <ul>
+                <li class="mb50">
+                    <h3 class="f14 mb15 fOrange">BEST SELLERS</h3>
+                    <div class="pd15 oh" style="border: 1px solid #e9e9e9">
+                        <a href="#">
+                            <img class="w100 animate_time" src="{$bestSales.album}" alt="">
+                        </a>
+                        <div>
+                            <h4>
+                                <a class="f15 fNomal" href="/en_us/product/{$bestSales.url_title}" target="_blank">{$bestSales.name}</a>
+                            </h4>
+                            <p class="tag f12 lh14 pt20 pb20">
+                                <i class="icon-tags" style="font-size: 12px"></i> {$bestSales.keywords|getTags}
+                            </p>
+                        </div>
+                        <div class="btn clear">
+                            <a class="fl f12 fOrange" href="/en_us/product/{$bestSales.url_title}" target="_blank" style="padding: 6px 8px">{$bestSales.model}</a>
+                            <a class="fr" href="/en_us/product/{$bestSales.url_title}" target="_blank" style="padding: 6px 8px; border: 1px solid #b9b9b9">Details</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="mb50">
+                    <h3 class="f14 mb15 fOrange">CATEGORIES</h3>
+                    <div class="list">
+                        <ul class="yiji">
+                            {volist name="tree" id="vo"}
+                            {notempty name="vo.title"}
+                            <li class="{$vo.url_title}">
+                                <a href="{notempty name='vo.title'}javascript:void(0);{else /}#{/notempty}"
+                                   class="{notempty name='vo.title'}iconfont icon-arrowdown{else /}{/notempty}">{$vo.name}</a>
+                                <ul class="ul-level-2">
+                                    {volist name="vo.title" id="co"}
+                                    <li class="{$co.url_title}">
+                                        <a href="{notempty name='co.title'}javascript:void(0);{else /}/en_us/category/{$co.url_title}{/notempty}"
+                                           class="{notempty name='co.title'}iconfont icon-arrowdown{else /}{/notempty}">{$co.name}</a>
+                                        {notempty name="co.title"}
+                                        <ul class="ul-level-3">
+                                            {volist name="co.title" id="o"}
+                                            <li class="{$o.url_title}"><a href="/en_us/category/{$o.url_title}">{$o.name}</a>
+                                            </li>
+                                            {/volist}
+                                        </ul>
+                                        {else}
+                                        {/notempty}
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </li>
+                            {else /}
+                            {/notempty}
+                            {/volist}
+                        </ul>
+                    </div>
+                </li>
+                <!--<li>-->
+                    <!--<h3>RELATED PRODUCTS</h3>-->
+                    <!--<ol>-->
+                        <!--<li>-->
+                            <!--<a href="#">-->
+                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
+                            <!--</a>-->
+                            <!--<div>-->
+                                <!--<h4>-->
+                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
+                                <!--</h4>-->
+                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">-->
+                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
+                            <!--</a>-->
+                            <!--<div>-->
+                                <!--<h4>-->
+                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
+                                <!--</h4>-->
+                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">-->
+                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
+                            <!--</a>-->
+                            <!--<div>-->
+                                <!--<h4>-->
+                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
+                                <!--</h4>-->
+                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</section>
+{/block}
+
+{block name="script"}
+<script src="__STATIC__/frontend/lib/Side-navigation/js/Side-navigation.js"></script>
+<script src="__STATIC__/frontend/lib/Magnifier/js/Magnifier.js"></script>
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.product').addClass("bgOrangeWhite");
+        var album = $(".spec-items > ul > li:nth-child(1) > img").attr("src");
+        $(".spec-items > ul > li:nth-child(1)").addClass("on");
+        $(".MagnifierMain  > img").attr("src", album);
+        $(function () {
+            editormd.markdownToHTML("features", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+            editormd.markdownToHTML("specifications", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            })
+        })
+    });
+</script>
+<script>
+    var $parent_w = $("div.Scrolling-navigation > div.content > div");
+    // 包含li标签的ul标签
+    var $nav_ul = $("div.Scrolling-navigation > div.content > div > ul");
+    // li标签专门放置内容的容器，也可以作为框架自定义放置容器
+    var $nav_list = $("div.Scrolling-navigation > ol > li");
+    var $nav_content = $("div.Scrolling-navigation > div.content > div > ul > li");
+    $nav_content.css({
+        width: $parent_w.width() + "px",
+        padding: "0 20px"
+    });
+
+    $nav_list.eq(0).addClass("border-bottom-color");
+    // $nav_content.eq(0).show();
+    $nav_list.click(function () {
+        var This = $(this).index();
+        $(this).stop(true, false).addClass("border-bottom-color").siblings().removeClass("border-bottom-color");
+        // $nav_content.eq(This).slideDown().siblings().slideUp()
+        $nav_ul.stop(true, false).animate({
+            "margin-left": -($parent_w.width() * This) + "px",
+        }, 600)
+    });
+</script>
+{/block}

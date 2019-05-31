@@ -1,0 +1,80 @@
+<!--包含头部文件-->
+{extend name="pc/base/base" /}
+{block name="title"}
+<title> Products catalog- By-winstars</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="">
+<meta name="keywords" content="">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product.css">
+{/block}
+{block name="body"}
+<!-- w-Product 产品中心 -->
+<section>
+    <div class="w-product-title">
+        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=8094araJA8qDFM7Q1wDCrons5Cj62IGI3Hz84AoZrhkoQsJ7ATpH_31kXaEtp2h4NPhBOF4U28C8Q-9jRVtXq22iaBC9QmEqpm4Dqr8fvXhC2G5BxbfddLVc77vzIxIibTq7UtqY1Uav-8IwIT1cME8&file_name=/product_list.jpg"
+             width="100%" height="300px" alt="">
+    </div>
+</section>
+
+<!-- w-product-path 产品路径 -->
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" style="display: inline-block">
+                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            </a>
+            <i class="iconfont">&#xeb9a;</i>
+            <a href="/en_us/category.html" style="display: inline-block" class="current">PRODUCTS</a>
+        </div>
+    </div>
+</section>
+
+<section style="margin-bottom: 60px">
+    {notempty name="navbar"}
+    {volist name="navbar" id="vo"}
+    {$vo}
+    {/volist}
+    {else /}
+    {/notempty}
+    {volist name="tree" id="vo"}
+    <div class="ProductBox">
+        <div class="ProductRow mt80">
+            {notempty name="vo.title"}
+            <h2 class="f18 mb15 fOrange tc">- {$vo.name} -</h2>
+            <div class="ProductList bgWhite clear">
+                {volist name="vo.title" id="co"}
+                <div class="relative w30 oh fl">
+                    <div>
+                        <img src="{$co.image}" width="100%" alt="">
+                        <div class="mask-layer absolute w100 bgMaskLayer animate_time">
+                            <a href="/en_us/category/{$co.url_title}.html"><h3 class="fWhite cursorP">{$co.name}</h3></a>
+                            <p class="mt15 fOrange">
+                                {$co.description}
+                            </p>
+                            <a class="More fWhite mt20 tc bgOrange lh30" href="/en_us/category/{$co.url_title}.html">Details</a>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            {else /}
+            {/notempty}
+        </div>
+    </div>
+    {/volist}
+</section>
+
+<!-- w-product-WIRELESS&NETWORKING 无线与网络组 -->
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function () {
+        $('.product').addClass("bgOrangeWhite");
+    })
+</script>
+{/block}
+
