@@ -40,7 +40,7 @@ Class About extends BaseAdmin
             (new AboutValidate())->goCheck();
             (new UrlTitleMustBeOnly())->goCheck();
             $data = $request::instance()->post();
-
+            $data['content_html']=htmlspecialchars($data['content-html-code']);
             if (!empty($data['id'])) {
                 return $this->update($data);
             }

@@ -92,8 +92,8 @@
         background-color: #e6e6e6
     }
 
-    .icon-arrowdown:before {
-        position: absolute;
-        right: 20px;
-        top: 0
-    }
+    /*.icon-arrowdown:before {*/
+        /*position: absolute;*/
+        /*right: 20px;*/
+        /*top: 0*/
+    /*}*/

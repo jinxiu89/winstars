@@ -41,9 +41,10 @@ class Search extends Base
 
     //产品搜索
     public function product() {
+
         $key = input('get.key');
         if ($key == '' || empty($key)) {
-            return $this->fetch('', [
+            return $this->fetch($this->template . '/search/index.html', [
                 'name' => $key,
                 'count' => 0
             ]);
@@ -52,10 +53,10 @@ class Search extends Base
             $product = $result['data'];
             $count = $result['count'];
             $page = $product->render();
-            return $this->fetch('', [
+            return $this->fetch($this->template . '/search/index.html', [
                 'result' => $product,
                 'count' => $count,
-                'name' => $key,
+                'key' => $key,
                 'page' => $page,
             ]);
         }

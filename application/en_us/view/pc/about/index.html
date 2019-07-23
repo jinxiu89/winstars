@@ -21,12 +21,13 @@
         margin: 15px 0 40px 0
     }
     div.w-about-article-box > div.w-about-article-cont {
-        padding: 60px 4%
+        padding: 30px;
     }
     @media screen and (min-width: 1300px){
         div.w-about-article-box {
             width: 70%;
-            margin-left: 15%
+            margin-left: 15%;
+            padding-bottom: 10%;
         }
     }
     .w-about-article-cont #content a{
@@ -48,10 +49,10 @@
             <a href="/en_us/" style="display: inline-block">
                 <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
             </a>
-            <i class="iconfont">&#xeb9a;</i>
+            >
             <a href="/en_us/about.html" style="display: inline-block">About</a>
-            <i class="iconfont">&#xeb9a;</i>
-            <a href="/en_us/category/{$result.url_title}.html" style="display: inline-block" class="current">{$result->name}</a>
+            >
+            <a href="/en_us/about/{$result.url_title}.html" style="display: inline-block" class="current">{$result->name}</a>
         </div>
     </div>
 </section>
@@ -70,8 +71,8 @@
             </ul>
         </div>
         <div class="w-about-article-cont fl w80 bgWhite">
-            <div id="content">
-                <textarea style="display:none;" name="features">{$result.content}</textarea>
+            <div id="content" class="markdown-body editormd-html-preview">
+                {$result.content_html|htmlspecialchars_decode}
             </div>
         </div>
     </div>
@@ -88,18 +89,6 @@
 <script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
 <script src="__STATIC__/lib/markdown/editormd.js"></script>
 <script>
-    $(document).ready(function () {
-        $(function () {
-            editormd.markdownToHTML("content", {
-                htmlDecode: "style,script,iframe",
-                emoji: true,
-                taskList: true,
-                tex: true,  // 默认不解析
-                flowChart: true,  // 默认不解析
-                sequenceDiagram: true,  // 默认不解析
-            });
-        })
-    });
     $(document).ready(function () {
         $(".about").addClass("bgOrangeWhite");
         var current;

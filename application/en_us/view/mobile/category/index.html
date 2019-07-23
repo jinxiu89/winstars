@@ -1,0 +1,53 @@
+{extend name="mobile/base/base"}
+{block name="title"}Products catalog{/block}
+{block name="seo"}
+<meta name="description" content="">
+<meta name="keywords" content="">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product.css">
+{/block}
+{block name="banner"}
+<div class="row">
+    <div class="banner">
+        <img src="{$fileHost}/images/2019/06/29/prd_banner.jpg" alt="">
+    </div>
+</div>
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i > > </i></li>
+            <li><a href="/en_us/category.html">PRODUCTS</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    {notempty name="tree"}
+    {volist name="tree" id="vo"}
+    <div class="product">
+        <div class="title">
+            <span class="line"></span>
+            <h3>{$vo.name}</h3>
+        </div>
+        {volist name="vo.child" id="co"}
+        <div class="product-box">
+            <a href="/en_us/category/{$co.url_title}.html">
+                <img src="{$co.image}" alt="">
+                <div class="description">
+                    <h3>{$co.name}</h3>
+                    <p>{$co.description}</p>
+                </div>
+            </a>
+        </div>
+        {/volist}
+    </div>
+    {/volist}
+    {/notempty}
+
+</div>
+{/block}
+{block name="javascript"}
+{/block}

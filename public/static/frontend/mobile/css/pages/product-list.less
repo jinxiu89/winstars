@@ -1,0 +1,136 @@
+/**
+* @name: product.less
+* @description: win-star.com 手机端 产品一级分类页 样式
+* @author: huang(1367428189@qq.com)
+* @update: 2019-05-07 10:00
+*/
+@import "../public_class/mixins";
+@import "../public_class/variables";
+
+.banner {
+  #img-optimize(65.11%, @bodyBackground)
+}
+
+.title {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  position: relative;
+  z-index: 1;
+  height: 50px;
+  #lineHeight(menu);
+  text-align: center;
+  padding: 0 @publicInterval;
+  margin-bottom: @publicInterval;
+  background: @whiteColor;
+
+  .line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 1px;
+    background: @border-color;
+  }
+
+  h2 {
+    .text-overflow();
+    width: 95%;
+    height: 50px;
+    line-height: 50px;
+    color: @activeColor;
+    background: @whiteColor;
+    #fontSize(larger);
+  }
+
+  p {
+    #fontSize(large);
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+.product {
+  padding: @publicInterval;
+  background: @whiteColor;
+  margin-bottom: @publicInterval;
+
+  .product-box {
+    margin-bottom: 20px;
+    border: 1px solid @border-color;
+    &:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
+  }
+  .product-box .img-box {
+    #img-optimize(100%, @bodyBackground)
+  }
+  .product-box a {
+    color: @darkColor;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .product-box .description {
+    .clearFix();
+    padding: @publicInterval;
+    color: @darkColor;
+  }
+  .product-box .description h3 {
+    #lineHeight(large);
+    #fontSize(medium);
+  }
+  .product-box .description p {
+    margin: .266666rem 0;
+    #lineHeight(large);
+    #fontSize(small);
+    color: @whiteSmoke;
+  }
+  .product-box .description p a {
+    padding: 0 10px !important;
+  }
+  .product-box .description span {
+    .fl();
+    display: block;
+    height: .8rem;
+    line-height: .8rem;
+    color: @whiteSmoke;
+    #fontSize(small);
+    &:nth-last-of-type(1) {
+      .fr();
+      display: block;
+      border: 1px solid @activeColor;
+      text-align: center;
+      width: 1.866666rem;
+      height: .8rem;
+      line-height: .8rem;
+      #fontSize(small);
+      color: @whiteSmoke;
+      #border-radius(.133333rem);
+    }
+  }
+
+  .no-data-box {
+    padding: @publicInterval 0;
+
+    p {
+      #fontSize(medium);
+      line-height: 22px;
+    }
+  }
+
+  .recommend-title h4 {
+    line-height: 50px;
+    #fontSize(large);
+    color: @activeColor;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .path ul li {
+    margin-right: 0;
+  }
+}

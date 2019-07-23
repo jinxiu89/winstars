@@ -1,67 +1,64 @@
 <!--包含头部文件-->
-{extend name="base/base" /}
+{extend name="pc/base/base" /}
+{block name="title"}
+<title>Search result of {notempty name="key"}{$key}{else /}NULL{/notempty} - by winstars</title>
+{/block}
 {block name="seo"}
-<title>Wavlink</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<link rel="stylesheet" href="__EN__/css/product/product-list.css" type="text/css">
+<meta name="description" content="{notempty name='key'}{$key}{else /}NULL{/notempty}">
+<meta name="keywords" content="{notempty name='key'}{$key}{else /}NULL{/notempty}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Result.css">
 {/block}
 {block name="body"}
-<!-- wavlink 列表产品 -->
-{empty name="result"}
-<div class="col-xs-12">
-    <p style="text-align: center;font-size: 1.4em;margin: 2em">Sorry,No result found!</p>
-</div>
-<!--recommend 主推推荐开始-->
-<div class="Box Related_video text-center bg-white col-xs-12" >
-    <h3 class="Relevant_title">
-        <strong >We Have Recommendations for You</strong>
-    </h3>
-    {volist name="imagesRecommend" id="vo"}
-    <div class="col-md-4 col-sm-6 col-xs-12">
-        <a href="{$vo.url}"><img src="{$vo.image_pc_url}" alt="" class="img-responsive center-block" style="padding: 10px;background: #fff;" />
-            <p class="text-capitalize bg-threen color-white col-xs-12">
-                {$vo.title}
-            </p>
-        </a>
+<section>
+    <div class="Result_Title pt50 pb50 tc f28">
+        <p>Results for "{notempty name="key"}{$key}{else /}NULL{/notempty}"</p>
+        <p>{notempty name="count"}{$count}{else}0{/notempty} results found</p>
     </div>
-    {/volist}
-</div>
-<!--recommend 主推推荐结束-->
-{else /}
-<div class="option bg-white col-xs-12">
-    <div class="col-sm-10 col-sm-offset-1 col-xs-12" style="padding:0">
-        <div class="btn-group col-sm-4 col-xs-12">
-            <div class="panel-heading"><h3 style="font-size: 21px">Results for "{$name}"</h3>&nbsp;&nbsp;<b class="text-lowercase">{$count}&nbsp;&nbsp;results found</b></div>
-        </div>
-    </div>
-</div>
-<div class="Pro_list col-xs-12" style="padding:0">
-    <div class="Pro_list_cont bg-white col-lg-10 col-md-12 col-lg-offset-1 col-xs-12">
-        {volist name="result" id="vo"}
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a href="{:url('/'.$code.'/product/'.$vo.url_title)}">
-                <img src="{$vo.image_litpic_url}" alt="{$vo.name}" class="img-responsive center-block" style="padding: 10px;background: #fff;">
-                <div class="bg-white col-xs-12">
-                    <h4 class="color-black" style="height: 48px"><strong>{$vo.name}</strong></h4>
-                    <p class="color-gray col-xs-6 ">{$vo.product_type}</p>
-                    <div class="learn-more details col-xs-6 text-right" >
-                        <span style="font-size: 1.2em">Learn more</span>
-                        <!--<span>前往购买</span>-->
+</section>
+<!-- result 搜索结果页面 -->
+<section class="Result mt15 mb50 clear">
+    <div class="content fl w80 clear" style="padding: 0 10px 60px; margin-left: 10%">
+        <ul class="ResultList clear">
+            {notempty name="result"}
+            {volist name="result" id="vo"}
+            <li class="relative fl">
+                <div class="pd10 bgWhite clear">
+                    <a href="/en_us/product/{$vo.url_title}" target="_blank" style="margin-bottom: 10px"><img class="w100"
+                                                                                                       src="{$vo.album|getThumbnail}"
+                                                                                                       alt=""></a>
+                    <div class="cont w100">
+                        <h2><a class="fNomal" href="/en_us/product/{$vo.url_title}" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
+                        <p class="f12 lh14 fGrayBlack mt20 mb20"><i class="icon-tags" style="font-size: 12px"></i>
+                            {$vo.keywords|getTags}</p>
+                        <div class="btn">
+                            <a class="fl f12 fOrange" href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
+                            <a class="fr f12 fGray" href="/en_us/product/{$vo.url_title}" target="_blank"
+                               style="border: 1px solid #e9e9e9">Details</a>
+                        </div>
                     </div>
+                    <i class="icon-trophy icon-3x absolute fOrange"></i>
                 </div>
-            </a>
-        </div>
-        {/volist}
+            </li>
+            {/volist}
+            {else /}
+            {/notempty}
+        </ul>
     </div>
-</div>
-{/empty}
-<!-- wavlink 分页 -->
-<div class="nav_page col-lg-10 col-lg-offset-1 col-xs-12" style="padding:0">
-    {:pagination($result)}
-</div>
+</section>
+<section>
+    <div class="w-product-paging-box tc">
+        {notempty name="result"}
+        {:pagination($result)}
+        {/notempty}
+    </div>
+</section>
 {/block}
-<!--页脚部分-->
-{include file="public/footer" /}
-</body>
-</html>
+{block name="script"}
+<script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
+<script>
+    max($("ul.ResultList > li > div > .cont > h2 > a"));
+    max($("ul.ResultList > li > div > div > p"))
+</script>
+{/block}

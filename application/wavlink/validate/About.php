@@ -13,7 +13,7 @@ class About extends BaseValidate
     /**验证规则**/
     protected $rule = [
         ['id','number','id不合法'],
-        ['name','require|unique:about,name','名称不能为空|已经添加该名称'],
+        ['name','require|unique:about,name|token','名称不能为空|已经添加该名称|重复提交'],
         ['seo_title','require','SEO标题不能为空'],
         ['keywords','require|max:128','关键词不能为空|关键词过长'],
         ['description','require|max:128','描述不能为空|描述过长'],

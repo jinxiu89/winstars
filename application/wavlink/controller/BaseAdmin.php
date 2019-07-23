@@ -13,15 +13,24 @@ use app\common\model\Language as LanguageModel;
 use app\wavlink\validate\Mark;
 use app\wavlink\validate\ParamMustBePositiveInt;
 use think\Controller;
+use think\exception\DbException;
 use think\Request;
 
 class BaseAdmin extends Controller
 {
+    /***
+     * @var array
+     * 前置操作
+     */
+    protected $beforeActionList = [
+        'getLanguage'
+    ];
+
     public function _initialize()
     {
         if (!$this->isLogin()) {
             $next = Request::instance()->url(true);
-            $this->redirect(url('login/index', ["next"=> $next]));
+            $this->redirect(url('login/index', ["next" => $next]));
         }
         $userSession = session('userName', '', 'admin');
         $mangerName = $userSession->name;
@@ -51,6 +60,8 @@ class BaseAdmin extends Controller
             $rules = $auth->getAllAuth();
             $this->assign('access', $rules);
         }
+        $language_id = input('get.language_id');
+        $this->assign('language_id', $language_id);
         $this->assign('uid', $uid);
         $this->assign('languages', $languages);
 
@@ -71,6 +82,18 @@ class BaseAdmin extends Controller
     {
         $users = session('userName', '', 'admin');
         return $users;
+    }
+
+    /***
+     * 通过url参数来获取language_id
+     * 利用before action来加载它
+     * 20190708
+     * jinxiu89@163.com
+     */
+    public function getLanguage()
+    {
+        $language_id = input('get.language_id');
+        $this->assign('language_id', $language_id);
     }
 
     /**
@@ -116,24 +139,27 @@ class BaseAdmin extends Controller
         }
     }
 
-    //置顶，上移，下移，置顶操作。需要的数据 type操作类型，语言id，需要移动的数据id
-    public static function order($data, $map2 = '')
-    {
-        (new Mark())->goCheck('type');
-        (new ParamMustBePositiveInt())->goCheck();
-        $con = request()->controller();
-        $res = BaseModel::listorder($data, $con, $map2);
-        $url = $_SERVER['HTTP_REFERER'];
-        if ($res == 1) {
-            return show(1, '', '', '', $url, '操作成功');
-        } elseif ($res == 0) {
-            return show(0, 'error', '', '', '', '操作失败');
-        } elseif ($res == -1) {
-            return show(-1, 'error', '', '', '', '嗷呜~到极限了哇！,点别的。');
-        } else {
-            return show(0, 'error', 'error', '', '', '操作失败');
-        }
-    }
+//    //置顶，上移，下移，置顶操作。需要的数据 type操作类型，语言id，需要移动的数据id
+//    public static function order($data, $map2 = '')
+//    {
+//        (new Mark())->goCheck('type');
+//        (new ParamMustBePositiveInt())->goCheck();
+//        $con = request()->controller();
+//        try {
+//            $res = BaseModel::listorder($data, $con, $map2);
+//        } catch (DbException $e) {
+//        }
+//        $url = $_SERVER['HTTP_REFERER'];
+//        if ($res == 1) {
+//            return show(1, '', '', '', $url, '操作成功');
+//        } elseif ($res == 0) {
+//            return show(0, 'error', '', '', '', '操作失败');
+//        } elseif ($res == -1) {
+//            return show(-1, 'error', '', '', '', '嗷呜~到极限了哇！,点别的。');
+//        } else {
+//            return show(0, 'error', 'error', '', '', '操作失败');
+//        }
+//    }
 
     //严格校验 传递的参数必须是正整数
     //防止在地址栏随意修改参数

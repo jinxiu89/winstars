@@ -38,7 +38,7 @@ function GetPassword($password)
     return md5(sha1($password) . $key = 'ad;lkfjSDAF@@#$@#Q%4>>><KJJH11111111111111########sdfasdf!!!bbbsdf');
 }
 
-function Search($table, $map = array(), $order)
+function Search($table, $map =[], $order)
 {
     //公共查询函数
     $data = model($table)->where($map)->order($order)->paginate();
@@ -53,9 +53,12 @@ function Search($table, $map = array(), $order)
         return '';
     }
 }
-function getThumbnail($str){
+
+function getThumbnail($str)
+{
     return substr($str, 0, strpos($str, ','));
 }
+
 // 字符串进行数组处理，以逗号分割组合
 function ModelsArr($data, $key, $newKey)
 {
@@ -116,6 +119,15 @@ function show($status, $message = '', $title = '', $btn = '', $url = '', $data =
         'btn' => $btn
     );
     exit(json_encode($res));
+}
+
+/***
+ * @param $data
+ * @return false|string
+ */
+function toJSON($data)
+{
+    return json_encode($data);
 }
 
 /**参数：
@@ -250,13 +262,19 @@ function isMobile()
     return false;
 }
 
-function getTags($keywords){
-    $keywords= explode(',',$keywords);
-    $tag=array();
-    foreach ($keywords as $v){
-        $tag[]="&nbsp;&nbsp;<a style='display: inline-block' title=\"{$v}\"href=\"/en_us/product/search/{$v}\">{$v}</a>";
+/***
+ * @param $keywords
+ * @return string
+ *
+ */
+function getTags($keywords)
+{
+    $keywords = explode(',', $keywords);
+    $tag = array();
+    foreach ($keywords as $v) {
+        $tag[] = "<a  style='display: inline-block;background: #ffb96b; ;margin:5px 5px 5px 0;padding: 4px 5px;border-radius: 10px;' title=\"{$v}\" href=\"/en_us/search/product.html?key={$v}\">{$v}</a>";
     }
-    return implode('',$tag);
+    return implode('', $tag);
 }
 
 /**
@@ -274,10 +292,11 @@ function getTags($keywords){
  * )
  * @internal param $to
  */
-function sendMail($data, $attachment = null){
-    vendor( 'phpmailer.PHPMailerAutoload' );
+function sendMail($data, $attachment = null)
+{
+    vendor('phpmailer.PHPMailerAutoload');
     vendor('phpmailer.class#phpmailer');
-    $mail=new PHPMailer();
+    $mail = new PHPMailer();
     $mail->CharSet = 'utf-8';
     $mail->IsSMTP();
     $mail->SMTPDebug = 0;
@@ -290,9 +309,9 @@ function sendMail($data, $attachment = null){
     $mail->Password = 'Wh32Ym69B10c';                 // SMTP登录密码
     $mail->setFrom('system@service.wavlink.us', 'system');            // 发件人邮箱和名称
     $mail->addReplyTo($data['replyTo'], $data['relyName']); // 回复邮箱和名称 $到联系人
-    $mail->AddAddress($data['toMail'],$data['toName']); //发给谁？
+    $mail->AddAddress($data['toMail'], $data['toName']); //发给谁？
     $mail->Subject = $data['subject'];
-    $mail->Body=$data['content'];
+    $mail->Body = $data['content'];
     if ($attachment) { // 添加附件
         if (is_string($attachment)) {
             is_file($attachment) && $mail->AddAttachment($attachment);
@@ -304,4 +323,40 @@ function sendMail($data, $attachment = null){
     }
     $result = $mail->send();
     return $result ? true : $mail->ErrorInfo;
+}
+
+function getAlbum($hotSales)
+{
+    if (!empty($hotSales)) {
+        $hot = [];
+        foreach ($hotSales as $hotSale) {
+            if (!empty($hotSale['album'])) {
+                $temp = explode(',', $hotSale['album']);
+                unset($hotSale['album']);
+                $hotSale['album'] = $temp[0];
+                unset($temp);
+                $temp = $hotSale['categorys'];
+                unset($hotSale['categorys']);
+                $hotSale['categorys'] = $temp[0];
+                unset($temp);
+                $hot[] = $hotSale;
+            }
+        }
+        return $hot;
+    }
+}
+
+/***
+ *
+ * @param $id
+ * @return bool|string
+ */
+function getDriverNameById($id){
+    try{
+        $obj=new app\common\model\Driver();
+        $result= $obj->get($id);
+        return $result->name;
+    }catch (Exception $exception){
+        return $exception->getMessage();
+    }
 }

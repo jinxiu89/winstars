@@ -27,6 +27,20 @@ function index_add(title, url) {
     });
     layer.full(index);
 }
+
+/***
+ *
+ * @param title
+ * @param url
+ */
+function admin_640(title,url) {
+    var index = layer.open({
+        type:2,
+        title:title,
+        content:url,
+        area:['800px','720px']
+    })
+}
 function index_edit(title, url) {
     var index = layer.open({
         type: 2,
@@ -323,37 +337,37 @@ $('.listorder input').blur(function () {
         }
     },"json")
 });
-/**
- * 置顶修改排序操作
- */
-function mark(obj) {
-    var url = SCOPE.listorder_url;
-    var id = $(obj).data("id");
-    var type = $(obj).data("type");
-    var language_id = $("input#language").val();
-    var map = $(obj).data("map");
-    var postData = {
-        'id': id,
-        'type': type,
-        'language_id': language_id,
-        'map': map,
-    };
-    $.ajax({
-        type: 'post',
-        url: url,
-        dataType: 'json',
-        data: postData,
-        success: function (result) {
-            if (result.status == 1) {
-                dialog.OK(result.data, result.jump_url);
-            } else if (result.status == 0) {
-                dialog.error(result.data, result.title, result.btn);
-            } else if (result.status == -1) {
-                dialog.toconfirm(result.data)
-            }
-        }
-    })
-}
+// /**
+//  * 置顶修改排序操作
+//  */
+// function mark(obj) {
+//     var url = SCOPE.listorder_url;
+//     var id = $(obj).data("id");
+//     var type = $(obj).data("type");
+//     var language_id = $("input#language").val();
+//     var map = $(obj).data("map");
+//     var postData = {
+//         'id': id,
+//         'type': type,
+//         'language_id': language_id,
+//         'map': map,
+//     };
+//     $.ajax({
+//         type: 'post',
+//         url: url,
+//         dataType: 'json',
+//         data: postData,
+//         success: function (result) {
+//             if (result.status === 1) {
+//                 dialog.OK(result.data, result.jump_url);
+//             } else if (result.status === 0) {
+//                 dialog.error(result.data, result.title, result.btn);
+//             } else if (result.status === -1) {
+//                 dialog.toconfirm(result.data)
+//             }
+//         }
+//     })
+// }
 /**
  * 上移下移
  */

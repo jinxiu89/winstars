@@ -1,0 +1,153 @@
+<!--包含头部文件-->
+{extend name="pc/base/base" /}
+{block name="title"}
+<title> {$data.name}- By-winstars</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="{$data.description}">
+<meta name="keywords" content="{$data.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
+<style>
+    /* 边框线 */
+    .table > tbody > tr > th {
+        text-align: right
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 20px;
+        border: 1px solid #ddd !important
+    }
+
+    .bs-example > .btn, .bs-example > .btn-group {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* 按钮 */
+    .btn-primary {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #286090;
+        border-color: #204d74;
+    }
+</style>
+{/block}
+{block name="body"}
+<!-- w-Product 产品中心 -->
+<section>
+    <div class="w-product-title">
+        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
+             width="100%" height="" alt="">
+    </div>
+</section>
+
+<!-- w-product-path 产品路径 -->
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" style="display: inline-block">
+                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            </a>
+            >
+            <a href="/en_us/support.html" style="display: inline-block">SUPPORT</a> >
+            <a href="/en_us/support/driver.html" style="display: inline-block" >Driver</a> >
+            <a href="/en_us/support/driver/details/{$data.url_title}.html" class="current">Details</a>
+        </div>
+    </div>
+</section>
+<section style="margin-bottom: 60px">
+    <div class="ProductBox">
+        <div class="ProductRow mt80">
+            <div class="ProductList  clear">
+                <div style="min-height: 800px; background: #fff; width: 100%; padding: 20px">
+                    <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                    <tbody>
+                    <tr>
+                        <th width="20%">Driver Name</th>
+                        <td>{$data.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Version</th>
+                        <td>{$data.version}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Update At</th>
+                        <td>{$data.create_time|strtotime|date="m/d/Y",###}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Support Product</th>
+                        <td>
+                            {notempty name="data.products"}
+                            {volist name="data.products" id="vo"}
+                            <span>{$vo.model}</span>
+                            {/volist}
+                            {else /}
+                            If you lost the user guide and CD driver, you can turn to driver download online here. When you find no applicable model written in “Support Product”, please contact us via email to tech@win-star.com to get information, and we will tell you which one is suitable for your product.
+                            {/notempty}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Download Link</th>
+                        <td>
+                            {notempty name="data.downloads"}
+                            {volist name="data.downloads" id="vo"}
+                            <a class="btn btn-primary" href="{$vo.url}"
+                               style="display: inline-block">{$vo.requirement}</a>
+                            {/volist}
+                            {/notempty}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>* Software update is usually for optimizing the product to support in special environments and applications. If your product works properly, it is not recommended to upgrade your product.</p>
+                            <p>* If you find the links are invalid or any other issues, please email to tech@win-star.com to make feedback or contact online customer service, thank you.</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function () {
+        $('.support').addClass("bgOrangeWhite");
+    })
+</script>
+{/block}
+

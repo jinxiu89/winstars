@@ -1,0 +1,83 @@
+/**
+* @name: product.less
+* @description: win-star.com 手机端 产品一级分类页 样式
+* @author: huang(1367428189@qq.com)
+* @update: 2019-05-07 10:00
+*/
+/**
+* @name: variables.less
+* @description: win-star.com 手机端 公共变量定义文件
+* @author: huang(1367428189@qq.com)
+* @update: 2019-04-30 16:00
+*/
+.product {
+  margin-bottom: 0.4rem;
+  padding: 0 0.4rem 0.4rem;
+  background: #FFFFFF;
+}
+.product .title {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  position: relative;
+  z-index: 1;
+  height: 50px;
+  line-height: 1.333333rem;
+  text-align: center;
+  padding: 0 0.4rem;
+}
+.product .title .line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1px;
+  background: #eaeaea;
+}
+.product .title h3 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 95%;
+  height: 50px;
+  line-height: 50px;
+  color: #EA881B;
+  background: #FFFFFF;
+  font-size: 0.48rem;
+}
+.product .product-box {
+  border: 1px solid #eaeaea;
+  margin-bottom: 0.4rem;
+}
+.product .product-box:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+.product .product-box a {
+  display: block;
+}
+.product .product-box a:hover {
+  text-decoration: none;
+}
+.product .product-box a .description {
+  padding: 0.4rem;
+  color: #333333;
+}
+.product .product-box a .description h3 {
+  padding-bottom: 0.4rem;
+  font-size: 0.373333rem;
+  text-align: center;
+}
+.product .product-box a .description p {
+  color: #888888;
+  font-size: 0.32rem;
+  text-align: center;
+  line-height: 0.48rem;
+}
+@media screen and (max-width: 374px) {
+  .path ul li {
+    margin-right: 0;
+  }
+}
+/*# sourceMappingURL=product.css.map */

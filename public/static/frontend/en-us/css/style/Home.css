@@ -355,3 +355,11 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
         margin-left: 10%
     }
 }
+
+
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > span > a {
+    font-size: 12px
+}
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > span > a:hover {
+    color: #EA881B
+}

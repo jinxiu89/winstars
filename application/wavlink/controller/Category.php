@@ -29,7 +29,6 @@ Class Category extends BaseAdmin
 
     public function add()
     {
-
         //获取语言
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
         if (input('get.parent_id')) {

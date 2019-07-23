@@ -1,0 +1,74 @@
+{extend name="public/base_form" /}
+{block name="form"}
+<form class="form form-horizontal" id="form-product-add" method="post" action="">
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属：</label>
+        <div class="formControls col-xs-4 col-sm-4">
+            <input type="text" class="input-text" value="{$data->driver_id|getDriverNameById}" id="driver_id" disabled>
+            <input type="hidden" class="input-text" value="{$data->driver_id}" name="driver_id">
+            <input type="hidden" class="input-text" value="{$data->id}" name="id">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>系统支持：</label>
+        <div class="formControls col-xs-4 col-sm-4">
+            {if condition="$data.requirement eq 'ALL'"}
+            <label><input type="radio" value="ALL" name="requirement" checked>全部</label>
+            {else /}
+            <label><input type="radio" value="ALL" name="requirement">全部</label>
+            {/if}
+            {if condition="$data.requirement eq 'Windows'"}
+            <label><input type="radio" value="Windows" name="requirement" checked>Windows</label>
+            {else /}
+            <label><input type="radio" value="Windows" name="requirement">Windows</label>
+            {/if}
+            {if condition="$data.requirement eq 'Mac'"}
+            <label><input type="radio" value="Mac" name="requirement" checked>Mac</label>
+            {else /}
+            <label><input type="radio" value="Mac" name="requirement">Mac</label>
+            {/if}
+            {if condition="$data.requirement eq 'Linux'"}
+            <label><input type="radio" value="Linux" name="requirement" checked>Linux</label>
+            {else /}
+            <label><input type="radio" value="Linux" name="requirement">Linux</label>
+            {/if}
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下载链接：</label>
+        <div class="formControls col-xs-4 col-sm-6">
+            <input type="text" class="input-text" value="{$data->url}"  id="url"
+                   name="url">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件大小：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="{$data.size}" id="size" name="size">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件类型：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="{$data.type}"  id="type" name="type">
+        </div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-primary radius" type="button"
+                    onclick="save('{:url(\'Driver/edit_download\',[\'id\'=>$data.id,\'language_id\'=>$language_id])}')">
+                <i
+                        class="Hui-iconfont">&#xe632;</i> 保存
+            </button>
+
+            <button onClick="layer_close();" class="btn btn-default radius" type="button">
+                &nbsp;&nbsp;取消&nbsp;&nbsp;
+            </button>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script>
+</script>
+{/block}

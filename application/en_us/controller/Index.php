@@ -5,6 +5,7 @@ namespace app\en_us\controller;
 use app\common\model\Partner;
 use app\en_us\validate\Index as IndexValidate;
 use app\common\model\Strange;
+use app\common\model\Product as ProductModel;
 
 class Index extends Base
 {
@@ -41,10 +42,16 @@ class Index extends Base
                 }
             }
         }
-        $partner = ((new Partner())->getDateByStatus());
-        $file = fopen(ADMIN_VIEWS . '/cover/cover.html', 'r') or die("不能打开此文件");
-        $content = file_get_contents(ADMIN_VIEWS . '/cover/cover.html');
-        return $this->fetch($this->template . '/index/index.html', ['content' => $content, 'partner' => $partner['data']]);
+        if (request()->isGet()) {
+            $partner = ((new Partner())->getDateByStatus());
+            $file = fopen(ADMIN_VIEWS . '/cover/cover.html', 'r') or die("不能打开此文件");
+            $content = file_get_contents(ADMIN_VIEWS . '/cover/cover.html');
+            return $this->fetch($this->template . '/index/index.html',
+                [
+                    'content' => $content,
+                    'partner' => $partner['data'],
+                ]);
+        }
     }
 
 

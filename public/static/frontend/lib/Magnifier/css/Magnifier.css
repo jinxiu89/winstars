@@ -12,9 +12,9 @@ img {
 /* #MagnifierWrap{position: relative;width: 350px;margin:100px auto;} */
 #MagnifierWrap2 {
     position: relative;
-    width: 80%;
-    margin: 0 auto;
-    z-index: 100
+    /*width: 350px;*/
+    /*margin: 100px auto;*/
+    margin: 0;
 }
 
 .MagnifierMain {
@@ -123,4 +123,10 @@ span.spe_leftBtn {
 
 span.spe_rightBtn {
     right: 0;
+}
+
+@media screen and (min-width: 992px){
+    #MagnifierWrap2 {
+        width: 95%
+    }
 }

@@ -11,6 +11,9 @@ namespace app\common\model;
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Category as CategoryHelp;
 use app\common\model\Product as ProductModel;
+use think\Cache;
+use think\Exception;
+use think\exception\DbException;
 
 Class Category extends BaseModel
 {
@@ -21,10 +24,11 @@ Class Category extends BaseModel
     //与产品多对多关联
     public function products()
     {
-        return $this->belongsToMany('Product', 'product_category', 'product_id', 'category_id');
+        return $this->belongsToMany('Product', 'product_category', 'product_id', 'category_id')->field('id,name,model');
     }
 
     //获取中间表数据,得到分类下的产品id
+    //把foreach的数据也缓存起来
     public static function getProductCategory($id)
     {
         $product = self::get($id);
@@ -36,6 +40,16 @@ Class Category extends BaseModel
         return $ids;
     }
 
+    public function getCategoryByUrlTitle($category)
+    {
+        //通过分类ID 拿到产品的IDS的集合
+        try {
+            return self::where(['url_title' => $category])->field('id,url_title,name')->find();
+        } catch (Exception $exception) {
+            return [];
+        }
+    }
+
     /***
      * @param $category
      * @param $language_id
@@ -43,6 +57,7 @@ Class Category extends BaseModel
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
+     * 更新缓存操作
      */
     public function getCategoryByName($category, $language_id)
     {
@@ -50,33 +65,41 @@ Class Category extends BaseModel
             "url_title" => $category,
             "language_id" => $language_id
         );
-        $category = $this->where($map)->find()->toArray();
-        return $category;
+        if (!$this->debug) {
+            if (!Cache::get('CategoryByName' . $category)) {
+                Cache::set('CategoryByName' . $category, $this->where($map)->find()->toArray());
+            }
+        }
+
+        return $this->debug ? $this->where($map)->find()->toArray() : Cache::get('CategoryByName' . $category);
     }
 
+    /***
+     * @param $code
+     * @return false|mixed|\PDOStatement|string|\think\Collection
+     * @throws DbException
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     *
+     */
     public function getDataByCode($code)
     {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
-        $map = [
-            'language_id' => $language_id,
-            'status' => 1
-        ];
-        return $this->where($map)->order(['listorder'=>'desc','id'=>'asc'])->select();
-
+        $map = ['language_id' => $language_id, 'status' => 1];
+        if (!$this->debug) {
+            if (!Cache::get('CategoryByCode')) {
+                Cache::set('CategoryByCode', $this->where($map)->order(['listorder' => 'desc', 'id' => 'asc'])->select());
+            }
+        }
+        return $this->debug ? $this->where($map)->order(['listorder' => 'desc', 'id' => 'asc'])->select() : Cache::get('CategoryByCode');
     }
 
     public static function getCategoryWithProduct($id)
     {
         $ids = static::getProductCategory($id);
-        $order = [
-            'listorder' => 'desc',
-            'id' => 'desc'
-        ];
-        $product = (new ProductModel())->where('id', 'in', $ids)
-            ->where('status', '=', 1)
-            ->order($order)
-            ->paginate();
-        return $product;
+        $order = ['listorder' => 'desc', 'id' => 'desc'];
+        $feild = 'id,name,url_title,model,keywords,album';
+        return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where('status', '=', 1)->order($order)->field($feild)->paginate(9);
     }
 
     //获取分类id 或者 子分类id
@@ -131,25 +154,39 @@ Class Category extends BaseModel
 
 
     //根据parent_id 获取分类数据
+
+    /***
+     * @param $code
+     * @param int $parent_id
+     * @return false|mixed|\PDOStatement|string|\think\Collection
+     * @throws DbException
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * 升级缓存
+     */
     public function getNormalCategory($code, $parent_id = 0)
     {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
-        $map = [
-            'status' => 1,
-            'language_id' => $language_id,
-            'parent_id' => $parent_id,
-        ];
-        $order = [
-            'listorder' => 'desc',
-            'id' => 'asc'
-        ];
-        return $this->where($map)
-            ->order($order)
-            ->field('name,url_title,id,image')
-            ->select();
+        $map = ['status' => 1, 'language_id' => $language_id, 'parent_id' => $parent_id,];
+        $order = ['listorder' => 'desc', 'id' => 'asc'];
+        $field = 'name,url_title,id,image';
+        if (!$this->debug) {
+            if (!Cache::get('NormalCategory')) {
+                Cache::set('NormalCategory', $this->where($map)->order($order)->field($field)->select());
+            }
+        }
+        return $this->debug ? $this->where($map)->order($order)->field($field)->select() : Cache::get('NormalCategory');
     }
 
     //获取所有的分类，并且递归
+
+    /***
+     * @param $value
+     * @return array
+     * @throws DbException
+     * 把查库的操作缓存起来防止慢查询
+     *
+     */
     public function getAllCategory($value)
     {
         $language_id = LanguageModel::getLanguageCodeOrID($value);
@@ -161,9 +198,19 @@ Class Category extends BaseModel
             'status' => 1
         ];
         if (empty($language_id)) {
-            $category = Category::all($data);
+            if (!$this->debug) {
+                if (!Cache::get('AllCategory')) {
+                    Cache::set('AllCategory', Category::all($data));
+                }
+                $category = $this->debug ? Cache::get() : Category::all($data);
+            }
         } else {
-            $category = Category::all($data_language);
+            if (!$this->debug) {
+                if (!Cache::get('AllCategory')) {
+                    Cache::set('AllCategory', Category::all($data_language));
+                }
+            }
+            $category = $this->debug ? Category::all($data_language) : Cache::get('AllCategory');
         }
         $categorys = CategoryHelp::toLevel($category, '--', 0);
         return $categorys;
@@ -179,14 +226,32 @@ Class Category extends BaseModel
         ];
         $cate = self::all($map);
         $data = CategoryHelp::toLayer($cate, 'child');
-//        $data = $this->getNormalCategory($language_id);
-//        foreach ($data as $v) {
-//            foreach ($cate as $vo) {
-//                if($vo['parent_id'] == $v['id']) {
-//                    $v['childs'] = CategoryHelp::getChilds($cate,$v['id']);
-//                }
-//            }
-//        }
         return $data;
+    }
+
+    /***
+     * @param $language_id
+     * @return array
+     * @throws \think\exception\DbException
+     *
+     */
+    public function getCategoryLevel($language_id)
+    {
+        $language_id = LanguageModel::getLanguageCodeOrID($language_id);
+        $map = [
+            'status' => 1,
+            'language_id' => $language_id
+        ];
+        $cate = self::all($map);
+        return CategoryHelp::toLevel($cate, '--', 0);
+    }
+
+    public function getDataByCategoryId($category_id)
+    {
+        try {
+            return collection(self::with('products')->field('id,name')->where(['id' => $category_id])->select())->toArray();
+        } catch (DbException $e) {
+            $this->error($e->getMessage());
+        }
     }
 }

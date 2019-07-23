@@ -1,0 +1,67 @@
+{extend name="mobile/base/base"}
+{block name="title"}Search product{/block}
+{block name="seo"}
+<meta name="description" content="">
+<meta name="keywords" content="">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="title">
+        <p>{$count} results found</p>
+    </div>
+</div>
+<div class="row">
+    <div class="product">
+        <div class="product-container">
+            {notempty name="result"}
+            {volist name="result" id="vo"}
+            <div class="product-box">
+                <a href="/en_us/product/{$vo.url_title}">
+                    <img src="{$vo.album|getThumbnail}" alt="">
+                </a>
+                <div class="description">
+                    <h3>{$vo.name}</h3>
+                    <p>{$vo.keywords|getTags}</p>
+                    <span>{$vo.model}</span>
+                    <span>
+                        <a href="/en_us/product/{$vo.url_title}">Details</a>
+                    </span>
+                </div>
+            </div>
+            {/volist}
+            {else /}
+            <div class="recommend-title">
+                <h4>You might be interested</h4>
+            </div>
+            {notempty name="hotSale"}
+            {volist name="hotSale" id="vo"}
+            <div class="product-box">
+                <a class="img-box" href="/en_us/product/{$vo.url_title}">
+                    <img src="{$vo.album}" alt="">
+                </a>
+                <div class="description">
+                    <h3>{$vo.name}</h3>
+                    <p>{$vo.keywords|getTags}</p>
+                    <span>{$vo.model}</span>
+                    <span>
+                        <a href="/en_us/product/{$vo.url_title}">Details</a>
+                    </span>
+                </div>
+            </div>
+            {/volist}
+            {/notempty}
+            {/notempty}
+        </div>
+        <div class="page">
+            <nav aria-label="Page navigation">
+                {notempty name="result"}
+                {:pagination($result)}
+                {/notempty}
+            </nav>
+        </div>
+    </div>
+</div>
+{/block}

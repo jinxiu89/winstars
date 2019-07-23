@@ -58,6 +58,7 @@
         </div>
     </div>
     <div class="row cl">
+        {:token()}
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
             <input class="btn btn-primary radius" type="button" onclick="save('{:url(\'About/save\')}')"
                    value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -93,8 +94,5 @@
             markdown : "##在这里尽情的书写你娴熟的markdown吧",
         });
     });
-    // $(".btn").click(function () {
-    //     editor.save();
-    // });
 </script>
 {/block}

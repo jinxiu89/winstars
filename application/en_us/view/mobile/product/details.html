@@ -1,0 +1,141 @@
+{extend name="mobile/base/base"}
+{block name="title"}{$result.seo_title}{/block}
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Swiper/css/swiper.min.css">
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/new-detail.css">
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i >></i></li>
+            <li><a href="/en_us/category.html">PRODUCTS</a></li>
+            {notempty name="path"}
+            {volist name="path" id="vo"}
+            <li><i >></i></li>
+            <li><a href="/en_us/category/{$vo.url_title}.html">{$vo.name}</a></li>
+            {/volist}
+            {else /}
+            {/notempty}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-ios">
+        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-4900px, 0px, 0px);">
+            {volist name="result.albums" id="vo"}
+            <div class="swiper-slide" style="width: 980px;">
+                <img src="{$vo}" alt="">
+            </div>
+            {/volist}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-fraction">
+            <span class="swiper-pagination-current">6</span> / <span class="swiper-pagination-total">10</span>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
+        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+</div>
+<div class="row">
+    <div class="tab-bar">
+        <div class="container">
+            <div class="row">
+                <div class="tab-bar-title">
+                    <p>{$result.name}</p>
+                    <i class="iconfont icon-arrowdown"></i>
+                </div>
+                <ul>
+                    <li>CONTENTS</li>
+                    <li>SPECIFICATION</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="content">
+        <div class="boxA" id="content">
+            <textarea style="display:none;" name="content">{$result.content}</textarea>
+        </div>
+        <div class="boxB" id="specifications">
+            <textarea style="display:none;" name="specifications">{$result.specifications}</textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="g-category">
+        {notempty name="tree"}
+        {volist name="tree" id="vo"}
+        <span>{$vo.name}</span>
+        <ul>
+            {volist name="vo.child" id="co"}
+            <li class="{$co.url_title}">
+                <a href="/en_us/category/{$vo.url_title}.html">{$co.name}</a>
+            </li>
+            {/volist}
+        </ul>
+        {/volist}
+        {/notempty}
+    </div>
+</div>
+{/block}
+{block name="javascript"}
+<script src="__STATIC__/frontend/mobile/js/pages/new-detail/new-detail.js"></script>
+<script src="__STATIC__/frontend/lib/Swiper/js/swiper.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            editormd.markdownToHTML("features", {
+                htmlDecode: "style,script,iframe",
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe",
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+            editormd.markdownToHTML("specifications",{
+                htmlDecode: "style,script,iframe",
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        });
+    });
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+{/block}

@@ -1,0 +1,53 @@
+{extend name="public/base_form" /}
+{block name="form"}
+<form class="form form-horizontal" id="form-product-add" method="post" action="">
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属：</label>
+        <div class="formControls col-xs-4 col-sm-4">
+            <input type="text" class="input-text" value="{$driver_id|getDriverNameById}" id="driver_id" disabled>
+            <input type="hidden" class="input-text" value="{$driver_id}" placeholder=""  name="driver_id">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>系统支持：</label>
+        <div class="formControls col-xs-4 col-sm-4">
+            <label ><input type="radio" value="ALL" name="requirement">全部</label>
+            <label ><input type="radio" value="Windows" name="requirement">Windows</label>
+            <label ><input type="radio" value="Mac" name="requirement" >Mac</label>
+            <label ><input type="radio" value="Linux" name="requirement">Linux</label>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下载链接：</label>
+        <div class="formControls col-xs-4 col-sm-6">
+            <input type="text" class="input-text" value="" placeholder="https://cloud.wavlink.com/..." id="url" name="url">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件大小：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="" placeholder="" id="size" name="size">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件类型：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="" placeholder="" id="type" name="type">
+        </div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-primary radius" type="button" onclick="save('{:url(\'Driver/add_download\',[\'driver_id\'=>$driver_id,\'language_id\'=>$language_id])}')"><i
+                    class="Hui-iconfont">&#xe632;</i> 保存
+            </button>
+
+            <button onClick="layer_close();" class="btn btn-default radius" type="button">
+                &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script>
+</script>
+{/block}

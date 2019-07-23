@@ -14,8 +14,8 @@
 <!-- w-Product 产品中心 -->
 <section>
     <div class="w-product-title">
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=8094araJA8qDFM7Q1wDCrons5Cj62IGI3Hz84AoZrhkoQsJ7ATpH_31kXaEtp2h4NPhBOF4U28C8Q-9jRVtXq22iaBC9QmEqpm4Dqr8fvXhC2G5BxbfddLVc77vzIxIibTq7UtqY1Uav-8IwIT1cME8&file_name=/product_list.jpg"
-             width="100%" height="300px" alt="">
+        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
+             width="100%" height="" alt="">
     </div>
 </section>
 
@@ -27,28 +27,22 @@
             <a href="/en_us/" style="display: inline-block">
                 <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
             </a>
-            <i class="iconfont">&#xeb9a;</i>
+            >
             <a href="/en_us/category.html" style="display: inline-block" class="current">PRODUCTS</a>
         </div>
     </div>
 </section>
 
 <section style="margin-bottom: 60px">
-    {notempty name="navbar"}
-    {volist name="navbar" id="vo"}
-    {$vo}
-    {/volist}
-    {else /}
-    {/notempty}
     {volist name="tree" id="vo"}
     <div class="ProductBox">
         <div class="ProductRow mt80">
-            {notempty name="vo.title"}
+            {notempty name="vo.child"}
             <h2 class="f18 mb15 fOrange tc">- {$vo.name} -</h2>
             <div class="ProductList bgWhite clear">
-                {volist name="vo.title" id="co"}
-                <div class="relative w30 oh fl">
-                    <div>
+                {volist name="vo.child" id="co"}
+                <div class="fl">
+                    <div class="child relative oh">
                         <img src="{$co.image}" width="100%" alt="">
                         <div class="mask-layer absolute w100 bgMaskLayer animate_time">
                             <a href="/en_us/category/{$co.url_title}.html"><h3 class="fWhite cursorP">{$co.name}</h3></a>

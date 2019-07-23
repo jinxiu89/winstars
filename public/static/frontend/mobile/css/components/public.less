@@ -1,0 +1,365 @@
+/**
+* @name: public.less
+* @description: win-star.com 手机端 头部导航、页脚 布局样式
+* @author: huang(1367428189@qq.com)
+* @update: 2019-04-30 16:00
+*/
+//header、footer样式
+@import "../../../lib/Bootstrap/bootstrap-3.3.7.min.css";
+@import "../../../lib/ico/iconfont.css";
+//Iconfont阿里巴巴矢量图标库
+@import "../style_reset/reset.css";
+//手机端基础样式重置
+@import "../public_class/mixins";
+@import "../public_class/variables";
+
+body {
+  background: @bodyBackground;
+}
+
+img {
+  .img-responsive();
+  .center-block();
+}
+
+/*
+.container {
+    padding: 0;
+    margin: 0;
+}
+.row {
+    padding: 0;
+    margin: 0;
+}
+*/
+
+//header开始
+header {
+  padding: @publicInterval;
+  background: @activeColor;
+  .icon-box {
+    .clearFix();
+    overflow: hidden;
+    height: 0.693333rem;
+
+    .icon-menus {
+      .fl();
+      width: 10%;
+    }
+    .icon-menus .iconfont {
+      font-size: 0.533333rem;
+      color: @whiteColor;
+    }
+
+    .logo {
+      .fl();
+      width: 80%;
+      text-align: center;
+    }
+    .logo a {
+      display: inline-block;
+    }
+    .logo a img {
+      height: 0.533333rem;
+    }
+
+    .icon-link {
+      .fl();
+      width: 10%;
+      text-align: right;
+    }
+    .icon-link .iconfont {
+      font-size: 0.533333rem;
+      color: @whiteColor;
+    }
+  }
+
+  .search-box {
+    position: relative;
+    input {
+      padding: 0 .8rem 0 @publicInterval;
+      width: 100%;
+      height: 0.8rem;
+      font-size: 12px;
+      color: @whiteSmoke;
+      #border-radius(.15625rem)
+    }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      width: 0.8rem;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      text-align: center;
+      background: @whiteColor;
+      #border-radius(0 .15625rem .15625rem 0)
+    }
+    button .iconfont {
+      font-size: 0.56rem;
+    }
+  }
+
+  .menu-box {
+    display: none;
+    .clearFix();
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+
+    .menu-pane {
+      .fl();
+      width: 0;
+      height: 100%;
+      background: @whiteColor;
+    }
+    .menu-pane .menu-title h2 {
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      background: @activeColor;
+      color: @whiteColor;
+      #fontSize(largest)
+    }
+    .menu-pane .menu-item {
+      padding: @publicInterval;
+    }
+    .menu-pane .menu-item a {
+      .clearFix();
+      overflow: hidden;
+      display: block;
+      color: #333;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid @border-color;
+    }
+    .menu-pane .menu-item a .iconfont {
+      .fl();
+      display: block;
+      margin-right: .46875rem;
+      height: 50px;
+      font-size: .5625rem;
+    }
+    .menu-pane .menu-item a span {
+      .fl();
+      display: block;
+      height: 50px;
+      font-size: 14px;
+    }
+
+    .menu-pane-close {
+      .fl();
+      width: 30%;
+      height: 100%;
+    }
+  }
+}
+
+//header结束
+
+//footer开始
+footer {
+  margin-top: 60px;
+  .about {
+    background: #333;
+    padding: 1.875rem 20px;
+    
+
+    .about-item {
+      padding: 0 5px;
+      border-bottom: 1px solid #5a5656;
+    }
+    .about-item h3 {
+      position: relative;
+      height: 50px;
+      line-height: 50px;
+      color: #888;
+      font-size: 14px;
+    }
+    .about-item h3 span {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .about-item ul {
+      display: none;
+      padding: 0 @publicInterval;
+    }
+    .about-community ul {
+      display: block;
+    }
+    .about-item ul a {
+      height: 50px;
+      line-height: 50px;
+      color: #888;
+      font-size: 12px;
+    }
+    .about-item ul a .iconfont {
+      padding: 0 @publicInterval;
+      font-size: 0.5625rem;
+    }
+  }
+
+  .copy-right {
+    background: @activeColor;
+    padding: @publicInterval;
+    p {
+      text-align: center;
+      color: @whiteColor;
+      #lineHeight(small);
+      font-size: 12px;
+    }
+    p a {
+      color: @whiteColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+//footer结束
+
+//其他组件
+.g-path {
+  .clearFix();
+  background: @whiteColor;
+  margin: @publicInterval 0;
+  padding: 0 @publicInterval;
+
+  ul {
+    .clearFix();
+    width: 100%;
+    height: 50px;
+    .text-overflow();
+  }
+  ul li {
+    .fl();
+    margin-right: 0.133333rem;
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+  }
+  ul li a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    color: @darkColor;
+    #fontSize(small)
+  }
+  ul li i {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: .48rem;
+  }
+}
+
+.g-category {
+  position: relative;
+  background: @whiteColor;
+  margin: 0 0 @publicInterval;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid @whiteColor;
+  }
+  .current {
+    color: @activeColor;
+  }
+
+  span {
+    display: block;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid @border-color;
+    font-weight: bold;
+  }
+
+  ul {
+    .clearFix();
+
+  }
+
+  ul li {
+    .fl();
+    padding: 0 @publicInterval;
+    width: 50%;
+    .text-overflow();
+    border-bottom: 1px solid @border-color;
+    &:nth-of-type(2n + 1) {
+      border-right: 1px solid @border-color;
+    }
+  }
+  ul li a {
+    display: block;
+    line-height: 50px;
+    color: @darkColor;
+  }
+}
+
+.g-item-list {
+  a {
+    color: @darkColor;
+  }
+  thead tr {
+    #fontSize(medium)
+  }
+
+  thead tr th {
+    padding: @publicInterval 5px;
+    #lineHeight(medium);
+    font-weight: bold;
+    border-bottom: 2px solid @border-color;
+  }
+
+  tbody tr {
+    font-size: .346666rem;
+  }
+  tbody tr th {
+    padding: @publicInterval 5px;
+    #lineHeight(medium);
+    border-bottom: 1px solid @border-color;
+  }
+}
+
+.g-item-detail {
+  background: @whiteColor;
+
+  dl {
+    padding: 10px 0;
+    border-bottom: 1px solid @border-color;
+    &:nth-last-of-type(1) {
+      border-bottom: none;
+      dd {
+        padding-bottom: 5px;
+        color: @whiteSmoke;
+      }
+    }
+
+    dt {
+      padding-bottom: 10px;
+      #fontSize(medium);
+    }
+
+    dd {
+      .clearFix();
+      #fontSize(small);
+    }
+    dd span {
+      display: block;
+      .fl();
+      padding: 5px 0;
+      width: 33%;
+    }
+  }
+}
+
+//其他组件

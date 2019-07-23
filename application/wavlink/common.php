@@ -108,36 +108,36 @@ function ticket_status($status){
     return $str;
 }
 
-/**
- * 记录数查询
- * 用于排序操作
- * @param $table
- * @param $map
- * @param $order
- * @param $limit
- * @param $field
- * @param $map2
- * @return array|false|PDOStatement|string|\think\Model
- * @throws \think\db\exception\DataNotFoundException
- * @throws \think\db\exception\ModelNotFoundException
- * @throws \think\exception\DbException
- */
-function limit($table,$map,$order,$limit,$field,$map2){
-    $_listorder = model($table)->where($map)
-        ->where($map2)
-        ->field($field)
-        ->order($order)
-        ->limit($limit)
-        ->select();
-    $listorder = collection($_listorder)->toArray();
-
-    if (!empty($listorder)){
-        return $listorder;
-    }else{
-//        return show(0,'已经是置顶或者置底了，移动它的位置请上移或者下移，或者直接修改排序','');
-        return false;
-    }
-}
+///**
+// * 记录数查询
+// * 用于排序操作
+// * @param $table
+// * @param $map
+// * @param $order
+// * @param $limit
+// * @param $field
+// * @param $map2
+// * @return array|false|PDOStatement|string|\think\Model
+// * @throws \think\db\exception\DataNotFoundException
+// * @throws \think\db\exception\ModelNotFoundException
+// * @throws \think\exception\DbException
+// */
+//function limit($table,$map,$order,$limit,$field,$map2){
+//    $_listorder = model($table)->where($map)
+//        ->where($map2)
+//        ->field($field)
+//        ->order($order)
+//        ->limit($limit)
+//        ->select();
+//    $listorder = collection($_listorder)->toArray();
+//
+//    if (!empty($listorder)){
+//        return $listorder;
+//    }else{
+////        return show(0,'已经是置顶或者置底了，移动它的位置请上移或者下移，或者直接修改排序','');
+//        return false;
+//    }
+//}
 
 /**
  * 获取某个目录下的php文件名的函数

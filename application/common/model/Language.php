@@ -5,14 +5,21 @@
  * Date: 2017/9/8
  * Time: 15:00
  */
+
 namespace app\common\model;
+
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\exception\DbException;
+use think\Cache;
 
 class Language extends BaseModel
 {
     protected $table = 'language';//使用数据库里这个language表
 
     //检测管理员 管理哪个语言的网站
-    public static function getLanguageByIDs($ids) {
+    public static function getLanguageByIDs($ids)
+    {
         $map = [
             'id' => ['in', $ids],
             'status' => 1
@@ -26,41 +33,66 @@ class Language extends BaseModel
      * @param $value
      * @return mixed
      */
-    public static function getLanguageCodeOrID($value){
-        if (isPositiveInteger($value)){
+    public static function getLanguageCodeOrID($value)
+    {
+        if (isPositiveInteger($value)) {
             return $value;
-        }else{
+        } else {
             $language = self::getIDStatusByCode($value);
             return $language['id'];
         }
     }
+
     /**
      * 根据语言code 获取 语言状态,语言id,
      * @param 模块名|string $code 模块名
      * @return array|false|\PDOStatement|string|\think\Model
      */
-    public static function getIDStatusByCode($code = 'en_us') {
-        $map = [
-            'code' => $code
-        ];
-        $result = self::where($map)->field('id,status')->find();
+    public static function getIDStatusByCode($code = 'en_us')
+    {
+        if (!config('app_debug')) { //true 的反值是false
+            try {
+                if(!Cache::get('languageIds')){
+                    Cache::set('languageIds', (new Language)->where(['code' => $code])->field('id,status')->find());
+                }
+            } catch (DataNotFoundException $e) {
+            } catch (ModelNotFoundException $e) {
+            } catch (DbException $e) {
+            }
+        }
+        try {
+            $result = config('app_debug') ? (new Language)->where(['code' => $code])->field('id,status')->find() : Cache::get('languageIds');
+        } catch (DataNotFoundException $e) {
+
+        } catch (ModelNotFoundException $e) {
+
+        } catch (DbException $e) {
+
+        }
         return $result;
     }
 
     //根据语言id获取语言code
-    public static function getCodeById($id = '') {
+    public static function getCodeById($id = '')
+    {
         $map = [
             'status' => 1,
             'id' => $id
         ];
-        $result = self::where($map)->find();
+        try {
+            $result = (new Language)->where($map)->find();
+        } catch (DataNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
+        } catch (DbException $e) {
+        }
         return $result['code'];
 
 
     }
 
 
-    public function getLanguageByLanguageId($language_id) {
+    public function getLanguageByLanguageId($language_id)
+    {
         $data = [
             'status' => 1,
             'id' => $language_id

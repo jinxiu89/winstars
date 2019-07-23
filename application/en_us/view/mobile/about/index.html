@@ -1,0 +1,71 @@
+{extend name="mobile/base/base"}
+{block name="title"}{$result.name}{/block}
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i > > </i></li>
+            <li><a href="/en_us/about.html">About</a></li>
+            <li><i > > </i></li>
+            <li><a href="/en_us/about/{$result.url_title}.html">{$result->name}</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="g-category">
+        <ul>
+            {notempty name="list"}
+            {volist name="list" id="vo"}
+            <li class="{$vo.url_title}">
+                <a href="/en_us/about/{$vo.url_title}.html">{$vo.name}</a>
+            </li>
+            {/volist}
+            {else /}
+            {/notempty}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div id="content" class="markdown-body editormd-html-preview">
+        {$result.content_html|htmlspecialchars_decode}
+    </div>
+</div>
+{/block}
+{block name="javascript"}
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        })
+    });
+    $(document).ready(function () {
+        $(".about").addClass("bgOrangeWhite");
+        var current;
+        current = "." + "{$result.url_title}" + " a";
+        $(current).addClass("current");
+    });
+</script>
+{/block}

@@ -8,19 +8,68 @@
 {/block}
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_Details.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Side-navigation/css/Side-navigation.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Right-navigation/css/Right-navigation.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Magnifier/css/Magnifier.css">
 <link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
-{/block}
-{block name="body"}
 <style>
-    span.on {
-        background-color: #EA881B !important
+    div.main {
+        width: 69%;
+        margin-right: 1%
     }
-    .spec-items li.on {
-        border-color: #EA881B !important
+    div.aside {
+        width: 30%;
+    }
+
+    div.aside > div {
+        margin-bottom: 12px;
+        background-color: #fff
+    }
+
+    div.aside > div > h3 {
+        line-height: 42px;
+        padding: 0 10px;
+        font-size: 14px;
+        color: #EA881B
+    }
+
+    div.main > .nav span {
+        float: left;
+        padding: 12px 10px;
+        cursor: pointer;
+        margin-right: 5px
+    }
+    div.main > .nav span:hover {
+        border-bottom: 1px solid #EA881B
+    }
+
+    div.main > .content {
+        padding: 20px
+    }
+
+    div.main > .content > div {
+        display: none
+    }
+    .border_bottom_color {
+        border-bottom: 1px solid #EA881B
     }
 </style>
+{/block}
+{block name="body"}
+<!--<style>-->
+    <!--span.on {-->
+        <!--background-color: #EA881B !important-->
+    <!--}-->
+
+    <!--.spec-items li.on {-->
+        <!--border-color: #EA881B !important-->
+    <!--}-->
+
+    <!--.Scrolling-navigation ol li:hover {-->
+        <!--border-bottom: 1px #EA881B solid;-->
+    <!--}-->
+<!--</style>-->
 <hr style="border: 1px solid #f2f2f2">
 <!-- w-product-path 产品路径 -->
 <section>
@@ -29,17 +78,18 @@
             <a href="/en_us/" style="display: inline-block">
                 <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
             </a>
-            <i class="iconfont">&#xeb9a;</i>
+            >
             <a href="/en_us/category.html" style="display: inline-block">PRODUCTS</a>
-            <i class="iconfont">&#xeb9a;</i>
+            >
             <a href="/en_us/product/{$result.url_title}.html" style="display: inline-block" class="current">{$result.model}</a>
 
         </div>
     </div>
 </section>
+<section>
     <div class="Details clear pd20 bgWhite" style="margin: 15px auto">
-        <div class="Product_title fn w100">
-            <h2>{$result.name}</h2>
+        <div class="Product_title fn">
+            <h2>{$result.name} </h2>
         </div>
         <div class="magnifier">
             <div id="MagnifierWrap2">
@@ -59,154 +109,116 @@
         </div>
         <div class="Characteristic pl20">
             <ul>
-                <!-- markdown-body editormd-html-preview -->
                 <li class="mb50">
                     <h3 class="mb15 fOrange f14">DESCRIPTION</h3>
                     <p class="lh14 f14 fGrayBlack mb20">
                         {$result.description}
                     </p>
                 </li>
-                <li id="features mb50">
-                    <h3 class="mb15 fOrange f14">FEATURES</h3>
-                    <textarea style="display:none;" name="features">{$result.features}</textarea>
-                </li>
-                <li class="mb15">
+                <li class="mb50">
                     <h3 class="mb15 fOrange f14">MODEL</h3>
-                    <p>{$result.model}</p>
+                    <p class="lh14 f14 fGrayBlack mb20">{$result.model}</p>
                 </li>
-                <li class="tag mb15">
-                    <h3 class="mb15 fOrange f14">TAGS</h3>
-                    <p class="lh14 f14 fGrayBlack mb20"><i class="icon-tags" style="font-size: 12px"></i> {$result.keywords|getTags}</p>
+                <li class="mb50">
+                    <h3 class="mb15 fOrange f14">FEATURES</h3>
+                    <div id="features">
+                        <textarea style="display:none;" name="features">{$result.features}</textarea>
+                    </div>
                 </li>
             </ul>
-            <!--<p class="add clear">-->
-                <!--<a href="#">ADD TO LIST</a>-->
-            <!--</p>-->
+            <p class="add clear" style="margin-top: 14%">
+                <!--<a class="fr tc f12" href="#">ADD TO LIST</a>-->
+            </p>
         </div>
     </div>
 </section>
 <!-- Product_list_Details end 产品详情 结尾 -->
 <section>
-    <div class="Scrolling-navigation clear pt50 bgWhite" style="margin:0 auto">
-        <!-- 左右滚动导航按钮 -->
-        <ol class="nav clear">
-            <li class="fl cursorP tc">CONTENTS</li>
-            <li class="fl cursorP tc">SPECIFICATION</li>
-        </ol>
-        <!-- 左右滚动导航内容列表 -->
-        <div class="content clear fl oh">
-            <div>
-                <ul class="clear">
-                    <li id="content fl">
-                        <textarea style="display:none;" name="content_html">{$result.content}</textarea>
-                    </li>
-                    <li id="specifications fl">
-                        <textarea style="display:none;" name="content_html">{$result.specifications}</textarea>
-                    </li>
-                </ul>
+    <div class="Scrolling-navigation clear" style="margin: 0 auto 80px">
+        <div class="main clear fl">
+            <div class="nav clear bgWhite tc" style="padding: 30px 30px 0">
+                <span>CONTENTS</span>
+                <span>SPECIFICATION</span>
+            </div>
+            <div class="content bgWhite">
+                <div id="content">
+                    <textarea style="display:none;" name="content">{$result.content}</textarea>
+                </div>
+                <div id="specifications">
+                    <textarea style="display:none;" name="specifications">{$result.specifications}</textarea>
+                </div>
             </div>
         </div>
-        <div class="right_list fl pd20">
-            <ul>
-                <li class="mb50">
-                    <h3 class="f14 mb15 fOrange">BEST SELLERS</h3>
-                    <div class="pd15 oh" style="border: 1px solid #e9e9e9">
-                        <a href="#">
-                            <img class="w100 animate_time" src="{$bestSales.album}" alt="">
-                        </a>
-                        <div>
-                            <h4>
-                                <a class="f15 fNomal" href="/en_us/product/{$bestSales.url_title}" target="_blank">{$bestSales.name}</a>
-                            </h4>
-                            <p class="tag f12 lh14 pt20 pb20">
-                                <i class="icon-tags" style="font-size: 12px"></i> {$bestSales.keywords|getTags}
-                            </p>
+        <div class="aside fl">
+            <div>
+                <h3>CATEGORIES</h3>
+                <ul class="expmenu">
+                    {volist name="tree" id="vo"}
+                    <li>
+                        <div class="header">
+                            <span class="label">{$vo.name}</span>
+                            <span class="arrow iconfont icon-arrowon fWhite"></span>
                         </div>
-                        <div class="btn clear">
-                            <a class="fl f12 fOrange" href="/en_us/product/{$bestSales.url_title}" target="_blank" style="padding: 6px 8px">{$bestSales.model}</a>
-                            <a class="fr" href="/en_us/product/{$bestSales.url_title}" target="_blank" style="padding: 6px 8px; border: 1px solid #b9b9b9">Details</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="mb50">
-                    <h3 class="f14 mb15 fOrange">CATEGORIES</h3>
-                    <div class="list">
-                        <ul class="yiji">
-                            {volist name="tree" id="vo"}
-                            {notempty name="vo.title"}
-                            <li class="{$vo.url_title}">
-                                <a href="{notempty name='vo.title'}javascript:void(0);{else /}#{/notempty}"
-                                   class="{notempty name='vo.title'}iconfont icon-arrowdown{else /}{/notempty}">{$vo.name}</a>
-                                <ul class="ul-level-2">
-                                    {volist name="vo.title" id="co"}
-                                    <li class="{$co.url_title}">
-                                        <a href="{notempty name='co.title'}javascript:void(0);{else /}/en_us/category/{$co.url_title}{/notempty}"
-                                           class="{notempty name='co.title'}iconfont icon-arrowdown{else /}{/notempty}">{$co.name}</a>
-                                        {notempty name="co.title"}
-                                        <ul class="ul-level-3">
-                                            {volist name="co.title" id="o"}
-                                            <li class="{$o.url_title}"><a href="/en_us/category/{$o.url_title}">{$o.name}</a>
-                                            </li>
-                                            {/volist}
-                                        </ul>
-                                        {else}
-                                        {/notempty}
-                                    </li>
+                        <span class="no">
+                            <ul class="menu" style="display:block;">
+                                {volist name="vo.child" id="co"}
+                                <li onClick="javascript:ShowMenu(this)" class="{$co.url_title}">
+                                    {notempty name="co.child"}
+                                    <a href="javascript:void(0)" class="clear"> {$co.name} <i>+</i></a>
+                                    {else /}
+                                    <a href="/en_us/category/{$co.url_title}.html"> {$co.name}</a>
+                                    {/notempty}
+                                </li>
+                                <ol class="no">
+                                    {notempty name="co.child"}
+                                    {volist name="co.child" id="o"}
+                                    <a href="/en_us/category/{$o.url_title}.html" title="{$o.name}"
+                                       class="{$o.url_title}">{$o.name}</a>
                                     {/volist}
-                                </ul>
-                            </li>
-                            {else /}
-                            {/notempty}
-                            {/volist}
-                        </ul>
+                                    {else}
+                                    {/notempty}
+                                </ol>
+                                {/volist}
+                            </ul>
+                        </span>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div>
+                <h3>BEST SELLERS</h3>
+                <div class="NewProduct pd15 oh" style="border: 1px solid #e9e9e9">
+                    <a href="#">
+                        <img class="w100 animate_time"
+                             src="{$bestSales.album}"
+                             alt="">
+                    </a>
+                    <div>
+                        <h4>
+                            <a class="f15 fNomal" href="/en_us/product/{$bestSales.url_title}.html" target="_blank">{$bestSales.name}</a>
+                        </h4>
+                        <p class="tag f12 lh14 pt20 pb20">
+                            {$bestSales.keywords|getTags}
+                            </p>
                     </div>
-                </li>
-                <!--<li>-->
-                    <!--<h3>RELATED PRODUCTS</h3>-->
-                    <!--<ol>-->
-                        <!--<li>-->
-                            <!--<a href="#">-->
-                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
-                            <!--</a>-->
-                            <!--<div>-->
-                                <!--<h4>-->
-                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
-                                <!--</h4>-->
-                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">-->
-                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
-                            <!--</a>-->
-                            <!--<div>-->
-                                <!--<h4>-->
-                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
-                                <!--</h4>-->
-                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">-->
-                                <!--<img src="./img/Product_list/DOCKING/01.jpg" alt="">-->
-                            <!--</a>-->
-                            <!--<div>-->
-                                <!--<h4>-->
-                                    <!--<a href="#">AC1200 Gigabit High Router</a>-->
-                                <!--</h4>-->
-                                <!--<span>Built-in 802.11ac Wi-Fi standard , WN579X3 offers total data</span>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                    <!--</ol>-->
-                <!--</li>-->
-            </ul>
+                    <div class="btn clear">
+                        <a class="fl f12 fOrange" href="/en_us/product/{$bestSales.url_title}.html" target="_blank"
+                           style="padding: 6px 8px">{$bestSales.model}</a>
+                        <a class="fr" href="/en_us/product/{$bestSales.url_title}.html" target="_blank"
+                           style="padding: 6px 8px; border: 1px solid #b9b9b9">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>RELATED PRODUCTS</h3>
+            </div>
         </div>
     </div>
 </section>
 {/block}
-
 {block name="script"}
-<script src="__STATIC__/frontend/lib/Side-navigation/js/Side-navigation.js"></script>
+
+<!--<script src="__STATIC__/frontend/lib/Side-navigation/js/Side-navigation.js"></script>-->
 <script src="__STATIC__/frontend/lib/Magnifier/js/Magnifier.js"></script>
 <script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
 <script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
@@ -218,14 +230,9 @@
 <script src="__STATIC__/lib/markdown/editormd.js"></script>
 <script>
     $(document).ready(function () {
-        $('.product').addClass("bgOrangeWhite");
-        var album = $(".spec-items > ul > li:nth-child(1) > img").attr("src");
-        $(".spec-items > ul > li:nth-child(1)").addClass("on");
-        $(".MagnifierMain  > img").attr("src", album);
         $(function () {
             editormd.markdownToHTML("features", {
                 htmlDecode: "style,script,iframe",
-                emoji: true,
                 taskList: true,
                 tex: true,  // 默认不解析
                 flowChart: true,  // 默认不解析
@@ -233,7 +240,6 @@
             });
             editormd.markdownToHTML("content", {
                 htmlDecode: "style,script,iframe",
-                emoji: true,
                 taskList: true,
                 tex: true,  // 默认不解析
                 flowChart: true,  // 默认不解析
@@ -241,36 +247,60 @@
             });
             editormd.markdownToHTML("specifications", {
                 htmlDecode: "style,script,iframe",
-                emoji: true,
                 taskList: true,
                 tex: true,  // 默认不解析
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
-            })
-        })
+            });
+        });
     });
 </script>
 <script>
-    var $parent_w = $("div.Scrolling-navigation > div.content > div");
-    // 包含li标签的ul标签
-    var $nav_ul = $("div.Scrolling-navigation > div.content > div > ul");
-    // li标签专门放置内容的容器，也可以作为框架自定义放置容器
+    $('.product').addClass("bgOrangeWhite");
     var $nav_list = $("div.Scrolling-navigation > ol > li");
-    var $nav_content = $("div.Scrolling-navigation > div.content > div > ul > li");
-    $nav_content.css({
-        width: $parent_w.width() + "px",
-        padding: "0 20px"
-    });
-
+    var $navContent = $("div.Scrolling-navigation > .content > div");
     $nav_list.eq(0).addClass("border-bottom-color");
-    // $nav_content.eq(0).show();
+    $navContent.eq(0).show();
     $nav_list.click(function () {
         var This = $(this).index();
-        $(this).stop(true, false).addClass("border-bottom-color").siblings().removeClass("border-bottom-color");
-        // $nav_content.eq(This).slideDown().siblings().slideUp()
-        $nav_ul.stop(true, false).animate({
-            "margin-left": -($parent_w.width() * This) + "px",
-        }, 600)
+        $(this).addClass("border-bottom-color").siblings().removeClass("border-bottom-color");
+        $navContent.eq(This).show().siblings().hide()
+    })
+</script>
+<script src="__STATIC__/frontend/lib/NavigationList/js/navbar.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* 滑动/展开 */
+        $("ul.expmenu li > div.header").click(function () {
+            var arrow = $(this).find("span.arrow");
+            if (arrow.hasClass("icon-arrowon")) {
+                arrow.removeClass("icon-arrowon");
+                arrow.addClass("icon-arrowdown");
+            } else if (arrow.hasClass("icon-arrowdown")) {
+                arrow.removeClass("icon-arrowdown");
+                arrow.addClass("icon-arrowon");
+            }
+            $(this).parent().find("ul.menu").slideToggle();
+        });
+        $("." + "{$category.url_title}").addClass("navSlideBarCurrent");
+        var currentParent = $(".navSlideBarCurrent").parent();
+        currentParent.removeClass("no");
+        currentParent.prev("li").find("i").text("-")
     });
+</script>
+<script>
+    $(function () {
+        var navBtn = $("div.main > .nav > span");
+        var navContent = $("div.main > .content > div");
+
+        navBtn.eq(0).addClass("border_bottom_color");
+        navContent.eq(0).show();
+        navBtn.each(function (i) {
+            navBtn.eq(i).click(function () {
+                navBtn.eq(i).addClass("border_bottom_color").siblings("span").removeClass("border_bottom_color");
+                navContent.eq(i).show().siblings().hide()
+            })
+        })
+    })
 </script>
 {/block}

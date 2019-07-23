@@ -1,0 +1,323 @@
+/**
+* @name: variables.less
+* @description: win-star.com 手机端 首页内容区域 布局样式
+* @author: huang(1367428189@qq.com)
+* @update: 2019-04-30 16:00
+*/
+@import "../public_class/mixins";
+@import "../public_class/variables";
+
+.banner {
+  .banner-title {
+    position: relative;
+    #img-optimize(101.33%, @bodyBackground)
+  }
+  .banner-title .banner-title-des {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    color: @whiteColor;
+    #lineHeight(large);
+  }
+  .banner-title .banner-title-des h3 {
+    #fontSize(huge);
+  }
+  .banner-title .banner-title-des p {
+    margin: .533333rem 0;
+    #fontSize(small)
+  }
+  .banner-title .banner-title-des a {
+    display: inline-block;
+    line-height: normal;
+    border: 1px solid @activeColor;
+    padding: .266666rem @publicInterval;
+    color: @whiteColor;
+    #fontSize(small);
+    &:nth-of-type(1) {
+      margin-right: .533333rem;
+    }
+  }
+
+  .banner-des {
+    background: @whiteColor;
+  }
+  .banner-des div {
+    display: flex;
+    display: -webkit-flex;
+    .clearFix();
+    padding: @publicInterval;
+    border-bottom: 1px solid @border-color;
+    &:nth-last-of-type(1) {
+      border-bottom: none;
+    }
+  }
+  .banner-des div span {
+    .fl();
+    align-self: center;
+    width: 15%;
+    display: block;
+  }
+  .banner-des div span .iconfont {
+    font-size: .9333333rem;
+  }
+  .banner-des div a {
+    .fl();
+    width: 85%;
+    display: block;
+    color: @whiteSmoke;
+    #lineHeight(large);
+  }
+  .banner-des div a h3 {
+    color: @darkColor;
+    margin-bottom: @publicInterval;
+    #fontSize(large);
+  }
+  .banner-des div a p {
+    #fontSize(medium);
+  }
+}
+
+.company {
+  margin-top: 20px;
+  background: @whiteColor;
+
+  .title {
+    margin: 0.533333rem 0;
+    padding: @publicInterval;
+    #lineHeight(large);
+    border-bottom: 1px solid @border-color;
+  }
+  .title h3 {
+    margin-bottom: .266666rem;
+    #fontSize(large);
+  }
+  .title p {
+    color: @whiteSmoke;
+    #fontSize(medium);
+  }
+
+  .description {
+    #lineHeight(large);
+  }
+  .description div {
+    padding: @publicInterval;
+  }
+  .description div h3 {
+    #fontSize(medium);
+    margin-bottom: 10px;
+  }
+  .description div p {
+    margin-bottom: @publicInterval;
+    #fontSize(medium);
+    color: @whiteSmoke;
+  }
+  .description div p span {
+    display: block;
+  }
+}
+
+.hot {
+  margin-top: 20px;
+  padding: 0 @publicInterval @publicInterval;
+  background: @whiteColor;
+
+  .title {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    position: relative;
+    z-index: 1;
+    height: 50px;
+    #lineHeight(menu);
+    text-align: center;
+    padding: 0 @publicInterval;
+  }
+  .title .line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 1px;
+    background: @border-color;
+  }
+  .title h3 {
+    .text-overflow();
+    width: 95%;
+    height: 50px;
+    line-height: 50px;
+    color: @activeColor;
+    background: @whiteColor;
+    #fontSize(larger);
+  }
+
+  .product-box {
+    border: 1px solid @border-color;
+    margin-bottom: @publicInterval;
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+  }
+  .product-box .img-box {
+    #img-optimize(100%, @bodyBackground)
+  }
+  .product-box a {
+    display: block;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .product-box h3 {
+    padding: .266666rem @publicInterval;
+    color: @whiteColor;
+    background: @activeColor;
+    #fontSize(medium);
+    a {
+      color: @whiteColor;
+    }
+  }
+  .product-box p {
+    padding: @publicInterval;
+    #lineHeight(medium);
+    #fontSize(small);
+    color: @darkColor;
+  }
+  .product-box .detail {
+    .clearFix();
+    padding: 0 @publicInterval @publicInterval;
+    a {
+      color: @darkColor;
+    }
+  }
+  .product-box .detail span {
+    .fl();
+    display: block;
+    height: .8rem;
+    line-height: .8rem;
+    color: @whiteSmoke;
+    #fontSize(small);
+    &:nth-last-of-type(1) {
+      .fr();
+      display: block;
+      border: 1px solid @activeColor;
+      text-align: center;
+      width: 1.866666rem;
+      height: .8rem;
+      line-height: .8rem;
+      #fontSize(small);
+      color: @whiteSmoke;
+      #border-radius(.133333rem);
+    }
+  }
+}
+
+.new {
+  margin-top: 20px;
+}
+
+.cooperation {
+  margin-top: 20px;
+  background: @whiteColor;
+
+  .description {
+    background: @activeColor;
+    padding: @publicInterval;
+  }
+  .description h3 {
+    margin-bottom: @publicInterval;
+    #fontSize(larger);
+    color: @whiteColor;
+  }
+  .description p {
+    color: @whiteColor;
+    #fontSize(medium);
+    #lineHeight(medium)
+  }
+
+  .icon-box {
+    .clearFix();
+    padding: 20px @publicInterval;
+  }
+  .icon-box div {
+    .fl();
+    width: 30%;
+    &:nth-child(3n+2) {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    &:nth-child(6n+4),
+    &:nth-child(6n+5),
+    &:nth-child(6n+6) {
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+  }
+}
+
+.send-email {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: @publicInterval;
+  background: @whiteColor;
+
+  .description {
+    text-align: center;
+  }
+  .description h3 {
+    margin-bottom: @publicInterval;
+    #fontSize(larger);
+  }
+  .description p {
+    color: @whiteSmoke;
+    #fontSize(small);
+    #lineHeight(medium)
+  }
+
+  form {
+    margin-top: @publicInterval;
+  }
+  form input {
+    margin-bottom: @publicInterval;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding-left: @publicInterval;
+    height: .746666rem;
+    font-size: 12px;
+  }
+  form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding-left: @publicInterval;
+    font-size: 12px;
+  }
+  form span {
+    display: block;
+    margin: 10px 0 20px;
+    text-align: left;
+    color: @whiteSmoke;
+    font-size: 12px;
+  }
+  form .button {
+    .clearFix();
+  }
+  form .button input {
+    .fr();
+    display: block;
+    margin: 0;
+    padding: .133333rem @publicInterval;
+    width: auto;
+    height: auto;
+    background: @whiteColor;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    #border-radius(.133333rem);
+    &:nth-child(1) {
+      .fl();
+      border-color: @activeColor;
+      background: @activeColor;
+      color: @whiteColor;
+    }
+  }
+}

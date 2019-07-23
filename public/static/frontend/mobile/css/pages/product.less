@@ -1,0 +1,79 @@
+/**
+* @name: product.less
+* @description: win-star.com 手机端 产品一级分类页 样式
+* @author: huang(1367428189@qq.com)
+* @update: 2019-05-07 10:00
+*/
+@import "../public_class/mixins";
+@import "../public_class/variables";
+
+.product {
+    margin-bottom: @publicInterval;
+    padding: 0 @publicInterval @publicInterval;
+    background: @whiteColor;
+    .title {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        position: relative;
+        z-index: 1;
+        height: 50px;
+        #lineHeight(menu);
+        text-align: center;
+        padding: 0 @publicInterval;
+    }
+    .title .line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 1px;
+        background: @border-color;
+    }
+    .title h3 {
+        .text-overflow();
+        width: 95%;
+        height: 50px;
+        line-height: 50px;
+        color: @activeColor;
+        background: @whiteColor;
+        #fontSize(larger);
+    }
+    
+    .product-box {
+        border: 1px solid @border-color;
+        margin-bottom: @publicInterval;
+        &:nth-last-of-type(1) {
+            margin-bottom: 0;
+        }
+    }
+    .product-box a {
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .product-box a .description {
+        padding: @publicInterval;
+        color: @darkColor;
+    }
+    .product-box a .description h3 {
+        padding-bottom: @publicInterval;
+        #fontSize(medium);
+        text-align: center;
+    }
+    .product-box a .description p {
+        color: @whiteSmoke;
+        #fontSize(small);
+        text-align: center;
+        #lineHeight(small)
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .path ul li {
+        margin-right: 0;
+    }
+}

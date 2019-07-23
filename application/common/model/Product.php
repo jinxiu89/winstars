@@ -13,9 +13,15 @@ use app\common\model\Category as CategoryModel;
 use app\common\model\Drivers as DriversModel;
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Search as SearchHelp;
+use think\Collection;
 use think\Cookie;
 use think\Cache;
+use think\Exception;
 
+/***
+ * Class Product
+ * @package app\common\model
+ */
 Class Product extends BaseModel
 {
     protected $table = 'product';
@@ -24,6 +30,11 @@ Class Product extends BaseModel
     public function categorys()
     {
         return $this->belongsToMany('Category');
+    }
+
+    public function drivers()
+    {
+        return $this->belongsToMany('Driver', 'product_driver', 'driver_id', 'product_id')->field('name,url_title');
     }
 
     /**
@@ -81,7 +92,7 @@ Class Product extends BaseModel
     public function getBestSales($code)
     {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
-        $result = $this->where(["mark" => 1, 'language_id' => $language_id])->find();
+        $result = $this->where(["mark" => 1, 'language_id' => $language_id])->field('url_title,model,keywords,name,album')->find();
         return $result;
     }
 
@@ -100,6 +111,31 @@ Class Product extends BaseModel
         $result = $this->where(["category_id" => $category_id])->paginate();
         return $result;
 
+    }
+
+    public function getDataByCategoryId($category_id)
+    {
+        try {
+            return collection($this->where(['category_id' => $category_id])->select())->toArray();
+        } catch (Exception $exception) {
+            return $this->error($exception->getMessage());
+        }
+    }
+
+    /***
+     * @param $id
+     * 通过产品的ID来获取他所属的第一个分类
+     *
+     */
+    public function getCategoryById($id)
+    {
+        try {
+            $product = self::with('categorys')->field('id,url_title')->find(['id' => $id]);
+            $category = collection($product->categorys)->toArray();
+            return end($category)['id'];
+        } catch (Exception $exception) {
+            return ['status' => 0, 'message' => $exception->getMessage(), 'data' => ''];
+        }
     }
 
     //获取中间表数据,得到产品所属分类id
@@ -221,6 +257,9 @@ Class Product extends BaseModel
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
+     * 更新缓存
+     * 20190716
+     *
      */
     public static function getListProduct($code, $list)
     {
@@ -232,13 +271,19 @@ Class Product extends BaseModel
         $order = [
             'listorder' => 'desc'
         ];
-        $products = self::where($map)
-            ->limit($list)
-            ->field('url_title,name,model')
-            ->order($order)
-            ->select();
-        $data = collection($products)->toArray();
-        return $data;
+        $field = 'url_title,name,model';
+        try{
+            if (!config('app_debug')) {
+                if (!Cache::get('LimitListProduct')) {
+                    Cache::set('LimitListProduct', self::where($map)->limit($list)->field($field)->order($order)->select());
+                }
+            }
+            $products = config('app_debug') ? self::where($map)->limit($list)->field($field)->order($order)->select() : Cache::get('LimitListProduct');
+            $data = collection($products)->toArray();
+            return $data;
+        }catch (Exception $exception){
+
+        }
     }
 
     /**
@@ -293,5 +338,12 @@ Class Product extends BaseModel
             return $allProduct[$mid];
         }
 
+    }
+
+    public function getHotSales($code, $count)
+    {
+        $language_id = LanguageModel::getLanguageCodeOrID($code);
+
+        return collection(self::where(['language_id' => $language_id])->limit($count)->with('categorys')->field('id,name,url_title,keywords,model,description,album')->select())->toArray();
     }
 }

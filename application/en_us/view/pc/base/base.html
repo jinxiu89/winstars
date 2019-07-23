@@ -14,26 +14,6 @@
     <meta name="description" content="描述">
     <meta name="keywords" content="keywords">
     {/block}
-    <!--<link rel="stylesheet" href="__STATIC__/lib/bootstrap/bootstrap.min.css">-->
-    <script>
-        var Hyphenopoly = {
-            require: {
-                // "la": "honorificabilitudinitas",
-                // "de": "Silbentrennungsalgorithmus",
-                "en-us": "Silbentrennungsalgorithmus"
-            },
-            paths: {
-                patterndir: "__STATIC__/lib/Hyphenopoly/patterns/",
-                maindir: "__STATIC__/lib/Hyphenopoly/"
-            },
-            setup: {
-                selectors: {
-                    ".Hyphenopoly": {}
-                }
-            }
-        };
-    </script>
-    <script src="__STATIC__/lib/Hyphenopoly/Hyphenopoly_Loader.js"></script>
     <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/Common-style/Common-style.css">
     <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
     {block name="style"}
@@ -44,6 +24,9 @@
 {block name="navbar"}
 <!-- Home 页眉 -->
 <section class="header">
+    <div class="tc bgWhite" style="padding: 8px 20px; background-color: #f2f2f2">
+        <p class="fOrange">Our products have not been uploaded yet. Please contact our salesman for details</p>
+    </div>
     <div class="w-home-box bgWhite h50">
         <div class="w-home-cont clear">
             <!-- Home 网站LOGO -->
@@ -58,9 +41,10 @@
                 <a class="h50 lh50 home" href="/en_us/">HOME</a>
                 <a class="h50 lh50 about" href="/en_us/about.html">ABOUT</a>
                 <a class="h50 lh50 product" href="/en_us/category.html">PRODUCT</a>
-                <a class="h50 lh50" href="#">BLOG</a>
-                <a class="h50 lh50" href="#">F.A.Q</a>
-                <a class="h50 lh50" href="#">SUPPORT</a>
+                <a class="h50 lh50 support" href="/en_us/support.html">SUPPORT</a>
+                <!--<a class="h50 lh50" href="#">BLOG</a>-->
+                <!--<a class="h50 lh50" href="#">F.A.Q</a>-->
+
             </div>
             <!-- Home 图标按钮 -->
             <div class="w-home-nav-search fr h5">
@@ -69,15 +53,18 @@
                 </a>
             </div>
         </div>
+
+        {block name="search"}
         <!-- Home 搜索框 -->
         <div class="w-home-form-search-box absolute w100 dNone bgTrans" style="top: 100%; left: 0">
             <div class="w-home-form-search-cont clear w50 oh">
-                <form action="" method="post" class="clear mt5 mb5">
-                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" value="" placeholder="Please enter your product name">
+                <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
+                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"  placeholder="Please enter your product name">
                     <input class="fl cursorP w20 bgOrange fWhite b bcWhite" type="submit" value="search">
                 </form>
             </div>
         </div>
+        {/block}
     </div>
 </section>
 {/block}
@@ -99,15 +86,15 @@
                 </dl>
                 <dl>
                     <dt class="f14 fWhite mb15 pb2">WHAT DO WE OFFER?</dt>
-                    <dd><a href="#">Thunderbolt 3 product</a></dd>
-                    <dd><a href="#">Mesh WiFi Router</a></dd>
-                    <dd><a href="#"></a></dd>
+                    <!--<dd><a href="#">Thunderbolt 3 product</a></dd>-->
+                    <!--<dd><a href="#">Mesh WiFi Router</a></dd>-->
+                    <!--<dd><a href="#"></a></dd>-->
                 </dl>
                 <dl>
                     <dt class="f14 fWhite mb15 pb2">NEED HELP?</dt>
-                    <dd><a href="#">Driver List</a></dd>
-                    <dd><a href="#">Frequently Asked Questions</a></dd>
-                    <dd><a href="#"></a></dd>
+                    <dd><a href="/en_us/support/driver.html">Driver List</a></dd>
+                    <!--<dd><a href="#">Frequently Asked Questions</a></dd>-->
+                    <!--<dd><a href="#"></a></dd>-->
                 </dl>
                 <dl class="footer_icon_link">
                     <dt class="f14 fWhite mb15 pb2">Community</dt>
@@ -131,8 +118,8 @@
             </div>
         </div>
         <div class="put-on-records tc bgOrange" style="padding: 8px 0">
-            <p>©1997 - <script>var nowYear = new Date().getFullYear();document.write(nowYear)</script>2019 Winstars Technology Ltd. All Rights Reserved.</p>
-            <a href="#" class="fWhite cursorP">
+            <p>©1997 - <script>var nowYear = new Date().getFullYear();document.write(nowYear)</script> Winstars Technology Ltd. All Rights Reserved.</p>
+            <a href="/" class="fWhite cursorP">
                 <span>Powered by Winstars</span>
             </a>
         </div>
@@ -141,7 +128,6 @@
 <script src="__STATIC__/lib/jquery/jquery-3.2.1.min.js"></script>
 <script src="__STATIC__/frontend/en-us/js/Common-style/Common-style.js"></script>
 {block name="script"}
-
 {/block}
 </body>
 </html>

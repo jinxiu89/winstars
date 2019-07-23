@@ -103,8 +103,9 @@
             </div>
         </div>
         <div class="row cl">
+            {:token()}
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-primary radius" type="button" onclick="save('{:url('product/save')}')"><i class="Hui-iconfont">&#xe632;</i> 保存
+                <button class="btn btn-primary radius" type="button" onclick="save('{:url(\'product/save\')}')"><i class="Hui-iconfont">&#xe632;</i> 保存
                 </button>
 
                 <button onClick="layer_close();" class="btn btn-default radius" type="button">

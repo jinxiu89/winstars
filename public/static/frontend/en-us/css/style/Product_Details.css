@@ -1,8 +1,10 @@
 div.Details > .Product_title {
-    margin: 0 0 49px
+    margin: 0 0 49px;
+    width: 100%;
 }
 div.Details > div.Characteristic > ul > li > p:last-child {
-    margin-bottom: 0
+    margin-bottom: 0;
+    line-height: 22px;
 }
 div.Details > div.Characteristic > p.add > a {
     width: 111px;
@@ -26,53 +28,7 @@ div.Scrolling-navigation > .content {
     padding: 40px 0 40px 20px
 }
 .border-bottom-color {
-    border-bottom: 1px solid #e9e9e9
-}
-div.Scrolling-navigation > .right_list {
-    width: 35%
-}
-div.Scrolling-navigation > .right_list > ul > li > div > a > img:hover {
-    transform: translateX(5px);
-    -webkit-transform: translateX(5px);
-    -moz-transform: translateX(5px);
-    -ms-transform: translateX(5px);
-    -o-transform: translateX(5px)
-}
-div.Scrolling-navigation > .right_list > ul > li > div > div > h4 > a:hover {
-    color: #EA881B
-}
-div.Scrolling-navigation > div.right_list > ul > li > div > div.btn > a:last-child:hover {
-    background: #EA881B;
-    color: #fff
-}
-div.Scrolling-navigation > .right_list > ul > li > ol > li {
-    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
-    display: -moz-box; /* Firefox 17- */
-    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
-    display: -moz-flex; /* Firefox 18+ */
-    display: -ms-flexbox; /* IE 10 */
-    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
-    -webkit-box-align: center;
-    /* 12版 */
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -o-align-items: center;
-    align-items: center
-}
-div.Scrolling-navigation > .right_list > ul > li > ol > li:last-child {
-    margin-bottom: 0
-}
-div.Scrolling-navigation > .right_list > ul > li > ol > li > a > img {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #e9e9e9
-}
-div.Scrolling-navigation > .right_list > ul > li > ol > li > div {
-    padding: 0 10px
-}
-div.Scrolling-navigation > .right_list > ul > li > ol > li > div > h4 {
-    margin-bottom: 8px
+    border-bottom: 1px solid #EA881B
 }
 
 @media screen and (max-width:768px){
@@ -101,4 +57,20 @@ div.Scrolling-navigation > .right_list > ul > li > ol > li > div > h4 {
         width: 70%
     }
 }
+
+.NewProduct > a > img:hover {
+    transform: translateX(5px);
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px)
+}
+.NewProduct > div > h4 > a:hover {
+    color: #EA881B
+}
+.NewProduct > div.btn > a:last-child:hover {
+    background: #EA881B;
+    color: #fff
+}
+
 

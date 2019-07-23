@@ -8,11 +8,38 @@
 {/block}
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Home.css">
-
 {/block}
 {block name="body"}
 {$content}
 {notempty name="partner"}
+<!-- Home 畅销产品 -->
+<section>
+    <div class="w-home-our-products-box">
+        <div class="w-home-our-products-cont pt80 pb80">
+            <h2 class="tc f24 pt15 pb15 fOrange">– HOT SALE –</h2>
+            <div class="w-home-our-products-list clear">
+                {notempty name="hotSale"}
+                {volist name="hotSale" id="vo"}
+                <div class="fl">
+                    <div class="img relative">
+                        <img class="w100" src="{$vo.album}" alt="">
+                        <h3><a href="/en_us/category/{$vo.categorys['url_title']}.html" class="f14 pt-pb-6 pr-pl-14 bgOrangeWhite">BELONG TO {$vo.categorys['name']}</a></h3>
+                    </div>
+                    <div class="product-box w100 relative clear bgWhite pr14 pl14 pt20 pb20">
+                        <p class="mb20 f12 fGrayBlack lh16">{$vo.name}</p>
+                        <span class="b fOrange pt-pb-6 pr-pl-14 dInlineBlack"><a href="/en_us/product/{$vo.url_title}">{$vo.model}</a></span>
+                        <span class="fr"><a href="/en_us/product/{$vo.url_title}" class="b bcOrange f12 pt-pb-6 pr-pl-14">DETAIL</a></span>
+                    </div>
+                </div>
+                {/volist}
+                {/notempty}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 <!-- Home 合作伙伴 -->
 <section style="padding-top: 66px">
     <div class="w-home-cooperation-box">
@@ -25,12 +52,12 @@
 <section>
     <div class="w-home-partner-box">
         <div class="w-home-partner-cont clear">
-            {volist name="partner" id="vo"}
-            <a href="{$vo.href}">
-                <img src="{$vo.logo}" class="w100"
-                     alt="{$vo.name}">
-            </a>
-            {/volist}
+            <!--{volist name="partner" id="vo"}-->
+            <!--<a href="{$vo.href}">-->
+                <!--<img src="{$vo.logo}" class="w100"-->
+                     <!--alt="{$vo.name}">-->
+            <!--</a>-->
+            <!--{/volist}-->
         </div>
     </div>
 </section>
@@ -154,6 +181,7 @@
 {/block}
 {block name="script"}
 <script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>
+<script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
 <script>
     $(document).ready(function () {
         $(".home").addClass("bgOrangeWhite");
@@ -176,5 +204,8 @@
             })
         });
     });
+</script>
+<script>
+    max( $("div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > p") )
 </script>
 {/block}

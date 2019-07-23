@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{block name="title"}{/block} - {$website}</title>
+    {block name="seo"}{/block}
+    <!-- 淘宝手机APP rem适配文件 -->
+    <script src="__STATIC__/frontend/lib/Flexible/Flexible.js"></script>
+    <!-- header/footer样式 -->
+    <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/components/public.css">
+    {block name="style"}
+    <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/home.css">
+    {/block}
+</head>
+<body>
+{block name="header"}
+{include file="mobile/base/header"}
+{/block}
+<section>
+    <div class="container">
+        {block name="banner"}
+        {/block}
+        {block name="body"}
+        {/block}
+    </div>
+</section>
+{block name="footer"}
+{include file="mobile/base/footer"}
+{/block}
+</body>
+<script src="__STATIC__/frontend/lib/JQuery/JQuery-3.4.0.js"></script>
+<script src="__STATIC__/frontend/mobile/js/components/public.js"></script>
+{block name="javascript"}
+{/block}
+</html>

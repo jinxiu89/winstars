@@ -49,10 +49,9 @@
             <dd>
                 <ul>
                     {volist name="languages" id="vo"}
-                    <li id="drivers_list_{$vo.id}"><a href="{:url('Drivers/index',['language_id'=>$vo.id])}"
+                    <li id="drivers_list_{$vo.id}"><a href="{:url('Driver/index',['language_id'=>$vo.id])}"
                                                       title="{$vo.name}驱动下载列表">驱动管理({$vo.id|getLanguage})</a></li>
                     {/volist}
-                    <li id="drivers_recycle"><a href="{:url('Drivers/recycle')}" title="回收下载列表">回收下载列表</a></li>
                 </ul>
             </dd>
         </dl>

@@ -23,7 +23,7 @@
                     <select name="category_id" class="select">
                         <option value="">--选择分类名称--</option>
                         {volist name="category" id="vo"}
-                        <option value="{$vo.id}" {eq name="$category_id" value="$vo.id"} selected=\"selected\"{/eq}>{$vo.delimiter}{$vo.name}</option>
+                        <option value="{$vo.id}" {eq name="$category_id" value="$vo.id" } selected=\"selected\"{/eq}>{$vo.delimiter}{$vo.name}</option>
                         {/volist}
                     </select>
                 </span>
@@ -53,7 +53,7 @@
                 <th width="100">产品型号</th>
                 <th width="350">所属分类</th>
                 <th width="28">排序</th>
-                <th width="120">加入时间</th>
+                <th width="80">加入时间</th>
                 <th width="265">操作</th>
             </tr>
             </thead>
@@ -62,35 +62,26 @@
             <tr>
                 <td class="text-c"><input type="checkbox" value="{$vo.id}" name="id"></td>
                 <td class="text-c">{$vo.id}</td>
-                <td class="text-c">{empty name="$vo.thumbnail"}{else/}<img class="avatar size-M radius" src="{$vo.thumbnail}">{/empty}</td>
+                <td class="text-c">{empty name="$vo.thumbnail"}{else/}<img class="avatar size-M radius"
+                                                                           src="{$vo.thumbnail}">{/empty}
+                </td>
                 <td class="text-left" title="{$vo.name}">{$vo.name}</td>
                 <td class="text-left">{$vo.model}</td>
                 <td>{$vo.id|getChild}</td>
                 <td class="text-c listorder"><input type="text" value="{$vo.listorder}" size="6" attr-id="{$vo.id}"
                                                     name="listorder"></td>
-                <td>{$vo.create_time}</td>
+                <td>{$vo.create_time|strtotime|date="Y-m-d",###}</td>
                 <td class="td-manage">
                     <a title="编辑" href="javascript:;"
                        onclick="index_edit('产品编辑','{:url(\'product/product_edit\',[\'id\'=>$vo.id,\'language_id\'=>$language_id])}')"
                        class="btn btn-primary radius" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    {empty name="$language_id"}
-                    {else /}
-                    <a title="置顶" onclick="mark(this)" data-id="{$vo.id}" data-type="4"
-                       data-map="{$category_id}" class="btn btn-secondary radius mark" style="text-decoration:none"><i
-                            class="Hui-iconfont">&#xe684</i></a>
-                    <a title="上移一位" onclick="mark(this)" data-id="{$vo.id}" data-type="3"
-                       data-map="{$category_id}" class="btn btn-warning radius mark" style="text-decoration:none"><i
-                            class="Hui-iconfont">&#xe6d6</i></a>
-                    <a title="下移一位" onclick="mark(this)" data-id="{$vo.id}" data-type="2"
-                       data-map="{$category_id}" class="btn btn-secondary radius mark" style="text-decoration:none"><i
-                            class="Hui-iconfont">&#xe6d5</i></a>
-                    <a title="置底" onclick="mark(this)" data-id="{$vo.id}" data-type="1"
-                       data-map="{$category_id}" class="btn btn-success radius mark" style="text-decoration:none"><i
-                            class="Hui-iconfont">&#xe674</i></a>
-                    {/empty}
+                    <a title="推荐后，将在详情页相关页面展示为畅销产品"
+                       onclick="topmark('{:url(\'product/mark\',[\'id\'=>$vo.id,\'language_id\'=>$language_id])}')"
+                       class="btn btn-primary radius" style="text-decoration:none">推荐</a>
                     <a title="放入回收站" href="javascript:;"
-                       onclick="recycle('{:url(\'product/byStatus\',[\'id\'=>$vo.id,\'status\'=> -1])}')" class="btn btn-danger radius"
-                       style="text-decoration:none" ><i style="font-size: 20px;" class="Hui-iconfont">&#xe6e2;</i></a>
+                       onclick="recycle('{:url(\'product/byStatus\',[\'id\'=>$vo.id,\'status\'=> -1])}')"
+                       class="btn btn-danger radius"
+                       style="text-decoration:none"><i style="font-size: 20px;" class="Hui-iconfont">&#xe6e2;</i></a>
                 </td>
             </tr>
 
@@ -117,5 +108,23 @@
         $(id).addClass("current");
         $("#content").addClass("current");
     });
+
+    function topmark(url) {
+        $.ajax({
+            type: 'post',
+            url: url,
+            dataType: 'json',
+            data: '',
+            success: function (result) {
+                if (result.status === 1) {
+                    dialog.OK(result.data, result.jump_url);
+                } else if (result.status === 0) {
+                    dialog.error(result.data, result.title, result.btn);
+                } else if (result.status === -1) {
+                    dialog.toconfirm(result.data)
+                }
+            },
+        })
+    }
 </script>
 {/block}
