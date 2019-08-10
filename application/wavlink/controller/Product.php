@@ -73,8 +73,15 @@ Class Product extends BaseAdmin
         //严格判断校验
         if (request()->isAjax()) {
             $data = $data = input('post.');
-            $data['features_html_code']=htmlspecialchars($data['features-html-code']);
-            $data['content_html_code']=htmlspecialchars($data['content-html-code']);
+            $features_html=strip_html_tags(['script','iframe'],htmlspecialchars($data['features-html-code']),true);
+            $content_html=strip_html_tags(['script','iframe'],htmlspecialchars($data['content-html-code']),true);
+            $specifications_html=strip_html_tags(['br','script','iframe'],htmlspecialchars($data['specifications-html-code']),true);
+            $data['features_html_code']=$features_html;
+            $data['content_html_code']=$content_html;
+            $data['specifications_html_code']=$specifications_html;
+            unset($data['features-html-code']);
+            unset($data['content-html-code']);
+            unset($data['specifications-html-code']);
             $validate = new ProductValidate();
             if (!$validate->scene("add")->check($data)) {
                 return show(0, '', '', '', '', $validate->getError());

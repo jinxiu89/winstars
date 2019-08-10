@@ -20,13 +20,18 @@ table {
 
 .table>thead>tr>th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #99ccff;
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
+    /*line-height: 1.42857143;*/
+    /*vertical-align: top;*/
     border-top: 1px solid #ddd;
+}
+tr td:nth-child(2) a {
+    padding: 4px 6px;
+    margin-right: 5px;
+    border: 1px solid transparent;
 }
 th {
     text-align: left;

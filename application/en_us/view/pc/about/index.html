@@ -11,23 +11,16 @@
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Side-navigation/css/Side-navigation.css">
 <link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
 <style>
-    div.w-about-article-box > .list ul li a {
-        color: #666
-    }
-    div.w-about-article-box > .list ul li a:hover {
-        background-color:#e6e6e6
-    }
     div.w-about-article-box {
-        margin: 15px 0 40px 0
+        margin: 10px 0 40px 0
     }
     div.w-about-article-box > div.w-about-article-cont {
         padding: 30px;
     }
     @media screen and (min-width: 1300px){
         div.w-about-article-box {
-            width: 70%;
-            margin-left: 15%;
-            padding-bottom: 10%;
+            width: 80%;
+            margin-left: 10%
         }
     }
     .w-about-article-cont #content a{
@@ -46,8 +39,8 @@
     <hr style="border: 1px solid #f2f2f2">
     <div class="path-box bgWhite">
         <div class="path-cont">
-            <a href="/en_us/" style="display: inline-block">
-                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            <a href="/en_us/" style="display: inline-block" class="f12">
+                <i class="iconfont">&#xeb1b;</i>
             </a>
             >
             <a href="/en_us/about.html" style="display: inline-block">About</a>
@@ -90,10 +83,10 @@
 <script src="__STATIC__/lib/markdown/editormd.js"></script>
 <script>
     $(document).ready(function () {
-        $(".about").addClass("bgOrangeWhite");
+        $(".about a").addClass("bgOrangeWhite");
         var current;
         current = "." + "{$result.url_title}" + " a";
-        $(current).addClass("bgGray");
+        $(current).addClass("bgOrangeWhite");
     });
 </script>
 {/block}

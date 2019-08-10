@@ -14,15 +14,11 @@ div.ProductList > .child:nth-child(4n+4){
 div.ProductList > .child > div {
     margin: 2px
 }
-div.ProductList > .child > div > .cont > h2 > a:hover {
-    color: #EA881B
-}
-div.ProductList > .child > div > .cont > .btn > a {
+div.ProductList > .child > div > .cont > .model_link > a {
     padding: 6px 8px
 }
-div.ProductList > .child > div > .cont > .btn > a:last-of-type:hover {
-    background: #EA881B;
-    color: #fff
+div.ProductList > .child > div > .cont > .model_link > a:first-child {
+    padding-left: 0
 }
 div.ProductList > .child > div > i {
     right: 5%;
@@ -37,16 +33,19 @@ div.ProductList > .child > div > i {
     div.ProductList > .child > div > .cont > h2 > a {
         font-size: 13px
     }
-}
-@media screen and (min-width: 1100px){
-    div.ProductList > .child > div > .cont > h2 > a {
-        font-size: 15px
+    .ProductListBox {
+        margin-bottom: 40px
     }
 }
+/*@media screen and (min-width: 1100px){*/
+    /*div.ProductList > .child > div > .cont > h2 > a {*/
+        /*font-size: 14px*/
+    /*}*/
+/*}*/
 @media screen and (min-width: 1200px){
     .ProductListBox {
-        width: 70%;
-        margin-left: 15%
+        width: 80%;
+        margin-left: 10%
     }
 }
 
@@ -56,19 +55,17 @@ div.ProductList > .child > div > i {
     border: none !important;
 }
 .NoContentBox .NoContent {
-    padding: 80px 10%
+    padding: 40px 30px
 }
 .NoContentBox .NoContent > dl {
-    color: #888
+    color: #101010;
 }
 .NoContentBox .NoContent > dl > dt > h3 {
-    font-size: 32px;
-    margin-bottom: 20px
+    font-size: 26px;
+    margin-bottom: 10px
 }
 .NoContentBox .NoContent > dl > dd > p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px
+    margin-bottom: 5px
 }
 .NoContentBox .NoContent > dl > dd:last-child > p {
     margin-bottom: 0
@@ -85,20 +82,13 @@ div.ProductList > .child > div > i {
 .InterestedChild > .child:hover {
     border-color: #ddd
 }
-.InterestedChild > .child > div > .cont > h2 > a:hover {
-    color: #EA881B
-}
-.InterestedChild > .child > div > .cont > div > a:last-child:hover {
-    background-color: #EA881B;
-    color: #fff
-}
 @media screen and (min-width: 768px){
     .InterestedChild > .child > div > .cont > h2 > a {
         font-size: 13px
     }
 }
-@media screen and (min-width: 1100px) {
-    .InterestedChild > .child > div > .cont > h2 > a {
-        font-size: 15px;
-    }
-}
+/*@media screen and (min-width: 1100px) {*/
+    /*.InterestedChild > .child > div > .cont > h2 > a {*/
+        /*font-size: 15px;*/
+    /*}*/
+/*}*/

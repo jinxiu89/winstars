@@ -20,6 +20,7 @@ class Driver extends Validate
         "url_title" => 'require|max:64',
         "version" => 'require|max:11',
         "title" => 'require|max:64',
+        "sorting" => 'require|number|gt:0',
         "keywords" => 'require|max:64',
         "description" => 'require|max:120',
     ];
@@ -37,6 +38,9 @@ class Driver extends Validate
         "version.max" => '版本号长度必须在11个字符以内',
         "title.require" => 'SEO标题不能为空',
         "title.max" => 'SEO标题不能长于64个字符',
+        "sorting.require"=>'排序时必须输入排序值',
+        "sorting.number"=>'排序时必须是非负整数',
+        "sorting.gt"=>'排序时必须是非负整数',
         "keywords.require" => '关键词必须填',
         "keywords.max" => '关键词必须少于64个字符',
         "description.require" => '描述必须填',
@@ -45,5 +49,6 @@ class Driver extends Validate
     protected $scene = [
         'edit' => ['id', 'name', 'language_id', 'url_title', 'version', 'title', 'keywords', 'description'],
         'add' => ['name', 'language_id', 'url_title', 'version', 'title', 'keywords', 'description'],
+        'sort' => ['sorting']
     ];
 }

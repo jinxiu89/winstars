@@ -2,7 +2,7 @@
 
 
 ul.ResultList > li {
-    width: 33.333%
+    width: 25%
 }
 ul.ResultList > li:hover {
     box-shadow: 0 0 2px #b1b1b1 inset;
@@ -44,7 +44,7 @@ ul.ResultList > li > div > i {
 }
 @media screen and (min-width: 1200px){
     .Result {
-        width: 70%;
-        margin-left: 15%
+        width: 80%;
+        margin-left: 10%
     }
 }

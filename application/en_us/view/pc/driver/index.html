@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_List.css">
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/paginate/paginate.css">
 {/block}
 {block name="body"}
 <!-- w-Product-List-title 产品列表标题 -->
@@ -29,22 +30,22 @@
     <hr style="border: 1px solid #f2f2f2">
     <div class="path-box bgWhite">
         <div class="path-cont">
-            <a href="/en_us/"><i class="iconfont" style="font-size: 18px;">&#xeb1b;</i></a>> <a
-                href="/en_us/support.html" style="display: inline-block">SUPPORT</a>
+            <a href="/en_us/" class="f12"><i class="iconfont">&#xeb1b;</i></a>>
+            <a href="/en_us/support.html" style="display: inline-block" class="f12">SUPPORT</a>
             > <a
-                href="/en_us/support/driver.html" style="display: inline-block" class="current">DRIVER</a>
+                href="/en_us/support/driver.html" style="display: inline-block" class="current f12">DRIVER</a>
         </div>
     </div>
 </section>
 <!-- W-Product-List 产品列表 -->
-<section class="ProductListBox mt15 mb50 clear">
-    <div class="left-side fl" style="width: 22%">
+<section class="ProductListBox clear" style="margin-bottom:40px; margin-top: 10px">
+    <div class="left-side fl w20">
         <ul class="expmenu">
             {volist name="tree" id="vo"}
             <li>
                 <div class="header">
-                    <span class="label">{$vo.name}</span>
-                    <span class="arrow iconfont icon-arrowon fWhite"></span>
+                    <span class="label f12">{$vo.name}</span>
+                    <span class="arrow iconfont icon-arrowon fWhite f12"></span>
                 </div>
                 <span class="no">
                     <ul class="menu" style="display:block;">
@@ -59,7 +60,8 @@
                         <ol class="no">
                             {notempty name="co.child"}
                                 {volist name="co.child" id="o"}
-                                <a href="/en_us/support/driver/{$o.url_title}.html" title="{$o.name}" class="{$o.url_title}">{$o.name}</a>
+                                <a href="/en_us/support/driver/{$o.url_title}.html" title="{$o.name}"
+                                   class="{$o.url_title}">{$o.name}</a>
                                 {/volist}
                             {else}
                             {/notempty}
@@ -71,16 +73,16 @@
             {/volist}
         </ul>
     </div>
-    <div class="content fl clear" style="width: 78%; padding: 0 10px 60px 10px">
+    <div class="content fl clear w80" style="padding: 0 10px 0 10px">
         <div class="ProductList clear DisplayFlex table_component">
             {notempty name="data"}
-            <div style="padding: 30px; min-height: 800px; background: #fff; width: 100%">
+            <div style="padding: 42px 30px 30px; min-height: 800px; background: #fff; width: 100%">
                 <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
                     <thead>
                     <tr>
                         <th width="">Driver name and description</th>
                         <th width="10%">Version</th>
-                        <th width="10%">Update at</th>
+                        <th width="14%">Update at</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -107,10 +109,13 @@
                                 <h3>The website upgrade is in progress</h3>
                             </dt>
                             <dd>
-                                <p>no product is available right now for your reference, please keep up with our update as new products will be coming soon!</p>
+                                <p>No product is available right now for your reference, please keep up with our update
+                                    as new products are coming soon!</p>
                             </dd>
                             <dd>
-                                <p>However, for further information, please contact our salesperson, or send us emails to <a class="dInlineBlack fOrange" href="mailto:winstars@win-star.com">winstars@win-star.com</a>, we will be glad to solve your questions instantly!</p>
+                                <p>However, for further information, please contact our salesperson, or send us emails
+                                    to <a class="dInlineBlack fOrange" href="mailto:winstars@win-star.com">winstars@win-star.com</a>,
+                                    we will be glad to solve your questions instantly!</p>
                             </dd>
                             <dd>
                                 <p>Thanks for your understanding!</p>
@@ -120,7 +125,7 @@
                     <!-- 盒子 -->
                     <div class="Interested mt10">
                         <!-- 主标题 -->
-                        <p class="InterestedTitle pd20 f20 bgWhite tc">You might be interested</p>
+                        <p class="InterestedTitle pd20 f20 bgWhite tc">See also</p>
                         <!-- 盒子 -->
                         <div class="InterestedChild clear">
                             <!-- 产品 -->
@@ -128,34 +133,40 @@
                             {volist name="interested" id="vo"}
                             <div class="child relative fl" style="width: 33.333%">
                                 <div class="pd10 bgWhite clear">
-                                    <a href="/en_us/product/{$vo.url_title}" target="_blank" style="margin-bottom: 10px"><img class="w100" src="{$vo.album}" alt=""></a>
-                                    <div class="cont w100">
-                                        <h2><a class="fNomal" href="/en_us/product/{$vo.url_title}" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
-                                        <p class="f12 lh14 fGrayBlack mt20 mb20" style="min-height: 64px;"><i class="icon-tags" style="font-size: 12px"></i>
-                                            {$vo.keywords|getTags}</p>
-                                        <div class="btn">
-                                            <a class="fl f12 fOrange" style="padding: 6px 8px" href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
-                                            <a class="fr f12 fGray" href="/en_us/product/{$vo.url_title}" target="_blank" style="padding: 6px 8px; border: 1px solid #e9e9e9">Details</a>
+                                    <a href="/en_us/product/{$vo.url_title}" target="_blank"
+                                       style="margin-bottom: 10px"><img class="w100" src="{$vo.thumbnail}" alt="">
+                                        <div class="cont w100">
+                                            <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}"
+                                                   target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
+                                            <p class="f12 lh14 fGrayBlack mt20 mb20" style="min-height: 64px;"><i
+                                                    class="icon-tags" style="font-size: 12px"></i>
+                                                {$vo.keywords|getTags}</p>
+                                            <div class="btn">
+                                                <a class="fl f12 model_link" style="padding: 6px 0"
+                                                   href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
+                                                <a class="fr f12 fGray btn_link" href="/en_us/product/{$vo.url_title}"
+                                                   target="_blank" style="padding: 6px 8px; border: 1px solid #e9e9e9">Details</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <i class="icon-trophy icon-3x absolute fOrange"></i>
+                                        <i class="icon-trophy icon-3x absolute fOrange"></i>
+                                    </a>
                                 </div>
+                                {/volist}
+                                {/notempty}
                             </div>
-                            {/volist}
-                            {/notempty}
                         </div>
                     </div>
                 </div>
-            </div>
-            {/notempty}
-        </div>
-        <section>
-            <div class="w-product-paging-box tc">
-                {notempty name="data"}
-                {:pagination($data)}
                 {/notempty}
             </div>
-        </section>
+            <section>
+                <div class="w-product-paging-box tc">
+                    {notempty name="data"}
+                    {:pagination($data)}
+                    {/notempty}
+                </div>
+            </section>
+        </div>
     </div>
 </section>
 {/block}
@@ -187,7 +198,7 @@
 <script>
     max($(".InterestedChild > .child > div > .cont > h2 > a"));
     max($(".InterestedChild > .child > div > .cont > p"));
-    max( $("div.ProductList > div > div > .cont > h2 > a") );
-    max( $("div.ProductList > div > div > div > p") )
+    max($("div.ProductList > div > div > .cont > h2 > a"));
+    max($("div.ProductList > div > div > div > p"))
 </script>
 {/block}

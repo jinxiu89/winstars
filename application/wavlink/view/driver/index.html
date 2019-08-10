@@ -36,11 +36,12 @@
         </tr>
         <tr class="text-c">
             <th width="20%">驱动文件名称</th>
-            <th >可下载项（点击可修改）</th>
-            <th width="5%">语言</th>
-            <th width="30">排序</th>
-            <th width="10%">加入时间</th>
-            <th width="7%">操作</th>
+            <th width="20%">可下载项（点击可修改）</th>
+            <th>型号</th>
+            <th>版本</th>
+            <th width="5%">排序</th>
+            <th width="6%">加入时间</th>
+            <th width="10%">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -48,18 +49,31 @@
         {volist name="data" id="vo"}
         <tr class="text-l">
             <td class="text-l">{$vo.name}</td>
-            <td >{notempty name="vo.downloads"}
+            <td>{notempty name="vo.downloads"}
                 {volist name="vo.downloads" id="co"}
-                <a onclick="admin_640('编辑下载项','{:url(\'Driver/edit_download\',[\'id\'=>$co.id,\'language_id\'=>$language_id])}')" class="ml-5 btn btn-success" style="text-decoration:none">{$co.requirement}</a>
+                <a onclick="admin_640('编辑下载项','{:url(\'Driver/edit_download\',[\'id\'=>$co.id,\'language_id\'=>$language_id])}')"
+                   class="ml-5 btn btn-success" style="text-decoration:none">{$co.requirement}</a>
                 {/volist}
-                {/notempty}</td>
-            <td>{$vo.language_id|getLanguage}</td>
-            <td>{$vo.sorting}</td>
-            <td>{$vo.create_time}</td>
+                {/notempty}
+            </td>
+            <td>
+                {notempty name="vo.products"}
+                {volist name="vo.products" id="item"}
+                <span> {$item.model}</span>
+                {/volist}
+                {/notempty}
+            </td>
+            <td>{$vo.version}</td>
+            <td class="sort"><input type="text" name="sorting" value="{$vo.sorting}" class="input-text text-c"
+                                    attr-id="{$vo.id}"></td>
+            <td>{$vo.create_time|strtotime|date="Y-m-d",###}</td>
             <td class="td-manage text-l">
-                <a title="编辑" onclick="index_edit('更新{$language_id|getLanguageOne}驱动','{:url(\'Driver/edit\',[\'url_title\'=>$vo.url_title,\'language_id\'=>$language_id])}')"
+                <a title="编辑"
+                   onclick="index_edit('更新{$language_id|getLanguageOne}驱动','{:url(\'Driver/edit\',[\'url_title\'=>$vo.url_title,\'language_id\'=>$language_id])}')"
                    class="ml-5 btn btn-primary" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                <a title="添加下载项"  onclick="admin_640('添加下载项','{:url(\'Driver/add_download\',[\'driver_id\'=>$vo.id,\'language_id\'=>$language_id])}')" class="ml-5 btn btn-success" style="text-decoration:none">
+                <a title="添加下载项"
+                   onclick="admin_640('添加下载项','{:url(\'Driver/add_download\',[\'driver_id\'=>$vo.id,\'language_id\'=>$language_id])}')"
+                   class="ml-5 btn btn-success" style="text-decoration:none">
                     <i class="Hui-iconfont">&#xe604;</i>
                 </a>
             </td>
@@ -87,6 +101,27 @@
         var id = "#drivers_list_" + lan;
         $(id).addClass("current");
         $("#service").addClass("current");
-    })
+    });
+    $(".sort input").blur(function () {
+        var id = $(this).attr("attr-id");
+        var sorting = $(this).val();
+        var postData = {'id': id, 'sorting': sorting};
+        $.ajax(
+            {
+                url: "{:url(\'Driver/sort\',['language_id'=>$language_id,])}",
+                type: "POST",
+                dataType: "json",
+                data: postData,
+                success: function (result) {
+                    if (result.status === 1) {
+                        layer.msg(result.data, {icon: 1, time: 2000}, function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(result.data, {icon: 5, time: 1500});
+                    }
+                }
+            }, JSON);
+    });
 </script>
 {/block}

@@ -4,9 +4,9 @@ div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text > a {
     width: 100px;
     line-height: 32px;
 }
-div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text > a:hover {
-    background: #EA881B
-}
+/*div.w-home-slide-box > .w-home-slide-cont > div > .w-home-slide-text > a:hover {*/
+    /*background: #EA881B*/
+/*}*/
 div.w-home-slide-box > .w-home-slide-cont > div > img {
     animation: scale 1.5s;
     -webkit-animation: scale 1.5s;
@@ -132,8 +132,8 @@ div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-
 }
 
 /* Home 畅销产品 */
-div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .product-box > span:last-of-type:hover > a {
-    background: #EA881B;
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > .product-box > span:last-of-type:hover > a {
+    background: #09F;
     color: #fff
 }
 
@@ -195,7 +195,7 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
 }
 
 /* 媒体查询 */
-@media screen and (max-width: 992px){
+@media screen and (max-width: 1100px){
     /*!* Home 方针，工厂，战略 *!*/
     div.w-home-pvw-box > .w-home-pvw-cont > ul > li:last-child {
         margin-bottom: 0
@@ -212,6 +212,23 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
         margin-bottom: 20px
     }
 }
+/*@media screen and (max-width: 992px){*/
+    /*!*!* Home 方针，工厂，战略 *!*!*/
+    /*div.w-home-pvw-box > .w-home-pvw-cont > ul > li:last-child {*/
+        /*margin-bottom: 0*/
+    /*}*/
+    /*div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div {*/
+        /*display: table*/
+    /*}*/
+    /*div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > i,*/
+    /*div.w-home-pvw-box > .w-home-pvw-cont > ul > li > div > div {*/
+        /*display: table-cell*/
+    /*}*/
+    /*!* Home 简介标题，内容 *!*/
+    /*div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one:first-child > .img {*/
+        /*margin-bottom: 20px*/
+    /*}*/
+/*}*/
 @media screen and (min-width: 768px){
     .pc{ display: none }
     /* Home 抽象图 */
@@ -232,25 +249,27 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
         padding:0 2%
     }
     div.w-home-article-title-box > .w-home-article-title-cont {
-        padding: 80px 8% 0;
-        margin-top: 20px
+        padding: 50px 8% 50px;
+        margin-top: 10px
     }
     div.w-home-article-content-box > .w-home-article-content-cont > .w-home-article-cont > .w-home-article-cont-one {
         padding: 50px 0
     }
     /* Home 畅销产品 */
     div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
-        width: 49%;
-        margin: 0.5%;
+        width: 50%;
         overflow: hidden
     }
-    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .img > h3 {
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div {
+        margin: 5px
+    }
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div .img > h3 {
         position: absolute;
         left: 0;
         bottom: -100%;
         width: 100%
     }
-    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > .img:hover > h3 {
+    div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div .img:hover > h3 {
         bottom: 0
     }
     /* Home 兴趣爱好 */
@@ -265,8 +284,7 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
 @media screen and (min-width: 992px){
     /* Home 畅销产品 */
     div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
-        width: 32%;
-        margin: 0.666%
+        width: 33.333%
     }
 }
 @media screen and (min-width: 1100px){
@@ -305,8 +323,7 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
     }
     /* Home 畅销产品 */
     div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div {
-        width: 24%;
-        margin: 0.5%;
+        width: 25%
     }
     /* Home 合作伙伴 */
     div.w-home-partner-box > .w-home-partner-cont > a > img:hover {
@@ -357,9 +374,10 @@ div.serve-interest-box > .serve-interest-cont > form > p > input:hover {
 }
 
 
-div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > span > a {
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > div > span > a {
     font-size: 12px
 }
-div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > span > a:hover {
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > div.product-box a:hover,
+div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > div > span > a:hover {
     color: #EA881B
 }

@@ -277,10 +277,11 @@ footer {
 
   span {
     display: block;
+    #fontSize(medium);
     line-height: 50px;
     text-align: center;
     border-bottom: 1px solid @border-color;
-    font-weight: bold;
+    //font-weight: bold;
   }
 
   ul {
@@ -360,6 +361,26 @@ footer {
       width: 33%;
     }
   }
+}
+
+.g-page-navigation {
+  .pagination li a {
+    color: @darkColor;
+  }
+  .pagination .active span {
+    background: @activeColor;
+    border-color: @activeColor;
+  }
+}
+
+/* 交互 */
+.capsule {
+  display: inline-block;
+  background: #e68e2a;
+  color: #fff0f0!important;
+  margin: 5px 5px 5px 0;
+  padding: 4px 5px;
+  border-radius: 10px
 }
 
 //其他组件

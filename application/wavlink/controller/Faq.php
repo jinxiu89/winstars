@@ -5,86 +5,150 @@
  * Date: 2017/8/23
  * Time: 10:37
  */
+
 namespace app\wavlink\controller;
 
 use app\common\model\Faq as FaqModel;
-use app\common\model\ServiceCategory as ServiceCategoryModel;
+use app\common\model\Category as CategoryModel;
 use app\wavlink\validate\Faq as FaqValidate;
-use app\wavlink\validate\UrlTitleMustBeOnly;
+use think\Request;
+use think\exception\DbException;
 
 Class Faq extends BaseAdmin
 {
-    public function index() {
-//        $faqModel = new FaqModel();
+    protected $beforeActionList = [
+        'getCategoryLevel',
+    ];
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->language_id = $this->MustBePositiveInteger(input('get.language_id'));
+    }
+
+    public function getCategoryLevel()
+    {
+        try {
+            $category = (new CategoryModel())->getCategoryLevel($this->language_id);
+        } catch (DbException $e) {
+            $this->error($e->getMessage());
+        }
+        $this->assign('category', $category);
+    }
+
+    public function index()
+    {
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $faq = FaqModel::getDataByStatus(1,$language_id);
-        $con = request()->controller();
+        $result = (new FaqModel())->getDataByLanguageId($language_id);
         return $this->fetch('', [
-            'faq' => $faq['data'],
-            'counts' => $faq['count'],
+            'faq' => $result['data']['data'],
+            'counts' => $result['data']['count'],
             'language_id' => $language_id,
-            'con' => $con
         ]);
     }
 
-    public function faq_recycle() {
+    public function faq_recycle()
+    {
         $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $faq = FaqModel::getDataByStatus(-1,$language_id);
+        $faq = FaqModel::getDataByStatus(-1, $language_id);
         return $this->fetch('', [
             'faq' => $faq['data'],
             'counts' => $faq['count']
         ]);
     }
 
-    public function add() {
-        //获取语言
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        //获取faq的服务分类
-        $categorys = ServiceCategoryModel::getSecondCategory($language_id);
-        return $this->fetch('', [
-            'categorys' => $categorys,
-            'language_id' => $language_id
-        ]);
-    }
-
-    /**
-     * 保存操作
-     * @return array
-     */
-    public function save() {
+    public function add()
+    {
+        if (request()->isGet()) {
+            $language_id = $this->MustBePositiveInteger(input('get.language_id'));
+            //获取faq的服务分类
+            return $this->fetch('', [
+                'language_id' => $language_id
+            ]);
+        }
         if (request()->isAjax()) {
             $data = input('post.');
-            (new FaqValidate())->goCheck();
-            (new UrlTitleMustBeOnly())->goCheck();
-            if (!empty($data['id'])) {
-                return $this->update($data);
-            }
-            $res = (new FaqModel())->add($data);
-            if ($res) {
-                return show(1,'','','','', '添加成功');
+            $data['url_title'] = md5(uniqid());
+            $validate = new FaqValidate();
+            if ($validate->scene('add')->check($data)) {
+                try {
+                    $result = (new FaqModel())->saveData($data);
+                } catch (PDOException $e) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                } catch (\DbException $e) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                } catch (\Exception $exception) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                }
+                if ($result) {
+                    return show($result['status'], $result['message'], '', '', Request::instance()->header('referer'), $result['message']);
+                }
             } else {
-                return show(1,'','','','', '添加失败');
+                return show(false, 'failed', '', '', '', $validate->getError());
             }
         }
     }
 
     /**
      * 编辑操作
-     * @param int $id
-     * @param $language_id
+     * @param $url_title
      * @return array|mixed
      */
-    public function edit($id = 0,&$language_id) {
-        $id = $this->MustBePositiveInteger($id);
-        $language_id = $this->MustBePositiveInteger($language_id);
-        $faq = FaqModel::get($id);
-        //获取faq的服务分类
-        $categorys = ServiceCategoryModel::getSecondCategory($language_id);
-        return $this->fetch('', [
-            'faq' => $faq,
-            'categorys' => $categorys,
-            'language_id' => $language_id
-        ]);
+    public function edit($url_title)
+    {
+        if(\request()->isGet()){
+            $result = (new FaqModel())->getDataByUrlTitle($url_title);
+            $products = (new CategoryModel())->getDataByCategoryId($result['category_id']);
+            if(!empty($result->products)){
+                $product_ids = (new FaqModel())->getProductList($result->products);
+                $this->assign('products_ids', $product_ids);
+                $this->assign('products', $products[0]['products']);
+            }
+            if ($result) {
+                $this->assign('result', $result);
+            }
+            return $this->fetch();
+        }
+        if(\request()->isAjax()){
+            $data=input('post.');
+            $validate=new FaqValidate();
+            if($validate->scene('edit')->check($data)){
+                try {
+                    $result = (new FaqModel())->saveData($data);
+                } catch (PDOException $e) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                } catch (\DbException $e) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                } catch (\Exception $exception) {
+                    return show(false, $e->getMessage(), '', '', Request::instance()->header('referer'));
+                }
+                if ($result) {
+                    return show($result['status'], $result['message'], '', '', Request::instance()->header('referer'), $result['message']);
+                }
+            }else{
+                return show(false, 'failed', '', '', '', $validate->getError());
+            }
+        }
+    }
+
+    /**
+     * 保存操作
+     * @return array
+     */
+    public function save()
+    {
+        if (request()->isAjax()) {
+            $data = input('post.');
+            if (!empty($data['id'])) {
+                return $this->update($data);
+            }
+            $res = (new FaqModel())->add($data);
+            if ($res) {
+                return show(1, '', '', '', '', '添加成功');
+            } else {
+                return show(1, '', '', '', '', '添加失败');
+            }
+        }
     }
 
     /**
@@ -95,7 +159,8 @@ Class Faq extends BaseAdmin
      * type == 3 时 上移
      * type == 2 时 下移
      */
-    public function listorder() {
+    public function listorder()
+    {
         if (request()->isAjax()) {
             $data = input('post.'); //id ,type ,language_id
             self::order(array_filter($data));

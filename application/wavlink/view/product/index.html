@@ -40,19 +40,18 @@
         <span class="r">共有数据：<strong>{$counts}</strong> 条</span>
     </div>
     <div class="mt-20" style="overflow: scroll">
-        <table class="table table-border table-bordered table-bg table-hover table-sort" style="width: 1680px">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr>
                 <th scope="col" colspan="14">{$language_id|getLanguage}产品列表</th>
             </tr>
             <tr class="text-c">
-                <th width="20"><input type="checkbox" name="" value=""></th>
-                <th width="50">ID</th>
+                <th width="6%">ID</th>
                 <th width="40">缩略图</th>
                 <th width="">产品名称</th>
                 <th width="100">产品型号</th>
                 <th width="350">所属分类</th>
-                <th width="28">排序</th>
+                <th width="80">排序</th>
                 <th width="80">加入时间</th>
                 <th width="265">操作</th>
             </tr>
@@ -60,7 +59,6 @@
             <tbody>
             {volist name="product" id="vo"}
             <tr>
-                <td class="text-c"><input type="checkbox" value="{$vo.id}" name="id"></td>
                 <td class="text-c">{$vo.id}</td>
                 <td class="text-c">{empty name="$vo.thumbnail"}{else/}<img class="avatar size-M radius"
                                                                            src="{$vo.thumbnail}">{/empty}
@@ -68,7 +66,7 @@
                 <td class="text-left" title="{$vo.name}">{$vo.name}</td>
                 <td class="text-left">{$vo.model}</td>
                 <td>{$vo.id|getChild}</td>
-                <td class="text-c listorder"><input type="text" value="{$vo.listorder}" size="6" attr-id="{$vo.id}"
+                <td class="text-c listorder"><input type="text" value="{$vo.listorder}" class="input-text text-c" attr-id="{$vo.id}"
                                                     name="listorder"></td>
                 <td>{$vo.create_time|strtotime|date="Y-m-d",###}</td>
                 <td class="td-manage">
@@ -89,7 +87,9 @@
             </tbody>
         </table>
     </div>
+    {notempty name="$product"}
     <div class="cl pd-5 bg-1 bk-gray mt-20 tp5-winstar">{:pagination($product)}</div>
+    {/notempty}
 
 </article>
 {include file="public/explain" /}

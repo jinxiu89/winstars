@@ -25,7 +25,9 @@
                 <span class="l">
                      <!--<a href="javascript:;" onclick="allRecycle('{:url('category/allRecycle')}')" class="btn btn-danger radius"><i-->
                     <!--class="Hui-iconfont">&#xe6e2;</i> 批量回收</a>-->
-                    <a href="javascript:;" onclick="add('添加一级分类({$language_id|getLanguageOne})','{:url(\'category/add\',[\'language_id\'=>$language_id])}','800','800')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加一级分类</a> </span>
+                    <a href="javascript:;"
+                       onclick="add('添加一级分类({$language_id|getLanguageOne})','{:url(\'category/add\',[\'language_id\'=>$language_id])}','800','800')"
+                       class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加一级分类</a> </span>
         <span class="r">共有数据：<strong>{$counts}</strong> 条</span>
     </div>
     <table class="table table-border table-bordered table-bg">
@@ -34,41 +36,45 @@
             <th scope="col" colspan="11">{$language_id|getLanguage}分类列表</th>
         </tr>
         <tr class="text-c">
-            <th width="20"><input type="checkbox" name="" value=""></th>
-            <th width="50">ID</th>
-            <th width="40">缩略图</th>
-            <th width="350">分类名</th>
-            <th width="60">语言</th>
+            <th width="4%">ID</th>
+            <th width="4%">缩略图</th>
+            <th width="20%">分类名</th>
+            <th width="6%">语言</th>
             <th>关键词</th>
-            <th width="90">所属分类</th>
-            <th width="40">状态</th>
-            <th width="365">操作</th>
+            <th width="15%">所属分类</th>
+            <th width="6%">排序</th>
+            <th width="3%">状态</th>
+            <th width="13%">操作</th>
         </tr>
         </thead>
         <tbody>
         {volist name="category" id="vo"}
         <tr class="text-c">
-            <td><input type="checkbox" value="{$vo.id}" name="id"></td>
             <td>{$vo.id}</td>
             <td><img src="{$vo.image}" alt="" class="avatar size-M radius"></td>
             <td class="text-l">{$vo.name}</td>
             <td>{$vo.language_id|getLanguage}</td>
             <td class="text-l">{$vo.keywords}</td>
-            <td>{$vo.parent_id|getCategory}</td>
-            <!--<td class="text-c listorder"><input size="4" attr-id="{$vo.id}" name="listorder" value="{$vo.listorder}"/></td>-->
-            <td class="td-status"><a onclick="start('{:url(\'Category/byStatus\',[\'id\'=>$vo.id,\'status\'=>$vo.status==1?-1:1])}')" title="点击修改状态">{$vo.status|status}</a></td>
-            <td class="td-manage">
-                <a title="添加子分类" onclick="add('添加{$language_id|getLanguageOne}产品二级分类','{:url(\'Category/add\',[\'language_id\'=>$language_id,\'parent_id\'=>$vo.id])}','800','680')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe716</i></a>
-                <a title="获取子分类" href="{:url('Category/index',['language_id'=>$language_id,'parent_id'=>$vo.id])}" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe715</i></a>
-                <a  class="btn btn-secondary radius" onclick="edit('编辑','{:url(\'Category/edit\',[\'id\' => $vo.id,\'language_id\'=>$language_id])}','900','800')" title="编辑"><i class="Hui-iconfont">&#xe6df</i></a>
+            <td class="text-l">{$vo.parent_id|getCategory}</td>
+            <td class="text-c sort"><input size="4" attr-id="{$vo.id}" name="listorder" value="{$vo.listorder}"
+                                           class="input-text text-c"/></td>
+            <td class="td-status"><a
+                    onclick="start('{:url(\'Category/byStatus\',[\'id\'=>$vo.id,\'status\'=>$vo.status==1?-1:1])}')"
+                    title="点击修改状态">{$vo.status|status}</a></td>
+            <td class="td-manage text-l">
+                <a title="添加子分类"
+                   onclick="add('添加{$language_id|getLanguageOne}产品二级分类','{:url(\'Category/add\',[\'language_id\'=>$language_id,\'parent_id\'=>$vo.id])}','800','680')"
+                   class="btn btn-primary radius"><i class="Hui-iconfont">&#xe716</i></a>
+                <a title="获取子分类" href="{:url('Category/index',['language_id'=>$language_id,'parent_id'=>$vo.id])}"
+                   class="btn btn-primary radius"><i class="Hui-iconfont">&#xe715</i></a>
+                <a class="btn btn-secondary radius"
+                   onclick="edit('编辑','{:url(\'Category/edit\',[\'id\' => $vo.id,\'language_id\'=>$language_id])}','900','800')"
+                   title="编辑"><i class="Hui-iconfont">&#xe6df</i></a>
                 {empty name="$language_id"}
                 {else /}
-                <a title="置顶"   onclick="mark(this)" data-id ="{$vo.id}" data-type="4" data-map="{$vo.parent_id}" class="btn btn-warning radius mark mark"><i class="Hui-iconfont">&#xe684</i></a>
-                <a title="上移一位"  onclick="mark(this)" data-id="{$vo.id}" data-type="3" data-map="{$vo.parent_id}" class="btn btn-secondary radius mark"><i class="Hui-iconfont">&#xe6d6</i></a>
-                <a title="下移一位"  onclick="mark(this)" data-id="{$vo.id}" data-type="2" data-map="{$vo.parent_id}" class="btn btn-success radius mark"><i class="Hui-iconfont">&#xe6d5</i></a>
-                <a title="置底"   onclick="mark(this)" data-id ="{$vo.id}" data-type="1" data-map="{$vo.parent_id}" class="btn btn-danger radius mark"><i class="Hui-iconfont">&#xe674</i></a>
                 {/empty}
-                <a title="删除" onclick="stop('{:url(\'Category/byStatus\',[\'id\'=>$vo.id,\'status\'=>-1])}')" class="btn btn-danger radius"><i class="Hui-iconfont" style="font-size: 20px;">&#xe6e2;</i></a>
+                <a title="删除" onclick="stop('{:url(\'Category/byStatus\',[\'id\'=>$vo.id,\'status\'=>-1])}')"
+                   class="btn btn-danger radius"><i class="Hui-iconfont" style="font-size: 20px;">&#xe6e2;</i></a>
             </td>
 
         </tr>
@@ -93,9 +99,30 @@
         $("#menu-category dt").addClass("selected");
         $("#menu-category dd").css("display", "block");
         var lan = $("input#language").val();
-        var id = "#product_category_"+lan;
+        var id = "#product_category_" + lan;
         $(id).addClass("current");
         $("#content").addClass("current");
+    });
+    $(".sort input").blur(function () {
+        var id = $(this).attr("attr-id");
+        var listorder = $(this).val();
+        var postData = {'id': id, 'listorder': listorder};
+        $.ajax(
+            {
+                url: "{:url(\'Category/sort\',['language_id'=>$language_id,])}",
+                type: "POST",
+                dataType: "json",
+                data: postData,
+                success: function (result) {
+                    if (result.status === 1) {
+                        layer.msg(result.data, {icon: 1, time: 2000}, function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(result.data, {icon: 5, time: 1500});
+                    }
+                }
+            }, JSON);
     });
 </script>
 {/block}

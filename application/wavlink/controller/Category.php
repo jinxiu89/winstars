@@ -53,8 +53,8 @@ Class Category extends BaseAdmin
     {
         if (request()->isAjax()) {
             $data = input('post.');
-            $validate=new CategoryValidate();
-            if(!$validate->check($data)) {
+            $validate = new CategoryValidate();
+            if (!$validate->check($data)) {
                 return show(0, '', '', '', '', $validate->getError());
             }
             if (!empty($data['id'])) {
@@ -100,48 +100,24 @@ Class Category extends BaseAdmin
         ]);
     }
 
-    /**
-     * 排序功能开发
-     */
-    public function listorder()
+    public function sort()
     {
-        if (request()->isAjax()) {
-            $data = input('post.'); //id ,type ,language_id，map
-            //得到它的parent_id
-            $map = [
-                'parent_id' => $data['map']
-            ];
-            self::order($data, $map);
-        } else {
-            return show(0, '置顶失败，未知错误', 'error', 'error', '', '');
+        if (\request()->isAjax()) {
+            $data = input('post.');
+            $validate = new CategoryValidate();
+            if ($validate->scene('sort')->check($data)) {
+                $result = (new CategoryModel())->sort($data);
+                if ($result) {
+                    return show($result['status'], $result['message'], '', '', '', $result['message']);
+                } else {
+                    return show($result['status'], '未知原因的排序失败', '', '', '', '未知原因的排序失败');
+                }
+            } else {
+                return show(false, 'failed', '', '', '', $validate->getError());
+            }
         }
     }
-//    public function del(Request $request)
-//    {
-//        $id = $request->param('id');
-//        if (empty($id)) {
-//            return show(0, 'error', 'id非法错误');
-//        }
-//        //从Category找是否存在子分类
-//        $result = $this->obj->findChild($id);
-//        //查询分类下是否有产品
-//        $product = model("Product")->findProduct($id);
-//        //如果查找分类下面有子分类或者产品，不为空删除失败、
-//        if (!empty($result) || !empty($product)) {
-//            return show(0, '', '删除失败！删除的分类有子分类或者其分类下有产品！');
-//        } else {
-//            try {
-//                $res = CategoryModel::destroy($id);
-//                if ($res) {
-//                    return show(1, '', '删除成功');
-//                } else {
-//                    return show(0, '', '删除失败');
-//                }
-//            } catch (\Exception $e) {
-//                return show(0, '', $e->getMessage());
-//            }
-//        }
-//    }
+
 //批量放回回收站
     public function allRecycle(Request $request)
     {

@@ -9,6 +9,7 @@ use app\common\model\Product as ProductModel;
 use app\common\model\Article as ArticleModel;
 use app\common\model\ServiceCategory as ServiceCategoryModel;
 use app\common\model\Setting as SettingModel;
+use app\common\helper\Category as CategoryHelp;
 use think\Cache;
 use think\Controller;
 use think\db\exception\DataNotFoundException;
@@ -34,7 +35,8 @@ class Base extends Controller
     protected $fileHost;
     protected $debug;
     protected $dbError;
-    protected $beforeActionList = ['footerList', 'about', 'getLanguage', 'getBaseSetting', 'getNormalCategory', 'isMobile', 'languageStatus', 'getHot', 'interested'];
+    protected $tree;
+    protected $beforeActionList = ['getTree','footerList', 'about', 'getLanguage', 'getBaseSetting', 'getNormalCategory', 'isMobile', 'languageStatus', 'getHot','interested'];//
 
     public function _initialize()
     {
@@ -47,6 +49,18 @@ class Base extends Controller
         $this->assign('url', $url);
         //加载当前模块语言包
         Lang::load(APP_PATH . 'en_us/lang/lang.php');
+    }
+
+
+    public function getTree(){
+        try {
+            $data = collection((new CategoryModel())->getDataByCode($this->code))->toArray();
+            $tree = CategoryHelp::toLayer($data, $name = 'child', $parent_id = 0);
+            $this->assign('tree', $tree);
+        } catch (DataNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
+        } catch (DbException $e) {
+        }
     }
 
     /***

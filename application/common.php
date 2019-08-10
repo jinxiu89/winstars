@@ -38,7 +38,7 @@ function GetPassword($password)
     return md5(sha1($password) . $key = 'ad;lkfjSDAF@@#$@#Q%4>>><KJJH11111111111111########sdfasdf!!!bbbsdf');
 }
 
-function Search($table, $map =[], $order)
+function Search($table, $map = [], $order)
 {
     //公共查询函数
     $data = model($table)->where($map)->order($order)->paginate();
@@ -272,7 +272,7 @@ function getTags($keywords)
     $keywords = explode(',', $keywords);
     $tag = array();
     foreach ($keywords as $v) {
-        $tag[] = "<a  style='display: inline-block;background: #ffb96b; ;margin:5px 5px 5px 0;padding: 4px 5px;border-radius: 10px;' title=\"{$v}\" href=\"/en_us/search/product.html?key={$v}\">{$v}</a>";
+        $tag[] = "<a  class='capsule btn_link' title=\"{$v}\" href=\"/en_us/search/product.html?key={$v}\">{$v}</a>";
     }
     return implode('', $tag);
 }
@@ -351,12 +351,55 @@ function getAlbum($hotSales)
  * @param $id
  * @return bool|string
  */
-function getDriverNameById($id){
-    try{
-        $obj=new app\common\model\Driver();
-        $result= $obj->get($id);
+function getDriverNameById($id)
+{
+    try {
+        $obj = new app\common\model\Driver();
+        $result = $obj->get($id);
         return $result->name;
+    } catch (Exception $exception) {
+        return $exception->getMessage();
+    }
+}
+
+function getProductModelById($id){
+    try {
+        $obj=new app\common\model\Document();
+        $result=$obj->get($id);
+        return $result->title;
     }catch (Exception $exception){
         return $exception->getMessage();
     }
 }
+
+/***
+ * @param $tags
+ * @param $str
+ * @param bool $content
+ * @return null|string|string[]
+ * 20190803
+ * 用于过滤 掉危险的标签，或者自己不想用户输入的标签，过滤掉
+ */
+function strip_html_tags($tags, $str, $content = true)
+{
+    $html = [];
+    foreach ($tags as $tag) {
+        if ($content) {
+            $html[] = '/(<' . $tag . '.*?>(.|\n)*?<\/' . $tag . '>)/is';
+        } else {
+            $html[] = "/(<(?:\/" . $tag . "|" . $tag . ")[^>]*>)/is";
+        }
+    }
+    return preg_replace($html, '', $str);
+}
+
+function getStatus($status){
+    if($status == 1){
+        return "正常";
+    }
+    if($status == 2){
+        return "禁用";
+    }
+    return "未知状态";
+}
+

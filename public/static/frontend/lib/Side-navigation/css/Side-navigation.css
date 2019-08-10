@@ -11,12 +11,12 @@
 
     .list > ul > li > a:hover {
         color: #fff;
-        background: #EA881B
+        background: #99ccff
     }
 
     .level_1 {
         color: #fff !important;
-        background: #EA881B
+        background: #99ccff
     }
 
     .level_2 {
@@ -30,13 +30,12 @@
     .list ul li a {
         position: relative;
         padding-left: 10px;
-        color: #333;
-        font-size: 12px;
-        display: block;
-        font-weight: bold;
-        height: 36px;
-        line-height: 36px;
-        position: relative
+        /*color: #333;*/
+        /*font-size: 12px;*/
+        /*display: block;*/
+        /*font-weight: bold;*/
+        /*height: 36px;*/
+        line-height: 42px
     }
 
     .icon-caret-down:before {
@@ -57,7 +56,8 @@
     }
 
     .list > ul > li > ul > li > a:hover {
-        background-color: #dcdcdc
+        background-color:#99ccff;
+        color: #fff
     }
 
     .list ul li ul li ul {

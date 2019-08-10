@@ -21,13 +21,14 @@ class Driver extends Base
         parent::_initialize();
         $data = collection((new CategoryModel())->getDataByCode($this->code))->toArray();
         $tree = CategoryHelp::toLayer($data, $name = 'child', $parent_id = 0);
+        $this->language=(new LanguageModel())->getLanguageCodeOrID($this->code);
         $this->assign('tree', $tree);
     }
 
     //驱动下载首页
     public function index()
     {
-        $result=(new DriverModel())->getDataAll();
+        $result=(new DriverModel())->getDataAll($this->language);
         $this->assign('data',$result);
         return $this->fetch($this->template . '/driver/index.html');
     }

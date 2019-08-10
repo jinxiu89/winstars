@@ -20,7 +20,6 @@ Class BaseModel extends Model
     //php think optimize:schema  在命令行里输入这个，生成数据库缓存字段
     protected $autoWriteTimestamp = true; //把时间设置成当前时间
     protected $debug;
-
     public function initialize()
     {
         parent::initialize();
@@ -30,7 +29,7 @@ Class BaseModel extends Model
     public function add($data)
     {
         $data['status'] = 1;
-        $this->save($data);
+        $this->allowField(true)->save($data);
         //获取自增id
         $id = $this->id;
         //同时更新listorder字段，把id的值加100赋给它

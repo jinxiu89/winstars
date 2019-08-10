@@ -302,10 +302,10 @@ footer .copy-right p a {
 }
 .g-category span {
   display: block;
+  font-size: 0.373333rem;
   line-height: 50px;
   text-align: center;
   border-bottom: 1px solid #eaeaea;
-  font-weight: bold;
 }
 .g-category ulbefore,
 .g-category ul:after {
@@ -388,5 +388,21 @@ footer .copy-right p a {
   float: left;
   padding: 5px 0;
   width: 33%;
+}
+.g-page-navigation .pagination li a {
+  color: #333333;
+}
+.g-page-navigation .pagination .active span {
+  background: #EA881B;
+  border-color: #EA881B;
+}
+/* 交互 */
+.capsule {
+  display: inline-block;
+  background: #e68e2a;
+  color: #fff0f0 !important;
+  margin: 5px 5px 5px 0;
+  padding: 4px 5px;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=public.css.map */

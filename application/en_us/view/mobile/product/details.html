@@ -63,10 +63,10 @@
 </div>
 <div class="row">
     <div class="content">
-        <div class="boxA" id="content">
+        <div id="content">
             <textarea style="display:none;" name="content">{$result.content}</textarea>
         </div>
-        <div class="boxB" id="specifications">
+        <div id="specifications">
             <textarea style="display:none;" name="specifications">{$result.specifications}</textarea>
         </div>
     </div>
@@ -116,7 +116,7 @@
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
             });
-            editormd.markdownToHTML("specifications",{
+            editormd.markdownToHTML("specifications", {
                 htmlDecode: "style,script,iframe",
                 taskList: true,
                 tex: true,  // 默认不解析

@@ -24,32 +24,32 @@
     <hr style="border: 1px solid #f2f2f2">
     <div class="path-box bgWhite">
         <div class="path-cont">
-            <a href="/en_us/" style="display: inline-block">
-                <i class="iconfont" style="font-size: 18px;">&#xeb1b;</i>
+            <a href="/en_us/" style="display: inline-block" class="f12">
+                <i class="iconfont">&#xeb1b;</i>
             </a>
             >
-            <a href="/en_us/category.html" style="display: inline-block" class="current">PRODUCTS</a>
+            <a href="/en_us/category.html" style="display: inline-block" class="current f12">PRODUCTS</a>
         </div>
     </div>
 </section>
 
-<section style="margin-bottom: 60px">
+<section style="margin-bottom: 40px">
     {volist name="tree" id="vo"}
     <div class="ProductBox">
         <div class="ProductRow mt80">
             {notempty name="vo.child"}
-            <h2 class="f18 mb15 fOrange tc">- {$vo.name} -</h2>
-            <div class="ProductList bgWhite clear">
+            <h2 class="f18 mb15 fOrange tc" style="color: #09f">- {$vo.name} -</h2>
+            <div class="ProductList  clear">
                 {volist name="vo.child" id="co"}
                 <div class="fl">
                     <div class="child relative oh">
                         <img src="{$co.image}" width="100%" alt="">
                         <div class="mask-layer absolute w100 bgMaskLayer animate_time">
                             <a href="/en_us/category/{$co.url_title}.html"><h3 class="fWhite cursorP">{$co.name}</h3></a>
-                            <p class="mt15 fOrange">
+                            <p class="mt15 fWhite">
                                 {$co.description}
                             </p>
-                            <a class="More fWhite mt20 tc bgOrange lh30" href="/en_us/category/{$co.url_title}.html">Details</a>
+                            <a class="More fWhite mt20 tc bgOrangeWhite bg_inverted lh30 cursorP" href="/en_us/category/{$co.url_title}.html">Details</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 {block name="script"}
 <script>
     $(document).ready(function () {
-        $('.product').addClass("bgOrangeWhite");
+        $('.product > a').addClass("bgOrangeWhite");
     })
 </script>
 {/block}

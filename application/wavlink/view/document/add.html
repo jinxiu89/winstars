@@ -2,85 +2,62 @@
 {block name="form"}
 <form class="form form-horizontal" id="form-product-add" method="post" action="">
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文档名称：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <input type="text" class="input-text" value="" placeholder="" id="name" name="name">
-        </div>
-    </div>
-    <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文档标题：</label>
-        <div class="formControls col-xs-8 col-sm-9">
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>文档名称：</label>
+        <div class="formControls col-xs-8 col-sm-3">
             <input type="text" class="input-text" value="" placeholder="" id="title" name="title">
         </div>
     </div>
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>url标题：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <input type="text" class="input-text" value="" placeholder="" id="url_title" name="url_title">
-        </div>
-    </div>
-    <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2">文档封面图外链地址：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <textarea name="image" cols="" rows="" class="textarea" placeholder="500个字符以内" dragonfly="true"></textarea>
-        </div>
-    </div>
-
-    <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属分类：</label>
-        <div class="formControls col-xs-8 col-sm-4"> <span class="select-box">
-				<select name="category_id" class="select">
-					<option value="0">--请选择--</option>
-					{volist name="categorys" id="vo"}
-					<option value="{$vo.id}">{$vo.name}</option>
-				    {/volist}
-				</select>
-				</span>
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>版本号：</label>
+        <div class="formControls col-xs-8 col-sm-3">
+            <input type="text" class="input-text" value="" placeholder="" id="version" name="version">
         </div>
     </div>
     <input type="hidden" name="language_id" value="{$language_id}">
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>SEO标题：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <input type="text" class="input-text" value="" placeholder="" id="seo_title" name="seo_title">
-        </div>
-    </div>
-    <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>SEO关键词：</label>
-        <div class="formControls col-xs-8 col-sm-9">
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>SEO关键词：</label>
+        <div class="formControls col-xs-8 col-sm-3">
             <input type="text" class="input-text" value="" placeholder="" id="seo_keys" name="keywords">
         </div>
     </div>
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2">描述：</label>
-        <div class="formControls col-xs-8 col-sm-9">
+        <label class="form-label col-xs-4 col-sm-1">描述：</label>
+        <div class="formControls col-xs-8 col-sm-3">
             <textarea name="description" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内"
                       dragonfly="true"></textarea>
             <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
         </div>
     </div>
-
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下载地址：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <textarea name="url" cols="" rows="" class="textarea" placeholder="复制下载链接...500个字符以内"
-                      dragonfly="true"></textarea>
-            <p class="textarea-numberbar"><em class="textarea-length">0</em>/500</p>
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>所属分类：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <span class="select-box">
+            <select name="category_id" class="select">
+                <option value="0">--请选择--</option>
+                {volist name="category" id="vo"}
+                <option value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+            </span>
         </div>
     </div>
     <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2">内容：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <textarea id="editor" type="text/plain" name="content" style="width:100%;height:400px;"></textarea>
+        <label class="form-label col-xs-4 col-sm-1">产品列表:</label>
+        <div class="formControls col-xs-8 col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-header" id="products">请通过上面的选框选择分类</div>
+                <div class="panel-body" id="list">
+                    暂无数据
+                </div>
+            </div>
         </div>
     </div>
-
+    {:token()}
     <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-            <button class="btn btn-primary radius" type="button" onclick="save('{:url('document/save')}')"><i
+            <button class="btn btn-primary radius" type="button" onclick="save('{:url(\'Document/add\',[\'language_id\'=>$language_id,])}')"><i
                     class="Hui-iconfont">&#xe632;</i> 保存添加
             </button>
-
             <button onClick="layer_close();" class="btn btn-default radius" type="button">
                 &nbsp;&nbsp;取消&nbsp;&nbsp;
             </button>
@@ -117,6 +94,37 @@
                 }
             });
         })
+    });
+    $(".select").change(function () {
+        $("#products").text($(this).children('option:selected').text());
+        var postData = {};
+        postData['category_id'] = this.value;
+        $.ajax(
+            {
+                url: "{:url(\'Driver/getProductList\',['language_id'=>$language_id,])}",
+                type: "POST",
+                dataType: "json",
+                data: postData,
+                success: function (result) {
+                    var res = JSON.parse(result);
+                    if (res.status === true) {
+                        var list = '';
+                        $(res.data).each(function () {
+                            list += '<label style="display: inline-block;\n' +
+                                'width: 15%">\n' +
+                                '<input type="checkbox" value=" ' + this.id + ' " name="products[]" id="user-Character-1-0-0">\n' +
+                                '' + this.model + '</label>'
+                        });
+                        if (list !== '') {
+                            $("#list").html(list);
+                        } else {
+                            $("#list").html("暂无数据");
+                        }
+                    } else {
+
+                    }
+                }
+            }, JSON);
     });
 </script>
 {/block}

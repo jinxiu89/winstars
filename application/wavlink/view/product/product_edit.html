@@ -45,9 +45,17 @@
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>产品特色说明：</label>
         <div class="formControls col-xs-8 col-sm-11">
+            <span>**请使用markdown语法来编写文案，而且你可以使用除了style,script,iframe以外的大部分无公害的标签来展示你的内容**</span>
             <div id="features">
                 <textarea name='features' style="display:none;">{$product->features}</textarea>
             </div>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>列表图：</label>
+        <div class="formControls col-xs-8 col-sm-6">
+            <input type="text" class="input-text" value="{$product->thumbnail}" placeholder="" id="thumbnail"
+                   name="thumbnail">
         </div>
     </div>
     <div class="row cl">
@@ -92,6 +100,7 @@
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-1">产品描述：</label>
         <div class="formControls col-xs-8 col-sm-11">
+            <span>**请使用markdown语法来编写文案，而且你可以使用除了style,script,iframe以外的大部分无公害的标签来展示你的内容**</span>
             <div id="content">
                 <textarea name='content' style="display:none;" placeholder="数据库features字段，使用html代码，li标签 ">{$product->content}</textarea>
             </div>
@@ -100,6 +109,7 @@
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-1">规格参数：</label>
         <div class="formControls col-xs-8 col-sm-11">
+            <span>**请使用markdown语法来编写文案，而且你可以使用除了style,script,iframe以外的大部分无公害的标签来展示你的内容**</span>
             <div id="specifications">
                 <textarea  name="specifications" style="display: none;">{$product->specifications}</textarea>
             </div>

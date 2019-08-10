@@ -16,6 +16,15 @@
     {/block}
     <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/Common-style/Common-style.css">
     <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
+    <style>
+        #callus {
+            --call-us-form-header-background: #09F;
+            --call-us-header-text-color: #f5f9ff;
+            position: fixed;
+            bottom: 320px;
+            right: 6px;
+        }
+    </style>
     {block name="style"}
 
     {/block}
@@ -24,30 +33,83 @@
 {block name="navbar"}
 <!-- Home 页眉 -->
 <section class="header">
-    <div class="tc bgWhite" style="padding: 8px 20px; background-color: #f2f2f2">
-        <p class="fOrange">Our products have not been uploaded yet. Please contact our salesman for details</p>
+    <div class="tc bgWhite relative" style="z-index: 11; padding: 8px 20px; background-color: #f2f2f2">
+        <p class="fOrange">Winstars is in transition. Updates coming soon. Please contact our salesmen for more information.</p>
     </div>
-    <div class="w-home-box bgWhite h50">
-        <div class="w-home-cont clear">
+    <div class="w-home-box bgWhite relative">
+        <div class="w-home-cont DisplayFlex">
             <!-- Home 网站LOGO -->
-            <div class="w-home-nav-logo tc fl w20 h50">
-                <a href="#" class="pt15">
+            <div class="w-home-nav-logo tl w20 ml20">
+                <a href="/en_us/" style="padding-top: 12px">
                     <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=5754ljwY-Ya8RCOCQLGFIz_jG64TU_f3nqWGRY7YZWvX62_VEQd5n8Nj0jzzbrWxi7hNNEot4bdqJnAYErgsLbGDFoGlc2VE2L88h13DOf7vnfxkif2RfQXHGGiyBuLEf7sG3C5AT9860232bLsInA&file_name=/w-head-logo.png"
                          alt="">
                 </a>
             </div>
             <!-- Home 产品列表 -->
-            <div class="w-home-nav-list clear tc fl h50">
-                <a class="h50 lh50 home" href="/en_us/">HOME</a>
-                <a class="h50 lh50 about" href="/en_us/about.html">ABOUT</a>
-                <a class="h50 lh50 product" href="/en_us/category.html">PRODUCT</a>
-                <a class="h50 lh50 support" href="/en_us/support.html">SUPPORT</a>
-                <!--<a class="h50 lh50" href="#">BLOG</a>-->
-                <!--<a class="h50 lh50" href="#">F.A.Q</a>-->
+            <ul id="nav-container" class="DisplayFlex flex_1 w-home-nav-list clear tc">
+                <li>
+                    <a class="link">
+                        PRODUCT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center align-items_flex_start">
+                            {notempty name="tree"}
+                            {volist name="tree" id="item"}
+                            <dl class="tl pl20">
+                                <dt>
+                                    <a href="/en_us/category/{$item.url_title}.html" style="color: #0099FF;">
+                                        <h4 class="font_color_title">
+                                            {$item.name}
+                                        </h4>
+                                    </a>
+                                </dt>
+                                {notempty name="item.child"}
+                                {volist name="item.child" id="vo"}
+                                <dd>
+                                    <a href="/en_us/category/{$vo.url_title}.html">{$vo.name}</a>
+                                </dd>
+                                {/volist}
+                                {/notempty}
 
-            </div>
+                            </dl>
+                            {/volist}
+                            {else /}
+                            {/notempty}
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="link support">
+                        SUPPORT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center align-items_center">
+                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">Manuals</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">Drives</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">F.A.Q</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="link">
+                        ABOUT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center align-items_center">
+                            <a class="animate_time pt-pb-6" href="/en_us/about/Company_Overview.html">Company</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/about/content_us.html">Contact Us</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/about/milestone.html">Milestone</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/about/Privacy.html">Privacy</a>
+                            <a class="animate_time pt-pb-6" href="/en_us/about/join_us.html">Join Us</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <!-- Home 图标按钮 -->
-            <div class="w-home-nav-search fr h5">
+            <div class="w-home-nav-search w20 tr h5">
                 <a href="#" class="search dInlineBlack">
                     <i class="iconfont" style="font-size: 24px"></i>
                 </a>
@@ -56,7 +118,7 @@
 
         {block name="search"}
         <!-- Home 搜索框 -->
-        <div class="w-home-form-search-box absolute w100 dNone bgTrans" style="top: 100%; left: 0">
+        <div class="w-home-form-search-box absolute w100 dNone" style="top: 100%; left: 0">
             <div class="w-home-form-search-cont clear w50 oh">
                 <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
                     <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"  placeholder="Please enter your product name">
@@ -73,61 +135,93 @@
 {/block}
 <!-- Home 页脚 -->
 <section>
-    <div class="w-home-footer-box bgBlack">
-        <div class="pt50 pb50">
-            <div class="w-home-footer-cont tc mb50">
+    <div class="w-home-footer-box">
+        <div class="" style="padding:20px 0; background: #333;">
+            <div class="w-home-footer-cont mb50 DisplayFlex justify-content_flex-center">
                 <dl>
-                    <dt class="f14 fWhite mb15 pb2">WHO WE ARE?</dt>
+                    <dt class="fWhite pb2 f12">WHO WE ARE?</dt>
                     <dd><a href="/en_us/about/Company_Overview.html">Company</a></dd>
                     <dd><a href="/en_us/about/content_us.html">Contact Us</a></dd>
                     <dd><a href="/en_us/about/milestone.html">Milestone</a></dd>
                     <dd><a href="/en_us/about/Privacy.html">Privacy</a></dd>
                     <dd><a href="/en_us/about/join_us.html">Join Us</a></dd>
                 </dl>
+                <!--<dl>-->
+                    <!--<dt class="f12 fWhite pb2">WHAT DO WE OFFER?</dt>-->
+                    <!--&lt;!&ndash;<dd><a href="#">Thunderbolt 3 product</a></dd>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dd><a href="#">Mesh WiFi Router</a></dd>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dd><a href="#"></a></dd>&ndash;&gt;-->
+                <!--</dl>-->
                 <dl>
-                    <dt class="f14 fWhite mb15 pb2">WHAT DO WE OFFER?</dt>
-                    <!--<dd><a href="#">Thunderbolt 3 product</a></dd>-->
-                    <!--<dd><a href="#">Mesh WiFi Router</a></dd>-->
+                    <dt class="fWhite pb2 f12">NEED HELP?</dt>
+                    <dd><a href="/en_us/support/driver.html">Manuals</a></dd>
+                    <dd><a href="/en_us/support/driver.html">Drivers</a></dd>
+                    <dd><a href="/en_us/support/driver.html">F.A.Q</a></dd>
                     <!--<dd><a href="#"></a></dd>-->
-                </dl>
-                <dl>
-                    <dt class="f14 fWhite mb15 pb2">NEED HELP?</dt>
-                    <dd><a href="/en_us/support/driver.html">Driver List</a></dd>
-                    <!--<dd><a href="#">Frequently Asked Questions</a></dd>-->
-                    <!--<dd><a href="#"></a></dd>-->
-                </dl>
-                <dl class="footer_icon_link">
-                    <dt class="f14 fWhite mb15 pb2">Community</dt>
-                    <dd>
-                        <a href="#">
-                            <i class="iconfont"></i>
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="#">
-                            <i class="iconfont"></i>
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="#">
-                            <i class="iconfont"></i>
-                        </a>
-                    </dd>
-                    <dd><a href="#"></a></dd>
                 </dl>
             </div>
         </div>
-        <div class="put-on-records tc bgOrange" style="padding: 8px 0">
+        <div class="put-on-records tc bgBlack" style="padding: 8px 0;font-size: 11px;color: #EEE;">
             <p>©1997 - <script>var nowYear = new Date().getFullYear();document.write(nowYear)</script> Winstars Technology Ltd. All Rights Reserved.</p>
-            <a href="/" class="fWhite cursorP">
-                <span>Powered by Winstars</span>
-            </a>
+            <span>
+                <a href="/" class="fWhite cursorP" style="display: inline">Powered by Winstars</a>
+            </span>
         </div>
     </div>
 </section>
+<section>
+    <!-- 遮罩层 -->
+    <div class="mask_layer fixed"></div>
+</section>
 <script src="__STATIC__/lib/jquery/jquery-3.2.1.min.js"></script>
 <script src="__STATIC__/frontend/en-us/js/Common-style/Common-style.js"></script>
+<script src="__STATIC__/lib/chat/callus.js"></script>
+<script>
+    var hammer_screen_btn = $("#nav-container > li"); // 垂幕按钮
+    var hammer_screen = $("#nav-container > li > div.hammer_screen"); // 垂幕
+    var SearchBar = $(".w-home-form-search-box"); // 搜索框
+    var mask = $(".mask_layer"); // 遮罩层
+
+    hammer_screen_btn.click(function(e){
+        window.event? window.event.cancelBubble = true : e.stopPropagation();
+        SearchBar.slideUp();
+        mask.fadeIn();
+        $(this).find("> a").addClass("bgOrangeWhite");
+        $(this).siblings().find("> a").removeClass("bgOrangeWhite");
+
+        $(this).find(".link").addClass("bg_complex");
+        $(this).siblings().find(".link").removeClass("bg_complex");
+
+        $(this).find(".hammer_screen").stop(false, true).animate({
+            opacity: 1,
+            "z-index": 100
+        },150).slideDown();
+        $(this).siblings().find(".hammer_screen").stop(false, true).animate({
+            opacity: 0,
+            "z-index": 0
+        },150).slideUp()
+    });
+
+    $(document).click(function(){
+        mask.fadeOut();
+        hammer_screen.slideUp();
+    })
+</script>
 {block name="script"}
 {/block}
+<call-us id="callus"
+         style="position: fixed; bottom: 8px; right: 8px; z-index:9999;"
+         phonesystem-url="https://mylivechat.west.3cx.us:5001/"
+         party="winstars"
+         invite-message="Can I help you?"
+         allow-call="false"
+         allow-video="false"
+         allowfocus="true"
+         operator-name="serviceGroup"
+         operator-icon="http://cdn.speedytel.com/image/avatar.jpg"
+         minimized="true"
+         window-title="Let's chat"
+         authentication="both">
+</call-us>
 </body>
 </html>

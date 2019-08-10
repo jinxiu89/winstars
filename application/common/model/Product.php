@@ -16,6 +16,7 @@ use app\common\helper\Search as SearchHelp;
 use think\Collection;
 use think\Cookie;
 use think\Cache;
+use think\Db;
 use think\Exception;
 
 /***
@@ -34,7 +35,10 @@ Class Product extends BaseModel
 
     public function drivers()
     {
-        return $this->belongsToMany('Driver', 'product_driver', 'driver_id', 'product_id')->field('name,url_title');
+        return $this->belongsToMany('Driver', 'product_driver', 'driver_id', 'product_id')->field('id,name,url_title,version,create_time');
+    }
+    public function documents(){
+        return $this->belongsToMany('Document','product_document','document_id','product_id')->field('title,url_title,version,create_time');
     }
 
     /**
@@ -138,12 +142,21 @@ Class Product extends BaseModel
         }
     }
 
+    public function getDetailByUrlTitle($url_title)
+    {
+        try {
+            $result = $this->with("drivers")->with('documents')->where(['url_title' => $url_title])->find();
+            return ['status' => 1, 'message' => 'ok', 'data' => $result];
+        } catch (Exception $exception) {
+            return ['status' => 0, 'message' => $exception->getMessage(), 'data' => ''];
+        }
+    }
+
     //获取中间表数据,得到产品所属分类id
     public static function getProductCategory($id)
     {
         $product = self::get($id);
         $cates = $product->categorys;
-
         $ids = [];
         foreach ($cates as $v) {
             $ids[] = $v['id'];
@@ -272,7 +285,7 @@ Class Product extends BaseModel
             'listorder' => 'desc'
         ];
         $field = 'url_title,name,model';
-        try{
+        try {
             if (!config('app_debug')) {
                 if (!Cache::get('LimitListProduct')) {
                     Cache::set('LimitListProduct', self::where($map)->limit($list)->field($field)->order($order)->select());
@@ -281,7 +294,7 @@ Class Product extends BaseModel
             $products = config('app_debug') ? self::where($map)->limit($list)->field($field)->order($order)->select() : Cache::get('LimitListProduct');
             $data = collection($products)->toArray();
             return $data;
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
 
         }
     }
@@ -343,7 +356,6 @@ Class Product extends BaseModel
     public function getHotSales($code, $count)
     {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
-
-        return collection(self::where(['language_id' => $language_id])->limit($count)->with('categorys')->field('id,name,url_title,keywords,model,description,album')->select())->toArray();
+        return collection(self::where(['language_id' => $language_id])->limit($count)->with('categorys')->field('id,name,url_title,keywords,model,description,album,thumbnail')->select())->toArray();
     }
 }

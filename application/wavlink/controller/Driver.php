@@ -9,6 +9,7 @@
 namespace app\wavlink\controller;
 
 use app\common\model\Category as CategoryModel;
+use app\wavlink\validate\DriverDownload;
 use think\exception\DbException;
 use app\wavlink\validate\Driver as DriverValidate;
 use app\wavlink\validate\DriverDownload as DriverDownloadValidate;
@@ -18,7 +19,6 @@ use think\Request;
 
 class Driver extends BaseAdmin
 {
-    protected $language_id;
     protected $beforeActionList = [
         'getCategoryLevel',
     ];
@@ -31,11 +31,7 @@ class Driver extends BaseAdmin
 
     public function getCategoryLevel()
     {
-        try {
-            $category = (new CategoryModel())->getCategoryLevel($this->language_id);
-        } catch (DbException $e) {
-
-        }
+        $category = (new CategoryModel())->getCategoryLevel($this->language_id);
         $this->assign('category', $category);
     }
 
@@ -145,6 +141,23 @@ class Driver extends BaseAdmin
                 }
                 return show(false, 'failed', '', '', '', '未知错误！');
             } else {
+                return show(false, 'failed', '', '', '', $validate->getError());
+            }
+        }
+    }
+
+    public function sort(){
+        if(\request()->isAjax()){
+            $data=input('post.');
+            $validate=new DriverValidate();
+            if($validate->scene('sort')->check($data)){
+                $result=(new DriverModel())->sort($data);
+                if($result){
+                    return show($result['status'],$result['message'],'','','',$result['message']);
+                }else{
+                    return show($result['status'],'未知原因的排序失败','','','','未知原因的排序失败');
+                }
+            }else{
                 return show(false, 'failed', '', '', '', $validate->getError());
             }
         }

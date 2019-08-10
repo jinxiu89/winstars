@@ -89,7 +89,7 @@ img {
 }
 
 .spec-items li.on {
-    border: 2px solid #FFB600;
+    border: 2px solid #09F;
 }
 
 .spec-items li img {
@@ -112,7 +112,7 @@ span.spe_leftBtn, span.spe_rightBtn {
 }
 
 span.on {
-    background-color: #FFB600;
+    background-color: #09F;
     color: #fff;
     cursor: pointer;
 }

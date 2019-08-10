@@ -1,61 +1,94 @@
-<!-- Home 抽象图 -->
+<style>
+    /* 核心 */
+    div.main_core div ul li > div {
+        transform: translateY(20%);
+        -webkit-transform: translateY(20%);
+        -moz-transform: translateY(20%);
+        -ms-transform: translateY(20%);
+        -o-transform: translateY(20%)
+    }
+    div.main_core div ul li:hover > div {
+        transform: translateY(-26px);
+        -webkit-transform: translateY(-26px);
+        -moz-transform: translateY(-26px);
+        -ms-transform: translateY(-26px);
+        -o-transform: translateY(-26px)
+    }
+    div.main_core div ul li:hover > div i {
+        color: #0099ff;
+        opacity: 0
+    }
+    div.main_core div ul li:hover > div div p {
+        opacity: 1
+    }
+</style>
 <section>
-    <div class="w-home-slide-box">
-        <div class="w-home-slide-cont relative oh">
-            <div>
-                <img class="pc" src="//files.win-star.com/images/2019/07/03/winstars_banner.jpg" width="100%" alt="">
-                <img class="w100 flat mobile" src="//files.win-star.com/images/2019/07/03/mobile_banner.jpg" alt="">
-                <div class="w-home-slide-text absolute">
-                    <h2 class="f24 fWhite">TECH-DRIVEN BUSINESS, DEDICATED TO</h2>
-                    <h2 class="f24 fWhite">INNOVATION</h2>
-                    <p class="f16 fWhite mt20 mb20">16-Year Pursuit of Bringing Technology to Life, <br>Shaping the Way We Live</p>
-                    <!--<a href="#" class="fWhite tc b bcWhite mr14">Get it Now</a>-->
-                    <a href="/en_us/about.html" class="fWhite tc b bcWhite">Learn More</a>
+    <div class="banner_carousel">
+        <!-- banner轮播 -->
+        <div class="swiper-container swiper-container-initialized swiper-container-horizontal w100">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3240px, 0px, 0px);">
+                <div class="swiper-slide" style="width: 1080px;">
+                    <a href="#">
+                        <img class="w100" src="//files.win-star.com/images/2019/08/05/banner.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide" style="width: 1080px;">
+                    <a href="#">
+                        <img class="w100" src="//files.win-star.com/images/2019/08/05/banner1.jpg" alt="">
+                    </a>
                 </div>
             </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-bullets-dynamic"
+                 style="width: 80px;"><span class="swiper-pagination-bullet" style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active-prev-prev"
+                    style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active-prev"
+                    style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active swiper-pagination-bullet-active-main"
+                    style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active-next"
+                    style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active-next-next"
+                    style="left: -16px;"></span><span class="swiper-pagination-bullet" style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet" style="left: -16px;"></span><span class="swiper-pagination-bullet"
+                                                                                       style="left: -16px;"></span><span
+                    class="swiper-pagination-bullet" style="left: -16px;"></span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
-    </div>
-</section>
-
-<!-- Home 方针，工厂，战略 -->
-<section>
-    <div class="w-home-pvw-box bgOrange">
-        <div class="w-home-pvw-cont pt25 pb25 pr14 pl14">
-            <ul class="Hyphenopoly clear">
-                <li>
-                    <div>
-                        <i class="iconfont icon-direction dInlineBlack"></i>
-                        <div class="pl12 dInlineBlack Hyphenopoly">
-                            <a href="#">
-                                <h3 class="fWhite cursorP">TECHNOLOGY STRATEGY</h3>
-                                <p class="mt5 fWhite lh20 cursorP">10 years ago, based on USB2.0, we established a collection of peripheral products and developed tech-driven strategy for the enterprise.</p>
-                            </a>
+        <!-- 核心 -->
+        <div class="main_core bgWhite">
+            <div class="">
+                <ul class="DisplayFlex justify-content_flex-center" style="width: 100%">
+                    <li class="tc oh" style="width: 33.333%; padding: 0 4%">
+                        <div class="animate_time">
+                            <i class="iconfont icon-direction animate_time" style="font-size: 45px"></i>
+                            <div class="mt10">
+                                <h2 class="mb5" style="font-size: 12px">TECH­NOL­OGY STRAT­EGY</h2>
+                                <p class="animate_time opacity_0">10 years ago, based on USB2.0, we es­tab­lished a col­lec­tion of pe­riph­eral prod­ucts and de­vel­oped tech-​driven strat­egy for the en­ter­prise.</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <i class="iconfont icon-factory dInlineBlack"></i>
-                        <div class="pl12 dInlineBlack">
-                            <a href="#">
-                                <h3 class="fWhite cursorP">PURPOSE-BUILT FACTORY</h3>
-                                <p class="mt5 fWhite lh20 cursorP">Self-built mold manufacturing and production lines, expanding business from more aspects relying on well-equipped factory.</p>
-                            </a>
+                    </li>
+                    <li class="tc oh" style="width: 33.333%; padding: 0 2%">
+                        <div class="animate_time">
+                            <i class="iconfont icon-factory animate_time" style="font-size: 45px"></i>
+                            <div class="mt10">
+                                <h2 class="mb5" style="font-size: 12px">PURPOSE-​BUILT FAC­TORY</h2>
+                                <p class="animate_time opacity_0">Self-​built mold man­u­fac­tur­ing and pro­duc­tion lines, ex­pand­ing busi­ness from more as­pects re­ly­ing on well-​equipped fac­tory. </p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <i class="iconfont icon-setting dInlineBlack"></i>
-                        <div class="pl12 dInlineBlack">
-                            <a href="#">
-                                <h3 class="fWhite cursorP">TECHNICAL INNOVATION </h3>
-                                <p class="mt5 fWhite lh20 cursorP">Established independent R&D center for technical support and provide customers with better products and services.</p>
-                            </a>
+                    </li>
+                    <li class="tc oh" style="width: 33.333%; padding: 0 2%">
+                        <div class="animate_time">
+                            <i class="iconfont icon-setting animate_time" style="font-size: 45px"></i>
+                            <div class="mt10">
+                                <h2 class="mb5" style="font-size: 12px">TECH­NI­CAL IN­NO­VA­TION</h2>
+                                <p class="animate_time opacity_0">Es­tab­lished in­de­pen­dent R&amp;D cen­ter for tech­ni­cal sup­port and pro­vide cus­tomers with bet­ter prod­ucts and ser­vices.</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
@@ -65,100 +98,92 @@
     <div class="w-home-article-title-box bgWhite">
         <div class="w-home-article-title-cont">
             <div class="w-home-article-title tc">
-                <h2 class="fOrange f22"> YOU'VE GOT THE WILL, WE'VE GOT THE WAY</h2>
+                <h2 class="fOrange f22"> YOU HAVE GOT THE WILL, WE HAVE GOT THE WAY</h2>
                 <p class="f16 mt20 fGrayBlack lh25">
-                    Winstars is a highly competitive Tech-Driven company in R&amp;D and manufacturing of PC peripherals, wireless products, and smart home IOT devices.<br> We streamline process for fast time to market, control costs, and guarantee product quality by keeping every production step in house.
+                    Winstars is a highly competitive Tech-Driven company in R&amp;D and manufacturing of PC peripherals,
+                    wireless products, and smart home IOT devices.<br> We streamline process for fast time to market,
+                    control costs, and guarantee product quality by keeping every production step in house.
                 </p>
             </div>
         </div>
     </div>
 </section>
-<section>
-    <div class="w-home-article-content-box bgWhite">
-        <div class="w-home-article-content-cont">
-            <div class="w-home-article-cont tc">
-                <div class="w-home-article-cont-one clear bb1 bcGray">
-                    <div class="img oh">
-                        <img class="animate_time" src="https://cloud.win-star.com/index.php?user/publicLink&amp;fid=b442SlOg-VPWIfK0bH9Zmiqpy7tmiGoaEvh1dY0uZmfuAHpFekCVrqs0lXh73exfPusOjJ9NzRPksfhA-JUYnY7UjAKT9UwbMqu1vzOHm-cS9Wa7rXfoO67zILEhaM2UQypfZ__pzHyxn8p1vgFQJq_evA&amp;file_name=/product_design.jpg" width="100%" alt="">
-                    </div>
-                    <div class="text">
-                        <ol class="tl">
-                            <li class="mb20">
-                                <div>
-                                    <h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1">R&amp;D CAPACITY</h3>
-                                    <p class="mt8 fGrayBlack lh20">Experienced and highly responsible personnel for raw material, production and inspection ensure high product quality. As a National High-Tech Company, we have a self-motivated R&amp;D team with over 120 engineers and more than 20 years of experience.<br>
-                                    </p>
-                                    <div class="mt10">
-                                        <p> - Independent R&amp;D Building</p>
-                                        <p>- International R&amp;D Team</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="mb20">
-                                <div>
-                                    <h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1 mt20">QUALIFICATIONS</h3>
-                                    <p class="mt8 fGrayBlack lh20">With 11-year Golden Supplier and good industry reputation, you’re promised with impeccable creditability and confidence.</p>
-                                    <div class="mt10">
-                                        <p>Government Fully-Funded Projects:</p>
-                                        <p>- High-Speed Exchangeable WiFi Network</p>
-                                    </div>
-                                    <div class="mt10">
-                                        <p>Global Patents:</p>
-                                        <p>- 5 Patents for Invention, 5 Patents for Utility</p>
-                                        <p>- 16 Software Copyrights, 27 Patents for Design</p>
-                                    </div>
-                                    <div class="mt10">
-                                        <p>Global Certificates:</p>
-                                        <p>- Hundreds of Global Certificates in CE / FCC / MIC / RCM / ROHS / CB, etc.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="w-home-article-cont-one clear">
-                    <div class="text">
-                        <ol class="tl">
-                            <li class="mb20">
-                                <div>
-                                    <h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1">FACTORY</h3>
-                                    <p class="mt8 fGrayBlack lh20">Our plant covers 16,000 sq. m. with separate SMT lines. We keep every step in house, tooling, SMT, assembly, and packaging.</p>
-                                    <div class="mt10">
-                                        <p>Production-Related Dept:</p>
-                                        <p>- Tooling House, SMT, DIP, Assembly, Packaging</p>
-                                        <p>- Quality, Warehouse, Shipping</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="mb20">
-                                <div>
-                                    <h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1 mt20">PRODUCTION</h3>
-                                    <p class="mt8 fGrayBlack lh20"> In accordance with the ISO standard production process, we keep a strict control on quality and ensure that consumers are provided with high-quality products.</p>
-                                    <div class="mt10">
-                                        <p>- Three Separate SMT Lines for PCBA</p>
-                                        <p>- Process 250,000 PCBA per Month</p>
-                                        <p>- Full Testing for PCBA and Finished Products</p>
-                                        <p>- In-House Lab Testing for R&amp;D, NPI and Mass Production</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="img oh">
-                        <img class="animate_time" src="https://cloud.win-star.com/index.php?user/publicLink&amp;fid=a5fc0xE5Wjwq4AlakFKBaK0NjnULiKwZez_rCG_BRIewMpTxTjs-fVrgs2FJWZ2_YMvxO9C9sYFjYqTPctnacom2yiyRgPlUviL0qmMNVNkGXq_I5y0asJWPxhaVzaDeALtGaIyvFKE&amp;file_name=/smt.jpg" width="100%" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Home 概念产品 -->
-<section>
-    <div class="w-home-new-product-box" style="margin-top: 80px">
-        <div class="w-home-new-product-cont oh">
-            <a href="#">
-                <img class="animate_time" src="https://cloud.wavlink.com/index.php?user/publicLink&fid=c1f4ljBr624HIU61CElXBHRLaHiWAwQOUbd72gN7WukLsx17SHY2qnUPMMMZ7enLwB1ky-c_Z3FzsNksSugFhLzrVo-FbqSywqIRYHrZ5vOrKj7qI8YvDES8OFXht16XcTeCAHqAAQ&file_name=/cc.jpg" width="100%" alt="">
-            </a>
-        </div>
-    </div>
-</section>
+<!--<section>-->
+<!--<div class="w-home-article-content-box bgWhite">-->
+<!--<div class="w-home-article-content-cont">-->
+<!--<div class="w-home-article-cont tc">-->
+<!--<div class="w-home-article-cont-one clear bb1 bcGray">-->
+<!--<div class="img oh">-->
+<!--<img class="animate_time" src="https://cloud.win-star.com/index.php?user/publicLink&amp;fid=b442SlOg-VPWIfK0bH9Zmiqpy7tmiGoaEvh1dY0uZmfuAHpFekCVrqs0lXh73exfPusOjJ9NzRPksfhA-JUYnY7UjAKT9UwbMqu1vzOHm-cS9Wa7rXfoO67zILEhaM2UQypfZ__pzHyxn8p1vgFQJq_evA&amp;file_name=/product_design.jpg" width="100%" alt="">-->
+<!--</div>-->
+<!--<div class="text">-->
+<!--<ol class="tl">-->
+<!--<li class="mb20">-->
+<!--<div>-->
+<!--<h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1">R&amp;D CAPACITY</h3>-->
+<!--<p class="mt8 fGrayBlack lh20">Experienced and highly responsible personnel for raw material, production and inspection ensure high product quality. As a National High-Tech Company, we have a self-motivated R&amp;D team with over 120 engineers and more than 20 years of experience.<br>-->
+<!--</p>-->
+<!--<div class="mt10">-->
+<!--<p> - Independent R&amp;D Building</p>-->
+<!--<p>- International R&amp;D Team</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li class="mb20">-->
+<!--<div>-->
+<!--<h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1 mt20">QUALIFICATIONS</h3>-->
+<!--<p class="mt8 fGrayBlack lh20">With 11-year Golden Supplier and good industry reputation, you’re promised with impeccable creditability and confidence.</p>-->
+<!--<div class="mt10">-->
+<!--<p>Government Fully-Funded Projects:</p>-->
+<!--<p>- High-Speed Exchangeable WiFi Network</p>-->
+<!--</div>-->
+<!--<div class="mt10">-->
+<!--<p>Global Patents:</p>-->
+<!--<p>- 5 Patents for Invention, 5 Patents for Utility</p>-->
+<!--<p>- 16 Software Copyrights, 27 Patents for Design</p>-->
+<!--</div>-->
+<!--<div class="mt10">-->
+<!--<p>Global Certificates:</p>-->
+<!--<p>- Hundreds of Global Certificates in CE / FCC / MIC / RCM / ROHS / CB, etc.</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ol>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="w-home-article-cont-one clear">-->
+<!--<div class="text">-->
+<!--<ol class="tl">-->
+<!--<li class="mb20">-->
+<!--<div>-->
+<!--<h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1">FACTORY</h3>-->
+<!--<p class="mt8 fGrayBlack lh20">Our plant covers 16,000 sq. m. with separate SMT lines. We keep every step in house, tooling, SMT, assembly, and packaging.</p>-->
+<!--<div class="mt10">-->
+<!--<p>Production-Related Dept:</p>-->
+<!--<p>- Tooling House, SMT, DIP, Assembly, Packaging</p>-->
+<!--<p>- Quality, Warehouse, Shipping</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li class="mb20">-->
+<!--<div>-->
+<!--<h3 class="f14 bb2 pb2 dInlineBlack fGrayBlack_1 mt20">PRODUCTION</h3>-->
+<!--<p class="mt8 fGrayBlack lh20"> In accordance with the ISO standard production process, we keep a strict control on quality and ensure that consumers are provided with high-quality products.</p>-->
+<!--<div class="mt10">-->
+<!--<p>- Three Separate SMT Lines for PCBA</p>-->
+<!--<p>- Process 250,000 PCBA per Month</p>-->
+<!--<p>- Full Testing for PCBA and Finished Products</p>-->
+<!--<p>- In-House Lab Testing for R&amp;D, NPI and Mass Production</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ol>-->
+<!--</div>-->
+<!--<div class="img oh">-->
+<!--<img class="animate_time" src="https://cloud.win-star.com/index.php?user/publicLink&amp;fid=a5fc0xE5Wjwq4AlakFKBaK0NjnULiKwZez_rCG_BRIewMpTxTjs-fVrgs2FJWZ2_YMvxO9C9sYFjYqTPctnacom2yiyRgPlUviL0qmMNVNkGXq_I5y0asJWPxhaVzaDeALtGaIyvFKE&amp;file_name=/smt.jpg" width="100%" alt="">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->

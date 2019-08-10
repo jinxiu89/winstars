@@ -7,47 +7,38 @@
  */
 namespace app\en_us\controller;
 
-use app\common\model\ServiceCategory as ServiceCategoryModel;
+use app\common\model\Category as CategoryModel;
 use app\common\model\Document as DocumentModel;
-use think\Request;
+use app\common\model\Language as LanguageModel;
 
 class Document extends Base
 {
 
     protected $beforeActionList = [
         'cate' => ['only', 'index,details'],
-//        'docCount' => ['only','index,details']
     ];
-//    public function docCount(){
-//        //得到总的数量，对搜索框进行隐藏
-//        $document = (new DocumentModel())->getDocument('',$this->code);
-//        $docCount= $document['count'];
-//        $this->assign('docCount',$docCount);
-//    }
 
-    public function index($url_title=''){
+    /***
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function _initialize()
+    {
+        parent::_initialize();
+        $data = collection((new CategoryModel())->getDataByCode($this->code))->toArray();
+        $tree = CategoryHelp::toLayer($data, $name = 'child', $parent_id = 0);
+        $this->language=(new LanguageModel())->getLanguageCodeOrID($this->code);
+        $this->assign('tree', $tree);
+    }
 
-        if (empty($url_title) || !isset($url_title)){
-            //获取Document的一级分类
-            $parent = ServiceCategoryModel::getTopCategory($this->code,'Document');
-            //获取所有的文档
-            $document = (new DocumentModel())->getDocument('',$this->code);
-        }else{
-            //获取当前选择的分类信息
-            $parent = ServiceCategoryModel::getCategoryIdByName($this->code,$url_title);
-            //得到当前分类的文档
-            $document = (new DocumentModel())->getDocument($parent['id'],$this->code);
+    public function index(){
+        if(request()->isGet()){
+            $result=(new DocumentModel())->getDataByLanguageId($this->language);
+            $this->assign('data',$result);
+            return $this->fetch($this->template . '/Document/index.html');
+
         }
-
-        if (empty($parent)){
-            abort(404);
-        }else{
-            return $this->fetch('', [
-                'parent' => $parent,
-                'document' => $document['data'],
-            ]);
-        }
-
     }
 
 

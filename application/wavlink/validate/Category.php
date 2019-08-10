@@ -19,9 +19,12 @@ class Category extends BaseValidate
         ['keywords', 'require|max:128', '关键词不能为空|关键词不能太长'],
         ['description', 'require|max:256', '描述不能为空|描述不能太长'],
         ['status', 'number|in:-1,0,1', '状态必须是数字|状态范围不合法'],
+        ['listorder', 'require|number|gt:0', '排序时必须填排序字段|排序字段必须为整数|排序字段必须是大于0的整数']
     ];
     /**场景设置**/
     protected $scene = [
-
+        'add' => [],
+        'edit' => [],
+        'sort' => ['listorder'],
     ];
 }

@@ -1,0 +1,84 @@
+{extend name="public/base_form" /}
+{block name="form"}
+<form class="form form-horizontal" id="form-product-add" method="post" action="">
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属：</label>
+        <div class="formControls col-xs-4 col-sm-4">
+            <input type="text" class="input-text" value="{$data.document_id|getProductModelById}" id="document_id" disabled>
+            <input type="hidden" class="input-text" value="{$data.document_id}"  name="document_id">
+            <input type="hidden" value="{$data.id}" name="id">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>语言：</label>
+        <div class="formControls col-xs-4 col-sm-8">
+            {if condition="$data.language eq 'All'"}
+            <label ><input type="radio" value="All" name="language" checked>All</label>
+            {else /}
+            <label><input type="radio" value="ALL" name="requirement">全部</label>
+            {/if}
+            {if condition="$data.language eq 'En'"}
+            <label ><input type="radio" value="En" name="language" checked>English</label>
+            {else /}
+            <label ><input type="radio" value="En" name="language">English</label>
+            {/if}
+            {if condition="$data.language eq 'De'"}
+            <label ><input type="radio" value="De" name="language" checked>Deutsch</label>
+            {else /}
+            <label ><input type="radio" value="De" name="language">Deutsch</label>
+            {/if}
+            {if condition="$data.language eq 'ES'"}
+            <label ><input type="radio" value="Es" name="language" checked>Español</label>
+            {else /}
+            <label ><input type="radio" value="Es" name="language">Español</label>
+            {/if}
+            {if condition="$data.language eq 'It'"}
+            <label ><input type="radio" value="It" name="language" checked>Italiano</label>
+            {else /}
+            <label ><input type="radio" value="It" name="language">Italiano</label>
+            {/if}
+            {if condition="$data.language eq 'Fr'"}
+            <label ><input type="radio" value="Fr" name="language" checked>Français</label>
+            {else /}
+            <label ><input type="radio" value="Fr" name="language">Français</label>
+            {/if}
+            {if condition="$data.language eq 'Jp'"}
+            <label ><input type="radio" value="Jp" name="language" checked>Japan</label>
+            {else /}
+            <label ><input type="radio" value="Jp" name="language">Japan</label>
+            {/if}
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下载链接：</label>
+        <div class="formControls col-xs-4 col-sm-6">
+            <input type="text" class="input-text" value="{$data.url}"  id="url" name="url">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件大小：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="{$data.size}"  id="size" name="size">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文件类型：</label>
+        <div class="formControls col-xs-8 col-sm-2">
+            <input type="text" class="input-text" value="{$data.type}"  id="type" name="type">
+        </div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-primary radius" type="button" onclick="save('{:url(\'Document/edit_download\',[\'document_id\'=>$data.document_id,\'language_id\'=>$language_id])}')"><i
+                    class="Hui-iconfont">&#xe632;</i> 保存
+            </button>
+            <button onClick="layer_close();" class="btn btn-default radius" type="button">
+                &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script>
+</script>
+{/block}

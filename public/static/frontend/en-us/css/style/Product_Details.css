@@ -1,19 +1,15 @@
 div.Details > .Product_title {
-    margin: 0 0 49px;
+    margin: 0 0 30px;
     width: 100%;
 }
 div.Details > div.Characteristic > ul > li > p:last-child {
     margin-bottom: 0;
-    line-height: 22px;
+    line-height: 1.5;
 }
 div.Details > div.Characteristic > p.add > a {
     width: 111px;
     padding: 6px 8px;
     border: 1px solid #b9b9b9
-}
-div.Details > div.Characteristic > p.add > a:hover {
-    background: #EA881B;
-    color: #fff
 }
 div.Scrolling-navigation > ol {
     padding: 0 40px
@@ -42,19 +38,19 @@ div.Scrolling-navigation > .content {
 }
 @media screen and (min-width: 992px){
     div.Details > div {
-        float: left
-    }
-    div.Details > div.magnifier {
-        width: 40%
+        width: 40%;
+        float: left;
+        padding-right: 40px
     }
     div.Details > div.Characteristic {
-        width: 60%
+        width: 60%;
+        padding-right: 4.4%
     }
 }
 @media screen and (min-width: 1300px){
     div.Details,
     div.Scrolling-navigation {
-        width: 70%
+        width: 80%
     }
 }
 
@@ -65,12 +61,8 @@ div.Scrolling-navigation > .content {
     -ms-transform: translateX(5px);
     -o-transform: translateX(5px)
 }
-.NewProduct > div > h4 > a:hover {
-    color: #EA881B
-}
-.NewProduct > div.btn > a:last-child:hover {
-    background: #EA881B;
-    color: #fff
+#features{
+    padding: 0 !important;
 }
 
 

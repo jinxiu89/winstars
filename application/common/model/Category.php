@@ -88,17 +88,17 @@ Class Category extends BaseModel
         $map = ['language_id' => $language_id, 'status' => 1];
         if (!$this->debug) {
             if (!Cache::get('CategoryByCode')) {
-                Cache::set('CategoryByCode', $this->where($map)->order(['listorder' => 'desc', 'id' => 'asc'])->select());
+                Cache::set('CategoryByCode', $this->where($map)->order(['listorder' => 'desc', 'id' => 'desc'])->select());
             }
         }
-        return $this->debug ? $this->where($map)->order(['listorder' => 'desc', 'id' => 'asc'])->select() : Cache::get('CategoryByCode');
+        return $this->debug ? $this->where($map)->order(['listorder' => 'desc', 'id' => 'desc'])->select() : Cache::get('CategoryByCode');
     }
 
     public static function getCategoryWithProduct($id)
     {
         $ids = static::getProductCategory($id);
         $order = ['listorder' => 'desc', 'id' => 'desc'];
-        $feild = 'id,name,url_title,model,keywords,album';
+        $feild = 'id,name,url_title,model,keywords,album,thumbnail';
         return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where('status', '=', 1)->order($order)->field($feild)->paginate(9);
     }
 
@@ -168,7 +168,7 @@ Class Category extends BaseModel
     {
         $language_id = LanguageModel::getLanguageCodeOrID($code);
         $map = ['status' => 1, 'language_id' => $language_id, 'parent_id' => $parent_id,];
-        $order = ['listorder' => 'desc', 'id' => 'asc'];
+        $order = ['listorder' => 'desc', 'id' => 'desc'];
         $field = 'name,url_title,id,image';
         if (!$this->debug) {
             if (!Cache::get('NormalCategory')) {
@@ -253,5 +253,11 @@ Class Category extends BaseModel
         } catch (DbException $e) {
             $this->error($e->getMessage());
         }
+    }
+
+    public function sort($data){
+
+        $category = self::allowField('listorder')->save($data, ['id' => $data['id']]);
+        return $category ? ['status' => 1, 'message' => '排序成功！'] : ['status' => 0, 'message' => '排序失败！'];
     }
 }

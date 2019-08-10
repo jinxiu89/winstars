@@ -19,7 +19,7 @@ class Driver extends BaseModel
 
     public function products()
     {
-        return $this->belongsToMany('Product', 'product_driver', 'product_id', 'driver_id')->field('id,model')->order('id asc');
+        return $this->belongsToMany('Product', 'product_driver', 'product_id', 'driver_id')->field('id,model')->order('id desc');
     }
 
     public function downloads()
@@ -30,10 +30,10 @@ class Driver extends BaseModel
     public function getDataByLanguageId($language_id)
     {
         try {
-            $query = self::with('downloads')->where(['language_id' => $language_id]);
+            $query = self::with('downloads')->with('products')->where(['language_id' => $language_id]);
             $result = [
                 'count' => $query->count(),
-                'data' => $query->paginate()
+                'data' => $query->order(['sorting'=>'desc','id'=>'asc'])->paginate()
             ];
             return ['status' => 1, 'message' => 'ok', 'data' => $result];
         } catch (Exception $exception) {
@@ -41,6 +41,11 @@ class Driver extends BaseModel
         }
     }
 
+    /***
+     * @param $url_title
+     * @return Driver|null
+     * @throws \think\exception\DbException
+     */
     public function getDataByUrlTitle($url_title)
     {
         return $this->get(['url_title' => $url_title]);
@@ -153,6 +158,16 @@ class Driver extends BaseModel
         }
     }
 
+    /***
+     * @param $data
+     * @return array
+     */
+    public function sort($data)
+    {
+        $driver = self::allowField('sorting')->save($data, ['id' => $data['id']]);
+        return $driver ? ['status' => 1, 'message' => '排序成功！'] : ['status' => 0, 'message' => '排序失败！'];
+    }
+
     public function getDriverByCategory($category)
     {
         try {
@@ -177,10 +192,10 @@ class Driver extends BaseModel
      * @return string|\think\Paginator
      * 有分页 不需要
      */
-    public function getDataAll()
+    public function getDataAll($language_id)
     {
         try {
-            return self::field('id,name,url_title,version,create_time')->cache(true)->paginate(22);
+            return self::field('id,name,url_title,version,create_time')->cache(true)->order(['sorting'=>'desc','id'=>'asc'])->where(['language_id'=>$language_id])->paginate(22);
         } catch (Exception $exception) {
             return $exception->getMessage();
         }

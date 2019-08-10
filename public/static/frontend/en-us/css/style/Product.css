@@ -7,7 +7,7 @@ div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer {
     bottom: 0
 }
 div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer > a.More:hover {
-    background-color: #ea932a
+    background-color: #99ccff
 }
 /* 媒体查询 */
 @media screen and (min-width: 768px) {
@@ -21,16 +21,18 @@ div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer > a.More:h
         padding: 25px 15px
     }
     div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer > a > h3 {
-        font-size: 18px
+        font-size: 13px
+    }
+}
+@media screen and (min-width:992px){
+    div.ProductBox > .ProductRow > .ProductList > div {
+        width: 33.333%
     }
 }
 @media screen and (min-width: 1200px){
     div.ProductBox > .ProductRow {
-        width: 70%;
-        margin-left: 15%
-    }
-    div.ProductBox > .ProductRow > .ProductList > div {
-        width: 33.333%
+        width: 80%;
+        margin-left: 10%
     }
     div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer {
         left: 100%;

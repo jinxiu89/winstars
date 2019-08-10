@@ -19,7 +19,7 @@
             {notempty name="result"}
             {volist name="result" id="vo"}
             <div class="product-box">
-                <a href="/en_us/product/{$vo.url_title}">
+                <a href="/en_us/product/{$vo.url_title}.html">
                     <img src="{$vo.album|getThumbnail}" alt="">
                 </a>
                 <div class="description">
@@ -27,7 +27,7 @@
                     <p>{$vo.keywords|getTags}</p>
                     <span>{$vo.model}</span>
                     <span>
-                        <a href="/en_us/product/{$vo.url_title}">Details</a>
+                        <a href="/en_us/product/{$vo.url_title}.html">Details</a>
                     </span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             {notempty name="hotSale"}
             {volist name="hotSale" id="vo"}
             <div class="product-box">
-                <a class="img-box" href="/en_us/product/{$vo.url_title}">
+                <a class="img-box" href="/en_us/product/{$vo.url_title}.html">
                     <img src="{$vo.album}" alt="">
                 </a>
                 <div class="description">
@@ -47,7 +47,7 @@
                     <p>{$vo.keywords|getTags}</p>
                     <span>{$vo.model}</span>
                     <span>
-                        <a href="/en_us/product/{$vo.url_title}">Details</a>
+                        <a href="/en_us/product/{$vo.url_title}.html">Details</a>
                     </span>
                 </div>
             </div>
@@ -55,7 +55,7 @@
             {/notempty}
             {/notempty}
         </div>
-        <div class="page">
+        <div class="g-page-navigation">
             <nav aria-label="Page navigation">
                 {notempty name="result"}
                 {:pagination($result)}

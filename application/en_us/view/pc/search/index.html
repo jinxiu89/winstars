@@ -9,6 +9,7 @@
 {/block}
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Result.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/paginate/paginate.css">
 {/block}
 {block name="body"}
 <section>
@@ -18,8 +19,8 @@
     </div>
 </section>
 <!-- result 搜索结果页面 -->
-<section class="Result mt15 mb50 clear">
-    <div class="content fl w80 clear" style="padding: 0 10px 60px; margin-left: 10%">
+<section class="Result clear">
+    <div class="content fl clear" style="padding: 0 10px">
         <ul class="ResultList clear">
             {notempty name="result"}
             {volist name="result" id="vo"}
@@ -29,12 +30,10 @@
                                                                                                        src="{$vo.album|getThumbnail}"
                                                                                                        alt=""></a>
                     <div class="cont w100">
-                        <h2><a class="fNomal" href="/en_us/product/{$vo.url_title}" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
-                        <p class="f12 lh14 fGrayBlack mt20 mb20"><i class="icon-tags" style="font-size: 12px"></i>
-                            {$vo.keywords|getTags}</p>
+                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
                         <div class="btn">
-                            <a class="fl f12 fOrange" href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
-                            <a class="fr f12 fGray" href="/en_us/product/{$vo.url_title}" target="_blank"
+                            <a class="fl f12 model_link" href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
+                            <a class="fr f12 fGray btn_link" href="/en_us/product/{$vo.url_title}" target="_blank"
                                style="border: 1px solid #e9e9e9">Details</a>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+var TabTitle = $("div.tab-bar .tab-bar-title"); // 产品标题 右侧按钮
 var TabBtn = $("div.tab-bar .tab-bar-title i"); // 产品标题 右侧按钮
 var Nav = $("div.tab-bar ul"); // 导航列表盒子
 var NavBtn = $("div.tab-bar ul li"); // 导航列表
@@ -12,15 +13,15 @@ NavBtn.click(function(){
     ContentDiv.eq(index).show().siblings().hide()
 });
 
-TabBtn.click(function(){
+TabTitle.click(function(){
     var This = $(this);
     if (result)
     {
-        slide(This, 180, false)
+        slide(TabBtn, 180, false)
     }
     else
     {
-        slide(This, 0, true)
+        slide(TabBtn, 0, true)
     }
     Nav.slideToggle()
 });

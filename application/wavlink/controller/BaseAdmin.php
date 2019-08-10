@@ -22,6 +22,7 @@ class BaseAdmin extends Controller
      * @var array
      * 前置操作
      */
+    protected $language_id;
     protected $beforeActionList = [
         'getLanguage'
     ];
