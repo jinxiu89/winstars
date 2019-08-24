@@ -34,8 +34,8 @@
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #09F;
-    border-color: #09F;
+    background-color: #3b6caa;
+    border-color: #3b6caa;
 }
 .pagination>li>a,
 .pagination>li>span {

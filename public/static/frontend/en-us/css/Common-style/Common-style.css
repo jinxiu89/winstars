@@ -1,7 +1,9 @@
 @charset "utf-8";
 @font-face {
+    font-family: Neo_Sans;
     src: url("../../fonts/Neo_Sans.ttf");
 }
+
 /* 字体大小 */
 .f12 {
     font-size: 12px
@@ -119,29 +121,42 @@
 }
 
 /* 背景颜色 */
-.bg_color_main { background-color: #0099ff } /* 最新背景颜色标准 */
-.bg_complex { background-color: #0099ff; color: #fff } /* 最新背景颜色标准 */
-.bg_color_sub { background-color: #99ccff } /* 最新背景颜色标准 */
-.bgGray {
-    background-color: #e6e6e6
-}
+/*.bg_color_main {*/
+    /*background-color: #3b6caa*/
+/*}*/
 
-.bgBlack {
-    background-color: #09F;
-}
+/*!* 最新背景颜色标准 *!*/
+/*.bg_complex {*/
+    /*background-color: #3b6caa;*/
+    /*color: #fff*/
+/*}*/
+
+/*!* 最新背景颜色标准 *!*/
+/*.bg_color_sub {*/
+    /*background-color: #65aaef*/
+/*}*/
+
+/* 最新背景颜色标准 */
+/*.bgGray {*/
+    /*background-color: #e6e6e6*/
+/*}*/
+
+/*.bgBlack {*/
+    /*background-color: #3b6caa;*/
+/*}*/
 
 .bgWhite {
     background-color: #fff
 }
 
-.bgOrange {
-    background-color: #09F;
-}
+/*.bgOrange {*/
+    /*background-color: #3b6caa;*/
+/*}*/
 
-.bgOrangeWhite {
-    background-color: #09F;
-    color: #EFF8FF;
-}
+/*.bgOrangeWhite {*/
+    /*background-color: #3b6caa;*/
+    /*color: #EFF8FF;*/
+/*}*/
 
 /* 边框大小以及边框颜色 */
 .bdTransparent {
@@ -169,7 +184,7 @@
 }
 
 .bcOrange {
-    border-color: #09f;
+    border-color: #3b6caa;
 }
 
 /* 内容行高 */
@@ -472,20 +487,23 @@
     -ms-flex-wrap: wrap;
     -o-flex-wrap: wrap;
 }
+
 /* 左右居中 */
-.justify-content_flex-center{
+.justify-content_flex-center {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     -webkit-justify-content: center;
     justify-content: center;
 }
+
 /* 上下居中 */
-.align-items_center{
+.align-items_center {
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
 }
+
 /* 向上居中 */
 .align-items_flex_start {
     -webkit-align-items: flex-start;
@@ -493,21 +511,25 @@
     -moz-align-items: flex-start;
     align-items: flex-start
 }
+
 /* 默认让剩余内容占满剩余空间 */
-.flex_1{
+.flex_1 {
     width: 0;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     -webkit-flex: 1;
     flex: 1;
 }
+
 /* 透明度 */
 .opacity_0 {
     opacity: 0
 }
+
 .opacity_1 {
     opacity: 1
 }
+
 /* 过渡效果 */
 .animate_time {
     transition: all .3s linear;
@@ -545,7 +567,7 @@
 
 /* 字体风格 */
 .fFamily {
-    font-family: fz,Helvetica, Arial, sans-serif
+    font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 
 /* 金手指指标 */
@@ -585,7 +607,7 @@
 html, body {
     width: 100%;
     font-size: 13px;
-    font-family: fz,Helvetica, Arial, sans-serif;
+    font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
     background: #EEE;
     color: #333
 }
@@ -643,69 +665,70 @@ input {
     vertical-align: middle
 }
 
-/* 网站 LOGO */
-div.w-home-box > div.w-home-cont > div.w-home-nav-logo > a > img {
-    width: 126px;
-    height: 22px
-}
-
 div.w-home-box > div.w-home-cont > ul.w-home-nav-list > li > a > i {
     font-size: 12px;
     margin-left: 2px
 }
+
 div.w-home-box > div.w-home-cont > ul.w-home-nav-list > li > a {
     font-size: 12px;
     line-height: 45px
 }
 
-    /* 网站最顶部（页眉）导航 垂幕 */
+/* 网站最顶部（页眉）导航 垂幕 */
 .hammer_screen {
     top: 100%;
     left: 0;
     display: none;
     line-height: normal;
-    border-top: 1px solid #0099ff
+    border-top: 1px solid;
+    cursor:auto
 }
+
 .hammer_screen > div {
-    padding: 10px 0
+    padding: 10px 0;
+    min-height: 300px
 }
+
 .hammer_screen div > a {
     display: inline-block;
     margin: 0 5px;
-    width: 100px;
-    border-bottom: 2px solid transparent
+    width: 100px
 }
+
 .hammer_screen div > a:hover {
-    transform: translateY(-3px);
-    -webkit-transform: translateY(-3px);
-    -moz-transform: translateY(-3px);
-    -ms-transform: translateY(-3px);
-    -o-transform: translateY(-3px);
-    border-color: #0099ff
+    color: #65aaef
 }
+
 .hammer_screen div dl {
-    width: 25%;
-    padding-right: 6%
+    width: 20%;
+    padding-right: 2%
 }
+
 .hammer_screen div dl dt {
     padding: 8px 0;
     margin-bottom: 10px;
-    border-bottom: 1px solid #99ccff
+    border-bottom: 1px solid #65aaef
 }
+
 .hammer_screen div dl dt h4 {
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
+    font-weight: normal;
+
 }
+
 .hammer_screen div dl dd {
     padding: 6px 0
 }
+
 .hammer_screen div dl dd a {
-    display: inline-block;
-    color: #888;
+    display: inline-block
 }
+
 .hammer_screen div dl dd a:hover {
-    color: #7abdff;
+    color: #65aaef;
 }
 
 div.w-home-box > div.w-home-cont > ul.w-home-nav-list > li {
@@ -733,10 +756,12 @@ div.w-home-footer-box > div > div.w-home-footer-cont > dl {
 div.w-home-footer-box > div > div.w-home-footer-cont:last-child {
     margin-bottom: 0
 }
+
 div.w-home-footer-box > div > div.w-home-footer-cont > dl > dd {
     float: left;
     margin-right: 20px
 }
+
 div.w-home-footer-box > div > div.w-home-footer-cont > dl > dd > a {
     display: inline-block;
     margin-top: 4px;
@@ -865,6 +890,7 @@ div.w-home-footer-box > div > div.w-home-footer-cont > dl.footer_icon_link > dd 
     div.w-home-nav-logo span {
         display: none
     }
+
     /* 网站最顶部（页眉）垂幕 */
     #nav-item > li a i {
         font-size: 12px;
@@ -892,11 +918,11 @@ div.w-home-footer-box > div > div.w-home-footer-cont > dl.footer_icon_link > dd 
 @media screen and (min-width: 1200px) {
     /* 网站最顶部（页眉）导航 */
     div.w-home-box > div.w-home-cont,
-    /* 网站最顶部（页眉）垂幕 */
-    .hammer_screen div,
-    /* 网站最低部（页脚） */
+        /* 网站最顶部（页眉）垂幕 */
+    .hammer_screen > div,
+        /* 网站最低部（页脚） */
     div.w-home-footer-box > div > div.w-home-footer-cont,
-    /* 页面路径导航，如：Home > Products > Thunderbolt 3  */
+        /* 页面路径导航，如：Home > Products > Thunderbolt 3  */
     div.path-box > div {
         width: 80%;
         margin-left: 10%
@@ -904,11 +930,9 @@ div.w-home-footer-box > div > div.w-home-footer-cont > dl.footer_icon_link > dd 
 
 }
 
-
-/* 页面路径导航，如：Home > Products > Thunderbolt 3  */
+/* 页面路径位置导航，如：Home > Products > Thunderbolt 3  */
 div.path-box {
-    height: 50px;
-    line-height: 50px
+    line-height: 45px
 }
 
 div.path-box > div.path-cont > a {
@@ -917,11 +941,11 @@ div.path-box > div.path-cont > a {
 }
 
 div.path-cont > a.current {
-    color: #09f;
+    color: #3b6caa;
 }
 
 div.path-box > div.path-cont > a:hover {
-    color: #09F;
+    color: #65aaef
 }
 
 /* 页面路径导航 媒体查询 */
@@ -931,9 +955,8 @@ div.path-box > div.path-cont > a:hover {
     }
 }
 
-
 .tag i {
-    color: #09f
+    color: #3b6caa
 }
 
 .tag a {
@@ -941,13 +964,21 @@ div.path-box > div.path-cont > a:hover {
 }
 
 .tag a:hover {
-    color: #09f
+    color: #3b6caa
 }
 
 #features .markdown-body ul, .markdown-body ol, #features .markdown-body ul, .markdown-body ul {
     padding-left: 0 !important;
 }
-
+.editormd-html-preview{
+    overflow: inherit !important;
+}
+.markdown-body h4{
+    font-size: 14px !important;
+}
+.markdown-body p{
+    font-size: 14px !important;
+}
 .hyphensTest {
     display: flex;
     hyphens: auto;
@@ -962,32 +993,35 @@ div.path-box > div.path-cont > a:hover {
 
 /* 交互 */
 .model_link:hover {
-    color: #09F;
+    color: #65aaef;
 }
 
 .btn_link:hover {
-    background-color: #09F;
+    background-color: #3b6caa;
     color: #EFF8FF;
 }
+
 .bg_inverted:hover {
-    background-color: #fff;
-    color: #0099ff;
-    border-color: #0099ff !important;
+    background-color: #65aaef;
+    color: #fff;
+    border-color: #65aaef !important;
 }
+
 .float_link:hover {
     bottom: 0;
 }
 
 .capsule {
     display: inline-block;
-    background: #09F;
+    background: #3b6caa;
     color: #EFF8FF;
     margin: 5px 5px 5px 0;
-    padding: 4px 5px;
+    padding: 4px 10px;
     border-radius: 10px
 }
+
 .defaultColor {
-    color: #09F;
+    color: #3b6caa;
 }
 
 /* 遮罩层 */
@@ -996,18 +1030,23 @@ div.path-box > div.path-cont > a:hover {
     top: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0,0,0,.5);
+    background: rgba(36, 36, 36, .6);
     z-index: 10;
     display: none
 }
 
 /* markdown */
+.markdown-body {
+    font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif !important;
+}
+
 .editormd-html-preview li {
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 2px;
     text-indent: -9px;
     margin-left: 9px
 }
+
 .markdown-body h4 {
     margin-bottom: 4px !important;
 }

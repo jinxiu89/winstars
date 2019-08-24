@@ -17,16 +17,6 @@ ul.expmenu li:last-child div.header {
     border-bottom: none;
 }
 
-ul.expmenu li ul li {
-    background-color: #FFF;
-    /*outline: 1px solid #fff;*/
-    /*-webkit-outline: 1px solid #fff;*/
-    /*-moz-outline: 1px solid #fff;*/
-    /*-ms-outline: 1px solid #fff;*/
-    /*-o-outline: 1px solid #fff;*/
-    color: #EEE;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8)
-}
 
 ul.expmenu li ul li:last-child {
     border-bottom: none;
@@ -38,15 +28,14 @@ ul.expmenu li ul li.selected {
 
 ul.expmenu div.header {
     color: #203f61;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+    /*text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);*/
 
-    background: #09F; /* Old browsers */
+    background: #3b6caa; /* Old browsers */
 }
 
 ul.expmenu li div.header .label {
     background: no-repeat;
-    color: #fff; /*text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.8);*/
-    font-weight: bold;
+    color: #fff
 }
 
 ul.expmenu li div.header .arrow {
@@ -60,10 +49,12 @@ ul.expmenu li div.header .arrow {
 
 ul.expmenu li .menu {
     display: none;
+    background: #fff;
 }
 
-ul.expmenu li ul li:not(.selected):hover {
-    background: #99ccff; /* Old browsers */
+ul.expmenu li ul li:not(.selected) a:hover {
+    background: #65aaef !important;
+    color:#fff !important;
     cursor: pointer;
 }
 
@@ -79,11 +70,8 @@ ul.expmenu li ul li:not(.selected):active {
 }
 
 .menu li i {
-    background-color: #EA881B;
     padding: 1px 4px;
     color: #fff;
-    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.8);
-    font-family: 宋体;
     font-style: normal;
     float: right;
 }
@@ -105,10 +93,12 @@ ul.expmenu li ul li:not(.selected):active {
 }
 
 .menu ol a:hover {
-    background-color: #dcdcdc
+    background-color: #dcdcdc;
+    color:#fff
 }
 
-.navSlideBarCurrent {
-    background: #99ccff !important;
+.navSlideBarCurrent a {
+    background: #65aaef !important;
+    color:#fff !important;
 }
 

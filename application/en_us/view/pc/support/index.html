@@ -14,8 +14,7 @@
 <!-- w-Product 产品中心 -->
 <section>
     <div class="w-product-title">
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
-             width="100%" alt="">
+        <{include file="pc/base/banner" /}
     </div>
 </section>
 
@@ -36,7 +35,7 @@
 <section style="margin-bottom: 40px">
     <div class="ProductBox" style="min-height: 680px;">
         <div class="ProductRow mt80">
-            <h2 class="f18 mb15 tc" style="color: #09f">- Support -</h2>
+            <h2 class="f18 mb15 tc" style="color: #3b6caa">- Support -</h2>
             <div class="ProductList clear">
                 <div class="w30 fl">
                     <div class="relative  oh">
@@ -46,7 +45,19 @@
                             <p class="mt15 fWhite">
                                 The driver file is a little bit large, it is recommeded to access the page and download it by using computer.
                             </p>
-                            <a class="More fWhite mt20 tc bgOrange lh30" href="/en_us/support/driver.html">Details</a>
+                            <a class="More fWhite mt20 tc bgOrange bg_inverted lh30" href="/en_us/support/driver.html" style="border:1px solid transparent">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="w30 fl">
+                    <div class="relative  oh">
+                        <img src="http://files.win-star.com/images/category/Outdoor_Extender.jpg" width="100%" alt="">
+                        <div class="mask-layer absolute w100 bgMaskLayer animate_time">
+                            <a href="/en_us/support/manual.html"><h3 class="fWhite cursorP">Manuals Download</h3></a>
+                            <p class="mt15 fWhite">
+                                The manual file is a little bit large, it is recommeded to access the page and download it by using computer.
+                            </p>
+                            <a class="More fWhite mt20 tc bgOrange bg_inverted lh30" href="/en_us/support/manual.html" style="border:1px solid transparent">Details</a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +70,12 @@
 {block name="script"}
 <script>
     $(document).ready(function () {
-        $('.support').addClass("bgOrangeWhite");
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
     })
 </script>
 {/block}

@@ -10,17 +10,18 @@
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_List.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/paginate/paginate.css">
+<style>
+    .bgOrangeWhite{
+        background-color:#3b6caa;
+        color:#fff
+    }
+</style>
 {/block}
 {block name="body"}
 <!-- w-Product-List-title 产品列表标题 -->
 <section>
     <div class="w-blog-title">
-        {notempty name="$category.banner"}
-        <img src="{$category.banner}" width="100%" height="300px" alt="">
-        {else /}
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
-             width="100%" height="" alt="">
-        {/notempty}
+        {include file="pc/base/banner" /}
     </div>
 </section>
 
@@ -41,8 +42,8 @@
     </div>
 </section>
 <!-- W-Product-List 产品列表 -->
-<section class="ProductListBox mt10 clear">
-    <div class="left-side fl w20">
+<section class="ProductListBox clear" style="margin-top:5px">
+    <div class="left-side fl w20" style="margin-top:5px">
         <ul class="expmenu">
             {volist name="tree" id="vo"}
             <li>
@@ -75,20 +76,28 @@
             {/volist}
         </ul>
     </div>
-    <div class="content fl clear w80" style="padding: 0 10px 0 10px">
+    <div class="content fl clear w80" style="padding: 0 5px">
         <div class="ProductList clear">
             {notempty name="result"}
             {volist name="result" id="vo"}
             <div class="child relative fl">
                 <div class="pd10 bgWhite clear">
-                    <a href="/en_us/product/{$vo.url_title}.html" target="_blank" style="margin-bottom: 10px"><img
-                            class="w100" src="{$vo.thumbnail}" alt=""></a>
+                    <a href="/en_us/product/{$vo.url_title}.html" target="_blank" style="margin-bottom: 10px">
+                        {notempty name="vo.thumbnail"}
+                        <img class="w100 lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22960%22%20height%3D%22540%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20960%20540%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16c8997ebd5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A48pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16c8997ebd5%22%3E%3Crect%20width%3D%22960%22%20height%3D%22540%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22328.90625%22%20y%3D%22291.6%22%3ELoading...%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                             data-src="{$vo.thumbnail}" alt="">
+                        {else /}
+                        <img class="w100 lazy" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22960%22%20height%3D%22540%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20960%20540%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16c8997ebd5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A48pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16c8997ebd5%22%3E%3Crect%20width%3D%22960%22%20height%3D%22540%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22328.90625%22%20y%3D%22291.6%22%3ELoading...%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                             data-src="{$vo.thumbnail}" alt="">
+                        {/notempty}
+                    </a>
                     <div class="cont w100">
-                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}.html" target="_blank">{$vo.name}</a></h2>
+                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}.html" target="_blank">{$vo.name}</a>
+                        </h2>
                         <div class="model_link clear mt5">
                             <a class="fl model_link f12" href="/en_us/product/{$vo.url_title}.html"
                                target="_blank">{$vo.model}</a>
-                            <a class="fr fGray bgOrangeWhite bg_inverted f12" href="/en_us/product/{$vo.url_title}.html" target="_blank"
+                            <a class="fr fGray complexThemeColor bg_inverted f12" href="/en_us/product/{$vo.url_title}.html"
                                style="border: 1px solid #e9e9e9">Details</a>
                         </div>
                     </div>
@@ -100,50 +109,11 @@
             <!-- 大盒子 -->
             <div class="NoContentBox" style="width: 100%">
                 <div style="margin: 0">
+                    <!--include 用于载入一些公共块，请参阅tp官网的模板文档-->
                     <!-- 友好提示 -->
-                    <div class="NoContent bgWhite" style="box-shadow: none;">
-                        <dl>
-                            <dt>
-                                <h3>The website upgrade is in progress</h3>
-                            </dt>
-                            <dd>
-                                <p>No product is available right now for your reference, please keep up with our update as new products are coming soon!</p>
-                            </dd>
-                            <dd>
-                                <p>However, for further information, please contact our salesperson, or send us emails to <a class="dInlineBlack fOrange" href="mailto:winstars@win-star.com">winstars@win-star.com</a>, we will be glad to solve your questions instantly!</p>
-                            </dd>
-                            <dd>
-                                <p>Thanks for your understanding!</p>
-                            </dd>
-                        </dl>
-                    </div>
+                    {include file="pc/base/declare"}
                     <!-- 盒子 -->
-                    <div class="Interested mt10">
-                        <!-- 主标题 -->
-                        <p class="InterestedTitle f20 bgWhite tc" style="padding: 10px">See also</p>
-                        <!-- 盒子 -->
-                        <div class="InterestedChild clear">
-                            <!-- 产品 -->
-                            {notempty name="interested"}
-                            {volist name="interested" id="vo"}
-                            <div class="child relative fl" style="width: 33.333%">
-                                <div class="pd10 bgWhite clear">
-                                    <a href="/en_us/product/{$vo.url_title}.html" target="_blank" style="margin-bottom: 10px"><img
-                                            class="w100" src="{$vo.thumbnail}" alt=""></a>
-                                    <div class="cont w100">
-                                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}.html" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
-                                        <div class="model_link mt5">
-                                            <a class="fl model_link f12" style="padding: 6px 0" href="/en_us/product/{$vo.url_title}.html" target="_blank">{$vo.model}</a>
-                                            <a class="fr fGray bgOrangeWhite bg_inverted f12" href="/en_us/product/{$vo.url_title}.html" target="_blank" style="padding: 6px 8px; border: 1px solid #e9e9e9">Details</a>
-                                        </div>
-                                    </div>
-                                    <i class="icon-trophy icon-3x absolute fOrange"></i>
-                                </div>
-                            </div>
-                            {/volist}
-                            {/notempty}
-                        </div>
-                    </div>
+                    {include file="pc/base/see_also"}
                 </div>
             </div>
             {/notempty}
@@ -164,7 +134,12 @@
 <script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.product > a').addClass("bgOrangeWhite");
+        $('.product').addClass("complexThemeColor");
+
+        $(document).click(function(){
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.product').addClass("complexThemeColor");
+        });
         /* 滑动/展开 */
         $("ul.expmenu li > div.header").click(function () {
             var arrow = $(this).find("span.arrow");
@@ -186,7 +161,7 @@
 <script>
     max($(".InterestedChild > .child > div > .cont > h2 > a"));
     max($(".InterestedChild > .child > div > .cont > p"));
-    max( $("div.ProductList > div > div > .cont > h2 > a") );
-    max( $("div.ProductList > div > div > div > p") )
+    max($("div.ProductList > div > div > .cont > h2 > a"));
+    max($("div.ProductList > div > div > div > p"))
 </script>
 {/block}

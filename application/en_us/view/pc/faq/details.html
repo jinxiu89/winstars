@@ -1,91 +1,184 @@
-<!--继承框架-->
-{extend name="base/base"}
-{block name="seo"}
-<title>{$result.name} - Wavlink </title>
-<meta name="keywords" content="{$result.keywords}">
-<meta name="description" content="{$result.description}">
-<link rel="stylesheet" href="__EN__/css/faq/faq.css" type="text/css">
+{extend name="pc/base/base" /}
+{block name="title"}
+<title>{$result.title} - By winstars</title>
 {/block}
-{block name="banner"}
-<header class="FAQ">
-    <div class="banner">
-        <div>
-            <img class="img-responsive center-block img_pc" src="https://cloud.wavlink.com/index.php?user/publicLink&fid=46aagZ3ZbSnnAJ1GBo3aXSkvrNS4QYjNdujY7QNNTszqkOf4J1azinjB67ckny9QgkSGo244OyurBauj_6xS4EUjZcsh8Wa4cnoT-RC4jAQ9r1S3jts5K-qDI_TP1EAlcuCMJn6JaaWdJwL0xx8MJw26S9o&file_name=/FAQ_PC-2.jpg" alt="">
-            <img class="img-responsive center-block img_mobile" src="https://cloud.wavlink.com/index.php?user/publicLink&fid=5b22Befs_NyWAPhhi8_mep6dg0HGcRwGfPXkquhE5MAo0cjmXODxrpq3AIZIql2uxF-LU60Kme8t1nui1Un9AL8ipLgUTCYO60Fh78D9XCJITyylC94oXdX-cxaM0uMz51xr_1zN0gLw7oaA5SK6yWRiAHEJxA&file_name=/FAQ_mobile.jpg" alt="">
-        </div>
-    </div>
-    <div class="nav">
-        <div class="nav_place col-lg">
-            <!--<span style="color: #888">Home：</span>-->
-            <ul>
-                <li><a href="{:url('/'.$code.'/faq')}">FAQ</a></li>
-                <li> > </li>
-                <li class="addInnerHTML"><a href="{:url('/'.$code.'/faq/'.$faqCate.url_title)}">{$faqCate.name}</a></li>
-                <li> > </li>
-                <li class="addInnerHTML"><a href="javascript:;">{$faqName}</a></li>
-            </ul>
-        </div>
-        <div class="nav_search">
-            <form action="{:url('/'.$code.'/search/faq')}">
-                <input type="text" name="key" placeholder="">
-                <input type="submit" value="{$Think.lang.search}">
-            </form>
-        </div>
-    </div>
-</header>
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_List.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+<style>
+    #framework {
+        min-height: 888px;
+        padding: 42px 4.4% 20px;
+        background: #fff;
+    }
+    #framework .title {
+        padding: 10px 0;
+        border-bottom: 1px solid #bbb
+    }
+    #framework .title h2 {
+        margin-bottom: 20px
+    }
+    #framework .related {
+        padding: 20px 0
+    }
+    #framework .related li {
+        line-height: 24px;
+        list-style-type: circle;
+    }
+    #framework .related li a:hover {
+        color: #3b6caa
+    }
+    #framework .related ul{
+        padding-left: 20px;
+    }
+</style>
 {/block}
 {block name="body"}
-<!--section-->
+<!-- w-Product-List-title 产品列表标题 -->
 <section>
-    <aside class="aside_nav">
-        <h3>FAQ<i class="icon-angle-right"></i></h3>
-        <ul>
-            {volist name="$cate" id="vo"}
-            {if condition="$result.category_id eq $vo.id"}
-            <li style="background-color: #ccc"><a href="{:url('/'.$code.'/faq/'.$vo.url_title)}" data-id="{$vo.id}">{$vo.name}</a></li>
-            {else /}
-            <li><a href="{:url('/'.$code.'/faq/'.$vo.url_title)}" data-id="{$vo.id}">{$vo.name}</a></li>
-            {/if}
+    <div class="w-blog-title">
+        {include file="pc/base/banner" /}
+    </div>
+</section>
+
+<!-- w-Product-List- 产品列表路径 -->
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" class="f12"><i class="iconfont">&#xeb1b;</i></a>>
+            <a href="/en_us/support.html" style="display: inline-block" class="f12">SUPPORT</a>
+            > <a
+                href="/en_us/support/faq.html" style="display: inline-block" >F.A.Q</a>
+            > <a href="/enus/support/faq/{$result.url_title}.html" style="display: inline-block" class="current f12">{$result.title}</a>
+        </div>
+    </div>
+</section>
+<!-- W-Product-List 产品列表 -->
+<section class="ProductListBox clear" style="margin-bottom:40px; margin-top: 10px">
+    <div class="left-side fl w20">
+        <ul class="expmenu">
+            {volist name="tree" id="vo"}
+            <li>
+                <div class="header">
+                    <span class="label f12">{$vo.name}</span>
+                    <span class="arrow iconfont icon-arrowon fWhite f12"></span>
+                </div>
+                <span class="no">
+                    <ul class="menu" style="display:block;">
+                        {volist name="vo.child" id="co"}
+                        <li onClick="javascript:ShowMenu(this)" class="{$co.url_title}">
+                            {notempty name="co.child"}
+                            <a href="javascript:void(0)" class="clear">{$co.name} <i>+</i></a>
+                            {else /}
+                            <a href="/en_us/support/faq/{$co.url_title}.html"> {$co.name}</a>
+                            {/notempty}
+                        </li>
+                        <ol class="no">
+                            {notempty name="co.child"}
+                                {volist name="co.child" id="o"}
+                                <a href="/en_us/support/faq/{$o.url_title}.html" title="{$o.name}"
+                                   class="{$o.url_title}">{$o.name}</a>
+                                {/volist}
+                            {else}
+                            {/notempty}
+                        </ol>
+                        {/volist}
+                    </ul>
+                </span>
+            </li>
             {/volist}
         </ul>
-    </aside>
-    <main class="main_content">
-        <div>
-            <ul>
-                <li>
-                    <h5>{$result.problem}</h5>
-                    <p>{$result.answer}</p>
-                    <span>Update Time：{$result.update_time|strtotime|date="d/m/Y",###}</span>
-                </li>
-            </ul>
-        </div>
-        <!--分页-->
-        <div>
-            <div class="nav_page text-center col-lg-10 col-lg-offset-1 col-xs-12" style="padding:0">
-                <ul class="pagination">
-
-                </ul>
+    </div>
+    <div class="content fl clear w80" style="padding: 0 10px 0 10px">
+        <div class="ProductList clear">
+            <div id="framework">
+                <div class="title">
+                    <h2>{$result.title}</h2>
+                    <div class="update_time">
+                        <p class="f13">Create time：{$result.update_time|strtotime|date='m/d/Y',###}</p>
+                    </div>
+                </div>
+                <section style="padding: 10px 0" id="answer">
+                    <textarea name="answer" style="display: none;">{$result.answer}</textarea>
+                </section>
+                <div class="related">
+                    <h3 style="padding:8px 0; border-bottom: 1px solid #bbb; margin-bottom: 10px">See Also</h3>
+                    <ul>
+                        <li><a href="#">3CX is Just What the Doctor Ordered for ACIBADEM Health Clinics</a></li>
+                        <li><a href="#">v16 Update 3 Alpha Brings Advanced DNS & Reconnect Controls</a></li>
+                        <li><a href="#">New Android Beta App with Updated UI, Call Encryption and Reconnection</a></li>
+                        <li><a href="#">3CX Renews Sponsorship of Cypriot Football Club, APOEL FC</a></li>
+                        <li><a href="#">v16 Update 3 Alpha Brings Advanced DNS & Reconnect Controls</a></li>
+                        <li><a href="#">3CX is Just What the Doctor Ordered for ACIBADEM Health Clinics</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 </section>
 {/block}
-{block name="js"}
+
+{block name="script"}
+<script src="__STATIC__/frontend/lib/NavigationList/js/navbar.js"></script>
+<script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
 <script>
-    $(document).ready(function(){
-        if ($(document).width() < 768){
-            $("section>.aside_nav>h3").click(function(){
-                $(this).children("i").toggleClass("icon-angle-right").toggleClass("icon-angle-down");
-                $(this).next("ul").slideToggle();
-            })
-        }
-//        let asideNav = $("aside.aside_nav>ul>li>a");
-//        for(let i=0;i<asideNav.length;i++){
-//            asideNav.eq(i).click(function(){
-//                $("header.FAQ>div.nav>div.nav_place>ul>li.addInnerHTML").html(this.innerHTML)
-//            })
-//        }
-        $(".main_content img").addClass("img-responsive").addClass("center-block");
-    })
+    $(document).ready(function () {
+        $(function () {
+            editormd.markdownToHTML("answer", {
+                htmlDecode: "style,script,iframe",
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
+        /* 滑动/展开 */
+        $("ul.expmenu li > div.header").click(function () {
+            var arrow = $(this).find("span.arrow");
+            if (arrow.hasClass("icon-arrowon")) {
+                arrow.removeClass("icon-arrowon");
+                arrow.addClass("icon-arrowdown");
+            } else if (arrow.hasClass("icon-arrowdown")) {
+                arrow.removeClass("icon-arrowdown");
+                arrow.addClass("icon-arrowon");
+            }
+            $(this).parent().find("ul.menu").slideToggle();
+        });
+
+        var currentParent = $(".navSlideBarCurrent").parent();
+        currentParent.removeClass("no");
+        currentParent.prev("li").find("i").text("-")
+    });
+</script>
+<script>
+    max($(".InterestedChild > .child > div > .cont > h2 > a"));
+    max($(".InterestedChild > .child > div > .cont > p"));
+    max($("div.ProductList > div > div > .cont > h2 > a"));
+    max($("div.ProductList > div > div > div > p"))
 </script>
 {/block}

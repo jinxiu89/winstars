@@ -6,9 +6,6 @@ div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer {
     left: 0;
     bottom: 0
 }
-div.ProductBox > .ProductRow > .ProductList > div > div > .mask-layer > a.More:hover {
-    background-color: #99ccff
-}
 /* 媒体查询 */
 @media screen and (min-width: 768px) {
     div.ProductBox > .ProductRow > h2 {

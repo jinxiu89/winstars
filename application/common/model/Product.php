@@ -37,8 +37,15 @@ Class Product extends BaseModel
     {
         return $this->belongsToMany('Driver', 'product_driver', 'driver_id', 'product_id')->field('id,name,url_title,version,create_time');
     }
-    public function documents(){
-        return $this->belongsToMany('Document','product_document','document_id','product_id')->field('title,url_title,version,create_time');
+
+    public function documents()
+    {
+        return $this->belongsToMany('Document', 'product_document', 'document_id', 'product_id')->field('id,title,url_title,version,create_time');
+    }
+
+    public function faqs()
+    {
+        return $this->belongsToMany('Faq', 'product_faq', 'faq_id', 'product_id')->field('id,title,url_title,create_time');
     }
 
     /**
@@ -142,10 +149,16 @@ Class Product extends BaseModel
         }
     }
 
+    /***
+     * @param $url_title
+     * @return array
+     * 说明：with方法预加载解决N+1性能问题
+     *
+     */
     public function getDetailByUrlTitle($url_title)
     {
-        try {
-            $result = $this->with("drivers")->with('documents')->where(['url_title' => $url_title])->find();
+        try {//"drivers,documents,faqs""drivers,documents,faqs"
+            $result = $this->with(['drivers.downloads','documents.downloads','faqs'])->where(['url_title' => $url_title])->find();
             return ['status' => 1, 'message' => 'ok', 'data' => $result];
         } catch (Exception $exception) {
             return ['status' => 0, 'message' => $exception->getMessage(), 'data' => ''];

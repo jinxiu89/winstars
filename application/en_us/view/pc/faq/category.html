@@ -1,0 +1,163 @@
+{extend name="pc/base/base" /}
+{block name="title"}
+<title>F.A.Q index list - By winstars</title>
+{/block}
+{block name="seo"}
+<meta name="description" content="ALL winstars faq in this pages,Choose a category from the list below.">
+<meta name="keywords" content="faq,winstars faq">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_List.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/paginate/paginate.css">
+{/block}
+{block name="search"}
+<!-- Home 搜索框 -->
+<div class="w-home-form-search-box absolute w100 dNone bgTrans" style="top: 100%; left: 0">
+    <div class="w-home-form-search-cont clear w50 oh">
+        <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
+            <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"  placeholder="Please enter your product name">
+            <input class="fl cursorP w20 bgOrange fWhite b bcWhite" type="submit" value="search">
+        </form>
+    </div>
+</div>
+{/block}
+{block name="body"}
+<!-- w-Product-List-title 产品列表标题 -->
+<section>
+    <div class="w-blog-title">
+        {include file="pc/base/banner" /}
+    </div>
+</section>
+
+<!-- w-Product-List- 产品列表路径 -->
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" class="f12"><i class="iconfont">&#xeb1b;</i></a>>
+            <a href="/en_us/support.html" style="display: inline-block" class="f12">SUPPORT</a>
+            > <a
+                href="/en_us/support/faq.html" style="display: inline-block" class="current f12">F.A.Q</a>
+        </div>
+    </div>
+</section>
+<!-- W-Product-List 产品列表 -->
+<section class="ProductListBox clear" style="margin-bottom:40px; margin-top: 10px">
+    <div class="left-side fl w20">
+        <ul class="expmenu">
+            {volist name="tree" id="vo"}
+            <li>
+                <div class="header">
+                    <span class="label f12">{$vo.name}</span>
+                    <span class="arrow iconfont icon-arrowon fWhite f12"></span>
+                </div>
+                <span class="no">
+                    <ul class="menu" style="display:block;">
+                        {volist name="vo.child" id="co"}
+                        <li onClick="javascript:ShowMenu(this)" class="{$co.url_title}">
+                            {notempty name="co.child"}
+                            <a href="javascript:void(0)" class="clear">{$co.name} <i>+</i></a>
+                            {else /}
+                            <a href="/en_us/support/faq/{$co.url_title}.html"> {$co.name}</a>
+                            {/notempty}
+                        </li>
+                        <ol class="no">
+                            {notempty name="co.child"}
+                                {volist name="co.child" id="o"}
+                                <a href="/en_us/support/faq/{$o.url_title}.html" title="{$o.name}"
+                                   class="{$o.url_title}">{$o.name}</a>
+                                {/volist}
+                            {else}
+                            {/notempty}
+                        </ol>
+                        {/volist}
+                    </ul>
+                </span>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="content fl clear w80" style="padding: 0 10px 0 10px">
+        <div class="ProductList clear DisplayFlex table_component">
+            {notempty name="data"}
+            <div style="padding: 42px 30px 30px; min-height: 800px; background: #fff; width: 100%">
+                <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                    <thead>
+                    <tr>
+                        <th width="">Question</th>
+                        <th width="14%">Update at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>
+                            <a href="/en_us/support/faq/details/{$vo.url_title}.html">{$vo.title}</a>
+                        </td>
+                        <td>{$vo.create_time|strtotime|date="m/d/Y",###}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+            {else /}
+            <!-- 大盒子 -->
+            <div class="NoContentBox" style="width: 100%">
+                <div style="margin: 0">
+                    <!--include 用于载入一些公共块，请参阅tp官网的模板文档-->
+                    {include file="pc/base/declare"}
+                    <!-- 盒子 -->
+                    {include file="pc/base/see_also"}
+                </div>
+            </div>
+            {/notempty}
+            <section>
+                <div class="w-product-paging-box tc">
+                    {notempty name="data"}
+                    {:pagination($data)}
+                    {/notempty}
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+{/block}
+
+{block name="script"}
+<script src="__STATIC__/frontend/lib/NavigationList/js/navbar.js"></script>
+<script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
+        /* 滑动/展开 */
+        $("ul.expmenu li > div.header").click(function () {
+            var arrow = $(this).find("span.arrow");
+            if (arrow.hasClass("icon-arrowon")) {
+                arrow.removeClass("icon-arrowon");
+                arrow.addClass("icon-arrowdown");
+            } else if (arrow.hasClass("icon-arrowdown")) {
+                arrow.removeClass("icon-arrowdown");
+                arrow.addClass("icon-arrowon");
+            }
+            $(this).parent().find("ul.menu").slideToggle();
+        });
+
+        var currentParent = $(".navSlideBarCurrent").parent();
+        currentParent.removeClass("no");
+        currentParent.prev("li").find("i").text("-")
+    });
+</script>
+<script>
+    max($(".InterestedChild > .child > div > .cont > h2 > a"));
+    max($(".InterestedChild > .child > div > .cont > p"));
+    max($("div.ProductList > div > div > .cont > h2 > a"));
+    max($("div.ProductList > div > div > div > p"))
+</script>
+{/block}

@@ -1,92 +1,110 @@
-<!--继承框架-->
-{extend name="base/base"}
-{block name="seo"}
-<title>{$result.title} - Wavlink </title>
-<meta name="keywords" content="{$result.keywords}">
-<meta name="description" content="{$result.description}">
-<link rel="stylesheet" href="__EN__/css/faq/faq.css" type="text/css">
+<!--包含头部文件-->
+{extend name="pc/base/base" /}
+{block name="title"}
+<title> {$data.title}- By-winstars</title>
 {/block}
-{block name="banner"}
-<header class="FAQ">
-    <div class="banner">
-        <div>
-            <img class="img-responsive center-block img_pc" src="https://cloud.wavlink.com/index.php?user/publicLink&fid=8684HaUMuEz7vxfAWuPRlBaMfN5XHjjHtUqaHjfwUq1hKGQGsQHDI6eM0rpd6urtfI4MMaqGEwHozpF49a6x1iz0GHwr9Qtw5EP2_VtEWGef-tE1FZxKCDoyOSsms0zq9c5EdaWGVbzGUA&file_name=/2.jpg" alt="">
-            <img class="img-responsive center-block img_mobile" src="https://cloud.wavlink.com/index.php?user/publicLink&fid=c73cUzlLTSGa3apLIk2MmxeziEp1JKFCt3qk5V1rmPpA_SBVglnD_eOw5bEbFU75yZ679GsmLV8esILnNEv0OkkJ0f14yOQqSjRkpdXA6AgBX3KO0C-AlSFX9Ljk-Wp50A3uy8tT1FkhRw&file_name=/3.jpg" alt="">
-        </div>
-    </div>
-    <div class="nav">
-        <div class="nav_place col-lg">
-            <!--<span style="color: #888">Home：</span>-->
-            <ul>
-                <li><a href="{:url('/'.$code.'/document')}">Documents</a></li>
-                <li> > </li>
-                <li class="addInnerHTML"><a href="{:url('/'.$code.'/document/'.$docCate.url_title)}">{$docCate.name}</a></li>
-                <li> > </li>
-                <li class="addInnerHTML"><a href="javascript:;">{$result.title}</a></li>
-            </ul>
-        </div>
-        <!--<div class="nav_search">-->
-            <!--<form action="">-->
-                <!--<input type="text" name="key" placeholder="">-->
-                <!--<input type="submit" value="{$Think.lang.search}">-->
-            <!--</form>-->
-        <!--</div>-->
-    </div>
-</header>
+{block name="seo"}
+<meta name="description" content="{$data.description}">
+<meta name="keywords" content="{$data.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_border.css">
 {/block}
 {block name="body"}
-<!--section-->
+<!-- w-Product 产品中心 -->
 <section>
-    <aside class="aside_nav">
-        <h3>Event<i class="icon-angle-right"></i></h3>
-        <ul>
-            {volist name="$cate" id="vo"}
-            {if condition="$result.category_id eq $vo.id"}
-            <li style="background-color: #ccc"><a href="{:url('/'.$code.'/document/'.$vo.url_title)}" data-id="{$vo.id}">{$vo.name}</a></li>
-            {else /}
-            <li><a href="{:url('/'.$code.'/document/'.$vo.url_title)}" data-id="{$vo.id}">{$vo.name}</a></li>
-            {/if}
-            {/volist}
+    <div class="w-product-title">
+        {include file="pc/base/banner" /}
+    </div>
+</section>
 
-        </ul>
-    </aside>
-    <main class="main_content">
-        <div>
-            <ul>
-                <li>
-                    <h5>{$result.title}</h5>
-                    <p>{$result.content}</p>
-                    <span>Update Time:{$result.update_time|strtotime|date="d/m/Y",###}</span>
-                </li>
-            </ul>
+<!-- w-product-path 产品路径 -->
+<section>
+    <hr style="border: 1px solid #f2f2f2">
+    <div class="path-box bgWhite">
+        <div class="path-cont">
+            <a href="/en_us/" style="display: inline-block" class="f12">
+                <i class="iconfont">&#xeb1b;</i>
+            </a>
+            >
+            <a href="/en_us/support.html" style="display: inline-block" class="f12">SUPPORT</a> >
+            <a href="/en_us/support/manual.html" style="display: inline-block" >MANUALS</a> >
+            <a href="/en_us/support/manual/details/{$data.url_title}.html" class="current">{$data.title}</a>
         </div>
-        <!--分页-->
-        <div>
-            <div class="nav_page text-center col-lg-10 col-lg-offset-1 col-xs-12" style="padding:0">
-                <ul class="pagination">
-
-                </ul>
+    </div>
+</section>
+<section style="margin-bottom: 40px; margin-top: 40px">
+    <div class="ProductBox">
+        <div class="ProductRow">
+            <div class="ProductList  clear">
+                <div style="background: #fff; width: 100%; padding: 3%">
+                    <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                    <caption>
+                        <h2>Manual and Detail</h2>
+                    </caption>
+                    <tbody>
+                    <tr>
+                        <th width="20%">Driver Name</th>
+                        <td>{$data.title}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Version</th>
+                        <td>{$data.version}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Update At</th>
+                        <td>{$data.create_time|strtotime|date="m/d/Y",###}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Support Product</th>
+                        <td>
+                            {notempty name="data.products"}
+                            {volist name="data.products" id="vo"}
+                            <span>{$vo.model}</span>
+                            {/volist}
+                            {else /}
+                            If you lost the user guide and CD driver, you can turn to driver download online here. When you find no applicable model written in “Support Product”, please contact us via email to tech@win-star.com to get information, and we will tell you which one is suitable for your product.
+                            {/notempty}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Download Link</th>
+                        <td>
+                            {notempty name="data.downloads"}
+                            {volist name="data.downloads" id="vo"}
+                            <a class="btn complexThemeColor" href="{$vo.url}"
+                               style="display: inline-block">{$vo.language} <i class='iconfont icon-xiazai'></i></a>
+                            {/volist}
+                            {/notempty}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>* Software update is usually for optimizing the product to support in special environments and applications. If your product works properly, it is not recommended to upgrade your product.</p>
+                            <p>* If you find the links are invalid or any other issues, please email to tech@win-star.com to make feedback or contact online customer service, thank you.</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
             </div>
         </div>
-    </main>
+
+    </div>
 </section>
 {/block}
-{block name="js"}
+{block name="script"}
 <script>
-    $(document).ready(function(){
-        if ($(document).width() < 768){
-            $("section>.aside_nav>h3").click(function(){
-                $(this).children("i").toggleClass("icon-angle-right").toggleClass("icon-angle-down");
-                $(this).next("ul").slideToggle();
-            })
-        }
-//        let asideNav = $("aside.aside_nav>ul>li>a");
-//        for(let i=0;i<asideNav.length;i++){
-//            asideNav.eq(i).click(function(){
-//                $("header.FAQ>div.nav>div.nav_place>ul>li.addInnerHTML").html(this.innerHTML)
-//            })
-//        }
-        $(".main_content img").addClass("img-responsive").addClass("center-block");
+    $(document).ready(function () {
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
     })
 </script>
 {/block}
+

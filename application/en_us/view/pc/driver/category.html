@@ -16,7 +16,7 @@
 <!-- Home 搜索框 -->
 <div class="w-home-form-search-box absolute w100 dNone bgTrans" style="top: 100%; left: 0">
     <div class="w-home-form-search-cont clear w50 oh">
-        <form action="/hello/world.html" method="get" class="clear mt5 mb5">
+        <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
             <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"  placeholder="Please enter your product name">
             <input class="fl cursorP w20 bgOrange fWhite b bcWhite" type="submit" value="search">
         </form>
@@ -27,12 +27,7 @@
 <!-- w-Product-List-title 产品列表标题 todo:: 分模块搜索-->
 <section>
     <div class="w-blog-title">
-        {notempty name="$category.banner"}
-        <img src="" width="100%" height="300px" alt="">
-        {else /}
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
-             width="100%" height="" alt="">
-        {/notempty}
+        {include file="pc/base/banner" /}
     </div>
 </section>
 
@@ -114,56 +109,10 @@
             <!-- 大盒子 -->
             <div class="NoContentBox" style="width: 100%">
                 <div style="margin: 0">
-                    <!-- 友好提示 -->
-                    <div class="NoContent bgWhite" style="box-shadow: none;">
-                        <dl>
-                            <dt>
-                                <h3>The website upgrade is in progress</h3>
-                            </dt>
-                            <dd>
-                                <p>No Drivers is available right now for your reference, please keep up with our update
-                                    as new products are coming soon!</p>
-                            </dd>
-                            <dd>
-                                <p>However, for further information, please contact our salesperson, or send us emails
-                                    to <a class="dInlineBlack fOrange" href="mailto:winstars@win-star.com">support@win-star.com</a>,
-                                    we will be glad to solve your questions instantly!</p>
-                            </dd>
-                            <dd>
-                                <p>Thanks for your understanding!</p>
-                            </dd>
-                        </dl>
-                    </div>
+                    <!--include 用于载入一些公共块，请参阅tp官网的模板文档-->
+                    {include file="pc/base/declare"}
                     <!-- 盒子 -->
-                    <div class="Interested mt10">
-                        <!-- 主标题 -->
-                        <p class="InterestedTitle pd20 f20 bgWhite tc">See also</p>
-                        <!-- 盒子 -->
-                        <div class="InterestedChild clear">
-                            <!-- 产品 -->
-                            {notempty name="interested"}
-                            {volist name="interested" id="vo"}
-                            <div class="child relative fl" style="width: 33.333%">
-                                <div class="pd10 bgWhite clear">
-                                    <a href="/en_us/product/{$vo.url_title}" target="_blank"
-                                       style="margin-bottom: 10px"><img class="w100" src="{$vo.thumbnail}" alt=""></a>
-                                    <div class="cont w100">
-                                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}" target="_blank"
-                                               style="min-height: 34px;">{$vo.name}</a></h2>
-                                        <div class="btn">
-                                            <a class="fl f12 model_link" style="padding: 6px 0"
-                                               href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
-                                            <a class="fr f12 fGray btn_link" href="/en_us/product/{$vo.url_title}"
-                                               target="_blank" style="padding: 6px 8px; border: 1px solid #e9e9e9">Details</a>
-                                        </div>
-                                    </div>
-                                    <i class="icon-trophy icon-3x absolute fOrange"></i>
-                                </div>
-                            </div>
-                            {/volist}
-                            {/notempty}
-                        </div>
-                    </div>
+                    {include file="pc/base/see_also"}
                 </div>
             </div>
             {/notempty}
@@ -184,7 +133,12 @@
 <script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.support').addClass("bgOrangeWhite");
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
         /* 滑动/展开 */
         $("ul.expmenu li > div.header").click(function () {
             var arrow = $(this).find("span.arrow");

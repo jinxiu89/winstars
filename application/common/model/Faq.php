@@ -9,7 +9,9 @@
 namespace app\common\model;
 
 use app\common\model\Language as LanguageModel;
+use think\Exception;
 use think\exception\DbException;
+use app\common\model\Category as CategoryModel;
 
 Class Faq extends BaseModel
 {
@@ -152,5 +154,37 @@ Class Faq extends BaseModel
             }
         }
 
+    }
+
+    /***
+     * @param $language_id
+     * @return string|\think\Paginator
+     */
+    public function getDataAll($language_id)
+    {
+        try {
+            return self::field('id,title,url_title,category_id,create_time')->cache(true)->order(['sorting' => 'desc', 'id' => 'asc'])->where(['language_id' => $language_id])->paginate(22);
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function getDetailByUrlTitle($url_title)
+    {
+        try {
+            return self::get(['url_title' => $url_title]);
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function getFaqByCategory($category){
+        try {
+            $category = (new CategoryModel())->getCategoryByUrlTitle($category);
+            $result = self::where(['category_id' => $category['id']])->field('id,title,url_title,create_time')->cache(true)->paginate(22);
+            return $result;
+        } catch (Exception $exception) {
+            return [];
+        }
     }
 }

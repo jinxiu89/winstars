@@ -10,31 +10,57 @@
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Result.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/paginate/paginate.css">
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product_List.css">
+<style>
+    .prompt {
+        padding: 40px 30px;
+        background-color:#fff;
+        margin:0 5px
+    }
+    .prompt h3 {
+        font-size: 20px;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+    .prompt p {
+        margin-bottom: 10px;
+    }
+</style>
 {/block}
 {block name="body"}
 <section>
-    <div class="Result_Title pt50 pb50 tc f28">
-        <p>Results for "{notempty name="key"}{$key}{else /}NULL{/notempty}"</p>
+    <div class="Result_Title pt50 pb50 tc f24">
+        <p>Results for "{notempty name="keys"}{$keys}{else /}NULL{/notempty}"</p>
         <p>{notempty name="count"}{$count}{else}0{/notempty} results found</p>
     </div>
 </section>
 <!-- result 搜索结果页面 -->
 <section class="Result clear">
-    <div class="content fl clear" style="padding: 0 10px">
+    <div class="content fl clear w100" style="padding: 0 10px">
         <ul class="ResultList clear">
             {notempty name="result"}
             {volist name="result" id="vo"}
             <li class="relative fl">
                 <div class="pd10 bgWhite clear">
-                    <a href="/en_us/product/{$vo.url_title}" target="_blank" style="margin-bottom: 10px"><img class="w100"
-                                                                                                       src="{$vo.album|getThumbnail}"
-                                                                                                       alt=""></a>
+                    <a href="/en_us/product/{$vo.url_title}" target="_blank" style="margin-bottom: 10px">
+                        {notempty name="vo.thumbnail"}
+                        <img class="w100 lazy"
+                             src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22960%22%20height%3D%22540%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20960%20540%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16c8997ebd5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A48pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16c8997ebd5%22%3E%3Crect%20width%3D%22960%22%20height%3D%22540%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22328.90625%22%20y%3D%22291.6%22%3ELoading...%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                             data-src="{$vo.thumbnail}" alt="">
+                        {else /}
+                        <img class="w100"
+                             src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22960%22%20height%3D%22540%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20960%20540%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16c8997ebd5%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A48pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16c8997ebd5%22%3E%3Crect%20width%3D%22960%22%20height%3D%22540%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22328.90625%22%20y%3D%22291.6%22%3ELoading...%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+                        {/notempty}
+                    </a>
                     <div class="cont w100">
-                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}" target="_blank" style="min-height: 34px;">{$vo.name}</a></h2>
+                        <h2><a class="fNomal model_link" href="/en_us/product/{$vo.url_title}" target="_blank"
+                               style="min-height: 34px;">{$vo.name}</a></h2>
                         <div class="btn">
-                            <a class="fl f12 model_link" href="/en_us/product/{$vo.url_title}" target="_blank">{$vo.model}</a>
-                            <a class="fr f12 fGray btn_link" href="/en_us/product/{$vo.url_title}" target="_blank"
-                               style="border: 1px solid #e9e9e9">Details</a>
+                            <a class="fl f12 model_link" href="/en_us/product/{$vo.url_title}" target="_blank"
+                               style="padding-left:0">{$vo.model}</a>
+                            <a class="fr f12 fGray complexThemeColor bg_inverted" href="/en_us/product/{$vo.url_title}"
+                               target="_blank"
+                               style="border: 1px solid transparent">Details</a>
                         </div>
                     </div>
                     <i class="icon-trophy icon-3x absolute fOrange"></i>
@@ -42,6 +68,16 @@
             </li>
             {/volist}
             {else /}
+            <div class="prompt">
+                <div>
+                    <h3>Oops! Nothing Found. </h3>
+                    <p>To find the products you want, please check your model number (usually on the external packaging or on the bottom of your product)
+                        Click for more details: How to find out the model? (网页链接)</p>
+                    <p>Except for model numbers, you can also type in product names to search products, such as a router, hub, adapter, dock, etc.</p>
+                    <p>You can also fill out key characteristics or features of products to find the products you want, such as 4K, PD, Touchlink, HDMI, DP, etc.</p>
+                </div>
+            </div>
+            {include file="pc/base/see_also"}
             {/notempty}
         </ul>
     </div>

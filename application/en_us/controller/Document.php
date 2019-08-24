@@ -10,13 +10,14 @@ namespace app\en_us\controller;
 use app\common\model\Category as CategoryModel;
 use app\common\model\Document as DocumentModel;
 use app\common\model\Language as LanguageModel;
+use app\common\helper\Category as CategoryHelp;
 
 class Document extends Base
 {
 
-    protected $beforeActionList = [
-        'cate' => ['only', 'index,details'],
-    ];
+//    protected $beforeActionList = [
+//        'cate' => ['only', 'index,details'],
+//    ];
 
     /***
      * @throws \think\db\exception\DataNotFoundException
@@ -35,27 +36,32 @@ class Document extends Base
     public function index(){
         if(request()->isGet()){
             $result=(new DocumentModel())->getDataByLanguageId($this->language);
-            $this->assign('data',$result);
-            return $this->fetch($this->template . '/Document/index.html');
-
+            $this->assign('data',$result['data']['data']);
+            return $this->fetch($this->template . '/document/index.html');
         }
     }
 
+    public function category($category)
+    {
+        if (empty($category) || !isset($category)) {
+            abort(404);
+        }
+        $categoryModel = new CategoryModel();
+        $cate = $categoryModel->getAllCategory($this->code);
+        $language_id = LanguageModel::getLanguageCodeOrID($this->code);
+        $category_data = (new CategoryModel())->getCategoryByName($category, $language_id);
+        $path = collection(CategoryHelp::getParents($cate, $category_data['id']))->toArray();
+        $result = (new DocumentModel())->getDocumentByCategory($category);
+        $this->assign("category", $category_data);
+        $this->assign('path', $path);
+        $this->assign('data', $result);
+        return $this->fetch($this->template . '/document/category.html');
+    }
 
-    public function details($document=''){
-        if(!isset($document) || empty($document)){
-            abort(404);
-        }
-        $result=DocumentModel::getDetailsByUrlTitle($document,$this->code);
-        //该文档的分类
-        $docCate = ServiceCategoryModel::get(['id' => $result['category_id']]);
-        if(!empty($result)){
-            return $this->fetch('',[
-                'result'=>$result,
-                'docCate' => $docCate
-            ]);
-        }else{
-            abort(404);
-        }
+    public function details($url_title)
+    {
+        $result=(new DocumentModel())->getDetailByUrlTitle($url_title);
+        $this->assign('data',$result[0]);
+        return $this->fetch($this->template . '/document/details.html');
     }
 }

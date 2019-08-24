@@ -28,6 +28,7 @@ class Driver extends Base
     //驱动下载首页
     public function index()
     {
+
         $result=(new DriverModel())->getDataAll($this->language);
         $this->assign('data',$result);
         return $this->fetch($this->template . '/driver/index.html');
@@ -56,7 +57,6 @@ class Driver extends Base
 
     public function details($url_title)
     {
-//        print_r(config('app_debug'));
         $result=(new DriverModel())->getDetailByUrlTitle($url_title);
         $this->assign('data',$result[0]);
         return $this->fetch($this->template . '/driver/details.html');

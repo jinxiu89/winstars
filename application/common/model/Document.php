@@ -11,6 +11,7 @@ namespace app\common\model;
 use app\common\model\Language as LanguageModel;
 use think\Exception;
 use think\exception\DbException;
+use app\common\model\Category as CategoryModel;
 
 Class Document extends BaseModel
 {
@@ -226,6 +227,26 @@ Class Document extends BaseModel
             } catch (Exception $exception) {
                 return ['status' => 0, 'message' => $exception->getMessage()];
             }
+        }
+    }
+
+    public function getDocumentByCategory($category)
+    {
+        try {
+            $category = (new CategoryModel())->getCategoryByUrlTitle($category);
+            $result = self::where(['category_id' => $category['id']])->field('id,title,url_title,version,create_time')->cache(true)->paginate(22);
+            return $result;
+        } catch (Exception $exception) {
+            return [];
+        }
+    }
+
+    public function getDetailByUrlTitle($url_title)
+    {
+        try {
+            return collection(self::with(['products' => 'products', 'downloads' => 'downloads'])->where(['url_title' => $url_title])->select())->toArray();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
         }
     }
 }

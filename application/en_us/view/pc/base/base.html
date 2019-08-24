@@ -15,10 +15,12 @@
     <meta name="keywords" content="keywords">
     {/block}
     <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/Common-style/Common-style.css">
+    <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/Common-style/themeColor.css">
     <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
+    <link rel="stylesheet" href="__STATIC__/frontend/lib/Swiper/css/swiper.min.css">
     <style>
         #callus {
-            --call-us-form-header-background: #09F;
+            --call-us-form-header-background: #3b6caa;
             --call-us-header-text-color: #f5f9ff;
             position: fixed;
             bottom: 320px;
@@ -34,13 +36,14 @@
 <!-- Home 页眉 -->
 <section class="header">
     <div class="tc bgWhite relative" style="z-index: 11; padding: 8px 20px; background-color: #f2f2f2">
-        <p class="fOrange">Winstars is in transition. Updates coming soon. Please contact our salesmen for more information.</p>
+        <p class="fOrange">Winstars is in transition. Updates coming soon. Please contact our salesmen for more
+            information.</p>
     </div>
     <div class="w-home-box bgWhite relative">
         <div class="w-home-cont DisplayFlex">
             <!-- Home 网站LOGO -->
             <div class="w-home-nav-logo tl w20 ml20">
-                <a href="/en_us/" style="padding-top: 12px">
+                <a href="/en_us/" class="dInlineBlack" style="padding-top: 8px">
                     <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=5754ljwY-Ya8RCOCQLGFIz_jG64TU_f3nqWGRY7YZWvX62_VEQd5n8Nj0jzzbrWxi7hNNEot4bdqJnAYErgsLbGDFoGlc2VE2L88h13DOf7vnfxkif2RfQXHGGiyBuLEf7sG3C5AT9860232bLsInA&file_name=/w-head-logo.png"
                          alt="">
                 </a>
@@ -48,17 +51,17 @@
             <!-- Home 产品列表 -->
             <ul id="nav-container" class="DisplayFlex flex_1 w-home-nav-list clear tc">
                 <li>
-                    <a class="link">
+                    <a class="link product">
                         PRODUCT
                         <i class="iconfont icon-arrowdown"></i>
                     </a>
-                    <div class="hammer_screen bgWhite w100 absolute">
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
                         <div class="DisplayFlex justify-content_flex-center align-items_flex_start">
                             {notempty name="tree"}
                             {volist name="tree" id="item"}
                             <dl class="tl pl20">
                                 <dt>
-                                    <a href="/en_us/category/{$item.url_title}.html" style="color: #0099FF;">
+                                    <a class="fontThemeColor" href="/en_us/category/{$item.url_title}.html">
                                         <h4 class="font_color_title">
                                             {$item.name}
                                         </h4>
@@ -84,32 +87,35 @@
                         SUPPORT
                         <i class="iconfont icon-arrowdown"></i>
                     </a>
-                    <div class="hammer_screen bgWhite w100 absolute">
-                        <div class="DisplayFlex justify-content_flex-center align-items_center">
-                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">Manuals</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">Drives</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/support/driver.html">F.A.Q</a>
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center">
+                            <div>
+                                <a class="pt-pb-6" href="/en_us/support/manual.html">Manuals</a>
+                                <a class="pt-pb-6" href="/en_us/support/driver.html">Drives</a>
+                                <a class="pt-pb-6" href="/en_us/support/faq.html">F.A.Q</a>
+                            </div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <a class="link">
+                    <a class="link about">
                         ABOUT
                         <i class="iconfont icon-arrowdown"></i>
                     </a>
-                    <div class="hammer_screen bgWhite w100 absolute">
-                        <div class="DisplayFlex justify-content_flex-center align-items_center">
-                            <a class="animate_time pt-pb-6" href="/en_us/about/Company_Overview.html">Company</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/about/content_us.html">Contact Us</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/about/milestone.html">Milestone</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/about/Privacy.html">Privacy</a>
-                            <a class="animate_time pt-pb-6" href="/en_us/about/join_us.html">Join Us</a>
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center">
+                            <div>
+                                <a class="pt-pb-6" href="/en_us/about/Company_Overview.html">Company</a>
+                                <a class="pt-pb-6" href="/en_us/about/content_us.html">Contact Us</a>
+                                <a class="pt-pb-6" href="/en_us/about/milestone.html">Milestone</a>
+                                <a class="pt-pb-6" href="/en_us/about/Privacy.html">Privacy</a>
+                            </div>
                         </div>
                     </div>
                 </li>
             </ul>
             <!-- Home 图标按钮 -->
-            <div class="w-home-nav-search w20 tr h5">
+            <div class="w-home-nav-search  tr h5">
                 <a href="#" class="search dInlineBlack">
                     <i class="iconfont" style="font-size: 24px"></i>
                 </a>
@@ -121,8 +127,9 @@
         <div class="w-home-form-search-box absolute w100 dNone" style="top: 100%; left: 0">
             <div class="w-home-form-search-cont clear w50 oh">
                 <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
-                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"  placeholder="Please enter your product name">
-                    <input class="fl cursorP w20 bgOrange fWhite b bcWhite" type="submit" value="search">
+                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"
+                           placeholder="Please enter your product name">
+                    <input class="fl cursorP w20 complexThemeColor fWhite b bcWhite" type="submit" value="search">
                 </form>
             </div>
         </div>
@@ -144,14 +151,8 @@
                     <dd><a href="/en_us/about/content_us.html">Contact Us</a></dd>
                     <dd><a href="/en_us/about/milestone.html">Milestone</a></dd>
                     <dd><a href="/en_us/about/Privacy.html">Privacy</a></dd>
-                    <dd><a href="/en_us/about/join_us.html">Join Us</a></dd>
+                    <!--<dd><a href="/en_us/about/join_us.html">Join Us</a></dd>-->
                 </dl>
-                <!--<dl>-->
-                    <!--<dt class="f12 fWhite pb2">WHAT DO WE OFFER?</dt>-->
-                    <!--&lt;!&ndash;<dd><a href="#">Thunderbolt 3 product</a></dd>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<dd><a href="#">Mesh WiFi Router</a></dd>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<dd><a href="#"></a></dd>&ndash;&gt;-->
-                <!--</dl>-->
                 <dl>
                     <dt class="fWhite pb2 f12">NEED HELP?</dt>
                     <dd><a href="/en_us/support/driver.html">Manuals</a></dd>
@@ -161,8 +162,12 @@
                 </dl>
             </div>
         </div>
-        <div class="put-on-records tc bgBlack" style="padding: 8px 0;font-size: 11px;color: #EEE;">
-            <p>©1997 - <script>var nowYear = new Date().getFullYear();document.write(nowYear)</script> Winstars Technology Ltd. All Rights Reserved.</p>
+        <div class="put-on-records tc complexThemeColor" style="padding: 8px 0;font-size: 11px;color: #EEE;">
+            <p>©1997 -
+                <script>var nowYear = new Date().getFullYear();
+                document.write(nowYear)</script>
+                Winstars Technology Ltd. All Rights Reserved.
+            </p>
             <span>
                 <a href="/" class="fWhite cursorP" style="display: inline">Powered by Winstars</a>
             </span>
@@ -173,39 +178,65 @@
     <!-- 遮罩层 -->
     <div class="mask_layer fixed"></div>
 </section>
+<script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 <script src="__STATIC__/lib/jquery/jquery-3.2.1.min.js"></script>
 <script src="__STATIC__/frontend/en-us/js/Common-style/Common-style.js"></script>
+<!--//Swiper-->
+<script src="__STATIC__/frontend/lib/Swiper/js/swiper.min.js"></script>
+<!--//liveChat-->
 <script src="__STATIC__/lib/chat/callus.js"></script>
+<!--//lazy-->
+<script src="__STATIC__/frontend/lib/lazyload/jquery.lazyload.js"></script>
+<script>
+    $('.lazy').lazyload()
+</script>
 <script>
     var hammer_screen_btn = $("#nav-container > li"); // 垂幕按钮
     var hammer_screen = $("#nav-container > li > div.hammer_screen"); // 垂幕
     var SearchBar = $(".w-home-form-search-box"); // 搜索框
     var mask = $(".mask_layer"); // 遮罩层
 
-    hammer_screen_btn.click(function(e){
-        window.event? window.event.cancelBubble = true : e.stopPropagation();
+    hammer_screen_btn.click(function (e) {
+        window.event ? window.event.cancelBubble = true : e.stopPropagation();
         SearchBar.slideUp();
         mask.fadeIn();
-        $(this).find("> a").addClass("bgOrangeWhite");
-        $(this).siblings().find("> a").removeClass("bgOrangeWhite");
-
-        $(this).find(".link").addClass("bg_complex");
-        $(this).siblings().find(".link").removeClass("bg_complex");
+        $(this).find("> a").addClass("complexThemeColor");
+        $(this).siblings().find("> a").removeClass("complexThemeColor");
 
         $(this).find(".hammer_screen").stop(false, true).animate({
             opacity: 1,
             "z-index": 100
-        },150).slideDown();
+        }, 150).slideDown();
         $(this).siblings().find(".hammer_screen").stop(false, true).animate({
             opacity: 0,
             "z-index": 0
-        },150).slideUp()
+        }, 150).slideUp()
     });
 
-    $(document).click(function(){
+    $(document).click(function () {
         mask.fadeOut();
         hammer_screen.slideUp();
     })
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        speed: 800,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    });
 </script>
 {block name="script"}
 {/block}

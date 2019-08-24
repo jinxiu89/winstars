@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+div.main {
+    width: 79%;
+    margin-right: 0.751%
+}
+
+div.aside {
+    width: 20%;
+}
+
+div.aside > div {
+    margin-bottom: 10px;
+    background-color: #fff
+}
+
+div.aside > div > h3 {
+    line-height: 42px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #3b6caa;
+}
+
+div.main > .nav {
+    border-bottom: 1px solid;
+}
+
+div.main > .nav span {
+    float: left;
+    display: inline-block;
+    width:105px;
+    font-size: 12px;
+    margin-right: 1px;
+    padding: 8px 10px;
+    cursor: pointer
+}
+
+div.main > .nav span:hover {
+    background-color: #3b6caa;
+    color: #fff
+}
+
+div.main > .content {
+    padding: 20px 4.4%;
+    min-height: 1248px;
+}
+
+div.main > .content > div {
+    display: none
+}
+.specifications-container > div {
+    width: 46%
+}
+
+.specifications-container > div:nth-of-type(1),
+.specifications-container > div:nth-of-type(3) {
+    float: left;
+    padding: 0 40px 0 10px
+}
+
+.specifications-container > div:nth-of-type(2) {
+    float: right;
+    padding: 0 0 0 40px
+}
+
+.specifications-container > div > div {
+    padding: 5px 0;
+}
+
+@media screen and (max-width: 992px) {
+    .specifications-container > div {
+        float: none !important;
+        width: 100%;
+        padding: 0 !important;
+    }
+}

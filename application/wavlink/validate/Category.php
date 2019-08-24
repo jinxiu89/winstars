@@ -23,8 +23,8 @@ class Category extends BaseValidate
     ];
     /**场景设置**/
     protected $scene = [
-        'add' => [],
-        'edit' => [],
+        'add' => ['name', 'seo_title', 'keywords', 'description'],
+        'edit' => ['id', 'name', 'seo_title', 'keywords', 'description'],
         'sort' => ['listorder'],
     ];
 }

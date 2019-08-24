@@ -5,6 +5,7 @@
  * Date: 2017/11/25
  * Time: 10:15
  */
+
 namespace app\en_us\controller;
 
 use app\common\model\Drivers as DriversModel;
@@ -13,13 +14,15 @@ use app\common\model\Product as ProductModel;
 use app\lib\exception\BannerMissException;
 use think\exception\HttpException;
 use app\common\model\ServiceCategory as ServiceCategoryModel;
+
 class Search extends Base
 {
 
     /**\
      * 搜索，先展示产品
      */
-    public function index() {
+    public function index()
+    {
 //        $name = $_GET['key'];
 //        if (empty($name)){
 //            $this->error(lang('key_empty'));
@@ -40,9 +43,9 @@ class Search extends Base
     }
 
     //产品搜索
-    public function product() {
-
-        $key = input('get.key');
+    public function product()
+    {
+        $key = stripslashes(input('get.key','','trim'));
         if ($key == '' || empty($key)) {
             return $this->fetch($this->template . '/search/index.html', [
                 'name' => $key,
@@ -53,18 +56,20 @@ class Search extends Base
             $product = $result['data'];
             $count = $result['count'];
             $page = $product->render();
-            return $this->fetch($this->template . '/search/index.html', [
-                'result' => $product,
-                'count' => $count,
-                'key' => $key,
-                'page' => $page,
-            ]);
         }
+        return $this->fetch($this->template . '/search/index.html', [
+            'result' => $product,
+            'count' => $count,
+            'keys' => $key,
+            'page' => $page,
+        ]);
     }
 
     //驱动搜索
-    public function drivers() {
-        $key = input('get.key','','trim');
+    public function drivers()
+    {
+        $temp=trim(input('get.key', '', 'trim'));
+        $key = stripslashes($temp);
         if ($key == '' || empty($key)) {
             return $this->fetch('', [
                 'count' => '0',
@@ -85,22 +90,23 @@ class Search extends Base
     }
 
     //faq搜索
-    public function faq() {
+    public function faq()
+    {
         $key = input('get.key');
         //获取一级faq分类
         $parent = ServiceCategoryModel::getTopCategory($this->code, 'faq');
-        $cate = ServiceCategoryModel::getSecondCategory($this->code,'faq');
+        $cate = ServiceCategoryModel::getSecondCategory($this->code, 'faq');
         $res = (new FaqModel())->getSelectFaq($this->code, $key);
         if ($key == '' || empty($key) || !$res) {
-            $this->assign('faq','');
-            $this->assign('count',0);
+            $this->assign('faq', '');
+            $this->assign('count', 0);
         } else {
-            $this->assign('faq',$res['data']);
-            $this->assign('count',$res['count']);
+            $this->assign('faq', $res['data']);
+            $this->assign('count', $res['count']);
         }
-        $this->assign('parent',$parent);
-        $this->assign('cate',$cate);
-        $this->assign('name',$key);
+        $this->assign('parent', $parent);
+        $this->assign('cate', $cate);
+        $this->assign('name', $key);
         return $this->fetch();
     }
 }

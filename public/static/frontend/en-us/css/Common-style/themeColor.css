@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+    日期：2019-08-24
+*/
+/* 字体+背景 */
+.complexThemeColor
+{
+    background-color: #3b6caa;
+    color: #fff
+}
+/* 背景 */
+.bgThemeColor{
+    background-color:#3b6caa
+}
+/* 字体 */
+.fontThemeColor{
+    color:#3b6caa
+}
+/* 边框 */
+.borderThemeColor{
+    border-color:#3b6caa !important;
+}
+
+/* 插件 */
+/* 侧边导航插件 所在路径：__STATIC__/frontend/lib/NavigationList/css/styles.css */
+ul.expmenu div.header,
+/* 放大镜插件 所在路径：__STATIC__/frontend/lib/Magnifier/css/Magnifier.css */
+/* 放大镜左右按钮 */
+span.on,
+/* 放大镜小图片边框 */
+.spec-items li.on,
+/* 分页器插件 所在路径：__STATIC__/frontend/lib/paginate/paginate.css */
+.pagination>.active>span,
+/* 详情导航 所在路径：__STATIC__/frontend/en-us/css/style/detail_nav.css */
+div.main > .nav span:hover
+{
+    background-color: #3b6caa !important;
+    color: #fff !important;
+    border-color: #3b6caa !important;
+}

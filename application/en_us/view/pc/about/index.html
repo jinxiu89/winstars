@@ -14,16 +14,19 @@
     div.w-about-article-box {
         margin: 10px 0 40px 0
     }
+
     div.w-about-article-box > div.w-about-article-cont {
         padding: 30px;
     }
-    @media screen and (min-width: 1300px){
+
+    @media screen and (min-width: 1300px) {
         div.w-about-article-box {
             width: 80%;
             margin-left: 10%
         }
     }
-    .w-about-article-cont #content a{
+
+    .w-about-article-cont #content a {
         display: inline-block;
     }
 </style>
@@ -32,7 +35,7 @@
 <!-- w-About 关于我们 -->
 <section>
     <div id="w-about-box">
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg" width="100%" alt="">
+        {include file="pc/base/banner" /}
     </div>
 </section>
 <section>
@@ -63,9 +66,9 @@
                 {/notempty}
             </ul>
         </div>
-        <div class="w-about-article-cont fl w80 bgWhite">
-            <div id="content" class="markdown-body editormd-html-preview">
-                {$result.content_html|htmlspecialchars_decode}
+        <div class="w-about-article-cont fl w80 bgWhite" style="min-height: 888px">
+            <div>
+                {$result.content}
             </div>
         </div>
     </div>
@@ -83,10 +86,15 @@
 <script src="__STATIC__/lib/markdown/editormd.js"></script>
 <script>
     $(document).ready(function () {
-        $(".about a").addClass("bgOrangeWhite");
+        $(".about").addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.about').addClass("complexThemeColor");
+        });
         var current;
         current = "." + "{$result.url_title}" + " a";
-        $(current).addClass("bgOrangeWhite");
+        $(current).addClass("complexThemeColor");
     });
 </script>
 {/block}

@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -12,15 +11,11 @@ img {
 /* #MagnifierWrap{position: relative;width: 350px;margin:100px auto;} */
 #MagnifierWrap2 {
     position: relative;
-    /*width: 350px;*/
-    /*margin: 100px auto;*/
-    margin: 0;
+    margin-right: 8%
 }
 
 .MagnifierMain {
-    position: relative;
-    /*width: 350px;*/
-    /*height: 350px;*/
+    position: relative
 }
 
 .MagnifierMain img {
@@ -46,7 +41,6 @@ img {
     -moz-box-shadow: 0 0 42px #f2f2f2;
     -ms-box-shadow: 0 0 42px #f2f2f2;
     -o-box-shadow: 0 0 42px #f2f2f2
-    /*background: #fff url(http://fan.yoka.com/fan5.0/img/loading.gif) no-repeat center center;*/
 }
 
 .MagnifierImg {
@@ -60,7 +54,6 @@ img {
     width: 292px;
     height: 69px;
     overflow: hidden;
-    padding-top: 10px;
     margin: 0 auto;
 }
 
@@ -89,7 +82,7 @@ img {
 }
 
 .spec-items li.on {
-    border: 2px solid #09F;
+    border: 2px solid #3b6caa;
 }
 
 .spec-items li img {
@@ -103,16 +96,15 @@ span.spe_leftBtn, span.spe_rightBtn {
     width: 20px;
     height: 69px;
     line-height: 69px;
-    font-family: "黑体";
     text-align: center;
     font-size: 16px;
-    color: #ddd;
+    color: #fff;
     cursor: default;
-    background-color: #f9f9f9;
+    background-color: #65aaef;
 }
 
 span.on {
-    background-color: #09F;
+    background-color: #3b6caa;
     color: #fff;
     cursor: pointer;
 }
@@ -123,10 +115,4 @@ span.spe_leftBtn {
 
 span.spe_rightBtn {
     right: 0;
-}
-
-@media screen and (min-width: 992px){
-    #MagnifierWrap2 {
-        width: 95%
-    }
 }

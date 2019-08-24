@@ -5,25 +5,34 @@
  * Date: 2018/4/20
  * Time: 16:39
  */
+
 namespace app\en_us\controller;
 
 use app\common\model\Faq as FaqModel;
-use app\common\model\ServiceCategory as ServiceCategoryModel;
+use app\common\model\Category as CategoryModel;
+use app\common\model\Language as LanguageModel;
+use app\common\helper\Category as CategoryHelp;
 
 class Faq extends Base
 {
-    /***
-     * 前置方法：在Base里面定义了保护方法cate
-     * 作用：获取服务分类的二级分类
-     * @var array
-     */
-    protected $beforeActionList = [
-        'cate' => ['only', 'index,category,details']
-    ];
+//    protected $beforeActionList = [
+//        'cate' => ['only', 'index,category,details']
+//    ];
 
+    public function _initialize()
+    {
+        parent::_initialize();
+        $data = collection((new CategoryModel())->getDataByCode($this->code))->toArray();
+        $tree = CategoryHelp::toLayer($data, $name = 'child', $parent_id = 0);
+        $this->language = (new LanguageModel())->getLanguageCodeOrID($this->code);
+        $this->assign('tree', $tree);
+    }
 
-
-    public function index() {
+    public function index()
+    {
+        $result = (new FaqModel())->getDataAll($this->language);
+        $this->assign('data', $result);
+        return $this->fetch($this->template . '/faq/index.html');
         //获取一级faq分类
         $parent = ServiceCategoryModel::getTopCategory($this->code, 'faq');
         //获取所有的faq列表
@@ -34,39 +43,36 @@ class Faq extends Base
         ]);
     }
 
-    public function category($url_title = '') {
-        if (empty($url_title) || !isset($url_title)) {
+    public function category($category = '')
+    {
+        if (empty($category) || !isset($category)) {
             abort(404);
         }
-        //获取选择的faq子分类信息
-        $parent = ServiceCategoryModel::getCategoryIdByName($this->code, $url_title);
-        if (empty($parent)) {
-            abort(404);
-        } else {
-            $faq = (new FaqModel())->getFaqByCategoryID($parent['id'], $this->code);
-            return view('index', [
-                'faq' => $faq['data'],
-                'parent' => $parent,
-            ]);
-        }
+        $categoryModel = new CategoryModel();
+        $cate = $categoryModel->getAllCategory($this->code);
+        $language_id = LanguageModel::getLanguageCodeOrID($this->code);
+        $category_data = (new CategoryModel())->getCategoryByName($category, $language_id);
+        $path = collection(CategoryHelp::getParents($cate, $category_data['id']))->toArray();
+        $result = (new FaqModel())->getFaqByCategory($category);
+        $this->assign("category", $category_data);
+        $this->assign('path', $path);
+        $this->assign('data', $result);
+        return $this->fetch($this->template . '/faq/category.html');
     }
 
-    public function details($url_title = '') {
-        if (empty($url_title) || !isset($url_title)) {
-            abort(404);
-        }
-        //该问题详情页
-        $result = FaqModel::getDetailsByUrlTitle($url_title, $this->code);
-        //该问题的分类
-        $faqCate = ServiceCategoryModel::get(['id' => $result['category_id']]);
-        if (!empty($result)) {
-            return $this->fetch('', [
-                'faqName'  => cut_str($result['name'],15),
-                'result' => $result,
-                'faqCate' => $faqCate
-            ]);
-        } else {
-            abort(404);
+    public function details($url_title = '')
+    {
+        if(request()->isGet()) {
+            if (empty($url_title) or !isset($url_title)) {
+                abort(404);
+            }
+            $result = (new FaqModel())->getDetailByUrlTitle($url_title);
+            if (!empty($result)) {
+                $this->assign('result', $result);
+                return $this->fetch($this->template . '/faq/details.html');
+            } else {
+                abort(404);
+            }
         }
     }
 }

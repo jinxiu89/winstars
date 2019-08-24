@@ -99,7 +99,7 @@ Class Category extends BaseModel
         $ids = static::getProductCategory($id);
         $order = ['listorder' => 'desc', 'id' => 'desc'];
         $feild = 'id,name,url_title,model,keywords,album,thumbnail';
-        return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where('status', '=', 1)->order($order)->field($feild)->paginate(9);
+        return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where('status', '=', 1)->order($order)->field($feild)->paginate(12);
     }
 
     //获取分类id 或者 子分类id

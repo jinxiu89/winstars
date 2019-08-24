@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片延时加载</title>
+    <script src="../../../0_js/jquery-3.2.1.min.js"></script>
+    <!--<script src="jQuery-countDown.js"></script>-->
+
+    <script src="jquery.lazyload.js"></script>
+    <style>
+        /* 清除浮动 常用写法 */
+        .cf:before,
+        .cf:after {
+            content: " ";  /* 中间加空格，解决opera下的bug */
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        .cf {
+            *zoom: 1   /* 兼容IE6、7 */
+        }
+        /* 清除浮动 常用写法 结束 */
+
+
+        body, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        body {
+            background: #edeff0;
+        }
+
+        .course {
+            width: 1208px;
+            background: #fff;
+            padding: 20px 0 0 20px;
+            margin: 800px auto;
+        }
+
+        .course-item {
+            float: left;
+            width: 280px;
+            border: 1px solid #ebebeb;
+            background: #fff;
+            box-shadow: 0 1px 2px #c5c5c5;
+            margin: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .course-item:hover {
+            box-shadow: 0 2px 8px #bbb;
+        }
+
+        .img-container {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .img-container img{
+            width: 100%;
+        }
+
+        .course-item p {
+            text-align: center;
+            line-height: 54px;
+        }
+
+    </style>
+</head>
+<body>
+
+<ul class="course cf">
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/1.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/1.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/1.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy"></div>
+        <p>慕课网前端课程</p>
+    </li>
+</ul>
+
+<ul class="course cf">
+    <li class="course-item">
+        <div class="img-container">
+            <img src="img/title.png" alt="" data-src="img/1.png" class="lazy2">
+        </div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/1.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/1.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/2.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/3.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/4.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/5.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/6.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/7.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/8.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/9.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/10.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/11.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/12.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/13.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/14.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/15.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+    <li class="course-item">
+        <div class="img-container"><img src="img/title.png" alt="" data-src="img/16.png" class="lazy2"></div>
+        <p>慕课网前端课程</p>
+    </li>
+</ul>
+
+<script>
+    $('.lazy').lazyload();
+    $('.lazy2').lazyload()
+</script>
+</body>
+</html>

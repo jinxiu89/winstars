@@ -8,219 +8,148 @@
 {/block}
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Home.css">
-<link rel="stylesheet" href="__STATIC__/frontend/lib/Swiper/css/swiper.min.css">
 {/block}
 {block name="body"}
 {$content}
 {notempty name="partner"}
-<!--<section>-->
-    <!--<div class="w-home-new-product-box" style="margin-top: 80px">-->
-        <!--<div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container1">-->
-            <!--<div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-2220px, 0px, 0px);">-->
-                <!--<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 1080px; margin-right: 30px;">-->
-                    <!--<a href="/en_us/product/WS-UTD21.html">-->
-                        <!--<img src="//files.win-star.com/images/2019/07/26/UTD-Dock-1.jpg" alt="" class="w100">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 1080px; margin-right: 30px;">-->
-                    <!--<a href="#">-->
-                        <!--<img src="//files.win-star.com/images/2019/07/26/MESH1.jpg" alt="" class="w100">-->
-                    <!--</a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; Add Pagination &ndash;&gt;-->
-            <!--<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">-->
-                <!--<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>-->
-                <!--<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
-            <!--<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>-->
-            <!--<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>-->
-            <!--<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>-->
-    <!--</div>-->
-<!--</section>-->
+<!--<section>
+    <div class="w-home-new-product-box" style="margin-top: 80px">
+        <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container1">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-2220px, 0px, 0px);">
+                <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0"
+                     style="width: 1080px; margin-right: 30px;">
+                    <a href="/en_us/product/WS-UTD21.html">
+                        <img src="//files.win-star.com/images/2019/07/26/UTD-Dock-1.jpg" alt="" class="w100">
+                    </a>
+                </div>
+                <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1"
+                     style="width: 1080px; margin-right: 30px;">
+                    <a href="#">
+                        <img src="//files.win-star.com/images/2019/07/26/MESH1.jpg" alt="" class="w100">
+                    </a>
+                </div>
+            </div>
+            &lt;!&ndash; Add Pagination &ndash;&gt;
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                      aria-label="Go to slide 2"></span>
+            </div>
+            &lt;!&ndash; Add Arrows &ndash;&gt;
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+            <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    </div>
+</section>-->
 
 <!-- Home 畅销产品 -->
-<!--<section>-->
-    <!--<div class="w-home-our-products-box">-->
-        <!--<div class="w-home-our-products-cont pt80 pb80">-->
-            <!--<h2 class="tc f24 pt15 pb15 fOrange">– HOT SALE –</h2>-->
-            <!--<div class="w-home-our-products-list clear">-->
-                <!--{notempty name="hotSale"}-->
-                <!--{volist name="hotSale" id="vo"}-->
-                <!--<div class="fl">-->
-                    <!--<div>-->
-                        <!--<div class="img relative">-->
-                            <!--<img class="w100" src="{$vo.album}" alt="">-->
-                            <!--<h3><a href="/en_us/category/{$vo.categorys['url_title']}.html"-->
-                                   <!--class="f14 pt-pb-6 pr-pl-14 bgOrangeWhite">BELONG TO {$vo.categorys['name']}</a></h3>-->
-                        <!--</div>-->
-                        <!--<div class="product-box w100 relative clear bgWhite pr14 pl14 pt20 pb20">-->
-                            <!--<p class="mb20 f14 fGrayBlack lh16"><a href="/en_us/product/{$vo.url_title}.html">{$vo.name}</a></p>-->
-                            <!--<span class="b fOrange pt-pb-6 pr-pl-14 dInlineBlack"><a href="/en_us/product/{$vo.url_title}.html">{$vo.model}</a></span>-->
-                            <!--<span class="fr"><a href="/en_us/product/{$vo.url_title}.html"-->
-                                                <!--class="b bcOrange f12 pt-pb-6 pr-pl-14">DETAIL</a></span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--{/volist}-->
-                <!--{/notempty}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
+<!--<section>
+    <div class="w-home-our-products-box">
+        <div class="w-home-our-products-cont pt80 pb80">
+            <h2 class="tc f24 pt15 pb15 fOrange">– HOT SALE –</h2>
+            <div class="w-home-our-products-list clear">
+                {notempty name="hotSale"}
+                {volist name="hotSale" id="vo"}
+                <div class="fl">
+                    <div>
+                        <div class="img relative">
+                            <img class="w100" src="{$vo.album}" alt="">
+                            <h3><a href="/en_us/category/{$vo.categorys['url_title']}.html"
+                                   class="f14 pt-pb-6 pr-pl-14 bgOrangeWhite">BELONG TO {$vo.categorys['name']}</a></h3>
+                        </div>
+                        <div class="product-box w100 relative clear bgWhite pr14 pl14 pt20 pb20">
+                            <p class="mb20 f14 fGrayBlack lh16"><a
+                                    href="/en_us/product/{$vo.url_title}.html">{$vo.name}</a></p>
+                            <span class="b fOrange pt-pb-6 pr-pl-14 dInlineBlack"><a
+                                    href="/en_us/product/{$vo.url_title}.html">{$vo.model}</a></span>
+                            <span class="fr"><a href="/en_us/product/{$vo.url_title}.html"
+                                                class="b bcOrange f12 pt-pb-6 pr-pl-14">DETAIL</a></span>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+                {/notempty}
+            </div>
+        </div>
+    </div>
+</section>-->
 
-
-<!-- Home 合作伙伴 -->
-<!--<section style="padding: 0 0 40px 0">-->
-    <!--<div class="w-home-cooperation-box">-->
-        <!--<div class="w-home-cooperation-cont tc bgOrange">-->
-            <!--<h2 class="mb20 f24 fWhite">COOPERATION</h2>-->
-            <!--<p class="fWhite f16">Cooperation means the geometric superposition of wealth.</p>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
 <section>
     <div class="w-home-partner-box">
         <div class="w-home-partner-cont clear">
-            <!--{volist name="partner" id="vo"}-->
-            <!--<a href="{$vo.href}">-->
-            <!--<img src="{$vo.logo}" class="w100"-->
-            <!--alt="{$vo.name}">-->
-            <!--</a>-->
-            <!--{/volist}-->
+            <!--{volist name="partner" id="vo"}
+            <a href="{$vo.href}">
+            <img src="{$vo.logo}" class="w100"
+            alt="{$vo.name}">
+            </a>
+            {/volist}-->
         </div>
     </div>
 </section>
 {/notempty}
 <!--&lt;!&ndash; w-home-new-product-issue S首页新闻调用 &ndash;&gt;-->
-<!--<section>-->
-<!--<div class="w-home-new-product-issue-box">-->
-<!--<div class="w-home-new-product-issue-cont">-->
-<!--<h2 class="center">NEW POSTS FROM WINSTARS</h2>-->
-<!--<ul>-->
-<!--<li>-->
-<!--<div>-->
-<!--<h2>-->
-<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
-<!--hall of the two floor of the company.</a>-->
-<!--</h2>-->
-<!--<p>-->
-<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
-<!--and many departments participated in the conference. General manager John delivered a speech-->
-<!--to encourage the development of new products-->
-<!--</p>-->
-<!--</div>-->
-<!--<span>Webmaster</span>-->
-<!--<span>3/7/2018</span>-->
-<!--<a href="#">Read More</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<div>-->
-<!--<h2>-->
-<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
-<!--hall of the two floor of the company.</a>-->
-<!--</h2>-->
-<!--<p>-->
-<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
-<!--and many departments participated in the conference. General manager John delivered a speech-->
-<!--to encourage the development of new products-->
-<!--</p>-->
-<!--</div>-->
-<!--<span>Webmaster</span>-->
-<!--<span>3/7/2018</span>-->
-<!--<a href="#">Read More</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<div>-->
-<!--<h2>-->
-<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
-<!--hall of the two floor of the company.</a>-->
-<!--</h2>-->
-<!--<p>-->
-<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
-<!--and many departments participated in the conference. General manager John delivered a speech-->
-<!--to encourage the development of new products-->
-<!--</p>-->
-<!--</div>-->
-<!--<span>Webmaster</span>-->
-<!--<span>3/7/2018</span>-->
-<!--<a href="#">Read More</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<div>-->
-<!--<h2>-->
-<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
-<!--hall of the two floor of the company.</a>-->
-<!--</h2>-->
-<!--<p>-->
-<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
-<!--and many departments participated in the conference. General manager John delivered a speech-->
-<!--to encourage the development of new products-->
-<!--</p>-->
-<!--</div>-->
-<!--<span>Webmaster</span>-->
-<!--<span>3/7/2018</span>-->
-<!--<a href="#">Read More</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<div>-->
-<!--<h2>-->
-<!--<a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition-->
-<!--hall of the two floor of the company.</a>-->
-<!--</h2>-->
-<!--<p>-->
-<!--At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,-->
-<!--and many departments participated in the conference. General manager John delivered a speech-->
-<!--to encourage the development of new products-->
-<!--</p>-->
-<!--</div>-->
-<!--<span>Webmaster</span>-->
-<!--<span>3/7/2018</span>-->
-<!--<a href="#">Read More</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-<!-- Home 兴趣爱好 -->
-<!--<section>-->
-    <!--<div class="serve-box bgWhite">-->
-        <!--<div class="serve-cont">-->
-            <!--<div class="serve-title tc">-->
-                <!--<h2 class="f24 fOrange mb20">LEAVE A MESSAGE</h2>-->
-                <!--<p class="fGrayBlack">Please leave us a message if you have any questions regarding product, technical-->
-                    <!--support or suggestions on our products or website.</p>-->
-            <!--</div>-->
-            <!--<div class="serve-interest-box">-->
-                <!--<div class="serve-interest-cont">-->
-                    <!--<form action="" method="post" id="message">-->
-                        <!--<input type="text" placeholder="Name" name="name">-->
-                        <!--<input type="text" placeholder="E-mail" name="email">-->
-                        <!--<input type="text" placeholder="Country/Region" name="regions">-->
-                        <!--<textarea class="pd15 w100" placeholder="" name="content"></textarea>-->
-                        <!--<p style="margin-top: 5px;color: #949494;font-size: 12px">* I understand by pressing <strong>SUBMIT</strong>-->
-                            <!--my information will be used as described here and in the Privacy Policy and I agree to the-->
-                            <!--Terms.</p>-->
-                        <!--<p class="clear">-->
-                            <!--<input type="button" value="SUBMIT" class="tc cursorP bgOrange fWhite fl button"-->
-                                   <!--style="border-color: #FFB600">-->
-                            <!--<input type="reset" value="RETRY" class="tc fr cursorP bgWhite">-->
-                        <!--</p>-->
-                    <!--</form>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
+<!--<section>
+    <div class="w-home-new-product-issue-box">
+        <div class="w-home-new-product-issue-cont">
+            <h2 class="center">NEW POSTS FROM WINSTARS</h2>
+            <ul>
+                <li>
+                    <div>
+                        <h2>
+                            <a href="#">The new product conference was held on July 3, 2018 at 2 p.m. in the exhibition
+                                hall of the two floor of the company.</a>
+                        </h2>
+                        <p>
+                            At three o'clock p.m., GS.zhang sponsored the WS-WN535K3 software conference,
+                            and many departments participated in the conference. General manager John delivered a speech
+                            to encourage the development of new products
+                        </p>
+                    </div>
+                    <span>Webmaster</span>
+                    <span>3/7/2018</span>
+                    <a href="#">Read More</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>-->
+<!-- Home -->
+<!--<section>
+    <div class="serve-box bgWhite">
+        <div class="serve-cont">
+            <div class="serve-title tc">
+                <h2 class="f24 fOrange mb20">LEAVE A MESSAGE</h2>
+                <p class="fGrayBlack">Please leave us a message if you have any questions regarding product, technical
+                    support or suggestions on our products or website.</p>
+            </div>
+            <div class="serve-interest-box">
+                <div class="serve-interest-cont">
+                    <form action="" method="post" id="message">
+                        <input type="text" placeholder="Name" name="name">
+                        <input type="text" placeholder="E-mail" name="email">
+                        <input type="text" placeholder="Country/Region" name="regions">
+                        <textarea class="pd15 w100" placeholder="" name="content"></textarea>
+                        <p style="margin-top: 5px;color: #949494;font-size: 12px">* I understand by pressing <strong>SUBMIT</strong>
+                            my information will be used as described here and in the Privacy Policy and I agree to the
+                            Terms.</p>
+                        <p class="clear">
+                            <input type="button" value="SUBMIT" class="tc cursorP bgOrange fWhite fl button"
+                                   style="border-color: #FFB600">
+                            <input type="reset" value="RETRY" class="tc fr cursorP bgWhite">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
 {/block}
 {block name="script"}
 <script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>
 <script src="__STATIC__/frontend/en-us/js/minHeight/minHeight.js"></script>
-<script src="__STATIC__/frontend/lib/Swiper/js/swiper.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".home").addClass("bgOrangeWhite");
+        $(".home").addClass("complexThemeColor");
         $(".button").click(function () {
             $.ajax({
                 url: "/en_us/index.html",
@@ -243,25 +172,5 @@
 </script>
 <script>
     max($("div.w-home-our-products-box > .w-home-our-products-cont > .w-home-our-products-list > div > div > div > p"))
-</script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        speed: 800,
-        autoplay: {
-            delay: 6000,
-            disableOnInteraction: false
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        }
-    });
 </script>
 {/block}

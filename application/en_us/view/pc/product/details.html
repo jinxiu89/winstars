@@ -12,69 +12,9 @@
 <link rel="stylesheet" href="__STATIC__/frontend/lib/NavigationList/css/styles.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Side-navigation/css/Side-navigation.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Right-navigation/css/Right-navigation.css">
-<!--<link rel="stylesheet" href="__STATIC__/frontend/lib/Magnifier/css/Magnifier.css">-->
-<link rel="stylesheet" href="__STATIC__/frontend/lib/Magnifier/css/smoothproducts.css">
+<link rel="stylesheet" href="__STATIC__/frontend/lib/Magnifier/css/Magnifier.css">
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
-<style>
-    div.main {
-        width: 79%;
-        margin-right: 0.751%
-    }
-    div.aside {
-        width: 20%;
-    }
-
-    div.aside > div {
-        margin-bottom: 10px;
-        background-color: #fff
-    }
-
-    div.aside > div > h3 {
-        line-height: 42px;
-        padding: 0 10px;
-        font-size: 14px;
-        color: #09F;
-    }
-
-    div.main > .nav {
-        border-bottom: 1px solid #09F;
-    }
-    div.main > .nav span {
-        float: left;
-        display: inline-block;
-        font-size: 12px;
-        margin-right: 1px;
-        padding: 12px 10px;
-        cursor: pointer
-    }
-    div.main > .nav span:hover {
-        background-color: #09F;
-        color: #fff
-    }
-
-    div.main > .content {
-        padding: 20px 4.4%;
-        min-height: 1248px;
-    }
-
-    div.main > .content > div {
-        display: none
-    }
-    .border_bottom_color {
-        background-color: #09F;
-        color: #fff
-    }
-    .specifications-container > div {width: 46%}
-    .specifications-container > div:nth-of-type(1) {float: left;padding: 0 40px 0 10px}
-    .specifications-container > div:nth-of-type(2) {float: right;padding: 0 0 0 40px}
-    .specifications-container > div:nth-of-type(3) {float: left;padding: 0 40px 0 10px}
-    .specifications-container > div > div {padding: 5px 0;}
-    @media screen and (max-width: 992px) {
-        .specifications-container > div:nth-of-type(1),
-        .specifications-container > div:nth-of-type(2),
-        .specifications-container > div:nth-of-type(3) {float: none; width: 100%; padding: 0}
-    }
-</style>
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/detail_nav.css">
 {/block}
 {block name="body"}
 <hr style="border: 1px solid #f2f2f2">
@@ -98,27 +38,38 @@
         <div class="Product_title fn">
             <h2>{$result.name} </h2>
         </div>
-        <div class="page clear">
-            <div class="sp-wrap">
-                {volist name="result.albums" id="vo"}
-                <a href="{$vo}"><img src="{$vo}" alt=""></a>
-                {/volist}
+        <div class="magnifier">
+            <div id="MagnifierWrap2">
+                <div class="MagnifierMain">
+                    <img class="MagTargetImg lazy"
+                         src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22800%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20800%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16c8e219561%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16c8e219561%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22274.1015625%22%20y%3D%22417.7%22%3ELoading...%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                         data-src="{$album}">
+                </div>
+                <span class="spe_leftBtn">&lt;</span>
+                <span class="spe_rightBtn on">&gt;</span>
+                <div class="spec-items">
+                    <ul class="clear">
+                        {volist name="result.albums" id="vo"}
+                        <li class=""><img src="{$vo}" data-lsrc="{$vo}" data-maxsrc="{$vo}"></li>
+                        {/volist}
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="Characteristic">
             <ul>
                 <li style="margin-bottom:20px">
-                    <h3 class="defaultColor f12" style="margin-bottom: 4px">DESCRIPTION</h3>
+                    <!--<h3 class="defaultColor f12" style="margin-bottom: 4px">DESCRIPTION</h3>-->
                     <p class="lh14 f13 fGrayBlack mb20">
                         {$result.description}
                     </p>
                 </li>
                 <li style="margin-bottom:20px">
-                    <h3 class="defaultColor f12" style="margin-bottom: 4px">MODEL</h3>
+                    <h3 class="fontThemeColor f12" style="margin-bottom: 4px">MODEL</h3>
                     <p class="lh14 f12 fGrayBlack mb20">{$result.model}</p>
                 </li>
                 <li style="margin-bottom:20px">
-                    <h3 class="defaultColor f12" style="margin-bottom: 4px">FEATURES</h3>
+                    <h3 class="fontThemeColor f12" style="margin-bottom: 4px">FEATURES</h3>
                     <div id="features" class="markdown-body editormd-html-preview">
                         {$result.features_html_code|htmlspecialchars_decode}
                     </div>
@@ -131,7 +82,7 @@
 <section>
     <div class="Scrolling-navigation clear" style="margin: 0 auto 80px">
         <div class="main clear bgWhite fl">
-            <div class="nav clear tc" style="margin: 42px 6% 0">
+            <div class="nav clear tc borderThemeColor" style="margin: 42px 6% 0">
                 <span>OVERVIEW</span>
                 <span>SPECIFICATION</span>
                 {notempty name="result.drivers"}<span>DRIVERS</span>{/notempty}
@@ -148,13 +99,25 @@
                 {notempty name="result.drivers"}
                 <div id="drivers" style="padding:20px">
                     <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                        <thead>
+                            <tr>
+                                <th>Driver name and description</th>
+                                <th>Download url</th>
+                                <th>Version</th>
+                                <th>Update at</th>
+                            </tr>
+                        </thead>
                         <tbody>
                         {volist name="result.drivers" id="item"}
                         <tr>
                             <td>
-                                {$item.name}
+                                <a href="/en_us/support/driver/details/{$item.url_title}.html">{$item.name}</a>
                             </td>
-                            <td>{$item.id|getDriverUrl}</td>
+                            <td>
+                                {volist name="item.downloads" id="vo"}
+                                <a href='{$vo.url}' target='_blank' class='bg_inverted tc complexThemeColor dInlineBlack'>{$vo.requirement} <i class='iconfont icon-xiazai'></i></a>
+                                {/volist}
+                            </td>
                             <td>{$item.version}</td>
                             <td>{$item.create_time|strtotime|date="m/d/Y",###}</td>
                         </tr>
@@ -166,11 +129,24 @@
                 {notempty name="result.documents"}
                 <div id="documents" style="padding:20px">
                     <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                        <thead>
+                            <tr>
+                                <th>Manual name and description</th>
+                                <th>Download url</th>
+                                <th>Version</th>
+                                <th>Update at</th>
+                            </tr>
+                        </thead>
                         <tbody>
                         {volist name="result.documents" id="item"}
                         <tr>
                             <td>
-                                <a href="/en_us/support/driver/details/10211b71b96cb1e24c963ca11ca15899.html">{$item.title}</a>
+                                <a href="/en_us/support/manual/details/{$item.url_title}.html">{$item.title}</a>
+                            </td>
+                            <td>
+                                {volist name="item.downloads" id="vo"}
+                                <a href='{$vo.url}' target='_blank' class='bg_inverted tc complexThemeColor dInlineBlack'>{$vo.language} <i class='iconfont icon-xiazai'></i></a>
+                                {/volist}
                             </td>
                             <td>{$item.version}</td>
                             <td>{$item.create_time|strtotime|date="m/d/Y",###}</td>
@@ -180,7 +156,28 @@
                     </table>
                 </div>
                 {/notempty}
-                <div id="faq" style="padding:20px">F.A.Q</div>
+                {notempty name="result.faqs"}
+                <div id="faqs" style="padding: 20px">
+                    <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                        <thead>
+                        <tr>
+                            <th>Question and description</th>
+                            <th>Update at</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="result.faqs" id="item"}
+                        <tr>
+                            <td>
+                                <a href="/en_us/support/faq/details/{$item.url_title}.html">{$item.title}</a>
+                            </td>
+                            <td>{$item.create_time|strtotime|date="m/d/Y",###}</td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                {/notempty}
             </div>
         </div>
         <div class="aside fl">
@@ -222,24 +219,25 @@
             <div>
                 <!--<h3>BEST SELLERS</h3>-->
                 <div class="NewProduct pd15 oh" style="border: 1px solid #e9e9e9">
-                    <a href="#">
+                    <a href="/en_us/product/{$bestSales.url_title}.html">
                         <img class="w100 animate_time"
                              src="{$bestSales.album}"
                              alt="">
                     </a>
                     <div>
                         <h4>
-                            <a class="f15 fNomal model_link" href="/en_us/product/{$bestSales.url_title}.html" target="_blank">{$bestSales.name}</a>
+                            <a class="fNomal model_link" href="/en_us/product/{$bestSales.url_title}.html"
+                               target="_blank">{$bestSales.name}</a>
                         </h4>
                         <p class="f12 lh14 pt20 pb20">
                             {$bestSales.keywords|getTags}
-                            </p>
+                        </p>
                     </div>
                     <div class="model_link clear">
-                        <a class="fl f12 model_link" href="/en_us/product/{$bestSales.url_title}.html" target="_blank"
+                        <a class="fl f12 model_link" href="/en_us/product/{$bestSales.url_title}.html"
                            style="padding: 6px 8px">{$bestSales.model}</a>
-                        <a class="fr btn_link" href="/en_us/product/{$bestSales.url_title}.html" target="_blank"
-                           style="padding: 6px 8px; border: 1px solid #b9b9b9">Details</a>
+                        <a class="fr f12 complexThemeColor bg_inverted" href="/en_us/product/{$bestSales.url_title}.html"
+                           style="padding: 4px 10px; border: 1px solid transparent">Details</a>
                     </div>
                 </div>
             </div>
@@ -252,16 +250,7 @@
 {/block}
 {block name="script"}
 
-<!--<script src="__STATIC__/frontend/lib/Side-navigation/js/Side-navigation.js"></script>-->
-<!--<script src="__STATIC__/frontend/lib/Magnifier/js/Magnifier.js"></script>-->
-<script src="__STATIC__/frontend/lib/Magnifier/js/jquery.min.js"></script>
-<script src="__STATIC__/frontend/lib/Magnifier/js/smoothproducts.js"></script>
-<script type="text/javascript">
-    /* wait for images to load */
-    $(window).load(function() {
-        $('.sp-wrap').smoothproducts();
-    });
-</script>
+<script src="__STATIC__/frontend/lib/Magnifier/js/Magnifier.js"></script>
 <script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
 <script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
 <script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
@@ -273,20 +262,6 @@
 <script>
     $(document).ready(function () {
         $(function () {
-            // editormd.markdownToHTML("features", {
-            //     htmlDecode: "style,script,iframe",
-            //     taskList: true,
-            //     tex: true,  // 默认不解析
-            //     flowChart: true,  // 默认不解析
-            //     sequenceDiagram: true,  // 默认不解析
-            // });
-            // editormd.markdownToHTML("content", {
-            //     htmlDecode: "style,script,iframe",
-            //     taskList: true,
-            //     tex: true,  // 默认不解析
-            //     flowChart: true,  // 默认不解析
-            //     sequenceDiagram: true,  // 默认不解析
-            // });
             editormd.markdownToHTML("specifications", {
                 htmlDecode: "style,script,iframe",
                 taskList: true,
@@ -298,7 +273,7 @@
     });
 </script>
 <script>
-    $('.product > a').addClass("bgOrangeWhite");
+    $('.product').addClass("bgOrangeWhite");
     var $nav_list = $("div.Scrolling-navigation > ol > li");
     var $navContent = $("div.Scrolling-navigation > .content > div");
     $nav_list.eq(0).addClass("border-bottom-color");
@@ -335,11 +310,11 @@
         var navBtn = $("div.main > .nav > span");
         var navContent = $("div.main > .content > div");
 
-        navBtn.eq(0).addClass("border_bottom_color");
+        navBtn.eq(0).addClass("complexThemeColor");
         navContent.eq(0).show();
         navBtn.each(function (i) {
             navBtn.eq(i).click(function () {
-                navBtn.eq(i).addClass("border_bottom_color").siblings("span").removeClass("border_bottom_color");
+                navBtn.eq(i).addClass("complexThemeColor").siblings("span").removeClass("complexThemeColor");
                 navContent.eq(i).show().siblings().hide()
             })
         })

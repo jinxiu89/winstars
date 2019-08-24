@@ -54,21 +54,27 @@ Class Category extends BaseAdmin
         if (request()->isAjax()) {
             $data = input('post.');
             $validate = new CategoryValidate();
-            if (!$validate->check($data)) {
-                return show(0, '', '', '', '', $validate->getError());
-            }
-            if (!empty($data['id'])) {
-                if ($data['id'] == $data['parent_id']) {
-                    return show(0, '', '不能编辑在自己名下');
+            if (isset($data['id']) or !empty($data['id'])) {
+                if ($validate->scene('edit')->check($data)) {
+                    if ($data['id'] == $data['parent_id']) {
+                        return show(0, '', '不能编辑在自己名下');
+                    } else {
+                        return $this->update($data);
+                    }
                 } else {
-                    return $this->update($data);
+                    return show(0, '', '', '', '', $validate->getError());
                 }
-            }
-            $res = (new CategoryModel())->add($data);
-            if ($res) {
-                return show(1, '', '', '', '', '添加成功');
             } else {
-                return show(1, '', '', '', '', '添加失败');
+                if ($validate->scene('add')->check($data)) {
+                    $res = (new CategoryModel())->add($data);
+                    if ($res) {
+                        return show(1, '', '', '', '', '添加成功');
+                    } else {
+                        return show(1, '', '', '', '', '添加失败，未知原因');
+                    }
+                } else {
+                    return show(0, '', '', '', '', $validate->getError());
+                }
             }
         }
     }

@@ -10,7 +10,6 @@
      *   ******* :1. 更改获取图片方式，以小图li为基础通过自定义属性data-lsrc和data-maxSrc来获取,
      2. 修复safari bug
      */
-
     var EventUtil,Get,Element;
     EventUtil = {
         addHandler: function(ele, type, handler) {
@@ -142,7 +141,7 @@
             var _is = this;
             var target = EventUtil.getTarget(event);
 
-            if (target.nodeName == "IMG") {
+            if (target.nodeName === "IMG") {
                 return;
             }else{
                 _is.magMain.removeChild(_is.oMD);
@@ -320,7 +319,7 @@
 
             }
             if (end)
-                if (typeof fnCallback == "function") {
+                if (typeof fnCallback === "function") {
                     fnCallback.call(ele);
                 } else {
                     ele.timer = window.setTimeout(function() {
@@ -336,3 +335,10 @@
 window.onload = function(){
     MagnifierF("MagnifierWrap2");
 };
+
+// 放大镜bug修复，放大镜无法隐藏回去
+$("#MagnifierWrap2").hover(function(){
+    $(".MagnifierPop,.MagnifierDrag").show();
+},function(){
+    $(".MagnifierPop,.MagnifierDrag").hide();
+});

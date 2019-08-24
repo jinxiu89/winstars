@@ -17,8 +17,8 @@
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2">缩略图地址集:</label>
         <div class="formControls col-xs-8 col-sm-9">
-            <textarea name="logo" cols="" rows="" class="textarea" placeholder="图片地址" dragonfly="true"></textarea>
-            <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            <textarea name="logo" cols="" rows="" class="textarea max100" placeholder="图片地址"
+                      dragonfly="true"></textarea>
         </div>
     </div>
     <div class="row cl">
@@ -103,6 +103,10 @@
 <script type="text/javascript" src="__STATIC__/admin/lib/kindeditor/lang/zh_CN.js"></script>
 <script>
     $(function () {
+        $(".max100").Huitextarealength({
+            minlength: 10,
+            maxlength: 100
+        });
         var editor;
         KindEditor.ready(function (K) {
             editor = K.create('#editor,#editor1,#editor2', {

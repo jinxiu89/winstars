@@ -10,64 +10,13 @@
 {block name="style"}
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/Product.css">
 <link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_component.css">
-<style>
-    /* 边框线 */
-    .table > tbody > tr > th {
-        text-align: right
-    }
-
-    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-        padding: 10px;
-        border: 1px solid #ddd !important
-    }
-
-    .bs-example > .btn, .bs-example > .btn-group {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    /* 按钮 */
-    .btn-primary {
-        color: #fff;
-        background-color: #337ab7;
-        border-color: #2e6da4;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 6px 12px;
-        margin-bottom: 0;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.42857143;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        background-image: none;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #286090;
-        border-color: #204d74;
-    }
-</style>
+<link rel="stylesheet" href="__STATIC__/frontend/en-us/css/style/table_border.css">
 {/block}
 {block name="body"}
 <!-- w-Product 产品中心 -->
 <section>
     <div class="w-product-title">
-        <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=bea9Dh8Y4o5QBN2eqK9Rt9397xialZGJpcqtT_qxs6HHesJaNSwTwQfPebm5_2c53IuQVzs-zkRZr1h89Y5YqOGAD7QmHdBJoD1RJ_cobM6UkvYwq0A7Vn91D_9N9XDoKhltzNcMqaiclA&file_name=/about.jpg"
-             width="100%" height="" alt="">
+        {include file="pc/base/banner" /}
     </div>
 </section>
 
@@ -90,8 +39,11 @@
     <div class="ProductBox">
         <div class="ProductRow">
             <div class="ProductList  clear">
-                <div style="background: #fff; width: 100%; padding: 10px">
+                <div style="background: #fff; width: 100%; padding: 3%">
                     <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
+                    <caption>
+                        <h2>Driver Details and Download</h2>
+                    </caption>
                     <tbody>
                     <tr>
                         <th width="20%">Driver Name</th>
@@ -122,8 +74,10 @@
                         <td>
                             {notempty name="data.downloads"}
                             {volist name="data.downloads" id="vo"}
-                            <a class="btn btn-primary" href="{$vo.url}"
-                               style="display: inline-block">{$vo.requirement}</a>
+                            <a class="btn complexThemeColor" href="{$vo.url}"
+                               style="display: inline-block">{$vo.requirement}
+                                <i class="iconfont icon-xiazai"></i>
+                            </a>
                             {/volist}
                             {/notempty}
                         </td>
@@ -146,7 +100,12 @@
 {block name="script"}
 <script>
     $(document).ready(function () {
-        $('.support').addClass("bgOrangeWhite");
+        $('.support').addClass("complexThemeColor");
+        $(document).click(function(){
+            // 下拉垂暮按钮
+            hammer_screen_btn.find("a").removeClass("complexThemeColor");
+            $('.support').addClass("complexThemeColor");
+        });
     })
 </script>
 {/block}

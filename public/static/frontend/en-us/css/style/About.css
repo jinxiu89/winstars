@@ -22,9 +22,7 @@ div.w-about-path-box > div.w-about-path-cont > a {
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear
 }
-div.w-about-path-box > div.w-about-path-cont > a:hover{
-    color:#FF9800
-}
+
 
 /* w-about-article 关于我们文章 */
 div.w-about-article-box > div.w-about-article-cont {
@@ -131,7 +129,6 @@ div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-l
     height: 310px;
     float: left;
     padding: 20px;
-    background: #FF9800;
     transition: all .2s linear;
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
@@ -172,12 +169,6 @@ div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-f
     -moz-transition: all .2s linear;
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear
-}
-div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p > a:hover {
-    color: #FF9800
-}
-div.w-about-advantage-box > div.w-about-advantage-cont > div.w-about-advantage-footer > p > i {
-    color: #FF9800
 }
 div.w-about-article-box > div.w-about-article-cont > div > div.Capability_box {
     margin-bottom: 20px

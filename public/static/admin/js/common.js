@@ -80,19 +80,18 @@ function add(title, url, w, h) {
     if (title == null || title == '') {
         title = false;
     }
-    ;
+
     if (url == null || url == '') {
         url = "404.html";
     }
-    ;
+
     if (w == null || w == '') {
         w = 800;
     }
-    ;
+
     if (h == null || h == '') {
         h = ($(window).height() - 50);
     }
-    ;
     layer.open({
         type: 2,
         area: [w + 'px', h + 'px'],
@@ -288,29 +287,7 @@ function build_html(url) {
         }
     })
 }
-// /**
-//  * 失去焦点时事件，提交input值,置顶操作
-//  */
-// $('.mark input').blur(function () {
-//     //获取主键ID
-//     var id = $(this).attr('attr-id');
-//     //获取置顶的值
-//     var mark = $(this).val();
-//     var postData = {
-//         'id' : id,
-//         'mark' : mark,
-//     };
-//     var url = SCOPE.mark_url;
-//     //抛送http
-//     $.post(url,postData,function (result) {
-//         if(result.code == 1){
-//             location.href=result.data;
-//         }else {
-//             alert(result.msg);
-//             location.href=result.data;
-//         }
-//     },"json")
-// });
+
 /**
  * 失去焦点时事件，提交input值,排序操作
  */
@@ -337,37 +314,7 @@ $('.listorder input').blur(function () {
         }
     },"json")
 });
-// /**
-//  * 置顶修改排序操作
-//  */
-// function mark(obj) {
-//     var url = SCOPE.listorder_url;
-//     var id = $(obj).data("id");
-//     var type = $(obj).data("type");
-//     var language_id = $("input#language").val();
-//     var map = $(obj).data("map");
-//     var postData = {
-//         'id': id,
-//         'type': type,
-//         'language_id': language_id,
-//         'map': map,
-//     };
-//     $.ajax({
-//         type: 'post',
-//         url: url,
-//         dataType: 'json',
-//         data: postData,
-//         success: function (result) {
-//             if (result.status === 1) {
-//                 dialog.OK(result.data, result.jump_url);
-//             } else if (result.status === 0) {
-//                 dialog.error(result.data, result.title, result.btn);
-//             } else if (result.status === -1) {
-//                 dialog.toconfirm(result.data)
-//             }
-//         }
-//     })
-// }
+
 /**
  * 上移下移
  */
@@ -411,4 +358,12 @@ $('.cleancache').click(function(){
         shift: 2,
         content: url
     });
+});
+$(".max255").Huitextarealength({
+    minlength: 10,
+    maxlength: 255
+});
+$(".max64").Huitextarealength({
+    minlength: 10,
+    maxlength: 64,
 });

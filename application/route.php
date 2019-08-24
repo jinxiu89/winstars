@@ -32,6 +32,14 @@ Route::rule([
     'en_us/support/driver/details/:url_title' => 'en_us/Driver/details',
     //子分类驱动列表页
     'en_us/support/driver/:category' => 'en_us/Driver/category',
+    'en_us/support/manual' => 'en_us/Document/index',
+    'en_us/support/manual/' => 'en_us/Document/index',
+    'en_us/support/manual/:category' => 'en_us/Document/category',
+    'en_us/support/manual/details/:url_title' => 'en_us/Document/details',
+    'en_us/support/faq' => 'en_us/Faq/index',
+    'en_us/support/faq/' => 'en_us/Faq/index',
+    'en_us/support/faq/:category' => 'en_us/Faq/category',
+    'en_us/support/faq/details/:url_title' => 'en_us/Faq/details',
     //视频列表页面
     'en_us/video/:category' => 'en_us/Video/index',
     //视频详情页
@@ -62,5 +70,5 @@ Route::rule([
     'en_us/faq/:url_title' => 'en_us/Faq/category',
     //faq详情页
     'en_us/faq/details/:url_title' => 'en_us/Faq/details',
-    'en_us/error/:code'=>'en_us/Base/customerError'
+    'en_us/error/:code' => 'en_us/Base/customerError'
 ], '', 'GET');

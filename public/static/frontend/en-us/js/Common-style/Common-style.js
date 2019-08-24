@@ -3,7 +3,6 @@ $(function(){
     var NavHeight = Header.height(); // 最顶部头部导航高度
     var SearchBtn = $(".w-home-nav-search"); // 搜索框按钮
     var SearchBar = $(".w-home-form-search-box"); // 搜索框
-    // var hammer_screen = $("#nav-container > li > div.hammer_screen"); // 垂幕
 
     if($("html,body").width() > 767){
         $(window).scroll(function(){
@@ -11,6 +10,9 @@ $(function(){
 
             if(Top >= NavHeight) // 判断滚动条滚动的高度（Top）是否大于或等于最顶部头部导航高度（NavHeight）
             {
+                $("body").css({
+                    "padding-top": Header.height()+"px"
+                });
                 Header.addClass("fixed boxShow");
                 Header.css({
                     'left': 0,
@@ -21,6 +23,9 @@ $(function(){
             }
             else
             {
+                $("body").css({
+                    "padding-top": 0
+                });
                 Header.removeClass("fixed")
             }
         });
@@ -29,7 +34,8 @@ $(function(){
             window.event? window.event.cancelBubble = true : e.stopPropagation();
             mask.fadeIn();
             hammer_screen.slideUp();
-            SearchBar.slideDown()
+            SearchBar.slideDown();
+            SearchBar.find("input[type='text']").focus();
         });
         SearchBar.click(function(e){ // 阻止事件冒泡，防止点击搜索框的时候同时触发DOM的点击事件（click）
             window.event? window.event.cancelBubble = true : e.stopPropagation();

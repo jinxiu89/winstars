@@ -40,9 +40,6 @@ Class About extends BaseAdmin
             (new AboutValidate())->goCheck();
             (new UrlTitleMustBeOnly())->goCheck();
             $data = $request::instance()->post();
-            $html = htmlspecialchars($data['content-html-code']);
-            $data['content_html']=strip_html_tags(['style','script','iframe'],$html,true);
-            unset($data['content-html-code']);
             if (!empty($data['id'])) {
                 return $this->update($data);
             }
