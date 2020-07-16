@@ -99,7 +99,7 @@ Class Category extends BaseModel
         $ids = static::getProductCategory($id);
         $order = ['listorder' => 'desc', 'id' => 'desc'];
         $feild = 'id,name,url_title,model,keywords,album,thumbnail';
-        return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where('status', '=', 1)->order($order)->field($feild)->paginate(12);
+        return (new ProductModel())->cache(true)->where('id', 'in', $ids)->where(['status' => 1])->order($order)->field($feild)->paginate(12);
     }
 
     //获取分类id 或者 子分类id
@@ -255,7 +255,8 @@ Class Category extends BaseModel
         }
     }
 
-    public function sort($data){
+    public function sort($data)
+    {
 
         $category = self::allowField('listorder')->save($data, ['id' => $data['id']]);
         return $category ? ['status' => 1, 'message' => '排序成功！'] : ['status' => 0, 'message' => '排序失败！'];

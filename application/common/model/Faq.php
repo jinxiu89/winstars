@@ -178,10 +178,11 @@ Class Faq extends BaseModel
         }
     }
 
-    public function getFaqByCategory($category){
+    public function getFaqByCategory($category)
+    {
         try {
             $category = (new CategoryModel())->getCategoryByUrlTitle($category);
-            $result = self::where(['category_id' => $category['id']])->field('id,title,url_title,create_time')->cache(true)->paginate(22);
+            $result = self::where(['category_id' => $category['id'], 'status' => 1])->field('id,title,url_title,create_time')->cache(true)->paginate(22);
             return $result;
         } catch (Exception $exception) {
             return [];

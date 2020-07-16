@@ -195,9 +195,9 @@ class Driver extends BaseModel
     public function getDataAll($language_id)
     {
         try {
-            return self::field('id,name,url_title,version,create_time')->cache(true)->order(['sorting'=>'desc','id'=>'asc'])->where(['language_id'=>$language_id])->paginate(22);
+            return self::field('id,name,url_title,version,create_time')->cache(true)->order(['sorting'=>'desc','id'=>'asc','create_time'=>'desc'])->where(['language_id'=>$language_id])->paginate(22);
         } catch (Exception $exception) {
             return $exception->getMessage();
         }
-    }
+}
 }

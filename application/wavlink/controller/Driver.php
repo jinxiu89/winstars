@@ -19,21 +19,15 @@ use think\Request;
 
 class Driver extends BaseAdmin
 {
-    protected $beforeActionList = [
-        'getCategoryLevel',
-    ];
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->language_id = $this->MustBePositiveInteger(input('get.language_id'));
-    }
-
-    public function getCategoryLevel()
-    {
+        $this->language_id = $this->current_language['id'];
         $category = (new CategoryModel())->getCategoryLevel($this->language_id);
         $this->assign('category', $category);
     }
+
 
     public function getProductList()
     {
@@ -55,6 +49,7 @@ class Driver extends BaseAdmin
     public function add()
     {
         if (\request()->isGet()) {
+            $this->assign('language_id',$this->language_id);
             return $this->fetch();
         }
         if (\request()->isPost()) {
@@ -104,7 +99,7 @@ class Driver extends BaseAdmin
     public function add_download($driver_id)
     {
         if (\request()->isGet()) {
-            $this->assign('language_id', input('get.language_id'));
+            $this->assign('language_id', $this->current_language['id']);
             $this->assign('driver_id', $driver_id);
             return $this->fetch();
         }
@@ -123,11 +118,11 @@ class Driver extends BaseAdmin
         }
     }
 
-    public function edit_download($id, $language_id)
+    public function edit_download($id)
     {
         if (\request()->isGet()) {
             $data = (new DriverDownloadModel())->get($id);
-            $this->assign('language_id', $language_id);
+            $this->assign('language_id', $this->current_language['id']);
             $this->assign('data', $data);
             return $this->fetch();
         }

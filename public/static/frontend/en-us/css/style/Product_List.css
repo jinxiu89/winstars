@@ -32,8 +32,10 @@ div.ProductList > .child > div > i {
     div.ProductList > .child {
         width: 33.333%
     }
-    div.ProductList > .child > div > .cont > h2 > a {
-        font-size: 13px
+    div.ProductList > .child > div > .cont > h2 > a,
+    .InterestedChild > .child > div > div > .cont > h2 a {
+        font-size: 14px;
+        line-height:1.2
     }
     .ProductListBox {
         margin-bottom: 40px
@@ -80,9 +82,4 @@ div.ProductList > .child > div > i {
     -ms-box-shadow: 0 0 10px #65aaef;
     -o-box-shadow: 0 0 10px #65aaef;
 
-}
-@media screen and (min-width: 768px){
-    .InterestedChild > .child > div > div > .cont > h2 a {
-        font-size: 13px
-    }
 }

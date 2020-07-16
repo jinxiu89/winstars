@@ -3,6 +3,7 @@ application/database.php
 .idea/
 .travis.yml
 public/ueditor
+public/files201910151
 runtime/
 /log/
 test/

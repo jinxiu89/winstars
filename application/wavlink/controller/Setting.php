@@ -9,11 +9,15 @@ namespace app\wavlink\controller;
 use app\common\model\Language as LanguageModel;
 use app\common\model\Setting as SettingModel;
 use app\wavlink\validate\Setting as SettingValidate;
+
+/**
+ * Class Setting
+ * @package app\wavlink\controller
+ */
 Class Setting extends BaseAdmin
 {
     public function index(){
-        $setting = (new SettingModel())->getSetting();
-
+        $setting = (new SettingModel())->getSetting($this->current_language['id']);
         return $this->fetch('',[
             'setting' => $setting,
         ]);

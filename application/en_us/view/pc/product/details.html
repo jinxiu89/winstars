@@ -101,10 +101,10 @@
                     <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
                         <thead>
                             <tr>
-                                <th>Driver name and description</th>
-                                <th>Download url</th>
+                                <th>Driver Name</th>
+                                <th>Download</th>
                                 <th>Version</th>
-                                <th>Update at</th>
+                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,10 +131,10 @@
                     <table class="table bgWhite" style="border-bottom: 1px solid #ddd; margin-bottom: 0">
                         <thead>
                             <tr>
-                                <th>Manual name and description</th>
-                                <th>Download url</th>
+                                <th>Manual Name</th>
+                                <th>Download</th>
                                 <th>Version</th>
-                                <th>Update at</th>
+                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -195,16 +195,16 @@
                                 {volist name="vo.child" id="co"}
                                 <li onClick="javascript:ShowMenu(this)" class="{$co.url_title}">
                                     {notempty name="co.child"}
-                                    <a href="javascript:void(0)" class="clear f12"> {$co.name} <i>+</i></a>
+                                    <a href="javascript:void(0)" class="clear"> {$co.name} <i>+</i></a>
                                     {else /}
-                                    <a href="/en_us/category/{$co.url_title}.html" class="f12"> {$co.name}</a>
+                                    <a href="/en_us/category/{$co.url_title}.html"> {$co.name}</a>
                                     {/notempty}
                                 </li>
                                 <ol class="no">
                                     {notempty name="co.child"}
                                     {volist name="co.child" id="o"}
                                     <a href="/en_us/category/{$o.url_title}.html" title="{$o.name}"
-                                       class="{$o.url_title} f12">{$o.name}</a>
+                                       class="{$o.url_title}">{$o.name}</a>
                                     {/volist}
                                     {else}
                                     {/notempty}

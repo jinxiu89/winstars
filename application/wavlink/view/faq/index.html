@@ -8,7 +8,7 @@
     <span class="c-gray en">&gt;</span>
     F.A.Q管理
     <span class="c-gray en">&gt;</span>
-    F.A.Q列表({$language_id|getLanguage})
+    F.A.Q列表
     <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
        href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
 </nav>
@@ -22,14 +22,14 @@
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l">
-                    <a class="btn btn-primary radius" onclick="index_add('{$language_id|getLanguageOne}FAQ添加','{:url(\'Faq/add\',[\'language_id\'=>$language_id])}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加FAQ({$language_id|getLanguage})</a>
+                    <a class="btn btn-primary radius" onclick="index_add('添加FAQ','{:url(\'Faq/add\')}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加FAQ</a>
                 </span>
         <span class="r">共有数据：<strong>{notempty name="counts"}{$counts}{/notempty}</strong> 条</span>
     </div>
     <table class="table table-border table-bordered table-bg">
         <thead>
         <tr>
-            <th scope="col" colspan="13">{$language_id|getLanguage}FAQ管理</th>
+            <th scope="col" colspan="13">FAQ管理</th>
         </tr>
         <tr class="text-c">
             <th width="25%">问题</th>
@@ -57,7 +57,7 @@
             <td>{$vo.status|getStatus}</td>
             <td>{$vo.sorting}</td>
             <td class="td-manage text-l">
-                <a title="编辑" onclick="index_edit('更新{$language_id|getLanguageOne}','{:url(\'Faq/edit\',[\'url_title\'=>$vo.url_title,\'language_id\'=>$language_id])}')"
+                <a title="编辑" onclick="index_edit('更新','{:url(\'Faq/edit\',[\'url_title\'=>$vo.url_title])}')"
                    class="ml-5 btn btn-primary" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                 <a title="删除"  onclick="" class="ml-5 btn btn-danger" style="text-decoration:none">
                     <i class="Hui-iconfont">&#xe6a6;</i>
@@ -80,9 +80,7 @@
     $(document).ready(function () {
         $("#service_faq dt").addClass("selected");
         $("#service_faq dd").css("display", "block");
-        var lan = $("input#language").val();
-        var id = "#faq_answer_"+lan;
-        $(id).addClass("current");
+        $('#faq_answer').addClass("current");
         $("#service").addClass("current");
     })
 </script>

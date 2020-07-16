@@ -11,11 +11,12 @@
 * @update: 2019-04-30 16:00
 */
 .banner {
+  position: relative;
   display: block;
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 65.11%;
+  padding-bottom: 71.875%;
   background: #F5F5F5;
 }
 .banner img {
@@ -28,11 +29,10 @@
   -webkit-justify-content: center;
   position: relative;
   z-index: 1;
-  height: 50px;
-  line-height: 1.333333rem;
+  line-height: 40px;
   text-align: center;
   padding: 0 0.4rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 10px;
   background: #FFFFFF;
 }
 .title .line {
@@ -49,15 +49,13 @@
   white-space: nowrap;
   overflow: hidden;
   width: 95%;
-  height: 50px;
-  line-height: 50px;
-  color: #EA881B;
+  line-height: 40px;
+  color: #3b6caa;
   background: #FFFFFF;
-  font-size: 0.426667rem;
+  font-size: 14px;
 }
 .title p {
-  font-size: 0.426667rem;
-  height: 50px;
+  font-size: 14px;
   line-height: 50px;
 }
 .product {
@@ -66,7 +64,7 @@
   margin-bottom: 0.4rem;
 }
 .product .product-box {
-  margin-bottom: 20px;
+  margin-bottom: 0.4rem;
   border: 1px solid #eaeaea;
 }
 .product .product-box:nth-last-of-type(1) {
@@ -77,7 +75,7 @@
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 56.25%;
   background: #F5F5F5;
 }
 .product .product-box .img-box img {
@@ -104,12 +102,12 @@
 }
 .product .product-box .description h3 {
   line-height: 0.586667rem;
-  font-size: 0.373333rem;
+  font-size: 14px;
 }
 .product .product-box .description p {
   margin: 0.266666rem 0;
   line-height: 0.586667rem;
-  font-size: 0.32rem;
+  font-size: 12px;
   color: #888888;
 }
 .product .product-box .description p a {
@@ -118,20 +116,18 @@
 .product .product-box .description span {
   float: left;
   display: block;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  line-height: 26px;
   color: #888888;
-  font-size: 0.32rem;
+  font-size: 12px;
 }
 .product .product-box .description span:nth-last-of-type(1) {
   float: right;
   display: block;
-  border: 1px solid #EA881B;
+  border: 1px solid #3b6caa;
   text-align: center;
   width: 1.866666rem;
-  height: 0.8rem;
-  line-height: 0.8rem;
-  font-size: 0.32rem;
+  height: 26px;
+  line-height: 26px;
   color: #888888;
   border-radius: 0.133333rem;
   -webkit-border-radius: 0.133333rem;
@@ -141,13 +137,13 @@
   padding: 0.4rem 0;
 }
 .product .no-data-box p {
-  font-size: 0.373333rem;
+  font-size: 14px;
   line-height: 22px;
 }
 .product .recommend-title h4 {
   line-height: 50px;
-  font-size: 0.426667rem;
-  color: #EA881B;
+  font-size: 16px;
+  color: #3b6caa;
   text-align: center;
 }
 @media screen and (max-width: 374px) {

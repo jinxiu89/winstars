@@ -18,17 +18,22 @@ use app\wavlink\validate\Product as ProductValidate;
 
 Class Product extends BaseAdmin
 {
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $this->language_id=$this->current_language['id'];
+    }
+
     //产品列表，status=1
     public function index()
     {
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $product = ProductModel::getDataByStatus(1, $language_id);
-        $category = (new CategoryModel())->getAllCategory($language_id);
+        $product = ProductModel::getDataByStatus(1, $this->language_id);
+        $category = (new CategoryModel())->getAllCategory($this->language_id);
         $category_id = input('get.category_id');
         $name = input('get.name');
         if (!empty($category_id) || !empty($name)) {
             $data = input('get.');
-            $result = (new ProductModel())->getSelectProduct($data['name'], $data['category_id'], $data['language_id']);
+            $result = (new ProductModel())->getSelectProduct($data['name'], $data['category_id'], $this->language_id);
             $this->assign('product', $result['data']);
             $this->assign('counts', $result['count']);
             $this->assign('name', $data['name']);
@@ -41,7 +46,7 @@ Class Product extends BaseAdmin
         }
         return $this->fetch('', [
             'category' => $category,
-            'language_id' => $language_id,
+            'language_id' => $this->language_id,
         ]);
     }
 
@@ -57,13 +62,11 @@ Class Product extends BaseAdmin
 
     public function add()
     {
-        $language_id = input('get.language_id');
-        //获取语言
-        //根据语言id获取语言分类
-        $categorys = (new CategoryModel())->getChildsCategory($language_id);
+
+        $categorys = (new CategoryModel())->getChildsCategory($this->language_id);
 
         return $this->fetch('', [
-            'language_id' => $language_id,
+            'language_id' => $this->language_id,
             'categorys' => $categorys,
         ]);
     }
@@ -72,7 +75,7 @@ Class Product extends BaseAdmin
     {
         //严格判断校验
         if (request()->isAjax()) {
-            $data = $data = input('post.');
+            $data = input('post.');
             $features_html=strip_html_tags(['script','iframe'],htmlspecialchars($data['features-html-code']),true);
             $content_html=strip_html_tags(['script','iframe'],htmlspecialchars($data['content-html-code']),true);
             $data['features_html_code']=$features_html;
@@ -95,15 +98,14 @@ Class Product extends BaseAdmin
     public function product_edit($id = 0)
     {
         $id = $this->MustBePositiveInteger($id);
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
         $product = ProductModel::get($id);
         //获取语言
         //获取分类
-        $categorys = (new CategoryModel())->getChildsCategory($language_id);
+        $categorys = (new CategoryModel())->getChildsCategory($this->language_id);
         $cateID = ProductModel::getProductCategory($id);
         return $this->fetch('', [
             'categorys' => $categorys,
-            'language_id' => $language_id,
+            'language_id' => $this->language_id,
             'product' => $product,
             'cateID' => $cateID,
         ]);

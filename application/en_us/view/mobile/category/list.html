@@ -8,21 +8,17 @@
 <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
 {/block}
 {block name="banner"}
-<div class="row">
-    <div class="banner">
-        <img src="{$fileHost}/images/2019/06/29/prd_banner.jpg" alt="">
-    </div>
-</div>
+{include file="mobile/base/banner" /}
 {/block}
 {block name="body"}
 <div class="row">
     <div class="g-path">
         <ul>
             <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
-            <li><i >></i></li>
+            <li><i>></i></li>
             <li><a href="/en_us/category.html">PRODUCTS</a></li>
             {notempty name="path"}
-            <li><i >></i></li>
+            <li><i>></i></li>
             <li><a href="/en_us/category/{$path[0]['url_title']}.html">{$path[0]['name']}</a></li>
             {else /}
             {/notempty}
@@ -42,7 +38,7 @@
             {volist name="result" id="vo"}
             <div class="product-box">
                 <a class="img-box" href="/en_us/product/{$vo.url_title}">
-                    <img src="{$vo.album|getThumbnail}" alt="">
+                    <img src="{$vo.thumbnail}" alt="">
                 </a>
                 <div class="description">
                     <h3>{$vo.name}</h3>
@@ -68,7 +64,7 @@
             {volist name="hotSale" id="vo"}
             <div class="product-box">
                 <a class="img-box" href="/en_us/product/{$vo.url_title}">
-                    <img src="{$vo.album}" alt="">
+                    <img src="{$vo.thumbnail}" alt="">
                 </a>
                 <div class="description">
                     <h3>{$vo.name}</h3>
@@ -93,22 +89,6 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="g-category">
-        {notempty name="tree"}
-        {volist name="tree" id="vo"}
-        <span>{$vo.name}</span>
-        <ul>
-            {volist name="vo.child" id="co"}
-            <li class="{$co.url_title}">
-                <a href="/en_us/category/{$co.url_title}.html">{$co.name}</a>
-            </li>
-            {/volist}
-        </ul>
-        {/volist}
-        {/notempty}
-    </div>
-</div>
 {/block}
 {block name="javascript"}
 <script>

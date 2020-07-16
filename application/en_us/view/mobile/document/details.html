@@ -1,0 +1,140 @@
+{extend name="mobile/base/base"}
+{block name="title"}{$data.title}{/block}
+{block name="seo"}
+<meta name="description" content="{$data.description}">
+<meta name="keywords" content="{$data.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
+{/block}
+{block name="banner"}
+<div class="row">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://cloud.wavlink.com/index.php?user/publicLink&fid=5404Zp4tjNUC_WJM0r-bbtQGyxFPOec0mLEHt529mHvoBCDehAx8lXNffZaaz39fv39QfGZJ9o5Rg6G5pquxFgKpp-o740SdFPj7a8_kyT1z1wcH3MxjbTeg6QFy8unuaJHCUy1frg5V7Q3us-eZnaG8ePP7O_X0YqYZPdptAwhh2Oa9cp_UYuCIHw&file_name=/Aerial%20X_m.jpg"
+                     alt="">
+                <!--<h4>Independent R&D Building</h4>-->
+            </div>
+            <div class="swiper-slide">
+                <img src="https://cloud.wavlink.com/index.php?user/publicLink&fid=c0b9NCx0Fz-sv85sY0poxqBqQwNdHmg5b5orKrcigCjbkMGGrXVmztrG7I7qSj79APG75CI1wt7ACV74HI_jjlO-ECQ72RODgZW5i5ztHVZaKDwENlo0EPSVA7OZpCkEy5mLEq2Lsxh0DBW1H_e3G0sBQhOZkwnPHH03YL_wqeZvG07TlnNNqhz9Dr-5&file_name=/A42_m.jpg"
+                     alt="">
+                <!--<h4>International R&D Team</h4>-->
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i>></i></li>
+            <li><a href="/en_us/support.html">SUPPORT</a></li>
+            <li><i>></i></li>
+            <li><a href="/en_us/support/manual.html">Manuals</a></li>
+            <li><i> > </i></li>
+            <li><a href="/en_us/support/manual/details/{$data.url_title}.html">Details</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="product">
+        <div class="product-container">
+            {notempty name="data"}
+            <div class="g-item-detail">
+                <dl>
+                    <dt>Driver Name</dt>
+                    <dd>{$data.title}</dd>
+                </dl>
+                <dl>
+                    <dt>Version</dt>
+                    <dd>{$data.version}</dd>
+                </dl>
+                <dl>
+                    <dt>Download</dt>
+                    <dd>763</dd>
+                </dl>
+                <dl>
+                    <dt>Update At</dt>
+                    <dd>{$data.create_time|strtotime|date="m/d/Y",###}</dd>
+                </dl>
+                <dl>
+                    <dt>Support Product</dt>
+                    <dd>
+                        {notempty name="data.products"}
+                        {volist name="data.products" id="vo"}
+                        <span>{$vo.model}</span>
+                        {/volist}
+                        {else /}
+                        If you lost the user guide and CD driver, you can turn to driver download online here. When you
+                        find no applicable model written in “Support Product”,
+                        please contact us via email to tech@win-star.com to get information, and we will tell you which
+                        one is suitable for your product.
+                        {/notempty}
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Download</dt>
+                    <dd>
+                        {notempty name="data.downloads"}
+                        {volist name="data.downloads" id="vo"}
+                        <a class="btn btn-success" href="{$vo.url}">{$vo.language}</a>
+                        {/volist}
+                        {/notempty}
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        * Software update is usually for optimizing the product to support in special environments and
+                        applications. If your product works properly, it is not recommended to upgrade your product.
+                    </dd>
+                    <dd>* If you find the links are invalid or any other issues, please email to tech@win-star.com to
+                        make feedback or contact online customer service, thank you.
+                    </dd>
+                </dl>
+            </div>
+            {else /}
+            <div class="recommend-title">
+                <div class="no-data-box">
+                    <p>
+                        * There are no products released under this category, please contact our salesmen for details.
+                        You can also send an email to winstars@win-star.com for more information.
+                    </p>
+                </div>
+                <h4>You might be interested</h4>
+            </div>
+            {notempty name="hotSale"}
+            {volist name="hotSale" id="vo"}
+            <div class="product-box">
+                <a class="img-box" href="/en_us/product/{$vo.url_title}">
+                    <img src="{$vo.album}" alt="">
+                </a>
+                <div class="description">
+                    <h3>{$vo.name}</h3>
+                    <p>{$vo.keywords|getTags}</p>
+                    <span>{$vo.model}</span>
+                    <span>
+                        <a href="/en_us/product/{$vo.url_title}">Details</a>
+                    </span>
+                </div>
+            </div>
+            {/volist}
+            {/notempty}
+            {/notempty}
+        </div>
+        <div class="page">
+            <nav aria-label="Page navigation">
+                {notempty name="result"}
+                {:pagination($result)}
+                {/notempty}
+            </nav>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="javascript"}
+{/block}

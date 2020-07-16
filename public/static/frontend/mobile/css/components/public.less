@@ -2,19 +2,30 @@
 * @name: public.less
 * @description: win-star.com 手机端 头部导航、页脚 布局样式
 * @author: huang(1367428189@qq.com)
-* @update: 2019-04-30 16:00
+* @update: 2019-09-7 9:30
 */
 //header、footer样式
-@import "../../../lib/Bootstrap/bootstrap-3.3.7.min.css";
-@import "../../../lib/ico/iconfont.css";
 //Iconfont阿里巴巴矢量图标库
 @import "../style_reset/reset.css";
 //手机端基础样式重置
 @import "../public_class/mixins";
 @import "../public_class/variables";
 
+@font-face {
+  font-family: Neo_Sans;
+  //src: url("../../../mobile/../en-us/fonts/Neo_Sans.ttf");
+  src: url("../../../en-us/fonts/Neo_Sans.ttf");
+}
+
 body {
   background: @bodyBackground;
+  font-size: 14px;
+  font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;;
+}
+/* markdown */
+.markdown-body {
+  font-size: 14px;
+  font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif !important;
 }
 
 img {
@@ -22,152 +33,86 @@ img {
   .center-block();
 }
 
-/*
-.container {
-    padding: 0;
-    margin: 0;
-}
-.row {
-    padding: 0;
-    margin: 0;
-}
-*/
-
 //header开始
 header {
-  padding: @publicInterval;
-  background: @activeColor;
-  .icon-box {
-    .clearFix();
-    overflow: hidden;
-    height: 0.693333rem;
-
-    .icon-menus {
-      .fl();
-      width: 10%;
-    }
-    .icon-menus .iconfont {
-      font-size: 0.533333rem;
-      color: @whiteColor;
-    }
-
-    .logo {
-      .fl();
-      width: 80%;
-      text-align: center;
-    }
-    .logo a {
-      display: inline-block;
-    }
-    .logo a img {
-      height: 0.533333rem;
-    }
-
-    .icon-link {
-      .fl();
-      width: 10%;
-      text-align: right;
-    }
-    .icon-link .iconfont {
-      font-size: 0.533333rem;
-      color: @whiteColor;
-    }
-  }
-
-  .search-box {
+  .nav-bar {
     position: relative;
-    input {
-      padding: 0 .8rem 0 @publicInterval;
-      width: 100%;
-      height: 0.8rem;
-      font-size: 12px;
-      color: @whiteSmoke;
-      #border-radius(.15625rem)
-    }
-    button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: block;
-      width: 0.8rem;
-      height: 0.8rem;
-      line-height: 0.8rem;
-      text-align: center;
-      background: @whiteColor;
-      #border-radius(0 .15625rem .15625rem 0)
-    }
-    button .iconfont {
-      font-size: 0.56rem;
+    height: 50px;
+    padding: 0 @publicInterval;
+    border-bottom: 1px solid @borderColor;
+    background: @whiteColor;
+  }
+  .nav-bar .menu-bar {
+    .fl();
+    span {
+      left: 0;
     }
   }
-
-  .menu-box {
-    display: none;
-    .clearFix();
-    position: fixed;
-    z-index: 999;
+  .nav-bar .logo {
+    position: absolute;
     top: 0;
+    left: 50%;
+    margin-left: -62px;
+    padding: 8px 0;
+    img {
+      height: 34px;
+    }
+  }
+  .nav-bar .search-bar {
+    .fr();
+    .iconfont {
+      display: block;
+      line-height: 50px;
+      font-size: 24px;
+    }
+  }
+  .search-container {
+    display: none;
+    position: absolute;
+    top: 50px;
     left: 0;
+    z-index: 999;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .6);
-
-    .menu-pane {
-      .fl();
-      width: 0;
-      height: 100%;
-      background: @whiteColor;
-    }
-    .menu-pane .menu-title h2 {
-      text-align: center;
-      height: 50px;
-      line-height: 50px;
-      background: @activeColor;
-      color: @whiteColor;
-      #fontSize(largest)
-    }
-    .menu-pane .menu-item {
-      padding: @publicInterval;
-    }
-    .menu-pane .menu-item a {
+    padding: 0 @publicInterval;
+    background: #fff;
+    form {
       .clearFix();
-      overflow: hidden;
-      display: block;
-      color: #333;
-      height: 50px;
-      line-height: 50px;
-      border-bottom: 1px solid @border-color;
+      margin: 11px 0;
+      display: flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      justify-content: center;
     }
-    .menu-pane .menu-item a .iconfont {
+    form input {
       .fl();
-      display: block;
-      margin-right: .46875rem;
-      height: 50px;
-      font-size: .5625rem;
-    }
-    .menu-pane .menu-item a span {
-      .fl();
-      display: block;
-      height: 50px;
-      font-size: 14px;
-    }
-
-    .menu-pane-close {
-      .fl();
-      width: 30%;
-      height: 100%;
+      height: 30px;
+      padding: 0 @publicInterval;
+      border: 1px solid @activeColor;
+      &[type="text"] {
+        width: 80%;
+        border-right: none;
+        #border-radius(5px 0 0 5px);
+      }
+      &[type="submit"] {
+        width: 50px;
+        border-left: none;
+        background: @activeColor;
+        color: @whiteColor;
+        #border-radius(0 5px 5px 0);
+      }
     }
   }
 }
-
 //header结束
 
 //footer开始
 footer {
   margin-top: 60px;
+  padding-bottom: 0;
   .about {
     background: #333;
-    padding: 1.875rem 20px;
+    padding: 40px @publicInterval;
     
 
     .about-item {
@@ -194,14 +139,14 @@ footer {
       display: block;
     }
     .about-item ul a {
-      height: 50px;
-      line-height: 50px;
+      display: block;
+      line-height: 25px;
       color: #888;
       font-size: 12px;
     }
     .about-item ul a .iconfont {
       padding: 0 @publicInterval;
-      font-size: 0.5625rem;
+      font-size: 20px;
     }
   }
 
@@ -227,13 +172,13 @@ footer {
 .g-path {
   .clearFix();
   background: @whiteColor;
-  margin: @publicInterval 0;
+  margin: 0 0 10px;
   padding: 0 @publicInterval;
 
   ul {
     .clearFix();
     width: 100%;
-    height: 50px;
+    height: 40px;
     .text-overflow();
   }
   ul li {
@@ -245,15 +190,13 @@ footer {
   }
   ul li a {
     display: block;
-    height: 50px;
-    line-height: 50px;
+    line-height: 40px;
     color: @darkColor;
-    #fontSize(small)
+    font-size: 12px;
   }
   ul li i {
     display: block;
-    height: 50px;
-    line-height: 50px;
+    line-height: 40px;
     font-size: .48rem;
   }
 }
@@ -277,10 +220,10 @@ footer {
 
   span {
     display: block;
-    #fontSize(medium);
+    font-size: 14px;
     line-height: 50px;
     text-align: center;
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @borderColor;
     //font-weight: bold;
   }
 
@@ -294,14 +237,14 @@ footer {
     padding: 0 @publicInterval;
     width: 50%;
     .text-overflow();
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @borderColor;
     &:nth-of-type(2n + 1) {
-      border-right: 1px solid @border-color;
+      border-right: 1px solid @borderColor;
     }
   }
   ul li a {
     display: block;
-    line-height: 50px;
+    line-height: 40px;
     color: @darkColor;
   }
 }
@@ -311,23 +254,23 @@ footer {
     color: @darkColor;
   }
   thead tr {
-    #fontSize(medium)
+    font-size: 14px;
   }
 
   thead tr th {
     padding: @publicInterval 5px;
     #lineHeight(medium);
     font-weight: bold;
-    border-bottom: 2px solid @border-color;
+    border-bottom: 1px solid @borderColor;
   }
 
   tbody tr {
-    font-size: .346666rem;
+    font-size: 14px;
   }
   tbody tr th {
     padding: @publicInterval 5px;
     #lineHeight(medium);
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @borderColor;
   }
 }
 
@@ -336,7 +279,7 @@ footer {
 
   dl {
     padding: 10px 0;
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @borderColor;
     &:nth-last-of-type(1) {
       border-bottom: none;
       dd {
@@ -347,12 +290,17 @@ footer {
 
     dt {
       padding-bottom: 10px;
-      #fontSize(medium);
+      font-size: 14px;
+      font-weight: normal;
     }
 
     dd {
       .clearFix();
-      #fontSize(small);
+      font-size: 12px;
+    }
+    dd .btn {
+      background: @activeColor;
+      border-color: @activeColor;
     }
     dd span {
       display: block;
@@ -376,11 +324,11 @@ footer {
 /* 交互 */
 .capsule {
   display: inline-block;
-  background: #e68e2a;
-  color: #fff0f0!important;
+  background: @activeColor;
+  color: #fff!important;
   margin: 5px 5px 5px 0;
   padding: 4px 5px;
-  border-radius: 10px
+  #border-radius(10px);
 }
 
 //其他组件

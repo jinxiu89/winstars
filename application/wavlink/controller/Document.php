@@ -29,7 +29,7 @@ Class Document extends BaseAdmin
     public function _initialize()
     {
         parent::_initialize();
-        $this->language_id = $this->MustBePositiveInteger(input('get.language_id'));
+        $this->language_id = $this->current_language['id'];
     }
 
     public function getCategoryLevel()
@@ -44,8 +44,7 @@ Class Document extends BaseAdmin
 
     public function index()
     {
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $document = (new DocumentModel())->getDataByLanguageId($language_id);
+        $document = (new DocumentModel())->getDataByLanguageId($this->language_id);
         return $this->fetch('', [
             'document' => $document['data']['data'],
             'counts' => $document['data']['count'],
@@ -152,7 +151,6 @@ Class Document extends BaseAdmin
     public function add_download($document_id)
     {
         if (\request()->isGet()) {
-            $this->assign('language_id', input('get.language_id'));
             $this->assign('document_id', $document_id);
             return $this->fetch();
         }
@@ -171,7 +169,7 @@ Class Document extends BaseAdmin
         }
     }
 
-    public function edit_download($id, $language_id)
+    public function edit_download($id)
     {
         if (\request()->isGet()) {
             try {
@@ -179,7 +177,6 @@ Class Document extends BaseAdmin
             } catch (DbException $e) {
                 $this->error($e->getMessage());
             }
-            $this->assign('language_id', $language_id);
             $this->assign('data', $data);
             return $this->fetch();
         }

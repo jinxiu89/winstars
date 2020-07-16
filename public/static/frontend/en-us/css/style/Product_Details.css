@@ -47,7 +47,7 @@ div.Scrolling-navigation > .content {
         padding-right: 4.4%
     }
 }
-@media screen and (min-width: 1300px){
+@media screen and (min-width: 1200px){
     div.Details,
     div.Scrolling-navigation {
         width: 80%

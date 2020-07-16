@@ -606,7 +606,7 @@
  */
 html, body {
     width: 100%;
-    font-size: 13px;
+    font-size: 14px;
     font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
     background: #EEE;
     color: #333
@@ -647,7 +647,9 @@ img {
 */
 img {
     display: inline-block;
-    vertical-align: middle
+    vertical-align: middle;
+    width: 100%;
+
 }
 
 /*
@@ -739,7 +741,7 @@ div.w-home-box > div.w-home-cont > ul.w-home-nav-list > li {
 
 /* 网站最顶部（页眉）导航 搜索框按钮 */
 div.w-home-box > div.w-home-cont > div.w-home-nav-search > a {
-    margin: 10px 15px 0
+    margin: 0 15px 0
 }
 
 /* 网站最顶部（页眉）导航 搜索框 */
@@ -907,7 +909,7 @@ div.w-home-footer-box > div > div.w-home-footer-cont > dl.footer_icon_link > dd 
     /* 网站最顶部（页眉）导航 搜索框 */
     div.w-home-form-search-box > div.w-home-form-search-cont > form > input {
         height: 40px;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     div.w-home-form-search-box > div.w-home-form-search-cont > form > input[type="text"]:hover {
@@ -967,17 +969,28 @@ div.path-box > div.path-cont > a:hover {
     color: #3b6caa
 }
 
+/* markdown */
+.markdown-body {
+    font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif !important;
+}
 #features .markdown-body ul, .markdown-body ol, #features .markdown-body ul, .markdown-body ul {
     padding-left: 0 !important;
 }
 .editormd-html-preview{
     overflow: inherit !important;
 }
+.editormd-html-preview li {
+    margin-bottom: 2px;
+    text-indent: -9px;
+    margin-left: 9px
+}
 .markdown-body h4{
     font-size: 14px !important;
+    margin-bottom: 4px !important;
 }
 .markdown-body p{
     font-size: 14px !important;
+    margin-bottom: 4px!important;
 }
 .hyphensTest {
     display: flex;
@@ -1033,20 +1046,4 @@ div.path-box > div.path-cont > a:hover {
     background: rgba(36, 36, 36, .6);
     z-index: 10;
     display: none
-}
-
-/* markdown */
-.markdown-body {
-    font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif !important;
-}
-
-.editormd-html-preview li {
-    font-size: 14px;
-    margin-bottom: 2px;
-    text-indent: -9px;
-    margin-left: 9px
-}
-
-.markdown-body h4 {
-    margin-bottom: 4px !important;
 }

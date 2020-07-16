@@ -1,0 +1,116 @@
+{extend name="mobile/base/base"}
+{block name="title"}Manuals index list{/block}
+{block name="seo"}
+<meta name="description" content="ALL winstars Manuals in this pages,Choose a category from the list below.">
+<meta name="keywords" content="Driver,winstars Manuals">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
+{/block}
+{block name="banner"}
+{include file="mobile/base/banner" /}
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i>></i></li>
+            <li><a href="/en_us/support.html">SUPPORT</a></li>
+            <li><i> > </i></li>
+            <li><a href="/en_us/support/manual.html">Manuals</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="title">
+        <span class="line"></span>
+        <h2>Choose a category from the list below.</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="product">
+        <div class="product-container">
+            {notempty name="data"}
+            <div class="g-item-list">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Manual Name</th>
+                        <th>Update</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <th><a href="/en_us/support/manual/details/{$vo.url_title}.html">{$vo.title}</a></th>
+                        <th>{$vo.create_time|strtotime|date="m/d/Y",###}</th>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="page">
+                    <nav aria-label="Page navigation">
+                        {notempty name="data"}
+                        {:pagination($data)}
+                        {/notempty}
+                    </nav>
+                </div>
+            </div>
+            {else /}
+            <div class="no-data-box">
+                <p>
+                    There are no products released under this category, please contact our salesmen for details.
+                    You can also send an email to winstars@win-star.com for more information.
+                </p>
+            </div>
+            <div class="recommend-title">
+                <h4>You might be interested</h4>
+            </div>
+            {notempty name="hotSale"}
+            {volist name="hotSale" id="vo"}
+            <div class="product-box">
+                <a class="img-box" href="/en_us/product/{$vo.url_title}.html">
+                    <img src="{$vo.thumbnail}" alt="">
+                </a>
+                <div class="description">
+                    <h3>{$vo.name}</h3>
+                    <p>{$vo.keywords|getTags}</p>
+                    <span>{$vo.model}</span>
+                    <span>
+                        <a href="/en_us/product/{$vo.url_title}.html">Details</a>
+                    </span>
+                </div>
+            </div>
+            {/volist}
+            {/notempty}
+            {/notempty}
+        </div>
+        <div class="g-page-navigation">
+            <nav aria-label="Page navigation">
+                {notempty name="result"}
+                {:pagination($result)}
+                {/notempty}
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="g-category">
+        {notempty name="tree"}
+        {volist name="tree" id="vo"}
+        <span>{$vo.name}</span>
+        <ul>
+            {volist name="vo.child" id="co"}
+            <li class="{$co.url_title}">
+                <a href="/en_us/support/manual/{$co.url_title}.html">{$co.name}</a>
+            </li>
+            {/volist}
+        </ul>
+        {/volist}
+        {/notempty}
+    </div>
+</div>
+{/block}
+{block name="javascript"}
+{/block}

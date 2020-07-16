@@ -440,7 +440,7 @@
     <?php } ?>
 
     <div class="copyright">
-        <a title="官方网站" href="http://www.wavlink.com">Go Home</a>
+        <a title="winstars home website" href="http://www.win-star.com">Go Home</a>
 
         <span>Sorry, Is Error!</span>
     </div>

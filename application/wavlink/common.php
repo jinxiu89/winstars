@@ -44,9 +44,9 @@ function getChild($id){
 }
 
 //首页图片管理获取分类
-function featured($id){
+function getAdSpaceName($id){
     $ids = intval($id);
-    $data = \app\common\model\Featured::get($ids);
+    $data = \app\common\model\AdSpace::get($ids);
     $name = $data['name'];
     if ($ids == 1){
         $str = "<span style='color:red'>$name</span>";

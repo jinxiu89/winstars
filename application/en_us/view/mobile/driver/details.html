@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
 {/block}
 {block name="banner"}
-<div class="row">
-    <div class="banner">
-        <img src="{$fileHost}/images/2019/06/29/prd_banner.jpg" alt="">
-    </div>
-</div>
+{include file="mobile/base/banner" /}
 {/block}
 {block name="body"}
 <div class="row">
@@ -65,7 +61,7 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>Download Link</dt>
+                    <dt>Download</dt>
                     <dd>
                         {notempty name="data.downloads"}
                         {volist name="data.downloads" id="vo"}

@@ -5,11 +5,11 @@ var NavBtn = $("div.tab-bar ul li"); // 导航列表
 var ContentDiv = $("div.content > div"); // 概述，参数
 var result = true;
 
-NavBtn.eq(0).addClass("bgColor"); // 默认给第一个导航按钮添加背景
+NavBtn.eq(0).addClass("currentActive"); // 默认给第一个导航按钮添加背景
 ContentDiv.eq(0).show(); // 默认让第一个详情内容显示，概述
 NavBtn.click(function(){
     var index = $(this).index();
-    $(this).addClass("bgColor").siblings().removeClass("bgColor");
+    $(this).addClass("currentActive").siblings().removeClass("currentActive");
     ContentDiv.eq(index).show().siblings().hide()
 });
 

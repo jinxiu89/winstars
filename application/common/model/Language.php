@@ -97,6 +97,6 @@ class Language extends BaseModel
             'status' => 1,
             'id' => $language_id
         ];
-        return $this->where($data)->select();
+        return $this->where($data)->find()->toArray();
     }
 }

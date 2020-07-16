@@ -63,8 +63,11 @@ div.main > .content > div {
     padding: 0 0 0 40px
 }
 
-.specifications-container > div > div {
-    padding: 5px 0;
+.specifications-container > div > div {;
+    border-bottom: 1px solid #eaeaea;
+}
+.specifications-container > div > div > p:nth-last-of-type(1) {
+    margin-bottom: 14px!important;
 }
 
 @media screen and (max-width: 992px) {

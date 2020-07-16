@@ -43,9 +43,9 @@
   width: 95%;
   height: 50px;
   line-height: 50px;
-  color: #EA881B;
+  color: #3b6caa;
   background: #FFFFFF;
-  font-size: 0.426667rem;
+  font-size: 14px;
 }
 .product .product-box {
   border: 1px solid #eaeaea;
@@ -66,14 +66,14 @@
 }
 .product .product-box a .description h3 {
   padding-bottom: 0.4rem;
-  font-size: 0.373333rem;
+  font-size: 14px;
   text-align: center;
 }
 .product .product-box a .description p {
   color: #888888;
-  font-size: 0.32rem;
+  font-size: 12px;
   text-align: center;
-  line-height: 0.48rem;
+  line-height: 18px;
 }
 @media screen and (max-width: 374px) {
   .path ul li {

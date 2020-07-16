@@ -1,0 +1,285 @@
+/**
+* @name: components.less
+* @description: 公共模块css
+* @author: Alan(alan_webdeveloper@163.com)
+* @update: 2019-11-19 11:00
+*/
+/*@font-face {
+    font-family: 'huawenzhongsong';
+    src: url("../lib/font/huawenzhongsong.ttf");
+}*/
+/*@font-face {
+    font-family: 'fangzhengyaoti';
+    src: url("../lib/font/fangzhengyaoti.ttf");
+}*/
+
+body {
+    background: #fff;
+}
+
+.titleFontSize() {
+    font-size: 70px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        font-size: 36px;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        font-size: 50px;
+    }
+}
+
+.titleDesFontSize() {
+    font-size: 36px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        font-size: 20px;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        font-size: 26px;
+    }
+}
+
+.desFontSize() {
+    font-size: 24px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        font-size: 18px;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        font-size: 20px;
+    }
+}
+
+.img-responsive() {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.center-block() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    .img-responsive();
+    .center-block();
+}
+
+.g-hd {
+    position: relative;
+    display: inline-block;
+    padding: 100px 15px 0 150px;
+    border-bottom: 4px solid #0099FF;
+    span {
+        position: absolute;
+        top: 100px;
+        left: 15px;
+    }
+    h2 {
+        margin: 0 0 10px;
+        .titleFontSize();
+        font-weight: normal;
+        span {
+            position: static;
+            .titleDesFontSize();
+            color: #888;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        padding: 50px 15px 0 100px;
+        span {
+            top: 40px;
+            width: 50px;
+        }
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        padding: 50px 15px 0 100px;
+        span {
+            top: 45px;
+            width: 60px;
+        }
+    }
+}
+
+.hr-company {
+    width: 85%;
+    margin: auto;
+    padding: 100px 15px;
+    text-align: center;
+    .desFontSize();
+}
+
+.welfare {
+    width: 80%;
+    margin: auto;
+    .g-hd span {
+        top: 90px;
+    }
+    .des {
+        padding: 5% 0 100px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        .g-hd span {
+            top: 40px;
+            width: 50px;
+        }
+        .des {
+            padding: 100px 70px 50px;
+        }
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        .g-hd span {
+            top: 45px;
+            width: 60px;
+        }
+        .des {
+            padding: 150px 70px 80px;
+        }
+    }
+}
+
+.hr-video {
+    width: 80%;
+    margin: auto;
+    video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.hr-job {
+    width: 80%;
+    margin: auto;
+    .des {
+        padding: 70px 70px 0;
+        .desFontSize();
+        div {
+            margin-bottom: 50px;
+            &:nth-last-of-type(1) {
+                margin-bottom: 0;
+            }
+        }
+        div p:nth-of-type(1) span{
+            font-weight: bold;
+        }
+    }
+}
+
+.hr-resume {
+    width: 80%;
+    margin: auto;
+    .des {
+        padding: 70px 70px 0;
+        .desFontSize();
+        p span {
+            color: #0099FF;
+        }
+    }
+}
+
+.hr-contact {
+    position: relative;
+    margin: 70px;
+    padding: 20px;
+    background: #F0F0F0;
+    .company {
+        width: 555px;
+    }
+    .des {
+        position: absolute;
+        top: 70px;
+        left: 70px;
+        padding: 0 15px 0 625px;
+        .desFontSize();
+        p {
+            margin-bottom: 20px;
+        }
+        p span {
+            color: #0099FF;
+        }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            font-size: 16px;
+        }
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            font-size: 18px;
+        }
+    }
+    @media screen and (max-width: 1500px) {
+        padding: 20px;
+        .company {
+            margin: 0 auto 20px;
+        }
+        .des {
+            position: static;
+            padding: 0 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .g-hd {
+        position: relative;
+        display: inline-block;
+        padding: 50px 15px 0 100px;
+        border-bottom: 4px solid #0099FF;
+        span {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            width: 50px;
+        }
+        h2 {
+            font-size: 16px;
+            margin: 0 0 10px;
+            span {
+                position: static;
+                font-size: 14px;
+            }
+        }
+    }
+    .welfare {
+        width: 100%;
+        .g-hd span {
+            top: 20px;
+        }
+        .des {
+            padding: 20px 15px;
+        }
+    }
+    .hr-company {
+        width: 100%;
+        padding: 20px 15px;
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .hr-video {
+        width: 100%;
+        margin: 20px auto;
+    }
+    .hr-job,
+    .hr-resume,
+    .hr-contact {
+        width: 100%;
+        .des {
+            padding: 20px 15px;
+            font-size: 14px;
+            line-height: 30px;
+            div {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .hr-contact {
+        margin: 0;
+        padding: 20px 15px;
+        .company {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .des {
+            padding: 0;
+        }
+    }
+}
+

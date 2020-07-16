@@ -9,13 +9,24 @@
 namespace app\en_us\controller;
 
 use app\common\model\Category as CategoryModel;
+use app\common\model\ServiceCategory;
 use app\common\helper\Category as CategoryHelp;
 use app\common\model\Language as LanguageModel;
 use app\common\model\Driver as DriverModel;
 use think\Request;
+use app\common\model\AdSpace;
 
 class Driver extends Base
 {
+
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $result = (new AdSpace())->getDataByCode('About');
+        if ($result['status'] == true) {
+            $this->assign('banner', $result['data']);
+        }
+    }
     public function _initialize()
     {
         parent::_initialize();
@@ -30,6 +41,7 @@ class Driver extends Base
     {
 
         $result=(new DriverModel())->getDataAll($this->language);
+//        $parent = ServiceCategory::getTopCategory($this->code, 'faq');//这条是指faq这个服务分类的一些信息，如ID 图片等，后续要用可以开发出来使用
         $this->assign('data',$result);
         return $this->fetch($this->template . '/driver/index.html');
     }

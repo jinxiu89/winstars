@@ -1,0 +1,38 @@
+/**
+* @name: variables.less
+* @description: win-star.com 手机端 公共变量定义文件
+* @author: huang(1367428189@qq.com)
+* @update: 2019-04-30 16:00
+*/
+.faq-detail {
+  padding: 0.4rem;
+  background: #FFFFFF;
+}
+.faq-detail .title {
+  margin-bottom: 0.4rem;
+  padding-bottom: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #eaeaea;
+}
+.faq-detail .title h2 {
+  margin-bottom: 10px;
+  line-height: 20px;
+}
+.faq-detail .related h3 {
+  padding: 8px 0;
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.faq-detail .related ul {
+  padding-left: 20px;
+}
+.faq-detail .related ul li {
+  list-style-type: circle;
+}
+.faq-detail .related ul li a {
+  line-height: 20px;
+  color: #333333;
+  font-size: 14px;
+}
+/*# sourceMappingURL=faq-detail.css.map */

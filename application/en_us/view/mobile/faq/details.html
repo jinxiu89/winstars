@@ -1,0 +1,92 @@
+{extend name="mobile/base/base"}
+{block name="title"}{$result.title}{/block}
+{block name="seo"}
+<meta name="description" content="{$result.description}">
+<meta name="keywords" content="{$result.keywords}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/faq-detail.css">
+{/block}
+{block name="banner"}
+<div class="row">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://cloud.wavlink.com/index.php?user/publicLink&fid=5404Zp4tjNUC_WJM0r-bbtQGyxFPOec0mLEHt529mHvoBCDehAx8lXNffZaaz39fv39QfGZJ9o5Rg6G5pquxFgKpp-o740SdFPj7a8_kyT1z1wcH3MxjbTeg6QFy8unuaJHCUy1frg5V7Q3us-eZnaG8ePP7O_X0YqYZPdptAwhh2Oa9cp_UYuCIHw&file_name=/Aerial%20X_m.jpg"
+                     alt="">
+                <!--<h4>Independent R&D Building</h4>-->
+            </div>
+            <div class="swiper-slide">
+                <img src="https://cloud.wavlink.com/index.php?user/publicLink&fid=c0b9NCx0Fz-sv85sY0poxqBqQwNdHmg5b5orKrcigCjbkMGGrXVmztrG7I7qSj79APG75CI1wt7ACV74HI_jjlO-ECQ72RODgZW5i5ztHVZaKDwENlo0EPSVA7OZpCkEy5mLEq2Lsxh0DBW1H_e3G0sBQhOZkwnPHH03YL_wqeZvG07TlnNNqhz9Dr-5&file_name=/A42_m.jpg"
+                     alt="">
+                <!--<h4>International R&D Team</h4>-->
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+{/block}
+{block name="body"}
+<div class="row">
+    <div class="g-path">
+        <ul>
+            <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
+            <li><i>></i></li>
+            <li><a href="/en_us/support.html">SUPPORT</a></li>
+            <li><i>></i></li>
+            <li><a href="/en_us/support/faq.html">Faq</a></li>
+            <li><i> > </i></li>
+            <li><a href="/en_us/support/faq/details/{$result.url_title}.html">Details</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="faq-detail">
+        <div class="title">
+            <h2>{$result.title}</h2>
+            <div class="update_time">
+                <p>Create time：{$result.update_time|strtotime|date='m/d/Y',###}</p>
+            </div>
+        </div>
+        <section id="answer" style="padding: 10px 0">
+            <textarea name="answer" style="display: none;">{$result.answer}</textarea>
+        </section>
+        <div class="related">
+            <h3>See Also</h3>
+            <ul>
+                <li ><a href="#">3CX is Just What the Doctor Ordered for ACIBADEM Health Clinics</a></li>
+                <li><a href="#">v16 Update 3 Alpha Brings Advanced DNS & Reconnect Controls</a></li>
+                <li><a href="#">New Android Beta App with Updated UI, Call Encryption and Reconnection</a></li>
+                <li><a href="#">3CX Renews Sponsorship of Cypriot Football Club, APOEL FC</a></li>
+                <li><a href="#">v16 Update 3 Alpha Brings Advanced DNS & Reconnect Controls</a></li>
+                <li><a href="#">3CX is Just What the Doctor Ordered for ACIBADEM Health Clinics</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="javascript"}
+<script src="__STATIC__/lib/markdown/lib/marked.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/prettify.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/raphael.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/underscore.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/sequence-diagram.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/lib/jquery.flowchart.min.js"></script>
+<script src="__STATIC__/lib/markdown/editormd.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            editormd.markdownToHTML("answer", {
+                htmlDecode: "style,script,iframe",
+                taskList: true,
+                tex: true,  // 默认不解析
+                flowChart: true,  // 默认不解析
+                sequenceDiagram: true,  // 默认不解析
+            });
+        });
+    });
+</script>
+{/block}

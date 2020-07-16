@@ -5,21 +5,21 @@
 <meta name="keywords" content="{$result.keywords}">
 {/block}
 {block name="style"}
+<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
 <link rel="stylesheet" href="__STATIC__/frontend/lib/Swiper/css/swiper.min.css">
 <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/product-list.css">
 <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/new-detail.css">
-<link rel="stylesheet" href="__STATIC__/lib/markdown/css/editormd.preview.css">
 {/block}
 {block name="body"}
 <div class="row">
     <div class="g-path">
         <ul>
             <li><a href="/en_us/"><i class="iconfont">&#xeb1b;</i></a></li>
-            <li><i >></i></li>
+            <li><i>></i></li>
             <li><a href="/en_us/category.html">PRODUCTS</a></li>
             {notempty name="path"}
             {volist name="path" id="vo"}
-            <li><i >></i></li>
+            <li><i>></i></li>
             <li><a href="/en_us/category/{$vo.url_title}.html">{$vo.name}</a></li>
             {/volist}
             {else /}
@@ -28,22 +28,35 @@
     </div>
 </div>
 <div class="row">
-    <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-ios">
+    <!--<div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-ios">
         <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-4900px, 0px, 0px);">
             {volist name="result.albums" id="vo"}
-            <div class="swiper-slide" style="width: 980px;">
+            <div class="swiper-slide" >
                 <img src="{$vo}" alt="">
             </div>
             {/volist}
         </div>
-        <!-- Add Pagination -->
+        &lt;!&ndash; Add Pagination &ndash;&gt;
         <div class="swiper-pagination swiper-pagination-fraction">
             <span class="swiper-pagination-current">6</span> / <span class="swiper-pagination-total">10</span>
         </div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
-        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        &lt;!&ndash; Add Arrows &ndash;&gt;
+        &lt;!&ndash;<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>&ndash;&gt;
+        &lt;!&ndash;<div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"&ndash;&gt;
+             &lt;!&ndash;aria-disabled="false"></div>&ndash;&gt;
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {volist name="result.albums" id="vo"}
+            <div class="swiper-slide">
+                <img src="{$vo}" alt="">
+            </div>
+            {/volist}
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
 </div>
 <div class="row">
     <div class="tab-bar">
@@ -54,8 +67,17 @@
                     <i class="iconfont icon-arrowdown"></i>
                 </div>
                 <ul>
-                    <li>CONTENTS</li>
+                    <li>OVERVIEWS</li>
                     <li>SPECIFICATION</li>
+                    {notempty name="result.drivers"}
+                    <li>DRIVERS</li>
+                    {/notempty}
+                    {notempty name="result.documents"}
+                    <li>MANUALS</li>
+                    {/notempty}
+                    {notempty name="result.faqs"}
+                    <li>F.A.Q</li>
+                    {/notempty}
                 </ul>
             </div>
         </div>
@@ -68,23 +90,88 @@
         </div>
         <div id="specifications">
             {$result.specifications}
-            <!--<textarea style="display:none;" name="specifications">{$result.specifications}</textarea>-->
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="g-category">
-        {notempty name="tree"}
-        {volist name="tree" id="vo"}
-        <span>{$vo.name}</span>
-        <ul>
-            {volist name="vo.child" id="co"}
-            <li class="{$co.url_title}">
-                <a href="/en_us/category/{$vo.url_title}.html">{$co.name}</a>
-            </li>
+        {notempty name="result.drivers"}
+        <div id="drivers">
+            {volist name="result.drivers" id="item"}
+            <div class="g-item-detail">
+                <dl>
+                    <dt>Driver Name</dt>
+                    <dd><a href="/en_us/support/driver/details/{$item.url_title}.html">{$item.name}</a></dd>
+                </dl>
+                <dl>
+                    <dt>Version</dt>
+                    <dd>{$item.version}</dd>
+                </dl>
+                <dl>
+                    <dt>Update At</dt>
+                    <dd>{$item.create_time|strtotime|date="m/d/Y",###}</dd>
+                </dl>
+                <dl>
+                    <dt>Download</dt>
+                    <dd>
+                        {notempty name="item.downloads"}
+                        {volist name="item.downloads" id="vo"}
+                        <a class="btn btn-success" href="{$vo.url}">{$vo.requirement}</a>
+                        {/volist}
+                        {/notempty}
+                    </dd>
+                </dl>
+            </div>
             {/volist}
-        </ul>
-        {/volist}
+        </div>
+        {/notempty}
+        {notempty name="result.documents"}
+        <div id="documents">
+            {volist name="result.documents" id="item"}
+            <div class="g-item-detail">
+                <dl>
+                    <dt>Manual Name</dt>
+                    <dd><a href="/en_us/support/manual/details/{$item.url_title}.html">{$item.title}</a></dd>
+                </dl>
+                <dl>
+                    <dt>Version</dt>
+                    <dd>{$item.version}</dd>
+                </dl>
+                <dl>
+                    <dt>Update At</dt>
+                    <dd>{$item.create_time|strtotime|date="m/d/Y",###}</dd>
+                </dl>
+                <dl>
+                    <dt>Download</dt>
+                    <dd>
+                        {notempty name="item.downloads"}
+                        {volist name="item.downloads" id="vo"}
+                        <a class="btn btn-success" href="{$vo.url}">{$vo.language}</a>
+                        {/volist}
+                        {/notempty}
+                    </dd>
+                </dl>
+            </div>
+            {/volist}
+        </div>
+        {/notempty}
+        {notempty name="result.faqs"}
+        <div id="faqs">
+            <table class="table " style="border-bottom: 1px solid #ddd; margin-bottom: 0;padding: 20px;background: #fff;display: block">
+                <thead>
+                <tr>
+                    <th>Question and description</th>
+                    <th>Update at</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="result.faqs" id="item"}
+                <tr>
+                    <td>
+                        <a href="/en_us/support/faq/details/{$item.url_title}.html">{$item.title}</a>
+                    </td>
+                    <td>{$item.create_time|strtotime|date="m/d/Y",###}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
         {/notempty}
     </div>
 </div>
@@ -128,15 +215,17 @@
     });
 </script>
 <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'fraction',
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
+    window.onload = function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true, // 循环模式选项
+            autoplay: {
+                delay: 6000,//6秒切换一次
+            },
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        })
+    }
 </script>
 {/block}

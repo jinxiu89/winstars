@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2017 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -13,12 +13,10 @@ namespace think;
 
 use think\exception\ClassNotFoundException;
 
-
 class Session
 {
     protected static $prefix = '';
     protected static $init   = null;
-
 
     /**
      * 设置或者获取session作用域（前缀）

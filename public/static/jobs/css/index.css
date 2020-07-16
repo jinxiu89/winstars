@@ -1,0 +1,308 @@
+/**
+* @name: components.less
+* @description: 公共模块css
+* @author: Alan(alan_webdeveloper@163.com)
+* @update: 2019-11-19 11:00
+*/
+/*@font-face {
+    font-family: 'huawenzhongsong';
+    src: url("../lib/font/huawenzhongsong.ttf");
+}*/
+/*@font-face {
+    font-family: 'fangzhengyaoti';
+    src: url("../lib/font/fangzhengyaoti.ttf");
+}*/
+body {
+  background: #fff;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.g-hd {
+  position: relative;
+  display: inline-block;
+  padding: 100px 15px 0 150px;
+  border-bottom: 4px solid #0099FF;
+}
+.g-hd span {
+  position: absolute;
+  top: 100px;
+  left: 15px;
+}
+.g-hd h2 {
+  margin: 0 0 10px;
+  font-size: 70px;
+  font-weight: normal;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .g-hd h2 {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .g-hd h2 {
+    font-size: 50px;
+  }
+}
+.g-hd h2 span {
+  position: static;
+  font-size: 36px;
+  color: #888;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .g-hd h2 span {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .g-hd h2 span {
+    font-size: 26px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .g-hd {
+    padding: 50px 15px 0 100px;
+  }
+  .g-hd span {
+    top: 40px;
+    width: 50px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .g-hd {
+    padding: 50px 15px 0 100px;
+  }
+  .g-hd span {
+    top: 45px;
+    width: 60px;
+  }
+}
+.hr-company {
+  width: 85%;
+  margin: auto;
+  padding: 100px 15px;
+  text-align: center;
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hr-company {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hr-company {
+    font-size: 20px;
+  }
+}
+.welfare {
+  width: 80%;
+  margin: auto;
+}
+.welfare .g-hd span {
+  top: 90px;
+}
+.welfare .des {
+  padding: 5% 0 100px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .welfare .g-hd span {
+    top: 40px;
+    width: 50px;
+  }
+  .welfare .des {
+    padding: 100px 70px 50px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .welfare .g-hd span {
+    top: 45px;
+    width: 60px;
+  }
+  .welfare .des {
+    padding: 150px 70px 80px;
+  }
+}
+.hr-video {
+  width: 80%;
+  margin: auto;
+}
+.hr-video video {
+  width: 100%;
+  height: auto;
+}
+.hr-job {
+  width: 80%;
+  margin: auto;
+}
+.hr-job .des {
+  padding: 70px 70px 0;
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hr-job .des {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hr-job .des {
+    font-size: 20px;
+  }
+}
+.hr-job .des div {
+  margin-bottom: 50px;
+}
+.hr-job .des div:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+.hr-job .des div p:nth-of-type(1) span {
+  font-weight: bold;
+}
+.hr-resume {
+  width: 80%;
+  margin: auto;
+}
+.hr-resume .des {
+  padding: 70px 70px 0;
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hr-resume .des {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hr-resume .des {
+    font-size: 20px;
+  }
+}
+.hr-resume .des p span {
+  color: #0099FF;
+}
+.hr-contact {
+  position: relative;
+  margin: 70px;
+  padding: 20px;
+  background: #F0F0F0;
+}
+.hr-contact .company {
+  width: 555px;
+}
+.hr-contact .des {
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  padding: 0 15px 0 625px;
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hr-contact .des {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hr-contact .des {
+    font-size: 20px;
+  }
+}
+.hr-contact .des p {
+  margin-bottom: 20px;
+}
+.hr-contact .des p span {
+  color: #0099FF;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hr-contact .des {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hr-contact .des {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .hr-contact {
+    padding: 20px;
+  }
+  .hr-contact .company {
+    margin: 0 auto 20px;
+  }
+  .hr-contact .des {
+    position: static;
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .g-hd {
+    position: relative;
+    display: inline-block;
+    padding: 50px 15px 0 100px;
+    border-bottom: 4px solid #0099FF;
+  }
+  .g-hd span {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 50px;
+  }
+  .g-hd h2 {
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
+  .g-hd h2 span {
+    position: static;
+    font-size: 14px;
+  }
+  .welfare {
+    width: 100%;
+  }
+  .welfare .g-hd span {
+    top: 20px;
+  }
+  .welfare .des {
+    padding: 20px 15px;
+  }
+  .hr-company {
+    width: 100%;
+    padding: 20px 15px;
+    font-size: 14px;
+    line-height: 30px;
+  }
+  .hr-video {
+    width: 100%;
+    margin: 20px auto;
+  }
+  .hr-job,
+  .hr-resume,
+  .hr-contact {
+    width: 100%;
+  }
+  .hr-job .des,
+  .hr-resume .des,
+  .hr-contact .des {
+    padding: 20px 15px;
+    font-size: 14px;
+    line-height: 30px;
+  }
+  .hr-job .des div,
+  .hr-resume .des div,
+  .hr-contact .des div {
+    margin-bottom: 10px;
+  }
+  .hr-contact {
+    margin: 0;
+    padding: 20px 15px;
+  }
+  .hr-contact .company {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .hr-contact .des {
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */

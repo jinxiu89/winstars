@@ -30,14 +30,13 @@ $(function(){
             }
         });
 
-        SearchBtn.click(function(){ // 搜索框按钮点击事件，显示或隐藏
-            window.event? window.event.cancelBubble = true : e.stopPropagation();
+        SearchBtn.click(function(e){ // 搜索框按钮点击事件，显示或隐藏
             mask.fadeIn();
             hammer_screen.slideUp();
             SearchBar.slideDown();
             SearchBar.find("input[type='text']").focus();
-        });
-        SearchBar.click(function(e){ // 阻止事件冒泡，防止点击搜索框的时候同时触发DOM的点击事件（click）
+            return false;        });
+        SearchBar.click(function(e){
             window.event? window.event.cancelBubble = true : e.stopPropagation();
         });
         $(document).click(function(){ // 通过点击DOM来关闭搜索框（SearchBar）

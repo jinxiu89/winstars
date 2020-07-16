@@ -11,6 +11,8 @@ use app\common\model\Category as CategoryModel;
 use app\common\model\Document as DocumentModel;
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Category as CategoryHelp;
+use think\Request;
+use app\common\model\AdSpace;
 
 class Document extends Base
 {
@@ -18,6 +20,15 @@ class Document extends Base
 //    protected $beforeActionList = [
 //        'cate' => ['only', 'index,details'],
 //    ];
+
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $result = (new AdSpace())->getDataByCode('About');
+        if ($result['status'] == true) {
+            $this->assign('banner', $result['data']);
+        }
+    }
 
     /***
      * @throws \think\db\exception\DataNotFoundException
@@ -37,6 +48,7 @@ class Document extends Base
         if(request()->isGet()){
             $result=(new DocumentModel())->getDataByLanguageId($this->language);
             $this->assign('data',$result['data']['data']);
+            $this->assign('count',$result['data']['count']);
             return $this->fetch($this->template . '/document/index.html');
         }
     }

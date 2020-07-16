@@ -32,6 +32,9 @@ tr td:nth-child(2) a {
     margin-right: 5px;
     border: 1px solid transparent;
 }
+tr td:nth-child(2) a i{
+    font-size:14px
+}
 th {
     text-align: left;
     font-size: 16px

@@ -23,9 +23,15 @@ class BaseAdmin extends Controller
      * 前置操作
      */
     protected $language_id;
+    protected $current_language; //注入当前语言，后面的编辑查询都用这个处理
     protected $beforeActionList = [
         'getLanguage'
     ];
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+
+    }
 
     public function _initialize()
     {
@@ -34,6 +40,7 @@ class BaseAdmin extends Controller
             $this->redirect(url('login/index', ["next" => $next]));
         }
         $userSession = session('userName', '', 'admin');
+        $this->current_language=session('current_language','','admin');
         $mangerName = $userSession->name;
         $username = $userSession->username;
         $this->assign('mangerName', $mangerName);
@@ -103,6 +110,8 @@ class BaseAdmin extends Controller
      * 启用 status = 1
      * 回收 status = -1
      * 下架 status = 0
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public function byStatus()
     {
@@ -126,6 +135,8 @@ class BaseAdmin extends Controller
      * 编辑后更新数据操作
      * @param $data
      * @return array
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public function update($data)
     {

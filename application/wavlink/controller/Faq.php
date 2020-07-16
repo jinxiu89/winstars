@@ -16,18 +16,10 @@ use think\exception\DbException;
 
 Class Faq extends BaseAdmin
 {
-    protected $beforeActionList = [
-        'getCategoryLevel',
-    ];
-
     public function _initialize()
     {
         parent::_initialize();
-        $this->language_id = $this->MustBePositiveInteger(input('get.language_id'));
-    }
-
-    public function getCategoryLevel()
-    {
+        $this->language_id = $this->current_language['id'];
         try {
             $category = (new CategoryModel())->getCategoryLevel($this->language_id);
         } catch (DbException $e) {
@@ -36,21 +28,20 @@ Class Faq extends BaseAdmin
         $this->assign('category', $category);
     }
 
+
     public function index()
     {
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $result = (new FaqModel())->getDataByLanguageId($language_id);
+        $result = (new FaqModel())->getDataByLanguageId($this->language_id);
         return $this->fetch('', [
             'faq' => $result['data']['data'],
             'counts' => $result['data']['count'],
-            'language_id' => $language_id,
+//            'language_id' => $language_id,
         ]);
     }
 
     public function faq_recycle()
     {
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
-        $faq = FaqModel::getDataByStatus(-1, $language_id);
+        $faq = FaqModel::getDataByStatus(-1, $this->language_id);
         return $this->fetch('', [
             'faq' => $faq['data'],
             'counts' => $faq['count']
@@ -60,10 +51,10 @@ Class Faq extends BaseAdmin
     public function add()
     {
         if (request()->isGet()) {
-            $language_id = $this->MustBePositiveInteger(input('get.language_id'));
+//            $language_id = $this->MustBePositiveInteger(input('get.language_id'));
             //获取faq的服务分类
             return $this->fetch('', [
-                'language_id' => $language_id
+                'language_id' => $this->language_id
             ]);
         }
         if (request()->isAjax()) {
@@ -134,6 +125,8 @@ Class Faq extends BaseAdmin
     /**
      * 保存操作
      * @return array
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public function save()
     {

@@ -8,32 +8,24 @@
     <span class="c-gray en">&gt;</span>
     产品分类
     <span class="c-gray en">&gt;</span>
-    分类管理({$language_id|getLanguage})
+    分类管理
     <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
        href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
 </nav>
 {/block}
 {block name="main"}
 <article class="cl pd-20" style="min-height: 51em;">
-    <!--<form action="{:url('Category/index')}" method="post">-->
-    <!--<div class="text-c"> 输入分类名称：-->
-    <!--<input type="text" class="input-text" style="width:250px" placeholder="输入分类名称" name="name">-->
-    <!--<button type="submit" class="btn btn-success" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>-->
-    <!--</div>-->
-    <!--</form>-->
     <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l">
-                     <!--<a href="javascript:;" onclick="allRecycle('{:url('category/allRecycle')}')" class="btn btn-danger radius"><i-->
-                    <!--class="Hui-iconfont">&#xe6e2;</i> 批量回收</a>-->
                     <a href="javascript:;"
-                       onclick="add('添加一级分类({$language_id|getLanguageOne})','{:url(\'category/add\',[\'language_id\'=>$language_id])}','800','800')"
+                       onclick="add('添加一级分类','{:url(\'category/add\')}','800','800')"
                        class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加一级分类</a> </span>
         <span class="r">共有数据：<strong>{$counts}</strong> 条</span>
     </div>
     <table class="table table-border table-bordered table-bg">
         <thead>
         <tr>
-            <th scope="col" colspan="11">{$language_id|getLanguage}分类列表</th>
+            <th scope="col" colspan="11">分类列表</th>
         </tr>
         <tr class="text-c">
             <th width="4%">ID</th>
@@ -62,13 +54,15 @@
                     onclick="start('{:url(\'Category/byStatus\',[\'id\'=>$vo.id,\'status\'=>$vo.status==1?-1:1])}')"
                     title="点击修改状态">{$vo.status|status}</a></td>
             <td class="td-manage text-l">
+                {if condition="$vo.parent_id == 0"}
                 <a title="添加子分类"
-                   onclick="add('添加{$language_id|getLanguageOne}产品二级分类','{:url(\'Category/add\',[\'language_id\'=>$language_id,\'parent_id\'=>$vo.id])}','800','680')"
+                   onclick="add('添加{$language_id|getLanguageOne}产品二级分类','{:url(\'Category/add\',[\'parent_id\'=>$vo.id])}','800','680')"
                    class="btn btn-primary radius"><i class="Hui-iconfont">&#xe716</i></a>
-                <a title="获取子分类" href="{:url('Category/index',['language_id'=>$language_id,'parent_id'=>$vo.id])}"
+                <a title="获取子分类" href="{:url('Category/index',['parent_id'=>$vo.id])}"
                    class="btn btn-primary radius"><i class="Hui-iconfont">&#xe715</i></a>
+                {/if}
                 <a class="btn btn-secondary radius"
-                   onclick="edit('编辑','{:url(\'Category/edit\',[\'id\' => $vo.id,\'language_id\'=>$language_id])}','900','800')"
+                   onclick="edit('编辑','{:url(\'Category/edit\',[\'id\' => $vo.id])}','900','800')"
                    title="编辑"><i class="Hui-iconfont">&#xe6df</i></a>
                 {empty name="$language_id"}
                 {else /}
@@ -82,10 +76,8 @@
         </tbody>
     </table>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
-        <!--<span class="l">  <a href="javascript:;" onclick="add('添加{$language_id|getLanguageOne}一级分类','{:url('ServiceCategory/add',['language_id'=>$language_id])}','800','680')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加{$language_id|getLanguage}一级分类</a> </span>-->
-        <span class="r"><strong><a href="{:url('Category/index',['language_id'=>$language_id])}" title="{$vo.name}服务分类">返回{$language_id|getLanguage}产品分类列表</a></strong> </span>
+        <span class="r"><strong><a href="{:url('Category/index')}" title="{$vo.name}服务分类">返回产品分类列表</a></strong> </span>
     </div>
-    <input type="hidden" value="{$language_id}" id="language">
 </article>
 <!--<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-winstar">{$category->render()}</div>-->
 {include file="public/explain" /}
@@ -98,9 +90,7 @@
     $(document).ready(function () {
         $("#menu-category dt").addClass("selected");
         $("#menu-category dd").css("display", "block");
-        var lan = $("input#language").val();
-        var id = "#product_category_" + lan;
-        $(id).addClass("current");
+        $('#product_category').addClass("current");
         $("#content").addClass("current");
     });
     $(".sort input").blur(function () {
@@ -109,7 +99,7 @@
         var postData = {'id': id, 'listorder': listorder};
         $.ajax(
             {
-                url: "{:url(\'Category/sort\',['language_id'=>$language_id,])}",
+                url: "{:url(\'Category/sort\')}",
                 type: "POST",
                 dataType: "json",
                 data: postData,

@@ -1,11 +1,11 @@
 {extend name="public/base_form" /}
 {block name="form"}
 <form class="form form-horizontal" id="form-product-add" method="post" action="">
+    <input type="hidden" name="language_id" value="{$language_id}">
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>驱动名称：</label>
         <div class="formControls col-xs-8 col-sm-3">
             <input type="text" class="input-text" value="" placeholder="" id="name" name="name">
-            <input type="hidden" name="language_id" value="{$language_id}">
         </div>
     </div>
     <div class="row cl">
@@ -68,7 +68,7 @@
         {:token()}
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
             <button class="btn btn-primary radius" type="button"
-                    onclick="save('{:url(\'Driver/add\',[\'language_id\'=>$language_id,])}')"><i
+                    onclick="save('{:url(\'Driver/add\',[\'language_id\'=>$language_id])}')"><i
                     class="Hui-iconfont">&#xe632;</i> 保存
             </button>
             <button onClick="layer_close();" class="btn btn-default radius" type="button">

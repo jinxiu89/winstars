@@ -1,0 +1,73 @@
+{extend name="public/base_form" /}
+{block name="form"}
+<form class="form form-horizontal" id="form-article-add" method="post" action="">
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">广告空间：</label>
+        <div class="formControls col-xs-8 col-sm-3"> <span class="select-box">
+				<select name="space_id" class="select">
+                    <option value="">--请选择</option>
+                  {volist name="adSpace" id="vo"}
+                  <option value="{$vo.id}"{if condition="$result.space_id eq $vo.id"} selected="selected" {/if}>{$vo.name}</option>
+                    {/volist}
+                </select>
+				</span>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">标题：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text" value="{$result->title}" placeholder="" id="title" name="title">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">排序：</label>
+        <div class="formControls col-xs-8 col-sm-1">
+            <input type="text" class="input-text" value="{$result->listorder}" placeholder="" id="listorder" name="listorder">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">展示内容：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text" value="{$result->name}" placeholder="" id="name" name="name">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">大图：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text" value="{$result->big_image}" id="big_image" name="big_image">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">小图：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text" value="{$result->small_image}" id="small_image" name="small_image">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">链接到：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text" value="{$result->url}" placeholder="" id="url" name="url">
+        </div>
+    </div>
+
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <input type="hidden" name="id" value="{$result->id}">
+            <button onclick="save('{:url(\'Banner/save\')}')" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 更新
+            </button>
+            <button onClick="layer_close();" class="btn btn-default radius" type="button">
+                &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__STATIC__/admin/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/h-ui.admin/js/image.js"></script>
+<script type="text/javascript">
+    var SCOPE = {
+        'uploadify_swf':'__STATIC__/admin/uploadify/uploadify.swf',
+        'image_upload':"{:url('api/image/upload')}"};
+</script>
+{/block}

@@ -2,7 +2,7 @@
 /* 边框线 */
 .table > tbody > tr > th {
     text-align: right;
-    font-size: 13px
+    font-size: 14px
 }
 .table>caption{
     border-bottom:none !important;

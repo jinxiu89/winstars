@@ -6,11 +6,9 @@
             <dt><i class="Hui-iconfont">&#xe666;</i> FAQ咨询<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    {volist name="languages" id="vo"}
-                    <li id="faq_answer_{$vo.id}"><a href="{:url('Faq/index',['language_id'=>$vo.id])}"
-                                                    title="{$vo.name}FAQ管理">F.A.Q管理({$vo.id|getLanguage})</a></li>
-                    {/volist}
-
+                    <li id="faq_answer">
+                        <a href="{:url('Faq/index')}" title="FAQ管理">F.A.Q管理</a>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -20,10 +18,8 @@
             <dt><i class="Hui-iconfont">&#xe623;</i> 文档管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    {volist name="languages" id="vo"}
-                    <li id="service_doc_{$vo.id}"><a href="{:url('Document/index',['language_id'=>$vo.id])}"
-                                                     title="{$vo.name}下载列表">说明书&文档({$vo.id|getLanguage})</a></li>
-                    {/volist}
+                    <li id="service_doc"><a href="{:url('Document/index')}"
+                                            title="下载列表">说明书&文档</a></li>
                     <!--<li id="doc_recovery"><a href="{:url('Document/doc_recycle')}" title="回收文档列表">回收文档列表</a></li>-->
                 </ul>
             </dd>
@@ -34,26 +30,25 @@
             <dt><i class="Hui-iconfont">&#xe641;</i> 驱动管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    {volist name="languages" id="vo"}
-                    <li id="drivers_list_{$vo.id}"><a href="{:url('Driver/index',['language_id'=>$vo.id])}"
-                                                      title="{$vo.name}驱动下载列表">驱动管理({$vo.id|getLanguage})</a></li>
-                    {/volist}
+                    <li id="drivers_list"><a href="{:url('Driver/index')}"
+                                             title="驱动下载列表">驱动管理</a></li>
                 </ul>
             </dd>
         </dl>
         {/if}
         {if condition="in_array('video/index',$access)"}
-        <dl id="service_video">
-            <dt><i class="Hui-iconfont">&#xe72b;</i> 视频中心<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    {volist name="languages" id="vo"}
-                    <li id="video_index_{$vo.id}"><a href="{:url('Video/index',['language_id'=>$vo.id])}" title="视频列表">视频列表({$vo.id|getLanguage})</a>
-                    </li>
-                    {/volist}
-                </ul>
-            </dd>
-        </dl>
+        <!--<dl id="service_video">-->
+        <!--<dt><i class="Hui-iconfont">&#xe72b;</i> 视频中心<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
+        <!--<dd>-->
+        <!--<ul>-->
+        <!--{volist name="languages" id="vo"}-->
+        <!--<li id="video_index_{$vo.id}"><a href="{:url('Video/index',['language_id'=>$vo.id])}" title="视频列表">视频列表({$vo.id|getLanguage})</a>
+        todo::后期需要在写-->
+        <!--</li>-->
+        <!--{/volist}-->
+        <!--</ul>-->
+        <!--</dd>-->
+        <!--</dl>-->
         {/if}
     </div>
 </aside>

@@ -9,9 +9,20 @@
 namespace app\en_us\controller;
 
 use app\common\model\About as AboutModel;
+use think\Request;
+use app\common\model\AdSpace;
 
 class About extends Base
 {
+
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $result = (new AdSpace())->getDataByCode('About');
+        if ($result['status'] == true) {
+            $this->assign('banner', $result['data']);
+        }
+    }
 
     /***
      * 前端关于我们的数据输出，美化URL，将原来的ID转换为title，

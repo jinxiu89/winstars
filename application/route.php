@@ -11,12 +11,15 @@
 
 use think\Route;
 
+
 //首页URL
 Route::rule([
     //英文网站首页
     '/' => 'en_us/Index/index',
+    '/error404'=>'en_us/Base/error404',
     'en_us/' => 'en_us/Index/index',
     'en_us/index' => 'en_us/Index/index',
+    'en_us/Job_Fair'=>'en_us/Index/Job_Fair',
     //产品详情页
     'en_us/product/:product' => 'en_us/Product/details',
     //产品分类列表页

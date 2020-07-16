@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="banner">
+        <div class="banner-title">
+            <div class="banner-title-container swiper-container">
+                <div class="swiper-wrapper">
+                    {notempty name="banner"}
+                    {volist name="banner" id="item"}
+                    <div class="swiper-slide">
+                        <a href="{$item.url}" style="display: block">
+                            <img src="{$item.small_image}" alt="{$item.title}">
+                        </a>
+                    </div>
+                    {/volist}
+                    {/notempty}
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>

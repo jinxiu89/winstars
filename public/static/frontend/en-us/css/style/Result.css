@@ -19,10 +19,6 @@ ul.ResultList > li:nth-child(4n+4){
 ul.ResultList > li > div {
     margin: 5px
 }
-
-/*ul.ResultList > li > div > .cont > h2 > a:hover {*/
-    /*color: #3b6caa;*/
-/*}*/
 ul.ResultList > li > div > .cont > .btn > a {
     padding: 4px 10px
 }
@@ -33,7 +29,7 @@ ul.ResultList > li > div > i {
 }
 @media screen and (min-width: 768px){
     ul.ResultList > li > div > .cont > h2 > a {
-        font-size: 13px
+        font-size: 14px
     }
 }
 @media screen and (min-width: 1200px){

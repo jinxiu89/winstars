@@ -15,7 +15,7 @@ div.tab-bar .tab-bar-title {
     -webkit-align-items: center;
     -moz-align-items: center;
     -ms-align-items: center;
-    -o-align-items: center
+    -o-align-items: center;
 }
 div.tab-bar .tab-bar-title p {
     flex: 1;
@@ -27,24 +27,26 @@ div.tab-bar .tab-bar-title p {
     /*white-space: nowrap;*/
     /*overflow: hidden;*/
     /*text-overflow: ellipsis;*/
-    font-size: 0.48rem
+    font-size: 16px;
 }
 div.tab-bar .tab-bar-title i {
     display: inline-block;
     width: 20px;
-    margin-left: 0.4rem;
+    margin-left: .4rem;
     transition: .5s;
-    font-size: 0.48rem
+    font-size: .48rem;
 }
 div.tab-bar ul {
     display: none;
-    /*background-color: #fff*/
+    margin-bottom: .4rem;
+    background-color: #fff
 }
 div.tab-bar ul li {
     /*height: 42px;*/
     line-height: 50px;
     width: 100%;
-    padding: 0 0.4rem
+    padding: 0 .4rem;
+    border-bottom: 1px solid #eaeaea;
 }
 div.tab-bar ul li a {
     color: #333
@@ -53,10 +55,49 @@ div.content {
     margin-bottom: 20px;
 }
 div.content > div {
-    padding: 20px;
     display: none;
-    background-color: #fff
 }
-.bgColor {
-    background-color: #f2f2f2
+div.g-item-detail {
+    margin-bottom: .4rem;
+    padding: .4rem;
+}
+div.g-item-detail dl:nth-of-type(1) dd a {
+    color: #333;
+}
+div#faqs th {
+    font-size: 14px;
+}
+div#faqs td {
+    font-size: 12px;
+}
+div#faqs td a {
+    color: #333;
+}
+.currentActive {
+    color: #3b6caa;
+}
+
+.specifications-container > div > div {
+    border-bottom: 1px solid #eaeaea;
+}
+.specifications-container > div > div > p:nth-last-of-type(1) {
+    margin-bottom: 14px;
+}
+.editormd-html-preview {
+    padding: .4rem;
+}
+.editormd-html-preview li {
+    margin-bottom: 2px;
+    text-indent: -9px;
+    margin-left: 9px
+}
+
+.markdown-body h4 {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: normal;
+}
+.markdown-body p {
+    margin-bottom: 4px;
+    font-size: 14px;
 }

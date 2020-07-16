@@ -1,35 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wavlink</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="__EN__/css/common/bootstrap.min.css">
-    <link rel="stylesheet" href="__EN__/css/common/404-3.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="author" content="wavlink">
+    <title>404</title>
+    <link rel="stylesheet" href="/static/frontend/en-us/css/Common-style/Common-style.css">
+    <link rel="stylesheet" href="/static/lib/iconfont/iconfont.css">
+    <style>
+        div.Error {
+            min-height: 600px;
+            height: 100%;
+            background-color: #f2f2f2
+        }
+        div.Error .main {
+            padding: 8% 20px 0
+        }
+        div.Error .main .may {
+            margin: 20px 0
+        }
+        div.Error .main h3 {
+            font-size: 42px
+        }
+        div.Error .main .may h4 {
+            font-size: 20px
+        }
+        div.Error .main .may p {
+            line-height: 1.54;
+            color: #888
+        }
+        div.Error .main .link a {
+            padding: 4px 2% 4px 0;
+            color: #EA881B
+        }
+        @media screen and (min-width: 768px){
+            div.Error .main {
+                width: 80%;
+                margin-left: 10%;
+                text-align: center
+            }
+            div.Error .main .link a {
+                display: inline-block;
+            }
+            div.Error .main .link a:hover {
+                text-decoration: underline;
+            }
+        }
+    </style>
 </head>
 <body>
-<section>
-    <div class="imgs"><img src="__EN__/img/base/404.jpg"></div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Sorry, the page you are browsing is on maintain</h2>
+<!-- Home 页眉 -->
+<section class="header">
+    <div class="tc bgWhite relative" style="z-index: 11; padding: 8px 20px; background-color: #f2f2f2">
+        <p class="fOrange">Winstars is in transition. Updates coming soon. Please contact our salesmen for more
+            information.</p>
+    </div>
+    <div class="w-home-box bgWhite relative">
+        <div class="w-home-cont DisplayFlex">
+            <!-- Home 网站LOGO -->
+            <div class="w-home-nav-logo tl ml20 w20">
+                <a href="/en_us/" class="dInlineBlack">
+                    <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=5754ljwY-Ya8RCOCQLGFIz_jG64TU_f3nqWGRY7YZWvX62_VEQd5n8Nj0jzzbrWxi7hNNEot4bdqJnAYErgsLbGDFoGlc2VE2L88h13DOf7vnfxkif2RfQXHGGiyBuLEf7sG3C5AT9860232bLsInA&file_name=/w-head-logo.png"
+                         alt="" style="width:150px;padding-top:8px">
+                </a>
+            </div>
+            <!-- Home 产品列表 -->
+            <ul id="nav-container" class="DisplayFlex flex_1 w-home-nav-list clear tc">
+                <li>
+                    <a class="link product">
+                        PRODUCT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center align-items_flex_start">
+                            {notempty name="tree"}
+                            {volist name="tree" id="item"}
+                            <dl class="tl pl20">
+                                <dt>
+                                    <a class="fontThemeColor" href="/en_us/category/{$item.url_title}.html">
+                                        <h4 class="font_color_title">
+                                            {$item.name}
+                                        </h4>
+                                    </a>
+                                </dt>
+                                {notempty name="item.child"}
+                                {volist name="item.child" id="vo"}
+                                <dd>
+                                    <a href="/en_us/category/{$vo.url_title}.html">{$vo.name}</a>
+                                </dd>
+                                {/volist}
+                                {/notempty}
 
-        <span class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></span>
-        <p class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            We are in urgent processing, please visit later.Sorry for the inconvenience caused to you during this period. If you have any good suggestions or comments, please contact us by the following way:</p>
-        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><span class="glyphicon glyphicon-envelope"></span> Mail：<a href="#">Contact@wavlink.com</a></p>
-
-        <span class="col-lg-3 col-md-2 col-sm-2 col-xs-0"></span>
-        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
-            <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">You can access the following connection <span class="a-bounceinT glyphicon glyphicon-hand-down"></span></p>
-            <ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/en_us/index.html" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ech-fade-c-in">Home</a></li>
-                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/en_us/category/wireless.html" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ech-fade-c-in">Product List</a></li>
-                <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/en_us/Drivers.html" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ech-fade-c-in">Drivers</a></li>
+                            </dl>
+                            {/volist}
+                            {else /}
+                            {/notempty}
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="link support">
+                        SUPPORT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center">
+                            <div>
+                                <a class="pt-pb-6" href="/en_us/support/manual.html">Manuals</a>
+                                <a class="pt-pb-6" href="/en_us/support/driver.html">Drives</a>
+                                <a class="pt-pb-6" href="/en_us/support/faq.html">F.A.Q</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="link about">
+                        ABOUT
+                        <i class="iconfont icon-arrowdown"></i>
+                    </a>
+                    <div class="hammer_screen bgWhite borderThemeColor w100 absolute">
+                        <div class="DisplayFlex justify-content_flex-center">
+                            <div>
+                                <a class="pt-pb-6" href="/en_us/about/Company_Overview.html">Company</a>
+                                <a class="pt-pb-6" href="/en_us/about/content_us.html">Contact Us</a>
+                                <a class="pt-pb-6" href="/en_us/about/milestone.html">Milestone</a>
+                                <a class="pt-pb-6" href="/en_us/about/Privacy.html">Privacy</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
+            <!-- Home 图标按钮 -->
+            <div class="w-home-nav-search  tr h5">
+                <a href="#" class="search dInlineBlack">
+                    <i class="iconfont" style="font-size: 24px"></i>
+                </a>
+            </div>
+        </div>
+
+        {block name="search"}
+        <!-- Home 搜索框 -->
+        <div class="w-home-form-search-box absolute w100 dNone" style="top: 100%; left: 0">
+            <div class="w-home-form-search-cont clear w50 oh">
+                <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
+                    <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"
+                           placeholder="Please enter your product name">
+                    <input class="fl cursorP w20 complexThemeColor fWhite b bcWhite" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        {/block}
+    </div>
+</section>
+<!-- 页面404报错页面 -->
+<section>
+    <div class="Error DisplayFlex">
+        <div class="main">
+            <h3>404 Oops! Page not found</h3>
+            <p style="font-size: 22px; margin-top: 10px">We are sorry, but the page you are looking for does not exist.</p>
+            <div class="may">
+                <h4 style="margin-bottom: 5px">The reason is:</h4>
+                <p>URL has error</p>
+                <p>Please check if the address is complete or there are extra characters; the URL is invalid</p>
+                <p>Maybe the page has been deleted, the event has been offline, etc.</p>
+            </div>
+            <div class="link clear">
+                <a href="/en_us/">Back to Home</a>
+                <a href="/en_us/about.html">About</a>
+                <a href="/en_us/category.html">Product list</a>
+                <a href="/en_us/support.html">Driver Download</a>
+            </div>
         </div>
     </div>
 </section>
+<!-- Home 页脚 -->
+<section>
+    <div class="w-home-footer-box">
+        <div class="" style="padding:20px 0; background: #333;">
+            <div class="w-home-footer-cont mb50 DisplayFlex justify-content_flex-center">
+                <dl>
+                    <dt class="fWhite pb2 f12">WHO WE ARE?</dt>
+                    <dd><a href="/en_us/about/Company_Overview.html">Company</a></dd>
+                    <dd><a href="/en_us/about/content_us.html">Contact Us</a></dd>
+                    <dd><a href="/en_us/about/milestone.html">Milestone</a></dd>
+                    <dd><a href="/en_us/about/Privacy.html">Privacy</a></dd>
+                    <!--<dd><a href="/en_us/about/join_us.html">Join Us</a></dd>-->
+                </dl>
+                <dl>
+                    <dt class="fWhite pb2 f12">NEED HELP?</dt>
+                    <dd><a href="/en_us/support/driver.html">Manuals</a></dd>
+                    <dd><a href="/en_us/support/driver.html">Drivers</a></dd>
+                    <dd><a href="/en_us/support/driver.html">F.A.Q</a></dd>
+                    <!--<dd><a href="#"></a></dd>-->
+                </dl>
+            </div>
+        </div>
+        <div class="put-on-records tc complexThemeColor" style="padding: 8px 0;font-size: 11px;color: #EEE;">
+            <p>©1997 -
+                <script>var nowYear = new Date().getFullYear();
+                document.write(nowYear)</script>
+                Winstars Technology Ltd. All Rights Reserved.
+            </p>
+            <span>
+                <a href="/" class="fWhite cursorP" style="display: inline">Powered by Winstars</a>
+            </span>
+        </div>
+    </div>
+</section>
+<script src="/static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script src="/static/frontend/en-us/js/Common-style/Common-style.js"></script>
+<script>
+    var hammer_screen_btn = $("#nav-container > li"); // 垂幕按钮
+    var hammer_screen = $("#nav-container > li > div.hammer_screen"); // 垂幕
+    var SearchBar = $(".w-home-form-search-box"); // 搜索框
+    var mask = $(".mask_layer"); // 遮罩层
+
+    hammer_screen_btn.click(function (e) {
+        window.event ? window.event.cancelBubble = true : e.stopPropagation();
+        SearchBar.slideUp();
+        mask.fadeIn();
+        $(this).find("> a").addClass("complexThemeColor");
+        $(this).siblings().find("> a").removeClass("complexThemeColor");
+
+        $(this).find(".hammer_screen").stop(false, true).animate({
+            opacity: 1,
+            "z-index": 100
+        }, 150).slideDown();
+        $(this).siblings().find(".hammer_screen").stop(false, true).animate({
+            opacity: 0,
+            "z-index": 0
+        }, 150).slideUp()
+    });
+
+    $(document).click(function () {
+        mask.fadeOut();
+        hammer_screen.slideUp();
+    })
+</script>
 </body>
 </html>

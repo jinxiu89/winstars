@@ -15,22 +15,29 @@ use app\wavlink\validate\Category as CategoryValidate;
 Class Category extends BaseAdmin
 {
 
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $this->language_id = $this->current_language['id'];
+    }
+
     public function index()
     {
         $parentId = input('get.parent_id', '0', 'intval');
-        $language_id = input('get.language_id', '', 'intval');
-        $result = (new CategoryModel())->getCategory($parentId, $language_id);
+        $result = (new CategoryModel())->getCategory($parentId, $this->language_id);
         return $this->fetch('', [
             'category' => $result['data'],
             'counts' => $result['count'],
-            'language_id' => $language_id
         ]);
     }
 
+    /***
+     * @return mixed|string
+     * @throws \think\exception\DbException
+     * 添加功能，语言被this->current_language代替
+     */
     public function add()
     {
-        //获取语言
-        $language_id = $this->MustBePositiveInteger(input('get.language_id'));
         if (input('get.parent_id')) {
             //如有存在parent_id ,就是添加子分类
             $category_id = input('get.parent_id');
@@ -44,9 +51,7 @@ Class Category extends BaseAdmin
             //添加一级分类
             $this->assign('parent_id', 0);
         }
-        return $this->fetch('', [
-            'language_id' => $language_id,
-        ]);
+        return $this->fetch('', ['language_id' => $this->language_id]);
     }
 
     public function save()
@@ -82,19 +87,17 @@ Class Category extends BaseAdmin
     /**
      * 编辑分类页面
      * @param int $id
-     * @param $language_id
      * @return array|mixed
      * @throws \think\exception\DbException
      */
-    public function edit($id, $language_id)
+    public function edit($id)
     {
         $id = $this->MustBePositiveInteger($id);
-        $language_id = $this->MustBePositiveInteger($language_id);
         $category = CategoryModel::get($id);
         if ($category['parent_id'] > 0) {
             $cate = CategoryModel::all([
                 'status' => 1,
-                'language_id' => $language_id
+                'language_id' => $this->language_id
             ]);
             $this->assign('cate', $cate);
         } else {
@@ -102,7 +105,7 @@ Class Category extends BaseAdmin
         }
         return $this->fetch('', [
             'category' => $category,
-            'language_id' => $language_id
+            'language_id' => $this->language_id
         ]);
     }
 

@@ -11,6 +11,7 @@ a, img {
 ul.expmenu li div.header {
     padding: 12px;
     border-bottom: 1px #fff solid;
+    margin-bottom:1px
 }
 
 ul.expmenu li:last-child div.header {

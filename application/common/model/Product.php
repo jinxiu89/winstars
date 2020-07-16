@@ -153,12 +153,13 @@ Class Product extends BaseModel
      * @param $url_title
      * @return array
      * 说明：with方法预加载解决N+1性能问题
+     * []里的预加载可以是一位数组传进去，可以多级关联，用“.”连接起来，例如：drivers.downloads
      *
      */
     public function getDetailByUrlTitle($url_title)
     {
-        try {//"drivers,documents,faqs""drivers,documents,faqs"
-            $result = $this->with(['drivers.downloads','documents.downloads','faqs'])->where(['url_title' => $url_title])->find();
+        try {
+            $result = $this->with(['drivers.downloads', 'documents.downloads', 'faqs'])->where(['url_title' => $url_title])->find();
             return ['status' => 1, 'message' => 'ok', 'data' => $result];
         } catch (Exception $exception) {
             return ['status' => 0, 'message' => $exception->getMessage(), 'data' => ''];

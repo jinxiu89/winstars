@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <meta name="author" content="wavlink">
+    <meta name="author" content="winstars">
     {block name="title"}
     <title>Base - by winstars</title>
     {/block}
@@ -26,6 +26,16 @@
             bottom: 320px;
             right: 6px;
         }
+        .tips{
+            font-size: 20px;
+        }
+        .tips a{
+            display: inline;
+            color: #3b6caa;
+        }
+        .tips a:hover{
+            text-decoration:underline
+        }
     </style>
     {block name="style"}
 
@@ -34,18 +44,18 @@
 <body>
 {block name="navbar"}
 <!-- Home 页眉 -->
+
 <section class="header">
     <div class="tc bgWhite relative" style="z-index: 11; padding: 8px 20px; background-color: #f2f2f2">
-        <p class="fOrange">Winstars is in transition. Updates coming soon. Please contact our salesmen for more
-            information.</p>
+        <p class="tips">Download Winstars Catalogue 2019Q4 <a href="//files.win-star.com/category/2019Q4.pdf" target="_blank">Pdf</a> or <a href="//files.win-star.com/category/2019Q4.zip">Zip</a>(for 2019 HK Consumer Electronics Exhibition)</p>
     </div>
     <div class="w-home-box bgWhite relative">
-        <div class="w-home-cont DisplayFlex">
+        <div class="w-home-cont DisplayFlex align-items_center">
             <!-- Home 网站LOGO -->
-            <div class="w-home-nav-logo tl w20 ml20">
-                <a href="/en_us/" class="dInlineBlack" style="padding-top: 8px">
-                    <img src="https://cloud.win-star.com/index.php?user/publicLink&fid=5754ljwY-Ya8RCOCQLGFIz_jG64TU_f3nqWGRY7YZWvX62_VEQd5n8Nj0jzzbrWxi7hNNEot4bdqJnAYErgsLbGDFoGlc2VE2L88h13DOf7vnfxkif2RfQXHGGiyBuLEf7sG3C5AT9860232bLsInA&file_name=/w-head-logo.png"
-                         alt="">
+            <div class="w-home-nav-logo tl ml20 w20">
+                <a href="/en_us/" class="dInlineBlack">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22150%22%20height%3D%2245%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20150%2045%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16e1fbc99a4%20text%20%7B%20fill%3A%23b6b6b6%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16e1fbc99a4%22%3E%3Crect%20width%3D%22150%22%20height%3D%2245%22%20fill%3D%22%23fff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2260.9375%22%20y%3D%2227%22%3Elogo%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-src="//files.win-star.com/images/2019/10/31/logo02.svg"
+                         class="lazy" alt="" style="width:150px;padding:8px 0;transform: scale(1.1)">
                 </a>
             </div>
             <!-- Home 产品列表 -->
@@ -113,6 +123,9 @@
                         </div>
                     </div>
                 </li>
+                <!--<li>
+                    <a href="{:url('/'.$code.'/Job_Fair')}" class="link fontThemeColor">JOIN US</a>
+                </li>-->
             </ul>
             <!-- Home 图标按钮 -->
             <div class="w-home-nav-search  tr h5">
@@ -129,7 +142,7 @@
                 <form action="{:url('/'.$code.'/search/product')}" method="get" class="clear mt5 mb5">
                     <input class="fl cursorP w80 pr15 pl15 b bcWhite" type="text" name="key"
                            placeholder="Please enter your product name">
-                    <input class="fl cursorP w20 complexThemeColor fWhite b bcWhite" type="submit" value="search">
+                    <input class="fl cursorP w20 complexThemeColor fWhite b bcWhite" type="submit" value="Search">
                 </form>
             </div>
         </div>
@@ -137,8 +150,12 @@
     </div>
 </section>
 {/block}
-{block name="body"}
+{block name="banner"}
+<section>
 
+</section>
+{/block}
+{block name="body"}
 {/block}
 <!-- Home 页脚 -->
 <section>
@@ -180,11 +197,14 @@
 </section>
 <script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 <script src="__STATIC__/lib/jquery/jquery-3.2.1.min.js"></script>
+
 <script src="__STATIC__/frontend/en-us/js/Common-style/Common-style.js"></script>
 <!--//Swiper-->
 <script src="__STATIC__/frontend/lib/Swiper/js/swiper.min.js"></script>
 <!--//liveChat-->
 <script src="__STATIC__/lib/chat/callus.js"></script>
+<!--//弹窗-->
+<!--<script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>-->
 <!--//lazy-->
 <script src="__STATIC__/frontend/lib/lazyload/jquery.lazyload.js"></script>
 <script>
@@ -216,7 +236,7 @@
     $(document).click(function () {
         mask.fadeOut();
         hammer_screen.slideUp();
-    })
+    });
 </script>
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -254,5 +274,6 @@
          window-title="Let's chat"
          authentication="both">
 </call-us>
+{$seo.analysis_code}
 </body>
 </html>

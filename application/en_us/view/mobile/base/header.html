@@ -1,43 +1,68 @@
 <header>
-    <div class="container">
-        <div class="row icon-box">
-            <div class="icon-menus" id="icon-menus"><i class="iconfont">&#xe7f4;</i></div>
-
+    <div class="g-nav">
+        <div class="nav-bar">
+            <div class="menu-bar">
+                <a class="toggle">
+                    <span></span>
+                </a>
+            </div>
             <div class="logo">
-                <h1><a href="http://www.win-star.com"><img src="{$fileHost}/images/2019/06/29/winstars_logo.png" alt=""></a></h1>
+                <h1><a href="/"><img src="//files.win-star.com/images/2019/10/31/logo02.svg" alt=""></a>
+                </h1>
             </div>
-
-            <!--<div class="icon-link"><a href="#"><i class="iconfont">&#xeba5;</i></a></div>-->
+            <!--<div class="search-bar">
+                <span class="iconfont icon-search"></span>
+            </div>-->
         </div>
+        <div class="wrapper cf">
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li>
+                        <a>PRODUCT</a>
+                        <ul>
+                            {notempty name="tree"}
+                            {volist name="tree" id="vo"}
+                            <li>
+                                <a href="#">{$vo.name}</a>
+                                <ul>
+                                    {notempty name="vo.child"}
+                                    {volist name="vo.child" id="child"}
+                                    <li><a href="/en_us/category/{$child.url_title}.html">{$child.name}</a></li>
+                                    {/volist}
+                                    {/notempty}
+                                </ul>
+                            </li>
+                            {/volist}
+                            {/notempty}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">SUPPORT</a>
+                        <ul>
+                            <li><a href="/en_us/support/manual.html">Manuals</a></li>
+                            <li><a href="/en_us/support/driver.html">Drivers</a></li>
+                            <li><a href="/en_us/support/faq.html">F.A.Q</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ABOUT</a>
+                        <ul>
+                            <li><a href="/en_us/about/Company_Overview.html">Company</a></li>
+                            <li><a href="/en_us/about/content_us.html">Contact Us</a></li>
+                            <li><a href="/en_us/about/milestone.html">Milestone</a></li>
+                            <li><a href="/en_us/about/Privacy.html">Privacy</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-        <div class="row search-box">
-            <form action="{:url('/'.$code.'/search/product')}" method="get">
-                <input type="text" placeholder="Search for products" name="key" value="{notempty name='key'}{$key}{/notempty}">
-                <button><i class="iconfont">&#xe68d;</i></button>
+            </nav>
+        </div>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Please enter the product model to search">
+                <input type="submit" value="GO">
             </form>
-        </div>
-
-        <div class="menu-box" id="menu-box">
-
-            <div class="menu-pane">
-                <div class="menu-title">
-                    <h2>WINSTARS</h2>
-                </div>
-                <div class="menu-item">
-                    <ul>
-                        <li><a href="/en_us/"><i class="iconfont">&#xe623;</i> <span>HOME</span></a></li>
-                        <li><a href="/en_us/about.html"><i class="iconfont">&#xe693;</i> <span>ABOUT</span></a></li>
-                        <li><a href="/en_us/category.html"><i class="iconfont">&#xe62f;</i> <span>PRODUCT</span></a></li>
-                        <li><a href="/en_us/support.html"><i class="iconfont">&#xe825;</i> <span>SUPPORT</span></a></li>
-                        <!--<li><a href="#"><i class="iconfont">&#xe632;</i> <span>BLOG</span></a></li>-->
-                        <!--<li><a href="#"><i class="iconfont">&#xe62a;</i> <span>F.A.Q</span></a></li>-->
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="menu-pane-close"></div>
-
         </div>
     </div>
 </header>

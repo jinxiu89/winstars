@@ -41,7 +41,7 @@
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>副标题/描述：</label>
         <div class="formControls col-xs-8 col-sm-4">
-                <textarea name="description" cols="" rows="" class="textarea max255" placeholder="说点什么...100个字符以内"
+                <textarea name="description" cols="" rows="" class="textarea max100" placeholder="说点什么...100个字符以内"
                           dragonfly="true"></textarea>
         </div>
     </div>
@@ -52,6 +52,13 @@
             <div id="features">
                 <textarea name='features' style="display:none;"></textarea>
             </div>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-1"><span class="c-red">*</span>列表图：</label>
+        <div class="formControls col-xs-8 col-sm-6">
+            <input type="text" class="input-text" value="" placeholder="列表封面" id="thumbnail"
+                   name="thumbnail">
         </div>
     </div>
     <div class="row cl">
@@ -188,6 +195,10 @@
                     this.sync();
                 }
             })
+        });
+        $(".max100").Huitextarealength({
+            minlength: 10,
+            maxlength: 355
         });
     });
 </script>

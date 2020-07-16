@@ -1,0 +1,36 @@
+@import "../public_class/mixins";
+@import "../public_class/variables";
+
+.faq-detail {
+  padding: @publicInterval;
+  background: @whiteColor;
+  .title {
+    margin-bottom: @publicInterval;
+    padding-bottom: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid @borderColor;
+    h2{
+      margin-bottom: 10px;
+      line-height: 20px;
+    }
+  }
+
+  .related h3 {
+    padding:8px 0;
+    border-bottom: 1px solid #bbb;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .related ul {
+    padding-left: 20px;
+  }
+  .related ul li {
+    list-style-type: circle;
+  }
+  .related ul li a {
+    line-height: 20px;
+    color: @darkColor;
+    font-size: 14px;
+  }
+}
+

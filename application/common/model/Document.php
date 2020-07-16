@@ -126,10 +126,12 @@ Class Document extends BaseModel
     public function getDataByLanguageId($language_id)
     {
         try {
-            $query = self::with('downloads')->with('products')->where(['language_id' => $language_id])->field('id,title,language_id,sorting,version,status,create_time');
             $result = [
-                'count' => $query->count(),
-                'data' => $query->order(['sorting' => 'desc', 'id' => 'asc'])->paginate()
+                'count' =>self::where('language_id','=',$language_id)->where('status','=',1)->count(),
+                'data' => self::where('language_id','=',$language_id)->where('status','=',1)
+                    ->with('downloads')->with('products')
+                    ->field('id,url_title,title,language_id,sorting,version,status,create_time')
+                    ->order(['sorting' => 'desc', 'id' => 'asc'])->paginate()
             ];
             return ['status' => 1, 'message' => 'ok', 'data' => $result];
         } catch (Exception $exception) {

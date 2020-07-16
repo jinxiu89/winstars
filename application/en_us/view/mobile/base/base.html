@@ -10,9 +10,13 @@
     <!-- 淘宝手机APP rem适配文件 -->
     <script src="__STATIC__/frontend/lib/Flexible/Flexible.js"></script>
     <!-- header/footer样式 -->
+    <link rel="stylesheet" href="__STATIC__/frontend/lib/Bootstrap/bootstrap-3.3.7.min.css">
+    <link rel="stylesheet" href="__STATIC__/frontend/lib/Swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="__STATIC__/frontend/lib/hc-offcanvas/hc-mobile-nav.css">
+    <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
     <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/components/public.css">
     {block name="style"}
-    <link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/home.css">
+
     {/block}
 </head>
 <body>
@@ -32,7 +36,32 @@
 {/block}
 </body>
 <script src="__STATIC__/frontend/lib/JQuery/JQuery-3.4.0.js"></script>
+<script src="__STATIC__/frontend/lib/Swiper/js/swiper.min.js"></script>
+<script src="__STATIC__/frontend/lib/hc-offcanvas/hc-mobile-nav.js"></script>
 <script src="__STATIC__/frontend/mobile/js/components/public.js"></script>
+<script>
+    window.onload = function () {
+        var mySwiper = new Swiper('.banner-title-container', {
+            loop: true, // 循环模式选项
+            autoplay: {
+                delay: 6000,//6秒切换一次
+            },
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
+
+        var bannerDes = new Swiper('.banner-des-container', {
+            loop: true, // 循环模式选项
+            autoplay: false,
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        })
+    }
+</script>
 {block name="javascript"}
 {/block}
 </html>

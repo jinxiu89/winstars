@@ -42,6 +42,7 @@ class Base extends Controller
     {
 //      获取当前模块名，由于我们的多语言网站是一个语种一个模块，所以需要获取；
         $this->code = request()->module();
+        $this->language = LanguageModel::getLanguageCodeOrID($this->code);
         $url = Request::instance()->controller();
         $this->dbError = "Database error, our webmaster is trying to fix it";
         $this->debug = config('app_debug');
@@ -50,7 +51,10 @@ class Base extends Controller
         //加载当前模块语言包
         Lang::load(APP_PATH . 'en_us/lang/lang.php');
     }
-
+    public function error404()
+    {
+        return $this->fetch($this->template . '/base/404.html');
+    }
 
     public function getTree(){
         try {

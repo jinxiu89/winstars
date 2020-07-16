@@ -118,7 +118,7 @@
         </div>
     </div>
     <div class="row cl">
-        {:token()}
+        <!--{:token()}-->
         <input type="hidden" name="id" value="{$product->id}">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
             <button class="btn btn-primary radius" type="button" onclick="save('{:url(\'product/save\')}')"><i
@@ -190,10 +190,8 @@
         });
         $(".max100").Huitextarealength({
             minlength: 10,
-            maxlength: 255
+            maxlength: 355
         });
     });
 </script>
-
- `
 {/block}

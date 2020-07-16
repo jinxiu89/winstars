@@ -48,9 +48,8 @@ class Login extends Controller
             model('Manger')->updateById(['last_login_time' => time(), 'ip' => request()->ip()], $ret->id);
             //保存登陆信息,session 助手函数,第一个参数是变量，给它取变量名'userName'。第二个参数是值，获取到的$ret的值。第三个是作用域，admin模块下登陆信息。
             session('userName', $ret, 'admin');
+            session('current_language',(new \app\common\model\Language())->getLanguageByLanguageId($data['language_id']),'admin');
             $uid = session('userName', '', 'admin')->id;
-            $language = session('userName', '', 'admin')->language_id;
-            $language_id = explode(',', $language);
             if ($uid != 1) {
                 $auth = new Auth();
                 $_access = $auth->getAuthById($uid);

@@ -8,7 +8,8 @@
 @import "../public_class/variables";
 
 .banner {
-  #img-optimize(65.11%, @bodyBackground)
+  position: relative;
+  #img-optimize(71.875%, @bodyBackground)
 }
 
 .title {
@@ -18,11 +19,10 @@
   -webkit-justify-content: center;
   position: relative;
   z-index: 1;
-  height: 50px;
-  #lineHeight(menu);
+  line-height: 40px;
   text-align: center;
   padding: 0 @publicInterval;
-  margin-bottom: @publicInterval;
+  margin-bottom: 10px;
   background: @whiteColor;
 
   .line {
@@ -32,22 +32,19 @@
     z-index: -1;
     width: 100%;
     height: 1px;
-    background: @border-color;
+    background: @borderColor;
   }
 
   h2 {
     .text-overflow();
     width: 95%;
-    height: 50px;
-    line-height: 50px;
+    line-height: 40px;
     color: @activeColor;
     background: @whiteColor;
-    #fontSize(large);
+    font-size: 14px;
   }
-
   p {
-    #fontSize(large);
-    height: 50px;
+    font-size: 14px;
     line-height: 50px;
   }
 }
@@ -58,14 +55,14 @@
   margin-bottom: @publicInterval;
 
   .product-box {
-    margin-bottom: 20px;
-    border: 1px solid @border-color;
+    margin-bottom: @publicInterval;
+    border: 1px solid @borderColor;
     &:nth-last-of-type(1) {
       margin-bottom: 0;
     }
   }
   .product-box .img-box {
-    #img-optimize(100%, @bodyBackground)
+    #img-optimize(56.25%, @bodyBackground)
   }
   .product-box a {
     color: @darkColor;
@@ -80,12 +77,12 @@
   }
   .product-box .description h3 {
     #lineHeight(large);
-    #fontSize(medium);
+    font-size: 14px;
   }
   .product-box .description p {
     margin: .266666rem 0;
     #lineHeight(large);
-    #fontSize(small);
+    font-size: 12px;
     color: @whiteSmoke;
   }
   .product-box .description p a {
@@ -94,19 +91,17 @@
   .product-box .description span {
     .fl();
     display: block;
-    height: .8rem;
-    line-height: .8rem;
+    line-height: 26px;
     color: @whiteSmoke;
-    #fontSize(small);
+    font-size: 12px;
     &:nth-last-of-type(1) {
       .fr();
       display: block;
       border: 1px solid @activeColor;
       text-align: center;
       width: 1.866666rem;
-      height: .8rem;
-      line-height: .8rem;
-      #fontSize(small);
+      height: 26px;
+      line-height: 26px;
       color: @whiteSmoke;
       #border-radius(.133333rem);
     }
@@ -116,14 +111,14 @@
     padding: @publicInterval 0;
 
     p {
-      #fontSize(medium);
+      font-size: 14px;
       line-height: 22px;
     }
   }
 
   .recommend-title h4 {
     line-height: 50px;
-    #fontSize(large);
+    font-size: 16px;
     color: @activeColor;
     text-align: center;
   }

@@ -10,14 +10,22 @@ namespace app\en_us\controller;
 
 use app\common\model\Faq as FaqModel;
 use app\common\model\Category as CategoryModel;
+use app\common\model\ServiceCategory;
 use app\common\model\Language as LanguageModel;
 use app\common\helper\Category as CategoryHelp;
+use app\common\model\AdSpace;
+use think\Request;
 
 class Faq extends Base
 {
-//    protected $beforeActionList = [
-//        'cate' => ['only', 'index,category,details']
-//    ];
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $result = (new AdSpace())->getDataByCode('About');
+        if ($result['status'] == true) {
+            $this->assign('banner', $result['data']);
+        }
+    }
 
     public function _initialize()
     {
@@ -28,19 +36,16 @@ class Faq extends Base
         $this->assign('tree', $tree);
     }
 
+    /**
+     * @return mixed
+     */
     public function index()
     {
-        $result = (new FaqModel())->getDataAll($this->language);
-        $this->assign('data', $result);
-        return $this->fetch($this->template . '/faq/index.html');
         //获取一级faq分类
-        $parent = ServiceCategoryModel::getTopCategory($this->code, 'faq');
+//        $parent = ServiceCategory::getTopCategory($this->code, 'faq');//这条是指faq这个服务分类的一些信息，如ID 图片等，后续要用可以开发出来使用
         //获取所有的faq列表
         $faq = (new FaqModel())->getFaqByCategoryID('', $this->code);
-        return $this->fetch('', [
-            'parent' => $parent,
-            'faq' => $faq['data']
-        ]);
+        return $this->fetch($this->template . '/faq/index.html',['data'=>$faq['data'],'count'=>$faq['count']]);
     }
 
     public function category($category = '')

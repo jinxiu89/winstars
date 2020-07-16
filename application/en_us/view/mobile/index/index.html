@@ -1,54 +1,82 @@
 {extend name="mobile/base/base"}
-{block name="title"}Winstars is a OEM/ODM provider{/block}
+{block name="title"}{$seo.title}{/block}
 {block name="seo"}
-<meta name="description" content="">
-<meta name="keywords" content="">
+<meta name="keywords" content="{$seo.keywords}">
+<meta name="description" content="{$seo.description}">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/frontend/mobile/css/pages/home.css">
 {/block}
 {block name="banner"}
 <div class="row">
     <div class="banner">
         <div class="banner-title">
-            <img src="{$fileHost}/images/2019/06/29/banner.jpg" alt="">
-            <div class="banner-title-des">
-                <h3>Tech-Driven Business Dedicated to Innovation</h3>
-                <p>16-Year Pursuit of Bringing Technology to Life, Shaping the Way We Live</p>
-                <!--<a href="#">Get it Now</a>-->
-                <a href="/en_us/about.html">Learn More</a>
+            <div class="banner-title-container swiper-container">
+                <div class="swiper-wrapper">
+                    {notempty name="banner"}
+                    {volist name="banner" id="item"}
+                    <div class="swiper-slide">
+                        <a href="{$item.url}" style="display: block">
+                            <img src="{$item.small_image}" alt="{$item.title}">
+                        </a>
+                    </div>
+                    {/volist}
+                    {/notempty}
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
 
-        <div class="banner-des">
-            <div>
-                <span><i class="iconfont">&#xe605;</i></span>
-                <a href="#">
-                    <h3>TECH­NOL­OGY STRAT­EGY</h3>
-                    <p>
-                        10 years ago, based on USB2.0, we es­tab­lished a col­lec­tion of pe­riph­eral
-                        prod­ucts and de­vel­oped tech-​driven strat­egy for the en­ter­prise.
-                    </p>
-                </a>
+        <div class="banner-des-container swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="banner-des">
+                        <div>
+                            <span><i class="iconfont">&#xe605;</i></span>
+                            <div>
+                                <h3>TECH­NOL­OGY STRAT­EGY</h3>
+                                <p>
+                                    10 years ago, based on USB2.0, we es­tab­lished a col­lec­tion of pe­riph­eral prod­ucts and
+                                    de­vel­oped tech-​driven strat­egy for the en­ter­prise.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="banner-des">
+                        <div>
+                            <span><i class="iconfont">&#xe606;</i></span>
+                            <div>
+                                <h3>PURPOSE-​BUILT FAC­TORY</h3>
+                                <p>
+                                    Self-​built mold man­u­fac­tur­ing and pro­duc­tion lines, ex­pand­ing busi­ness from more
+                                    as­pects re­ly­ing on well-​equipped fac­tory.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="banner-des">
+                        <div>
+                            <span><i class="iconfont">&#xe607;</i></span>
+                            <div>
+                                <h3>TECH­NI­CAL IN­NO­VA­TION</h3>
+                                <p>
+                                    Es­tab­lished in­de­pen­dent R&D cen­ter for tech­ni­cal sup­port and pro­vide cus­tomers with
+                                    bet­ter prod­ucts and ser­vices.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <span><i class="iconfont">&#xe606;</i></span>
-                <a href="#">
-                    <h3>PURPOSE-​BUILT FAC­TORY</h3>
-                    <p>
-                        Self-​built mold man­u­fac­tur­ing and pro­duc­tion lines, ex­pand­ing busi­ness
-                        from more as­pects re­ly­ing on well-​equipped fac­tory.
-                    </p>
-                </a>
-            </div>
-            <div>
-                <span><i class="iconfont">&#xe607;</i></span>
-                <a href="#">
-                    <h3>TECH­NI­CAL IN­NO­VA­TION </h3>
-                    <p>
-                        Es­tab­lished in­de­pen­dent R&D cen­ter for tech­ni­cal sup­port and
-                        pro­vide cus­tomers with bet­ter prod­ucts and ser­vices.
-                    </p>
-                </a>
-            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
         </div>
+
     </div>
 </div>
 {/block}
@@ -56,195 +84,42 @@
 <div class="row">
     <div class="company">
         <div class="title">
-            <h3>YOU'VE GOT THE WILL, WE'VE GOT THE WAY</h3>
+            <h3>YOU HAVE GOT THE WILL, WE HAVE GOT THE WAY</h3>
             <p>
                 Winstars is a highly competitive Tech-Driven company in R&D and manufacturing of PC peripherals,
-                wireless products, and smart home IOT devices. We streamline process for fast time to market,
-                control costs, and guarantee product quality by keeping every production step in house.
+                wireless products, and smart home IOT devices.
+                We streamline process for fast time to market, control costs, and guarantee product quality by keeping
+                every production step in house.
             </p>
         </div>
-
-        <div class="description">
-            <img src="{$fileHost}/images/2019/06/29/product_design.jpg" alt="">
-            <div>
-                <ul>
-                    <li>
-                        <h3>R&D CAPACITY</h3>
-                        <p>
-                            Experienced and highly responsible personnel for raw material, production and
-                            inspection
-                            ensure high product quality. As a National High-Tech Company, we have a
-                            self-motivated R&D
-                            team with over 120 engineers and more than 20 years of experience.
-                        </p>
-                        <p>
-                            <span>- Independent R&D Building</span>
-                            <span>- International R&D Team</span>
-                        </p>
-                    </li>
-                    <li>
-                        <details>
-                            <summary>Learn more</summary>
-                            <h3>QUALIFICATIONS</h3>
-                            <p>
-                                With 11-year Golden Supplier and good industry reputation, you’re promised with
-                                impeccable creditability and confidence.
-                            </p>
-                            <p>
-                                Government Fully-Funded Projects:
-                                <span>- High-Speed Exchangeable WiFi Network</span>
-                            </p>
-                            <p>
-                                Global Patents:
-                                <span>- 5 Patents for Invention, 5 Patents for Utility</span>
-                                <span>- 16 Software Copyrights, 27 Patents for Design</span>
-                            </p>
-                            <p>
-                                Global Certificates:
-                                <span>- Hundreds of Global Certificates in CE / FCC / MIC / RCM / ROHS / CB, etc.</span>
-                            </p>
-                        </details>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="description">
-            <img src="{$fileHost}/images/2019/06/29/smt.jpg" alt="">
-            <div>
-                <ul>
-                    <li>
-                        <h3>FACTORY</h3>
-                        <p>
-                            Our plant covers 16,000 sq. m. with separate SMT lines. We keep every step in house,
-                            tooling, SMT, assembly, and packaging.
-                        </p>
-                        <p>
-                            Production-Related Dept:
-                            <span>- Tooling House, SMT, DIP, Assembly, Packaging</span>
-                            <span>- Quality, Warehouse, Shipping</span>
-                        </p>
-                    </li>
-                    <li>
-                        <details>
-                            <summary>Learn more</summary>
-                            <h3>PRODUCTION</h3>
-                            <p>
-                                In accordance with the ISO standard production process, we keep a strict control on
-                                quality and ensure that consumers are provided with high-quality products.
-                            </p>
-                            <p>
-                                <span>- Three Separate SMT Lines for PCBA</span>
-                                <span>- Process 250,000 PCBA per Month</span>
-                                <span>- Full Testing for PCBA and Finished Products</span>
-                                <span>- In-House Lab Testing for R&D, NPI and Mass Production</span>
-                            </p>
-                        </details>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="hot">
-        <div class="title">
-            <span class="line"></span>
-            <h3>HOT SALE</h3>
-        </div>
-        {notempty name="hotSale"}
-        {volist name="hotSale" id="vo"}
-        <div class="product-box">
-            <a class="img-box" href="/en_us/product/{$vo.url_title}">
-                <img src="{$vo.album}" alt="">
-            </a>
-            <h3>
-                <a href="/en_us/category/{$vo.categorys['url_title']}.html">BELONG TO {$vo.categorys['name']}</a>
-            </h3>
-            <div class="description">
-                <p>{$vo.name}</p>
-                <div class="detail">
-                    <span><a href="/en_us/product/{$vo.url_title}">{$vo.model}</a></span>
-                    <span><a href="/en_us/product/{$vo.url_title}">Detail</a></span>
-                </div>
-            </div>
-        </div>
-        {/volist}
-        {/notempty}
-    </div>
-</div>
+{/block}
+{block name="javascript"}
+<script type="text/javascript" src="__STATIC__/admin/lib/layer/2.4/layer.js"></script>
+<script>
+    /*$(document).ready(function () {
+        layer.open({
+            type:1,
+            content:'<div id="layer" style="padding: 50px; line-height: 22px; background-color: #0099ff; color: #f1f9ff; font-weight: 300;">' +
+                '<span style="font-size: 22px">校园招聘 海大站</span><br><span style="font-size: 22px">Job Fair (2019) in GDOU</span><br><br>' +
+                '<span style="font-size: 18px">来加入一家快速成长中的品牌科技公司</span><br>' +
+                '<span style="font-size: 18px">We want you！</span>' +
+                '</div>',
+            title:false,
+            closeBtn: true,
+            // area: '500px',
+            shade: 0.3,
+            resize: false,
+            moveType: 1, //拖拽模式，0或者1
+            btn:['Check Now'],
+            yes:function () {
+                location.href="{:url('/en_us/Job_Fair')}";
+            },
 
-<div class="row">
-    <div class="new">
-        <a href="#">
-            <!--<img src="{$fileHost}/images/2019/06/29/newRelease.jpg" alt="">-->
-            <img src="https://cloud.wavlink.com/index.php?user/publicLink&fid=94c5VhwlQjO6wkP7QMCdbkCI4q2xpirc0DPRZBalDfcN4cjabDTrMZI6oLMzeMqKDxbA7H11kz1xw152FvbPlDaQPSY3W7zfLiK8V5rakjlUnJPLczMCUtC64nrhSCe4YSeBfEBGURswdmEVZalSqnkfW8ZJNC9Wq9C27HBP0p7CKKk&file_name=/title_m.jpg" alt="">
-        </a>
-    </div>
-</div>
-
-<div class="row">
-    <div class="cooperation">
-        <div class="description">
-            <h3>COOPERATION</h3>
-            <p>Cooperation means the geometric superposition of wealth.</p>
-        </div>
-        <!--<div class="icon-box">
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_1.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_2.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_3.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_1.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_2.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_3.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_1.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_2.png" alt="">
-            </div>
-            <div>
-                <img src="{$fileHost}/images/2019/06/29/ICON_3.png" alt="">
-            </div>
-        </div>-->
-    </div>
-</div>
-
-<!--<div class="row">-->
-    <!--<div class="send-email">-->
-        <!--<div class="description">-->
-            <!--<h3>LEAVE A MESSAGE</h3>-->
-            <!--<p>-->
-                <!--Please leave us a message if you have any questions regarding product,-->
-                <!--technical support or suggestions on our products or website.-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<form action="">-->
-            <!--<input type="text" placeholder="Name">-->
-            <!--<input type="text" placeholder="E-mail">-->
-            <!--<input type="text" placeholder="Country/Region">-->
-            <!--<textarea id="" cols="30" rows="10" placeholder="Description"></textarea>-->
-            <!--<span>-->
-                    <!--* I understand by pressing SUBMIT my information will be used as described here-->
-                    <!--and in the Privacy Policy and I agree to the Terms.-->
-                <!--</span>-->
-            <!--<div class="button">-->
-                <!--<input type="submit" value="SUBMIT">-->
-                <!--<input type="reset" value="RESET">-->
-            <!--</div>-->
-        <!--</form>-->
-    <!--</div>-->
-<!--</div>-->
+        });
+    });*/
+</script>
+<!--//Swiper-->
 {/block}
