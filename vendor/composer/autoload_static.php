@@ -7,12 +7,13 @@ namespace Composer\Autoload;
 class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
 {
     public static $files = array (
-        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        'cc56288302d9df745d97c934d6a6e5f0' => __DIR__ . '/..' . '/topthink/think-queue/src/common.php',
-        'ddc3cd2a04224f9638c5d0de6a69c7e3' => __DIR__ . '/..' . '/topthink/think-migration/src/config.php',
-        '72c97b53391125cae04082a81029f42d' => __DIR__ . '/..' . '/topthink/think-testing/src/config.php',
+        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
+        'ddc3cd2a04224f9638c5d0de6a69c7e3' => __DIR__ . '/..' . '/topthink/think-migration/src/config.php',
+        'cc56288302d9df745d97c934d6a6e5f0' => __DIR__ . '/..' . '/topthink/think-queue/src/common.php',
+        '72c97b53391125cae04082a81029f42d' => __DIR__ . '/..' . '/topthink/think-testing/src/config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -24,7 +25,6 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
             'think\\helper\\' => 13,
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
-            'think\\angular\\' => 14,
             'think\\' => 6,
         ),
         'p' => 
@@ -38,11 +38,13 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\DomCrawler\\' => 29,
         ),
         'P' => 
         array (
+            'Prophecy\\' => 9,
             'Phinx\\' => 6,
         ),
         'D' => 
@@ -76,10 +78,6 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         array (
             0 => __DIR__ . '/..' . '/topthink/think-captcha/src',
         ),
-        'think\\angular\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/topthink/think-angular/src',
-        ),
         'think\\' => 
         array (
             0 => __DIR__ . '/../..' . '/thinkphp/library/think',
@@ -89,8 +87,8 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -100,6 +98,10 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
@@ -107,6 +109,10 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         'Symfony\\Component\\DomCrawler\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/dom-crawler',
+        ),
+        'Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
         'Phinx\\' => 
         array (
@@ -118,20 +124,11 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'Prophecy\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'PHPAngular\\Angular' => __DIR__ . '/..' . '/php-angular/php-angular/src/Angular.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
@@ -574,7 +571,7 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'think\\view\\driver\\Angular' => __DIR__ . '/..' . '/topthink/think-angular/drivers/thinkphp5/Angular.php',
+        'think\\view\\driver\\Angular' => __DIR__ . '/..' . '/topthink/think-angular/src/Driver.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -582,7 +579,6 @@ class ComposerStaticInit0e5a20f54bf215fd957bc14489129d05
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0e5a20f54bf215fd957bc14489129d05::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0e5a20f54bf215fd957bc14489129d05::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit0e5a20f54bf215fd957bc14489129d05::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit0e5a20f54bf215fd957bc14489129d05::$classMap;
 
         }, null, ClassLoader::class);
